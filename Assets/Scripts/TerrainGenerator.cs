@@ -5,22 +5,21 @@ using UnityEngine.Serialization;
 
 public class TerrainGenerator : MonoBehaviour
 {
-    // TODO: Create a buffer of terrains, at Instantiation, fill the buffer with 5, 3, 4 terrains. If the buffer contains terrains, push the terrain to the end of the list, and remove the first terrain from the list.
-    // else, create a new batch of terrain and add it to the buffer.
+    [SerializeField] private int minDistanceFromPlayer;
     [FormerlySerializedAs("_maxTerrainCount")] [SerializeField] private int maxTerrainCount;
     [SerializeField] private List<TerrainData> terrainData = new();
     [SerializeField] private Transform terrainHolder;
-    private Vector3 _currentPosition = new(0, 0, 0);
+    [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
 
     private List<GameObject> _currentTerrains = new();
+    private List<GameObject> _bufferTerrains = new();
 
 
     private void Start()
     {
         for (var i=0; i< maxTerrainCount; i++){
-            SpawnTerrain(true);
+            SpawnTerrain(true, new Vector3(0,0,0));
         }
-        maxTerrainCount = _currentTerrains.Count;
     }
 
 
@@ -28,27 +27,32 @@ public class TerrainGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.W))
         {
-            SpawnTerrain(false);
+            SpawnTerrain(false, new Vector3(0,0,0));
         }
     }
 
-    private void SpawnTerrain(bool isStart)
+    public void SpawnTerrain(bool isStart, Vector3 playerPos)
     {
-        int wichTerrain = Random.Range(0, terrainData.Count);
-        int successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
-        for (int i=0; i< successive; i++)
+        if(currentPosition.x - playerPos.x < minDistanceFromPlayer || isStart)
         {
-            GameObject newTerrain = Instantiate(terrainData[wichTerrain].terrain, _currentPosition, Quaternion.identity, terrainHolder);
-            _currentTerrains.Add(newTerrain);
-            if (!isStart)
-            {
-                if (_currentTerrains.Count > maxTerrainCount)
-                {
-                    Destroy(_currentTerrains[0]);
-                    _currentTerrains.RemoveAt(0);
-                }
-            }
-            _currentPosition.x++;
+             int wichTerrain = Random.Range(0, terrainData.Count);
+             int successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
+             for (int i=0; i< successive; i++)
+             {
+                 GameObject newTerrain = Instantiate(terrainData[wichTerrain].terrain, currentPosition, Quaternion.identity, terrainHolder);
+                 _currentTerrains.Add(newTerrain);
+                 if (!isStart)
+                 {
+                     if (_currentTerrains.Count > maxTerrainCount)
+                     {
+                         Destroy(_currentTerrains[0]);
+                         _currentTerrains.RemoveAt(0);
+                     }
+                 }
+                 currentPosition.x++;
+             }
         }
+        
     }
+
 }
