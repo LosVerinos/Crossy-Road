@@ -8,6 +8,7 @@ public class VehicleSpawn : MonoBehaviour
     [SerializeField] private Transform SpawnPos;
     [SerializeField] private float minSeparationTime;
     [SerializeField] private float maxSeparationTime;
+    [SerializeField] private bool isRightSide;
 
     // Start is called before the first frame update
     private void Start()
@@ -21,7 +22,12 @@ public class VehicleSpawn : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
-            Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+            GameObject go = Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+            go.transform.rotation = (Quaternion.Euler(0,SpawnPos.rotation.y, 0));
+            if (!isRightSide)
+            {
+                go.transform.Rotate(new Vector3(0,180,0));
+            }
         }
         
     }
