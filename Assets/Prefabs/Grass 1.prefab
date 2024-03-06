@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6952957231152564951}
   - component: {fileID: 5512705404369043897}
   m_Layer: 0
-  m_Name: Grass
+  m_Name: Grass 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2362e9a694c4a7a4894bae4314c738c9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0818
+      value: -0.1214
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2362e9a694c4a7a4894bae4314c738c9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 14d9eb14ba99bcb48813d226b5015fc1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.0738
+      value: 0.0602
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 14d9eb14ba99bcb48813d226b5015fc1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 63f611886e015564cb5efdd4dff5fe5d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0946
+      value: 0.1196
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 63f611886e015564cb5efdd4dff5fe5d, type: 3}
       propertyPath: m_LocalRotation.w
