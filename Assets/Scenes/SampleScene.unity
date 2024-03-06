@@ -153,7 +153,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &705507993
 GameObject:
@@ -458,7 +458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1252654667352619424, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 1.03
       objectReference: {fileID: 0}
     - target: {fileID: 1252654667352619424, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -504,9 +504,29 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5248590702281361772, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5992525011731577635, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786956987402831179, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786956987402831179, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786956987402831179, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: m_Size.z
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786956987402831179, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: m_Center.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
