@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
+    [SerializeField] private Text scoreText;
     private Animator _animator;
     private readonly static int Hop = Animator.StringToHash("hop");
     private bool _isHopping;
+    private int _score = 0;
+    private int _scoreBuffer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +51,12 @@ public class PlayerScript : MonoBehaviour
                 zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             }
             MovePlayer(new Vector3(1,0, zDiff));
+            _scoreBuffer++;
+            if (_scoreBuffer > 0)
+            {
+                _score++;
+                _scoreBuffer = 0;
+            }
         }
         if (Input.GetKeyDown(KeyCode.S) && !_isHopping)
         {
@@ -56,6 +66,7 @@ public class PlayerScript : MonoBehaviour
                 zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             }
             MovePlayer(new Vector3(-1,0, zDiff));
+            _scoreBuffer--;
         }
         if (Input.GetKeyDown(KeyCode.A) && !_isHopping)
         {
@@ -65,7 +76,7 @@ public class PlayerScript : MonoBehaviour
         {
             MovePlayer(new Vector3(0,0,-1));
         }
-
+        scoreText.text = "Score: " + _score;
     }
     
     private void MovePlayer(Vector3 diff)
