@@ -18,8 +18,12 @@ public class VehicleSpawn : MonoBehaviour
 
     private IEnumerator SpawnVehicle()
     {
-        yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
-        Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
+            Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+        }
+        
     }
 
 }
