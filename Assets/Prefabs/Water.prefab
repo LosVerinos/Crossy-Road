@@ -137,8 +137,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 0.5, z: 1}
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!114 &2129143252804892363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnObject: {fileID: 275996120478420784, guid: 63128ac74764c442b806477528522838, type: 3}
   SpawnPos: {fileID: 139909793620997579}
-  minSeparationTime: 4
-  maxSeparationTime: 7
+  minSeparationTime: 2
+  maxSeparationTime: 4
   isRightSide: 1
