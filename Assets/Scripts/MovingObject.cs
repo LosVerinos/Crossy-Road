@@ -10,6 +10,7 @@ public class MovingObject : MonoBehaviour
     // Start is called before the first frame update
     void Update()
     {
+        Debug.Log(Vector3.forward * speed * Time.deltaTime);
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
     }
 }
