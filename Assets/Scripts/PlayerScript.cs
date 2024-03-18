@@ -78,7 +78,23 @@ public class PlayerScript : MonoBehaviour
         }
         scoreText.text = "Score: " + _score;
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.GetComponent<MovingObject>() != null)
+        {
+            if (collision.collider.GetComponent<MovingObject>().islog)
+            {
+                transform.parent = collision.collider.transform;
+            }
+            
+        }
+        else
+        {
+            transform.parent = null;
+        }
+    }
+
     private void MovePlayer(Vector3 diff)
     {
         _animator.SetTrigger(Hop);

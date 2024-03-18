@@ -6,6 +6,7 @@ public class MovingObject : MonoBehaviour
 {
 
     [SerializeField] private float speed;
+    public bool islog;
 
     // Start is called before the first frame update
     void Update()
