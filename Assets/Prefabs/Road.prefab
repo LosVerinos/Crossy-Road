@@ -150,7 +150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8b773ea93594e2cb3bbde18ca0505c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicle: {fileID: 275996120478420784, guid: 5b4705cd630c441bcaed59a6377ce71a, type: 3}
+  vehicles:
+  - {fileID: 275996120478420784, guid: 5b4705cd630c441bcaed59a6377ce71a, type: 3}
+  - {fileID: 275996120478420784, guid: 81241f468534e453eadc753aabb81e26, type: 3}
+  - {fileID: 275996120478420784, guid: 4bcec0eba213f4fb6896643e327b7f0a, type: 3}
   SpawnPos: {fileID: 1487960368392179030}
   minSeparationTime: 3
   maxSeparationTime: 5
