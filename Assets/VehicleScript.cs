@@ -6,11 +6,12 @@ public class VehicleScript : MonoBehaviour
 {
 
     [SerializeField] private float speed;
+    [SerializeField] private float direction;
 
     // Start is called before the first frame update
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime * direction);
     }
 
 }
