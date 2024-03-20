@@ -31,8 +31,8 @@ public class TrainSpawn : MonoBehaviour
             if (alarmBehaviour != null)
             {
                 Debug.Log("Trouvé");
-                // Appel de la méthode Alarm de AlarmBehaviour
-                alarmBehaviour.Alarm();
+                // Démarrer la coroutine Alarm
+                StartCoroutine(alarmBehaviour.Alarm());
             }
             else
             {
@@ -43,6 +43,4 @@ public class TrainSpawn : MonoBehaviour
             Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
         }
     }
-
-
 }

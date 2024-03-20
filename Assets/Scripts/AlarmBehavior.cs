@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AlarmBehaviour : MonoBehaviour
@@ -9,21 +7,23 @@ public class AlarmBehaviour : MonoBehaviour
     public GameObject notActivated;
 
     // Méthode pour faire disparaître 'lap-train' et apparaître 'not-lap-train'
-    public void Alarm()
+    public IEnumerator Alarm()
     {
-
-        for(int i=0; i<10; i++){
-            Activate();
-
+        for (int i = 0; i < 10; i++)
+        {
+            yield return StartCoroutine(Activate());
         }
     }
 
-    private IEnumerator Activate(){
+    private IEnumerator Activate()
+    {
         yield return new WaitForSeconds(0.5f);
-        activated.IsDestroyed();
-
+        Debug.Log("oui");
+        activated.SetActive(false);
     }
-    private IEnumerator Deactivate(){
+
+    private IEnumerator Deactivate()
+    {
         yield return new WaitForSeconds(0.5f);
         activated.SetActive(true);
         notActivated.SetActive(false);
