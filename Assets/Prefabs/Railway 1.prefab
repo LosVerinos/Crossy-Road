@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7720804348558057137}
   - component: {fileID: 9073012337655940684}
   - component: {fileID: 3543671565277252481}
-  - component: {fileID: -1980066297490093214}
+  - component: {fileID: 6725418901722967772}
   m_Layer: 0
   m_Name: Railway 1
   m_TagString: Untagged
@@ -148,7 +148,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-1980066297490093214
+--- !u!114 &6725418901722967772
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5819908639339404136}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8b773ea93594e2cb3bbde18ca0505c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e404d25719444bc697072c91a07e578, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vehicle: {fileID: 275996120478420784, guid: 2ff0ecdd74b264716ab032bba101af24, type: 3}
