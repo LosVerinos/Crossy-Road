@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -723,6 +723,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d7fbdf0c9a6ba4047831ca2a5a632802, type: 2}
   - {fileID: 11400000, guid: c3fdcae3326e66440b37d9b95e09cd68, type: 2}
   - {fileID: 11400000, guid: f2ba1dc675ee7254cbc012458ec9417e, type: 2}
+  - {fileID: 11400000, guid: 1aa65e6c0fdb74785bcb53745aab30f6, type: 2}
   terrainHolder: {fileID: 955307681}
   currentPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1968209798
