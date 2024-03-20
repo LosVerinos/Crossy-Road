@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TrainSpawn : MonoBehaviour
@@ -10,12 +9,15 @@ public class TrainSpawn : MonoBehaviour
     [SerializeField] private float maxSeparationTime;
     private float timeBeforeComing;
     private bool alarm;
+    public AlarmBehaviour alarmBehaviour; // Référence à AlarmBehaviour
 
     // Start is called before the first frame update
     private void Start()
     {
+        // Recherche automatique du GameObject contenant AlarmBehaviour
+        alarmBehaviour = FindObjectOfType<AlarmBehaviour>();
+
         StartCoroutine(SpawnVehicle());
-        
     }
 
     private IEnumerator SpawnVehicle()
@@ -24,14 +26,23 @@ public class TrainSpawn : MonoBehaviour
         {
             timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
             yield return new WaitForSeconds(timeBeforeComing - 3f);
-            alarm = true;
+
+            // Vérifie si l'objet AlarmBehaviour a été trouvé
+            if (alarmBehaviour != null)
+            {
+                Debug.Log("Trouvé");
+                // Appel de la méthode Alarm de AlarmBehaviour
+                alarmBehaviour.Alarm();
+            }
+            else
+            {
+                Debug.LogError("AlarmBehaviour not found!");
+            }
+
             yield return new WaitForSeconds(3f);
             Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
-            yield return new WaitForSeconds(2f);
-            alarm = false;
         }
-        
     }
 
-}
 
+}
