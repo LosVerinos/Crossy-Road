@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7770091790964735998}
   - component: {fileID: 1485192254679404009}
   m_Layer: 0
-  m_Name: short_log
+  m_Name: short_log 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -119,4 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   islog: 1
-  direction: 1
+  direction: -1

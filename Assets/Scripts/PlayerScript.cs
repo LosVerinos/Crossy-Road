@@ -81,9 +81,9 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.GetComponent<MovingObject>() != null)
+        if(collision.collider.GetComponent<LogScript>() != null)
         {
-            if (collision.collider.GetComponent<MovingObject>().islog)
+            if (collision.collider.GetComponent<LogScript>().islog)
             {
                 transform.parent = collision.collider.transform;
             }
