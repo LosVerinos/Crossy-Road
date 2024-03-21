@@ -9,6 +9,7 @@ public class TrainSpawn : MonoBehaviour
     [SerializeField] private float maxSeparationTime;
     private float timeBeforeComing;
     private bool alarm;
+    public AlarmController alarmController;
 
     // Start is called before the first frame update
     private void Start()
@@ -24,20 +25,81 @@ public class TrainSpawn : MonoBehaviour
             timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
             yield return new WaitForSeconds(timeBeforeComing - 3f);
 
-            /* Vérifie si l'objet AlarmBehaviour a été trouvé
-            if (alarmBehaviour != null)
-            {
-                Debug.Log("Trouvé");
-                // Démarrer la coroutine Alarm
-                StartCoroutine(alarmBehaviour.Alarm());
-            }
-            else
-            {
-                Debug.LogError("AlarmBehaviour not found!");
-            }
-            */
-            yield return new WaitForSeconds(3f);
+        if (alarmController != null)
+        {
+
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
             Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOn();
+            yield return new WaitForSeconds(0.1f);
+            alarmController.TriggerAlarmOff();
+            yield return new WaitForSeconds(0.1f);
+        }
+        else
+        {
+            Debug.LogError("Alarm controller not assigned!");
+        }   
+            
+            
         }
     }
 }
