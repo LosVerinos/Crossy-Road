@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8348965557918189122}
   - component: {fileID: 1485192254679404009}
   m_Layer: 0
-  m_Name: log
+  m_Name: normal_log
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.6, z: 1.7}
+  m_LocalScale: {x: 0.7, y: 0.6, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243a7f551329644a6898a1efa1fcbde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 0
   direction: 1
 --- !u!114 &1485192254679404009
 MonoBehaviour:
@@ -133,5 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc3be1c52925b4a9a8b0247cfd4902ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   islog: 1
