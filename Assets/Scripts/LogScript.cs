@@ -7,9 +7,15 @@ public class LogScript : MonoBehaviour
     private float speed;
     public bool islog;
     [SerializeField] private float direction;
+
     void Start(){
         speed = Random.Range(1.5f, 3f);
     }
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
     // Start is called before the first frame update
     void Update()
     {
