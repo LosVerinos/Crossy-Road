@@ -11,7 +11,6 @@ public class AlarmController : MonoBehaviour
     {
         if (Activated != null)
         {
-            Debug.Log("UP");
             Activated.transform.Translate(Vector3.up * 1f);
             }
         
