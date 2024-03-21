@@ -7,7 +7,7 @@ public class KillPlayerOnTouch : MonoBehaviour
 {
     private void OnCollisionEnter(Collision other)
     {
-       if (other.gameObject.CompareTag("Player"))
+       if(other.gameObject.CompareTag("Player"))
        {
            Destroy(other.gameObject);
            
