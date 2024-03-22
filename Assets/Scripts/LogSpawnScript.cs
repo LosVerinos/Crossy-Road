@@ -16,7 +16,7 @@ public class LogSpawnScript : MonoBehaviour
     {
         // Choix aléatoire d'un véhicule dans la liste
 
-        speed = Random.Range(1f, 3f);
+        speed = Random.Range(0.5f, 3f);
         
         StartCoroutine(SpawnLog());
         
@@ -48,7 +48,11 @@ public class LogSpawnScript : MonoBehaviour
                 Debug.LogError("Log script not found on the spawned log!");
             }
             yield return new WaitForSeconds(2f);
+            
             logScript.SetSpeed(speed);
+            if(speed <= 1f){
+                yield return new WaitForSeconds(Random.Range(3f, 6f));
+            }
         }
     }
 }
