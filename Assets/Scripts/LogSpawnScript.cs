@@ -38,7 +38,7 @@ public class LogSpawnScript : MonoBehaviour
             GameObject newLog = Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
             
             // Récupérer le script LogScript attaché à la bûche et lui transmettre la vitesse initiale de 1
-            LogScript logScript = newLog.GetComponent<LogScript>();
+            MovingObjectScript logScript = newLog.GetComponent<MovingObjectScript>();
             if (logScript != null)
             {
                 logScript.SetSpeed(10f); // Définir la vitesse initiale de la bûche à 1

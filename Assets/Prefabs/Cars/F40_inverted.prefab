@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5951596026900364641}
   - component: {fileID: 1461828744457277214}
   - component: {fileID: 7770091790964735998}
-  - component: {fileID: 8348965557918189122}
   - component: {fileID: -7482049750026928174}
+  - component: {fileID: -5664353385737098977}
   m_Layer: 0
   m_Name: F40_inverted
   m_TagString: Untagged
@@ -108,20 +108,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.85}
   m_Center: {x: 0, y: 1.39, z: -0.03}
---- !u!114 &8348965557918189122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275996120478420784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 243a7f551329644a6898a1efa1fcbde3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 7
-  direction: -1
 --- !u!114 &-7482049750026928174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +120,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42877ab4f759c748b795243b016fc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5664353385737098977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275996120478420784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c343be042ebe4694918db4a459f467a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  islog: 0
+  direction: -1
 --- !u!1001 &6928338354299643079
 PrefabInstance:
   m_ObjectHideFlags: 0

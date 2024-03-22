@@ -84,7 +84,9 @@ public class TrainSpawn : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             alarmController.TriggerAlarmOff();
             yield return new WaitForSeconds(0.1f);
-            Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+            GameObject newTrain = Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+            MovingObjectScript train = newTrain.GetComponent<MovingObjectScript>();
+            train.SetSpeed(30f);
             alarmController.TriggerAlarmOn();
             yield return new WaitForSeconds(0.1f);
             alarmController.TriggerAlarmOff();

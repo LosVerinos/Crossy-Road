@@ -12,6 +12,7 @@ public class VehicleSpawn : MonoBehaviour
     private float firstPart;
     private float secondPart;
     private float thirdPart;
+    private float speed;
 
     // Start is called before the first frame update
     private void Start()
@@ -20,20 +21,22 @@ public class VehicleSpawn : MonoBehaviour
         int randomIndex = Random.Range(0, vehicles.Count);
         GameObject selectedVehicle = vehicles[randomIndex];
         MakePatern();
+        SelectSpeed(selectedVehicle);
         StartCoroutine(SpawnVehicle(selectedVehicle));
-        
+
     }
+
 
     private IEnumerator SpawnVehicle(GameObject selectedVehicle)
     {
         while (true)
         {
             yield return new WaitForSeconds(firstPart);
-            Instantiate(selectedVehicle, SpawnPos.position, Quaternion.identity);
+            InstantiateVehicle(selectedVehicle);
             yield return new WaitForSeconds(secondPart);
-            Instantiate(selectedVehicle, SpawnPos.position, Quaternion.identity);
+            InstantiateVehicle(selectedVehicle);
             yield return new WaitForSeconds(thirdPart);
-            Instantiate(selectedVehicle, SpawnPos.position, Quaternion.identity);
+            InstantiateVehicle(selectedVehicle);
         }
         
     }
@@ -44,4 +47,28 @@ public class VehicleSpawn : MonoBehaviour
         thirdPart = Random.Range(minSeparationTime, maxSeparationTime);
     }
 
+    private void InstantiateVehicle(GameObject selectedVehicle){
+        GameObject newVehicule = Instantiate(selectedVehicle, SpawnPos.position, Quaternion.identity);
+        MovingObjectScript vehicle = newVehicule.GetComponent<MovingObjectScript>();
+        vehicle.SetSpeed(speed);
+    }
+
+    private void SelectSpeed(GameObject selectedVehicle){
+        if (selectedVehicle.name.StartsWith("Cabriolet")){
+            speed = 3.5f;  
+        }
+        
+        if (selectedVehicle.name.StartsWith("F40")){
+            speed = 7f;
+        }
+        if (selectedVehicle.name.StartsWith("RS6")){
+            speed = 4f;
+        }
+        if (selectedVehicle.name.StartsWith("Truck")){
+            speed = 2f;
+        }
+        if (selectedVehicle.name.StartsWith("Hummer")){
+            speed = 3f;
+        }
+    }
 }
