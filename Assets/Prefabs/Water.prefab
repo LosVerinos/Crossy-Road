@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4438915964078908671}
   - component: {fileID: 6074001169684281795}
   - component: {fileID: 2129143252804892363}
-  - component: {fileID: 9105854661035441729}
+  - component: {fileID: -2242016284065005295}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42877ab4f759c748b795243b016fc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9105854661035441729
+--- !u!114 &-2242016284065005295
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,13 +160,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7719632426951286384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a8b773ea93594e2cb3bbde18ca0505c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fd7f13ae4c1945f8a9ca5b1bb810e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vehicles:
-  - {fileID: 275996120478420784, guid: 63128ac74764c442b806477528522838, type: 3}
+  logs:
   - {fileID: 275996120478420784, guid: 626d0adb499e6413597cc6a1abfd3e79, type: 3}
   - {fileID: 275996120478420784, guid: c12ed538cc46245e4b8a54e37bb70bd2, type: 3}
+  - {fileID: 275996120478420784, guid: 63128ac74764c442b806477528522838, type: 3}
   SpawnPos: {fileID: 139909793620997579}
-  minSeparationTime: 3
-  maxSeparationTime: 5
+  minSeparationTime: 2
+  maxSeparationTime: 4

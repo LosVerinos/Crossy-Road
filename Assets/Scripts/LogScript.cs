@@ -8,9 +8,6 @@ public class LogScript : MonoBehaviour
     public bool islog;
     [SerializeField] private float direction;
 
-    void Start(){
-        speed = Random.Range(1.5f, 3f);
-    }
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;

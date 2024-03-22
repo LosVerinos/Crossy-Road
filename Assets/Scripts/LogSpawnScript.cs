@@ -29,8 +29,9 @@ public class LogSpawnScript : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
             randomIndex = Random.Range(0, logs.Count);
             selectedLog = logs[randomIndex];
-            Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
             selectedLog.GetComponent<LogScript>().SetSpeed(speed);
+            Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
+            
         }
         
     }
