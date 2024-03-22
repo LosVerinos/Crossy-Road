@@ -29,7 +29,18 @@ public class LogSpawnScript : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
             randomIndex = Random.Range(0, logs.Count);
             selectedLog = logs[randomIndex];
-            selectedLog.GetComponent<LogScript>().SetSpeed(speed);
+            LogScript logScript = selectedLog.GetComponent<LogScript>();
+
+            // Vérifiez si le script LogScript a été trouvé
+            if (logScript != null)
+            {
+                // Changez la vitesse de la bûche en lui appelant la méthode SetSpeed avec la nouvelle vitesse
+                logScript.SetSpeed(speed);
+            }
+            else
+            {
+                Debug.LogError("Log script not found on the log object!");
+            }
             Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
             
         }
