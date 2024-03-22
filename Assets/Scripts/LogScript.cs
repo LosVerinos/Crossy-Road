@@ -1,24 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class LogScript : MonoBehaviour
 {
-    private float speed = 1f;
+    private float speed;
     public bool islog;
+
     [SerializeField] private float direction;
 
-    public void SetSpeed(float newSpeed)
-    {
-        speed = newSpeed;
-        transform.Translate(Vector3.forward * speed * Time.deltaTime * direction);
-        Debug.Log("Vitesse changée");
-        Debug.Log(speed);
-    }
-
-    // Start is called before the first frame update
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime * direction);
+        if(transform.position.z * direction >= 45f){
+            Destroy(gameObject);
+        }
     }
+
+    // Méthode pour définir la vitesse de la bûche
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
+
+    
 }

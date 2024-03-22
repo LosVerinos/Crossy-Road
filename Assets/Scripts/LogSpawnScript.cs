@@ -16,7 +16,7 @@ public class LogSpawnScript : MonoBehaviour
     {
         // Choix aléatoire d'un véhicule dans la liste
 
-        speed = Random.Range(1.5f, 3f);
+        speed = Random.Range(1f, 3f);
         
         StartCoroutine(SpawnLog());
         
@@ -26,24 +26,29 @@ public class LogSpawnScript : MonoBehaviour
     {
         while (true)
         {
+            // Attendre un temps aléatoire avant de spawn une nouvelle bûche
             yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
-            randomIndex = Random.Range(0, logs.Count);
-            selectedLog = logs[randomIndex];
-            LogScript logScript = selectedLog.GetComponent<LogScript>();
 
-            // Vérifiez si le script LogScript a été trouvé
+            
+            // Choisir aléatoirement une bûche dans la liste
+            int randomIndex = Random.Range(0, logs.Count);
+            GameObject selectedLog = logs[randomIndex];
+            
+            // Instancier la bûche
+            GameObject newLog = Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
+            
+            // Récupérer le script LogScript attaché à la bûche et lui transmettre la vitesse initiale de 1
+            LogScript logScript = newLog.GetComponent<LogScript>();
             if (logScript != null)
             {
-                // Changez la vitesse de la bûche en lui appelant la méthode SetSpeed avec la nouvelle vitesse
-                logScript.SetSpeed(speed);
+                logScript.SetSpeed(10f); // Définir la vitesse initiale de la bûche à 1
             }
             else
             {
-                Debug.LogError("Log script not found on the log object!");
+                Debug.LogError("Log script not found on the spawned log!");
             }
-            Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
-            
+            yield return new WaitForSeconds(2f);
+            logScript.SetSpeed(speed);
         }
-        
     }
 }

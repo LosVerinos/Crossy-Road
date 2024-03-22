@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainScript : MonoBehaviour
+public class MovingObjectScript : MonoBehaviour
 {
-    [SerializeField] private float speed;
+
+    private float speed;
+    public bool islog;
     [SerializeField] private float direction;
 
-    // Start is called before the first frame update
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime * direction);
@@ -16,5 +17,10 @@ public class TrainScript : MonoBehaviour
         }
     }
 
-}
+    // Méthode pour définir la vitesse de la bûche
+    public void SetSpeed(float newSpeed)
+    {
+        speed = newSpeed;
+    }
 
+}
