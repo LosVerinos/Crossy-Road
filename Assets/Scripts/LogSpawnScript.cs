@@ -54,5 +54,6 @@ public class LogSpawnScript : MonoBehaviour
                 yield return new WaitForSeconds(Random.Range(3f, 6f));
             }
         }
+        
     }
 }
