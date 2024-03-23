@@ -7,11 +7,11 @@ public class MovingObjectScript : MonoBehaviour
 
     private float speed;
     public bool islog;
-    [SerializeField] private float direction;
+    private float direction;
 
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime * direction);
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
         if(transform.position.z * direction >= 45f){
             Destroy(gameObject);
         }
@@ -22,13 +22,8 @@ public class MovingObjectScript : MonoBehaviour
     {
         speed = newSpeed;
     }
-
-    public void SetDirection(float direction)
+    public void SetDirection(float way)
     {
-        direction = direction;
-        if(direction == -1){
-            go.transform.Rotate(new Vector3(0,180,0));
-        }
+        direction = way;
     }
-
 }
