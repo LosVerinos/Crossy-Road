@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7770091790964735998}
   - component: {fileID: -3499363483430664108}
   m_Layer: 0
-  m_Name: Train_inverted
+  m_Name: Useless-Train_inverted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
