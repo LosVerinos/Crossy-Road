@@ -53,7 +53,7 @@ public class VehicleSpawn : MonoBehaviour
     private void InstantiateVehicle(GameObject selectedVehicle){
         GameObject newVehicule = Instantiate(selectedVehicle, SpawnPos.position, Quaternion.identity);
         MovingObjectScript vehicle = newVehicule.GetComponent<MovingObjectScript>();
-        newVehicule.transform.rotation = (Quaternion.Euler(0,0, 0));
+
         if (direction < 0)
         {
             newVehicule.transform.Rotate(new Vector3(0,180,0));
@@ -88,7 +88,7 @@ public class VehicleSpawn : MonoBehaviour
 
         GameObject firstOne = Instantiate(selectedVehicle, new Vector3(SpawnPos.position.x, SpawnPos.position.y, interval1*-direction), Quaternion.identity);
         MovingObjectScript first = firstOne.GetComponent<MovingObjectScript>();
-        firstOne.transform.rotation = (Quaternion.Euler(0,0, 0));
+
         if (direction < 0)
         {
             firstOne.transform.Rotate(new Vector3(0,180,0));
@@ -98,7 +98,7 @@ public class VehicleSpawn : MonoBehaviour
 
         GameObject secondOne = Instantiate(selectedVehicle, new Vector3(SpawnPos.position.x, SpawnPos.position.y, interval2*-direction), Quaternion.identity);
         MovingObjectScript second = secondOne.GetComponent<MovingObjectScript>();
-        secondOne.transform.rotation = (Quaternion.Euler(0,0, 0));
+
         if (direction < 0)
         {
             secondOne.transform.Rotate(new Vector3(0,180,0));
@@ -108,7 +108,6 @@ public class VehicleSpawn : MonoBehaviour
 
         GameObject thirdOne = Instantiate(selectedVehicle, new Vector3(SpawnPos.position.x, SpawnPos.position.y, interval3*-direction), Quaternion.identity);
         MovingObjectScript third = thirdOne.GetComponent<MovingObjectScript>();
-        thirdOne.transform.rotation = (Quaternion.Euler(0,0, 0));
         if (direction < 0)
         {
             thirdOne.transform.Rotate(new Vector3(0,180,0));

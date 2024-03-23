@@ -7,6 +7,8 @@ public class TrainSpawn : MonoBehaviour
     [SerializeField] private Transform SpawnPos;
     [SerializeField] private float minSeparationTime;
     [SerializeField] private float maxSeparationTime;
+
+    [SerializeField] private float direction;
     private float timeBeforeComing;
     private bool alarm;
     public AlarmController alarmController;
@@ -86,6 +88,11 @@ public class TrainSpawn : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             GameObject newTrain = Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
             MovingObjectScript train = newTrain.GetComponent<MovingObjectScript>();
+            if (direction < 0)
+            {
+                newTrain.transform.Rotate(new Vector3(0,180,0));
+            }
+            train.SetDirection(direction);
             train.SetSpeed(30f);
             alarmController.TriggerAlarmOn();
             yield return new WaitForSeconds(0.1f);

@@ -250,6 +250,7 @@ MonoBehaviour:
   SpawnPos: {fileID: 7701197497878898504}
   minSeparationTime: 15
   maxSeparationTime: 30
+  direction: 1
   alarmController: {fileID: 5232579476909302702}
 --- !u!1 &7228004369162435067
 GameObject:
