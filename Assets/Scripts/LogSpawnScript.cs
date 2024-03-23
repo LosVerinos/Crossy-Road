@@ -46,7 +46,7 @@ public class LogSpawnScript : MonoBehaviour
             yield return new WaitForSeconds(2f);
             
             log.SetSpeed(speed);
-            if(speed <= 1f){
+            if(speed <= 1.2f){
                 yield return new WaitForSeconds(Random.Range(3f, 6f));
             }
         }
