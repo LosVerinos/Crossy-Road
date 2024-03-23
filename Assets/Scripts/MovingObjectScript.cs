@@ -23,4 +23,12 @@ public class MovingObjectScript : MonoBehaviour
         speed = newSpeed;
     }
 
+    public void SetDirection(float direction)
+    {
+        direction = direction;
+        if(direction == -1){
+            go.transform.Rotate(new Vector3(0,180,0));
+        }
+    }
+
 }

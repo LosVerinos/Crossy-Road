@@ -7,6 +7,7 @@ public class LogSpawnScript : MonoBehaviour
 {
     [SerializeField] private List<GameObject> logs;
     [SerializeField] private Transform SpawnPos;
+    [SerializeField] private Transform StartPos;
     [SerializeField] private float minSeparationTime;
     [SerializeField] private float maxSeparationTime;
     private float speed;
@@ -15,8 +16,8 @@ public class LogSpawnScript : MonoBehaviour
     private void Start()
     {
         // Choix aléatoire d'un véhicule dans la liste
-
         speed = Random.Range(0.5f, 3f);
+        
         
         StartCoroutine(SpawnLog());
         
