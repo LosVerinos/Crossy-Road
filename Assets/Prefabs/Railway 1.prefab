@@ -566,7 +566,7 @@ MonoBehaviour:
   vehicle: {fileID: 275996120478420784, guid: 803d94dfbad6843f58301a6cb628f76f, type: 3}
   SpawnPos: {fileID: 7701197497878898504}
   minSeparationTime: 15
-  maxSeparationTime: 30
+  maxSeparationTime: 40
   direction: -1
   alarmController: {fileID: 9017475949399371176}
 --- !u!1001 &1038724634062233144
