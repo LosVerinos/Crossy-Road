@@ -170,3 +170,4 @@ MonoBehaviour:
   SpawnPos: {fileID: 139909793620997579}
   minSeparationTime: 0.25
   maxSeparationTime: 2
+  direction: 1

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -7,9 +8,9 @@ public class LogSpawnScript : MonoBehaviour
 {
     [SerializeField] private List<GameObject> logs;
     [SerializeField] private Transform SpawnPos;
-    [SerializeField] private Transform StartPos;
     [SerializeField] private float minSeparationTime;
     [SerializeField] private float maxSeparationTime;
+    [SerializeField] private float direction;
     private float speed;
     int randomIndex;
     GameObject selectedLog;
@@ -27,30 +28,24 @@ public class LogSpawnScript : MonoBehaviour
     {
         while (true)
         {
-            // Attendre un temps aléatoire avant de spawn une nouvelle bûche
-            yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
-
             
-            // Choisir aléatoirement une bûche dans la liste
+            yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
+            
             int randomIndex = Random.Range(0, logs.Count);
             GameObject selectedLog = logs[randomIndex];
-            
-            // Instancier la bûche
+        
             GameObject newLog = Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
-            
-            // Récupérer le script LogScript attaché à la bûche et lui transmettre la vitesse initiale de 1
-            MovingObjectScript logScript = newLog.GetComponent<MovingObjectScript>();
-            if (logScript != null)
+            MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
+            if (direction < 0)
             {
-                logScript.SetSpeed(10f); // Définir la vitesse initiale de la bûche à 1
+                newLog.transform.Rotate(new Vector3(0,180,0));
             }
-            else
-            {
-                Debug.LogError("Log script not found on the spawned log!");
-            }
+            log.SetDirection(direction);
+            log.SetSpeed(10f);
+
             yield return new WaitForSeconds(2f);
             
-            logScript.SetSpeed(speed);
+            log.SetSpeed(speed);
             if(speed <= 1f){
                 yield return new WaitForSeconds(Random.Range(3f, 6f));
             }

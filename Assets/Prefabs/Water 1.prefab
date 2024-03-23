@@ -164,9 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logs:
-  - {fileID: 275996120478420784, guid: a68e17768f1fe40efa6fc6f568ffd492, type: 3}
-  - {fileID: 275996120478420784, guid: fb7173f74157340e9bb818f81a7bc57f, type: 3}
-  - {fileID: 275996120478420784, guid: 39140f9846b654b119b99b2b6918534d, type: 3}
+  - {fileID: 275996120478420784, guid: 626d0adb499e6413597cc6a1abfd3e79, type: 3}
+  - {fileID: 275996120478420784, guid: c12ed538cc46245e4b8a54e37bb70bd2, type: 3}
+  - {fileID: 275996120478420784, guid: 63128ac74764c442b806477528522838, type: 3}
   SpawnPos: {fileID: 139909793620997579}
   minSeparationTime: 0.25
   maxSeparationTime: 5
+  direction: -1
