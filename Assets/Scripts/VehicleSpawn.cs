@@ -128,7 +128,6 @@ public class VehicleSpawn : MonoBehaviour
             }
             third.SetDirection(direction);    
             third.SetSpeed(speed);
-            Debug.Log(fullPattern);
             
         }while(fullPattern < SpawnPos.position.z * -direction);
 
@@ -138,11 +137,6 @@ public class VehicleSpawn : MonoBehaviour
         if(timeToWait < 0){
             timeToWait *= -1;
         }
-        Debug.Log(occurence);
-        Debug.Log(SpawnPos.position.z);
-        Debug.Log(fullPattern);
-        Debug.Log(exedent);
-        Debug.Log(timeToWait);
 
     }
 }
