@@ -108,4 +108,8 @@ public class PlayerScript : MonoBehaviour
         _isHopping = false;
     }
 
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
 }

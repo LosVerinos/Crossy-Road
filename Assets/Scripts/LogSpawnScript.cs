@@ -56,8 +56,6 @@ public class LogSpawnScript : MonoBehaviour
 
     private void FirstLogs(){
         float LogsZ = Mathf.Abs(SpawnPos.position.z + direction*(10f * 2f));
-        Debug.Log(SpawnPos.position.z);
-        Debug.Log(LogsZ);
         while(LogsZ > -Mathf.Abs(SpawnPos.position.z + direction*(10f * 2f))){
             int randomIndex = Random.Range(0, logs.Count);
             GameObject selectedLog = logs[randomIndex];
@@ -72,8 +70,6 @@ public class LogSpawnScript : MonoBehaviour
             log.SetSpeed(speed);
 
             LogsZ -= speed*Random.Range(minSeparationTime, maxSeparationTime) + maxLogLenght;
-            Debug.Log(LogsZ);
-
         }
     }
 }

@@ -8,11 +8,17 @@ public class MovingObjectScript : MonoBehaviour
     private float speed;
     public bool islog;
     private float direction;
+    private PlayerScript playerScript;
+
+    void Start(){
+        playerScript = FindObjectOfType<PlayerScript>();
+    }
 
     void Update()
     {
+        Vector3 playerPosition = playerScript.GetPlayerPosition();
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        if(transform.position.z * direction >= 45f){
+        if((transform.position.z * direction >= 45f) || playerPosition.x-8 == transform.position.x){
             Destroy(gameObject);
         }
     }
