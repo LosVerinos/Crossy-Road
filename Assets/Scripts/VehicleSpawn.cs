@@ -128,8 +128,9 @@ public class VehicleSpawn : MonoBehaviour
             }
             third.SetDirection(direction);    
             third.SetSpeed(speed);
-
-        }while(fullPattern < SpawnPos.position.z);
+            Debug.Log(fullPattern);
+            
+        }while(fullPattern < SpawnPos.position.z * -direction);
 
         fullPattern *= -direction;
         float exedent = (fullPattern / occurence) - (SpawnPos.position.z - (fullPattern / occurence * (occurence - 1)));
