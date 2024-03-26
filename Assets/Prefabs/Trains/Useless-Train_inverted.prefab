@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5951596026900364641}
   - component: {fileID: 1461828744457277214}
   - component: {fileID: 7770091790964735998}
-  - component: {fileID: 1617997432641541774}
+  - component: {fileID: -3499363483430664108}
   m_Layer: 0
-  m_Name: Train_inverted
+  m_Name: Useless-Train_inverted
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1617997432641541774
+--- !u!114 &-3499363483430664108
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,10 +117,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 275996120478420784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9422b546e17cb49a989140df5a4e70f0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c343be042ebe4694918db4a459f467a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 30
+  islog: 0
   direction: -1
 --- !u!1001 &1598582256451999417
 PrefabInstance:

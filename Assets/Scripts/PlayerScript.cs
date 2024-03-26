@@ -81,9 +81,9 @@ public class PlayerScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.GetComponent<MovingObject>() != null)
+        if(collision.collider.GetComponent<MovingObjectScript>() != null)
         {
-            if (collision.collider.GetComponent<MovingObject>().islog)
+            if (collision.collider.GetComponent<MovingObjectScript>().islog)
             {
                 transform.parent = collision.collider.transform;
             }
@@ -108,4 +108,8 @@ public class PlayerScript : MonoBehaviour
         _isHopping = false;
     }
 
+    public Vector3 GetPlayerPosition()
+    {
+        return transform.position;
+    }
 }
