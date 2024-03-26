@@ -718,7 +718,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceFromPlayer: 20
-  maxTerrainCount: 50
   terrainData:
   - {fileID: 11400000, guid: d7fbdf0c9a6ba4047831ca2a5a632802, type: 2}
   - {fileID: 11400000, guid: c3fdcae3326e66440b37d9b95e09cd68, type: 2}
@@ -726,6 +725,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1aa65e6c0fdb74785bcb53745aab30f6, type: 2}
   terrainHolder: {fileID: 955307681}
   currentPosition: {x: 0, y: 0, z: 0}
+  startTerrain: {fileID: 3026940675598252949, guid: f528b30102ed14d2c8184d77006860d3, type: 3}
 --- !u!4 &1968209798
 Transform:
   m_ObjectHideFlags: 0
