@@ -13,6 +13,7 @@ public class TerrainGenerator : MonoBehaviour
     private List<GameObject> _currentTerrains = new();
     private List<GameObject> _bufferTerrains = new();
     [SerializeField] private GameObject startTerrain;
+    public float lastTerrainX;
 
     private void Start()
     {
@@ -51,13 +52,12 @@ public class TerrainGenerator : MonoBehaviour
                 {
                     if (_currentTerrains.Count > maxTerrainCount)
                     {
+                        lastTerrainX = _currentTerrains[0].transform.position.x;
                         Destroy(_currentTerrains[0]);
                         _currentTerrains.RemoveAt(0);
-                        //créer un lastposition.x à passer dans l'update des movingObject
                     }
                 }
                 currentPosition.x++;
-                //Utiliser ca pour destroy les movingObject en meme temps que le terrain
             }
         }
         

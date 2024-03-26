@@ -8,22 +8,20 @@ public class MovingObjectScript : MonoBehaviour
     private float speed;
     public bool islog;
     private float direction;
-    private PlayerScript playerScript;
+    private TerrainGenerator terrainGenerator;
 
     void Start(){
-        playerScript = FindObjectOfType<PlayerScript>();
+        terrainGenerator = FindObjectOfType<TerrainGenerator>();
     }
 
     void Update()
     {
-        Vector3 playerPosition = playerScript.GetPlayerPosition();
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        if((transform.position.z * direction >= 45f) || playerPosition.x-8 == transform.position.x){
+        if((transform.position.z * direction >= 45f) || terrainGenerator.lastTerrainX >= transform.position.x){
             Destroy(gameObject);
         }
     }
 
-    // Méthode pour définir la vitesse de la bûche
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
