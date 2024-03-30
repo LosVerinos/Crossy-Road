@@ -38,13 +38,12 @@ public class TerrainGenerator : MonoBehaviour
     {
         if(currentPosition.x - playerPos.x < minDistanceFromPlayer || isStart)
         {
+            int lastOne = -1;
             int wichTerrain = Random.Range(0, terrainData.Count);
-            
             int successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
             for (int i=0; i< successive; i++)
             {
                 int whichOne;
-                int lastOne = -1;
                 do{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
                 }while(terrainData[wichTerrain].name.StartsWith("Water") && whichOne == lastOne);
@@ -69,15 +68,11 @@ public class TerrainGenerator : MonoBehaviour
 
     private void SpawnInitialTerrain()
     {
-    if (startTerrain != null)
-    {
-        GameObject newTerrain = Instantiate(startTerrain, new Vector3(-1, 0, 0), Quaternion.identity, terrainHolder);
-        _currentTerrains.Add(newTerrain);
-        currentPosition.x = 5;
-    }
-    else
-    {
-        Debug.LogError("Initial terrain prefab is not assigned!");
-    }
+        if (startTerrain != null)
+        {
+            GameObject newTerrain = Instantiate(startTerrain, new Vector3(-1, 0, 0), Quaternion.identity, terrainHolder);
+            _currentTerrains.Add(newTerrain);
+            currentPosition.x = 5;
+        }
     }
 }
