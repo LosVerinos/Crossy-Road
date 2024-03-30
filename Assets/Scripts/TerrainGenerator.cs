@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 public class TerrainGenerator : MonoBehaviour
 {
     [SerializeField] private int minDistanceFromPlayer;
-    private int maxTerrainCount = 16;
+    private int maxTerrainCount = 18;
     [SerializeField] private List<TerrainData> terrainData = new();
     [SerializeField] private Transform terrainHolder;
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
