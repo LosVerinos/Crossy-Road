@@ -725,7 +725,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1aa65e6c0fdb74785bcb53745aab30f6, type: 2}
   terrainHolder: {fileID: 955307681}
   currentPosition: {x: 0, y: 0, z: 0}
-  startTerrain: {fileID: 3026940675598252949, guid: f528b30102ed14d2c8184d77006860d3, type: 3}
+  startTerrain: {fileID: 2897610081443693650, guid: 8d00e93cc9cea43db8bf42dea7993a52, type: 3}
+  lastTerrainX: 0
 --- !u!4 &1968209798
 Transform:
   m_ObjectHideFlags: 0

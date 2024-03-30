@@ -16,4 +16,5 @@ MonoBehaviour:
   - {fileID: 3026940675598252949, guid: 97fda1d82b71b457686a6e56e5750b79, type: 3}
   - {fileID: 3026940675598252949, guid: aeebd2627ee02460c84b3d6444c25977, type: 3}
   - {fileID: 3026940675598252949, guid: 7f3a08013a28249b695380ba98c84b64, type: 3}
-  maxSuccessive: 5
+  maxSuccessive: 4
+  probabilityOfSpawning: 0.85

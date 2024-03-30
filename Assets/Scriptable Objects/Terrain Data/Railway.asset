@@ -15,4 +15,5 @@ MonoBehaviour:
   PossibleTerrain:
   - {fileID: 5819908639339404136, guid: 348e5fb7a1afe4d2e83bd9c094471ca6, type: 3}
   - {fileID: 5819908639339404136, guid: 10b6ddd932e9c4a9a8ae8da24435f38a, type: 3}
-  maxSuccessive: 4
+  maxSuccessive: 3
+  probabilityOfSpawning: 0.1
