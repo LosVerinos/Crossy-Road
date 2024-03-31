@@ -87,6 +87,7 @@ public class VehicleSpawn : MonoBehaviour
         }
         if (selectedVehicle.name.StartsWith("Hummer")){
             speed = 3f;
+            maxSeparationTime *= 1.5f;
         }
     }
 

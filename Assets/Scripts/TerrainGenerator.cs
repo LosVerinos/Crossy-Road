@@ -39,11 +39,21 @@ public class TerrainGenerator : MonoBehaviour
         if(currentPosition.x - playerPos.x < minDistanceFromPlayer || isStart)
         {
             int wichTerrain;
+            int successive;
             int lastOne = -1;
             do{
                 wichTerrain = Random.Range(0, terrainData.Count);
             }while(terrainData[wichTerrain].probabilityOfSpawning < Random.Range(0,1));
-            int successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
+
+            if(terrainData[wichTerrain].name.StartsWith("Rail")){
+                do{
+                    successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
+                }while(1/(2*successive) < Random.Range(0,1));
+            }
+            else{
+                successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
+            }
+
             for (int i=0; i< successive; i++)
             {
                 int whichOne;
