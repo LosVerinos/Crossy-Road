@@ -13,8 +13,11 @@ public class Options : MonoBehaviour
     public Slider sld;
     public Text txtVolume;
 
-    private void Start() => SliderChange();
-
+    private void Start()
+    {
+        InitializeResolutionsDropdown();
+        SliderChange();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -26,20 +29,38 @@ public class Options : MonoBehaviour
 
     public void SetResolution()
     {
-        switch (DResolution.value)
-        {
-            case 0:
-                Screen.SetResolution(640, 360, true);
-                break;
-            case 1:
-                Screen.SetResolution(1920, 1080, true);
-                break;
-        }
+        Resolution selectedResolution = Screen.resolutions[DResolution.value];
+        Screen.SetResolution(selectedResolution.width, selectedResolution.height, true);
     }
 
     public void SliderChange()
     {
         audioSrc.volume = sld.value;
         txtVolume.text = "Volume : " + (sld.value * 100).ToString("00") + "%";
+    }
+
+    private void InitializeResolutionsDropdown()
+    {
+        
+        DResolution.ClearOptions();
+
+        List<string> resolutionOptions = new List<string>();
+
+        foreach (Resolution resolution in Screen.resolutions)
+        {
+            string resolutionString = $"{resolution.width} x {resolution.height}";
+            if (!resolutionOptions.Contains(resolutionString))
+            {
+                resolutionOptions.Add(resolutionString);
+            }
+        }
+
+        DResolution.AddOptions(resolutionOptions);
+
+        Resolution currentResolution = Screen.currentResolution;
+        string currentResolutionString = $"{currentResolution.width} x {currentResolution.height}";
+        DResolution.value = resolutionOptions.IndexOf(currentResolutionString);
+
+        DResolution.RefreshShownValue();
     }
 }
