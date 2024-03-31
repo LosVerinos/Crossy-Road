@@ -9,6 +9,12 @@ public class Options : MonoBehaviour
     public Dropdown DResolution;
     bool visible = false;
 
+    public AudioSource audioSrc;
+    public Slider sld;
+    public Text txtVolume;
+
+    private void Start() => SliderChange();
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -29,5 +35,11 @@ public class Options : MonoBehaviour
                 Screen.SetResolution(1920, 1080, true);
                 break;
         }
+    }
+
+    public void SliderChange()
+    {
+        audioSrc.volume = sld.value;
+        txtVolume.text = "Volume : " + (sld.value * 100).ToString("00") + "%";
     }
 }
