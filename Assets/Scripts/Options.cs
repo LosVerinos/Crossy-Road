@@ -39,6 +39,11 @@ public class Options : MonoBehaviour
         txtVolume.text = "Volume : " + (sld.value * 100).ToString("00") + "%";
     }
 
+    public void QuiteGame()
+    {
+        Application.Quit();
+    }
+
     private void InitializeResolutionsDropdown()
     {
         
