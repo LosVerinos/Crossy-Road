@@ -22,8 +22,9 @@ public class VehicleSpawn : MonoBehaviour
         // Choix aléatoire d'un véhicule dans la liste
         int randomIndex = Random.Range(0, vehicles.Count);
         GameObject selectedVehicle = vehicles[randomIndex];
-        MakePatern();
         SelectSpeed(selectedVehicle);
+        MakePatern();
+        
         StartCoroutine(SpawnVehicle(selectedVehicle));
     }
 
@@ -73,21 +74,21 @@ public class VehicleSpawn : MonoBehaviour
 
     private void SelectSpeed(GameObject selectedVehicle){
         if (selectedVehicle.name.StartsWith("Cabriolet")){
-            speed = 3.5f;  
+            speed = Random.Range(2f,3.5f);  
         }
         
         if (selectedVehicle.name.StartsWith("F40")){
-            speed = 7f;
+            speed = Random.Range(5f,7f);
         }
         if (selectedVehicle.name.StartsWith("RS6")){
-            speed = 4f;
+            speed = Random.Range(2.5f,4f);
         }
         if (selectedVehicle.name.StartsWith("Truck")){
-            speed = 2f;
+            speed = Random.Range(1.5f,2f);
+            maxSeparationTime *= 1.5f;
         }
         if (selectedVehicle.name.StartsWith("Hummer")){
-            speed = 3f;
-            maxSeparationTime *= 1.5f;
+            speed = Random.Range(2f,3f);
         }
     }
 
