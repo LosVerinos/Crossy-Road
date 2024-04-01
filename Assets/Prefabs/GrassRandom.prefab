@@ -123,6 +123,7 @@ MonoBehaviour:
   - {fileID: 5918782133070423383, guid: b5374f9cd02634ae98b34069360f6cc5, type: 3}
   - {fileID: 5918782133070423383, guid: 160e5706f19924cddaaffdaaf231bae4, type: 3}
   - {fileID: 5918782133070423383, guid: 1c0e620153394411085b1eff809c9340, type: 3}
+  - {fileID: 5918782133070423383, guid: d9970556eb4fb4770b4c46489efb18fb, type: 3}
   numberMax: 5
   spawnPos: {fileID: 4049492038463167664}
   obstacleLayer:
