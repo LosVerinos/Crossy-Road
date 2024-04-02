@@ -86,6 +86,7 @@ public class VehicleSpawn : MonoBehaviour
         if (selectedVehicle.name.StartsWith("Truck")){
             speed = Random.Range(1.5f,2f);
             maxSeparationTime *= 1.5f;
+            minSeparationTime += 1.0f;
         }
         if (selectedVehicle.name.StartsWith("Hummer")){
             speed = Random.Range(2f,3f);
