@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 2129143252804892363}
   - component: {fileID: -8546932219228911463}
   m_Layer: 0
-  m_Name: Water 2
+  m_Name: Lilipads
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

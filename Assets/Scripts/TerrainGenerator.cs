@@ -51,9 +51,21 @@ public class TerrainGenerator : MonoBehaviour
             for (int i=0; i< successive; i++)
             {
                 int whichOne;
-                do{
+                if(terrainData[wichTerrain].name.StartsWith("Water")){
+                    int wasLilipadsTwoRowsAgo=2;
+                    do{
+                        whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
+                        if(terrainData[wichTerrain].PossibleTerrain[whichOne].name.StartsWith("Lilipads")){
+                            wasLilipadsTwoRowsAgo = 0;
+                        }
+                        else{
+                            wasLilipadsTwoRowsAgo++;
+                        }
+                    }while(whichOne == lastOne && ((terrainData[wichTerrain].PossibleTerrain[whichOne].name.StartsWith("Lilipads")) && wasLilipadsTwoRowsAgo < 2));
+                }
+                else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
-                }while(terrainData[wichTerrain].name.StartsWith("Water") && whichOne == lastOne);
+                }
                 lastOne = whichOne;
                 GameObject newTerrain = Instantiate(terrainData[wichTerrain].PossibleTerrain[whichOne], currentPosition, Quaternion.identity, terrainHolder); ;
                 _currentTerrains.Add(newTerrain);
