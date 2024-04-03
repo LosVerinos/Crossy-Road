@@ -9,6 +9,8 @@ public class Options : MonoBehaviour
     public Dropdown DResolution;
     bool visible = false;
 
+    public GameObject PausePanel;
+
     public AudioSource audioSrc;
     public Slider sld;
     public Text txtVolume;
@@ -24,8 +26,23 @@ public class Options : MonoBehaviour
         {
             visible = !visible;
             Panel.SetActive(visible);
+            
         }
     }
+
+    public void pause_onClick()
+    {
+        Panel.SetActive(false);
+        PausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void DePause_onClick()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
 
     public void SetResolution()
     {
