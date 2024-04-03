@@ -7,9 +7,11 @@ public class Option_startMenu : MonoBehaviour
     public GameObject Panel;
     public GameObject StartMenu;
 
+
     public void OnClick()
     {
         StartMenu.SetActive(false);
         Panel.SetActive(true);
+
     }
 }
