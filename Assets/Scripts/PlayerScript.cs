@@ -19,26 +19,6 @@ public class PlayerScript : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
     
-    private bool IsMovingForward()
-    {
-        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-    }
-    
-    private bool IsMovingBackward()
-    {
-        return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
-    }
-    
-    private bool IsMovingLeft()
-    {
-        return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
-    }
-    
-    private bool IsMovingRight()
-    {
-        return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-    }
-    
 
     // Update is called once per frame
     void Update()
