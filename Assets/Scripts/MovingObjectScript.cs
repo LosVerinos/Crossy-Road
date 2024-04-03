@@ -20,6 +20,9 @@ public class MovingObjectScript : MonoBehaviour
         if((transform.position.z * direction >= 45f) || terrainGenerator.lastTerrainX >= transform.position.x){
             Destroy(gameObject);
         }
+        if(islog && transform.position.z * direction >= 50f-10f*3f){
+            SetSpeed(10f);
+        }
     }
 
     public void SetSpeed(float newSpeed)
