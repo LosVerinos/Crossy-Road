@@ -12,6 +12,7 @@ public class PlayerScript : MonoBehaviour
     private bool _isHopping;
     private int _score = 0;
     private int _scoreBuffer = 0;
+    private byte _backwardsCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,8 @@ public class PlayerScript : MonoBehaviour
                 _score++;
                 _scoreBuffer = 0;
             }
+
+            _backwardsCount = 0;
         }
         if (Input.GetKeyDown(KeyCode.S) && !_isHopping)
         {
@@ -47,6 +50,7 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
+            _backwardsCount++;
         }
         if (Input.GetKeyDown(KeyCode.A) && !_isHopping)
         {
@@ -57,6 +61,11 @@ public class PlayerScript : MonoBehaviour
             MovePlayer(new Vector3(0,0,-1));
         }
         scoreText.text = "Score: " + _score;
+        if (_backwardsCount >= 3)
+        {
+            Destroy(this.gameObject);
+            //TODO: display the game ended message @Reaub1
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
