@@ -13,7 +13,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Update()
     {
-        if(terrainGenerator.lastTerrainX >= transform.position.x){
+        if(terrainGenerator.lastTerrainX > 5 && terrainGenerator.lastTerrainX >= transform.position.x){
             Destroy(gameObject);
         }
     }
