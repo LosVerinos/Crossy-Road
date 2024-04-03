@@ -164,10 +164,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logs:
-  - {fileID: 8472774225754479296, guid: d629e4fad697a4d7db7945665b03919a, type: 3}
-  - {fileID: 5396783368624938138, guid: ee4a2a756bd5642678323d270e4cfae9, type: 3}
-  - {fileID: 8389854134293174751, guid: f98b198413c234c769de6c100d3d2c4e, type: 3}
+  - {fileID: 3946819617760003095, guid: 748b4d033d5f643c89bb1a46b78dec8f, type: 3}
+  - {fileID: 3305718274531061757, guid: a6765cdfd9cad490fa180be96514dd9a, type: 3}
+  - {fileID: 9119807306214891880, guid: 994e2914a0d5244919c2bb2f305cb062, type: 3}
   SpawnPos: {fileID: 139909793620997579}
   minSeparationTime: 0.25
-  maxSeparationTime: 3
+  maxSeparationTime: 2
   direction: 1

@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingObjectScript : MonoBehaviour
 {
-
+    [SerializeField] private Transform lenghtStart;
+    [SerializeField] private Transform lenghtEnd;
     private float speed;
     public bool islog;
+    [DoNotSerialize] public float logLenght;
     private float direction;
     private TerrainGenerator terrainGenerator;
 
     void Start(){
         terrainGenerator = FindObjectOfType<TerrainGenerator>();
+        logLenght = lenghtEnd.position.z - lenghtStart.position.z;
     }
 
     void Update()
