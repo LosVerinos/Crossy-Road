@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -86,10 +87,12 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer(Vector3 diff)
     {
-        _animator.SetTrigger(Hop);
+        // transform.position = transform.position + diff;
         _isHopping = true;
-        transform.position = transform.position + diff;
-        TerrainGenerator.SpawnTerrain(false, transform.position);
+        _animator.SetTrigger(Hop);
+        var position = transform.position;
+        transform.position = Vector3.Lerp(transform.position, transform.position + diff, 1f);
+        TerrainGenerator.SpawnTerrain(false, position);
     }
 
     public void HopAnimationEnd()
