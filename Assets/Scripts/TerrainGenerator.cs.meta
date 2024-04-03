@@ -3,7 +3,10 @@ guid: 3fb1998fc2f151e44ac86cbd0c79c048
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - terrainHolder: {instanceID: 0}
+  - initialTerrain: {instanceID: 0}
+  - startTerrain: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

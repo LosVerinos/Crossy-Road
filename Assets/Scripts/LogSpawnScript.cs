@@ -12,17 +12,18 @@ public class LogSpawnScript : MonoBehaviour
     [SerializeField] private float maxSeparationTime;
     [SerializeField] private float direction;
     private float speed;
-    private int randomIndex;
-    GameObject selectedLog;
+    private float logLenght;
     private float maxLogLenght = 3.64f;
     private void Start()
     {
-        // Choix aléatoire d'un véhicule dans la liste
         speed = Random.Range(0.5f, 3f);
-        
         FirstLogs();
         StartCoroutine(SpawnLog());
-        
+
+    }
+
+    private void Update(){
+        minSeparationTime = (0.5f + logLenght)/speed;
     }
 
     private IEnumerator SpawnLog()
@@ -37,6 +38,7 @@ public class LogSpawnScript : MonoBehaviour
         
             GameObject newLog = Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
             MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
+            logLenght = log.logLenght;
             if (direction < 0)
             {
                 newLog.transform.Rotate(new Vector3(0,180,0));
