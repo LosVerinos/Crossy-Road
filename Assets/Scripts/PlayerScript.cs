@@ -99,18 +99,15 @@ public class PlayerScript : MonoBehaviour
     {
         Vector3 newPosition = transform.position + diff;
 
-        // Vérifie s'il y a une collision avec un obstacle à la nouvelle position
         Collider[] colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
         foreach (var collider in colliders)
         {
             if (collider.CompareTag("Obstacle"))
             {
-                // Empêche le joueur de se déplacer vers une case occupée
                 return;
             }
         }
-
-        // Si aucune collision avec un obstacle n'est détectée, déplace le joueur
+        
         _animator.SetTrigger(Hop);
         _isHopping = true;
         transform.position = newPosition;
