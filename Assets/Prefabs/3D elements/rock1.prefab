@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8623630542331716501}
   m_Layer: 0
   m_Name: rock1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5918782133070423383}
-  m_Material: {fileID: 13400000, guid: e261cc75dcf5b4a51941c4026fc64a42, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -49,12 +49,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 1
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1.1703761, z: 1.18834}
-  m_Center: {x: 0, y: 0.04518792, z: -0.09417015}
+  m_Size: {x: 1, y: 3.26, z: 1}
+  m_Center: {x: 0, y: 1.32, z: 0}
 --- !u!114 &-8623630542331716501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,39 +138,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 97a1be8eff7284553ad6b5682e0aab8f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2148185068778003194}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97a1be8eff7284553ad6b5682e0aab8f, type: 3}
 --- !u!4 &3684985056564408259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 97a1be8eff7284553ad6b5682e0aab8f, type: 3}
   m_PrefabInstance: {fileID: 3794576392794507304}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &4064607300765398393 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 97a1be8eff7284553ad6b5682e0aab8f, type: 3}
-  m_PrefabInstance: {fileID: 3794576392794507304}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &2148185068778003194
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4064607300765398393}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 3.26, z: 1}
-  m_Center: {x: 0, y: 1.32, z: 0}
