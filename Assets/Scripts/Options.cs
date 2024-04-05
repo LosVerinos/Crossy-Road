@@ -11,6 +11,9 @@ public class Options : MonoBehaviour
 
     public GameObject PausePanel;
 
+    public GameObject OptionPanel;
+    public GameObject StartPanel;
+
     public AudioSource audioSrc;
     public Slider sld;
     public Text txtVolume;
@@ -84,5 +87,11 @@ public class Options : MonoBehaviour
         DResolution.value = resolutionOptions.IndexOf(currentResolutionString);
 
         DResolution.RefreshShownValue();
+    }
+
+    public void ShowMenu()
+    {
+        StartPanel.SetActive(false);
+        OptionPanel.SetActive(true);
     }
 }
