@@ -97,9 +97,20 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer(Vector3 diff)
     {
+        Vector3 newPosition = transform.position + diff;
+
+        Collider[] colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
+        foreach (var collider in colliders)
+        {
+            if (collider.CompareTag("Obstacle"))
+            {
+                return;
+            }
+        }
+        
         _animator.SetTrigger(Hop);
         _isHopping = true;
-        transform.position = transform.position + diff;
+        transform.position = newPosition;
         TerrainGenerator.SpawnTerrain(false, transform.position);
     }
 
