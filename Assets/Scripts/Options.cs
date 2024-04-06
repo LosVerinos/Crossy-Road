@@ -5,6 +5,20 @@ using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
+
+    //working on the new things here
+    public GameObject startMenuPanel;
+    public GameObject shopPanel;
+    public GameObject runPanel;
+    public GameObject identityPanel;
+    public GameObject pausePanel;
+    public GameObject failPanel;
+    public GameObject leaderBoardPanel;
+    public GameObject paramPanel;
+
+
+
+
     public GameObject Panel;
     public Dropdown DResolution;
     bool visible = false;
