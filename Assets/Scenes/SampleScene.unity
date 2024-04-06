@@ -165,7 +165,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.3376, y: -1503.4}
+  m_AnchoredPosition: {x: 539, y: -1502.1}
   m_SizeDelta: {x: 262.1404, y: 137.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &11726663
@@ -212,9 +212,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11726666}
-        m_TargetAssemblyTypeName: ButtonShop_StartMenu, Assembly-CSharp
-        m_MethodName: onClick
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: ShopButton_click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -433,7 +433,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 58872285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: LeftButton_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &58872285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2920,7 +2932,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 672856257}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: UpperButton_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &672856257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6662,8 +6686,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -537.59, y: -1502.0355}
-  m_SizeDelta: {x: 262.31, y: 137.2445}
+  m_AnchoredPosition: {x: 18.4558, y: -1503.2186}
+  m_SizeDelta: {x: 261.4914, y: 136.4259}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1610258696
 MonoBehaviour:
@@ -6723,9 +6747,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1610258696}
-        m_TargetAssemblyTypeName: ButtonShop_StartMenu, Assembly-CSharp
-        m_MethodName: onClick
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: IdentityButton_click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6934,7 +6958,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1685611249}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: RightButton_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1685611249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7238,7 +7274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 523.2463, y: -1502.4337}
+  m_AnchoredPosition: {x: -520.36, y: -1502.3}
   m_SizeDelta: {x: 280.3011, y: 137.1062}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732335416

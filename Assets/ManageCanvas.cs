@@ -87,10 +87,43 @@ public class ManageCanvas : MonoBehaviour
         paramPanel.SetActive(true);
     }
 
+    public void PauseButton_click()
+    {
+        pausePanel.SetActive(true);
+    }
+
+    public void RightButton_click()
+    {
+        leaderBoardPanel.SetActive(false);
+
+        startMenuPanel.SetActive(true);
+        coinsPanel.SetActive(true);
+        scorePanel.SetActive(true);
+    }
+
+    public void UpperButton_click()
+    {
+        identityPanel.SetActive(false);
+
+        startMenuPanel.SetActive(true);
+        coinsPanel.SetActive(true);
+        scorePanel.SetActive(true);
+    }
+
+    public void LeftButton_click()
+    {
+        shopPanel.SetActive(false);
+
+        scorePanel.SetActive(true);
+        startMenuPanel.SetActive(true);
+    }
+
 
 
     public void QuiteGame()
     {
         Application.Quit();
     }
+
+
 }
