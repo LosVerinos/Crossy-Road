@@ -8,7 +8,6 @@ public class ManageCanvas : MonoBehaviour
     //working on the new things here
     public GameObject startMenuPanel;
     public GameObject shopPanel;
-    public GameObject runPanel;
     public GameObject identityPanel;
     public GameObject pausePanel;
     public GameObject pauseButtonPanel;
