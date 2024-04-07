@@ -962,7 +962,7 @@ RectTransform:
   m_Father: {fileID: 600112848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1291,7 +1291,7 @@ GameObject:
   - component: {fileID: 292938069}
   - component: {fileID: 292938068}
   m_Layer: 5
-  m_Name: Identity
+  m_Name: Identity_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1374,7 +1374,7 @@ GameObject:
   - component: {fileID: 382703567}
   - component: {fileID: 382703566}
   m_Layer: 5
-  m_Name: Shop
+  m_Name: Shop_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1685,7 +1685,7 @@ GameObject:
   - component: {fileID: 444943303}
   - component: {fileID: 444943302}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Score_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1961,7 +1961,7 @@ GameObject:
   - component: {fileID: 474104838}
   - component: {fileID: 474104837}
   m_Layer: 5
-  m_Name: Classement
+  m_Name: Leaderboard_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2643,12 +2643,12 @@ GameObject:
   - component: {fileID: 584060408}
   - component: {fileID: 584060410}
   m_Layer: 5
-  m_Name: StartMenu
+  m_Name: Start_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &584060407
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2734,6 +2734,8 @@ MonoBehaviour:
   paramButtonPanel: {fileID: 0}
   coinsPanel: {fileID: 0}
   scorePanel: {fileID: 0}
+  slideSpeed: 1
+  targetYPosition: 100
 --- !u!1 &600112847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3513,7 +3515,7 @@ GameObject:
   - component: {fileID: 739140468}
   - component: {fileID: 739140467}
   m_Layer: 5
-  m_Name: Param Button
+  m_Name: ParamButton_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4180,6 +4182,8 @@ MonoBehaviour:
   paramButtonPanel: {fileID: 739140465}
   coinsPanel: {fileID: 1772956487}
   scorePanel: {fileID: 444943300}
+  slideSpeed: 3000
+  targetYPosition: -1800
 --- !u!1 &863161466
 GameObject:
   m_ObjectHideFlags: 0
@@ -5444,7 +5448,7 @@ GameObject:
   - component: {fileID: 1129659501}
   - component: {fileID: 1129659500}
   m_Layer: 5
-  m_Name: Pause Button
+  m_Name: PauseButton_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7565,8 +7569,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1198821262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8141,7 +8145,7 @@ GameObject:
   - component: {fileID: 1772956489}
   - component: {fileID: 1782088814}
   m_Layer: 5
-  m_Name: Coins
+  m_Name: Coins_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8753,7 +8757,7 @@ GameObject:
   - component: {fileID: 1878745379}
   - component: {fileID: 1878745378}
   m_Layer: 5
-  m_Name: Pause Menu
+  m_Name: PauseMenu_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9370,7 +9374,7 @@ GameObject:
   - component: {fileID: 1978204217}
   - component: {fileID: 1978204216}
   m_Layer: 5
-  m_Name: FailPanel
+  m_Name: Fail_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9644,12 +9648,12 @@ GameObject:
   - component: {fileID: 2035222911}
   - component: {fileID: 2035222914}
   m_Layer: 5
-  m_Name: OptionsPanel
+  m_Name: Options_Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2035222911
 MonoBehaviour:
   m_ObjectHideFlags: 0

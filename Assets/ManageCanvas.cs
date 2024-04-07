@@ -18,11 +18,44 @@ public class ManageCanvas : MonoBehaviour
     public GameObject coinsPanel;
     public GameObject scorePanel;
 
+    public float slideSpeed = 300.0f;
+    public float targetYPosition = 2556.0f;
+
+    private RectTransform panelRectTransform;
+    private bool isSliding = false;
+
+
+
 
     public void Start()
     {
         Debug.Log("scrip started well");
+        
     }
+
+    public void Update()
+    {
+        if (isSliding)
+        {
+            panelRectTransform = identityPanel.GetComponent<RectTransform>();
+            //identityPanel.SetActive(false);
+            
+            // Calculer la nouvelle position Y du panneau en fonction de la vitesse de glissement
+            float newYPosition = Mathf.MoveTowards(panelRectTransform.anchoredPosition.y, targetYPosition, slideSpeed * Time.deltaTime);
+
+            // Définir la nouvelle position du panneau
+            panelRectTransform.anchoredPosition = new Vector2(panelRectTransform.anchoredPosition.x, newYPosition);
+
+            // Vérifier si le panneau a atteint la position cible
+            if (Mathf.Approximately(newYPosition, targetYPosition))
+            {
+                // Arrêter le glissement
+                isSliding = false;
+            }
+            
+        }
+    }
+
 
     public void pause_onClick()
     {
@@ -102,7 +135,8 @@ public class ManageCanvas : MonoBehaviour
 
     public void UpperButton_click()
     {
-        identityPanel.SetActive(false);
+        //identityPanel.SetActive(false);
+        isSliding = true;
 
         startMenuPanel.SetActive(true);
         coinsPanel.SetActive(true);
