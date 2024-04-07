@@ -65,7 +65,9 @@ public class Options : MonoBehaviour
     public void SetResolution()
     {
         Resolution selectedResolution = Screen.resolutions[DResolution.value];
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, true);
+        float targetAspectRatio = 16f / 9f;
+        int targetWidth = Mathf.RoundToInt(selectedResolution.height * targetAspectRatio);
+        Screen.SetResolution(targetWidth, selectedResolution.height, true);
     }
 
     public void SliderChange()

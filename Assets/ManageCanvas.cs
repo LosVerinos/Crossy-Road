@@ -117,6 +117,17 @@ public class ManageCanvas : MonoBehaviour
         startMenuPanel.SetActive(true);
     }
 
+    public void MenuFromParamButton_click()
+    {
+        paramPanel.SetActive(false);
+
+        startMenuPanel.SetActive(true);
+        coinsPanel.SetActive(true);
+        paramButtonPanel.SetActive(true);
+
+
+    }
+
  
 
 

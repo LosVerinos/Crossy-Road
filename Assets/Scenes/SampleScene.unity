@@ -962,7 +962,7 @@ RectTransform:
   m_Father: {fileID: 600112848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2579,8 +2579,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+      - m_Target: {fileID: 2035222914}
+        m_TargetAssemblyTypeName: OptionsManager, Assembly-CSharp
         m_MethodName: SetResolution
         m_Mode: 1
         m_Arguments:
@@ -3810,8 +3810,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+      - m_Target: {fileID: 2035222914}
+        m_TargetAssemblyTypeName: OptionsManager, Assembly-CSharp
         m_MethodName: SliderChange
         m_Mode: 1
         m_Arguments:
@@ -4831,8 +4831,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
         m_MethodName: QuiteGame
         m_Mode: 1
         m_Arguments:
@@ -5844,7 +5844,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1220220799}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: MenuFromParamButton_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1220220799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7553,8 +7565,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1198821262}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9637,7 +9649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2035222911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9714,10 +9726,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee6f09a543bbc4873a88cfd0e46f0c44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DResolution: {fileID: 0}
-  audioSrc: {fileID: 0}
-  sld: {fileID: 0}
-  txtVolume: {fileID: 0}
+  DResolution: {fileID: 582601908}
+  audioSrc: {fileID: 536203980}
+  sld: {fileID: 775853125}
+  txtVolume: {fileID: 1370731743}
 --- !u!1 &2037247231
 GameObject:
   m_ObjectHideFlags: 0
