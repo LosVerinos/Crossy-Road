@@ -1,27 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManageCanvas : MonoBehaviour
 {
-    //working on the new things here
-    public GameObject startMenuPanel;
-    public GameObject shopPanel;
-    public GameObject identityPanel;
+
     public GameObject pausePanel;
     public GameObject pauseButtonPanel;
-    public GameObject failPanel;
-    public GameObject leaderBoardPanel;
-    public GameObject paramPanel;
-    public GameObject paramButtonPanel;
     public GameObject coinsPanel;
     public GameObject scorePanel;
+
+    private Animator Animator;
+    public string animatonName = "Fail";
 
 
     public void Start()
     {
         Debug.Log("scrip started well");
+        Animator = GetComponent<Animator>();
         
     }
 
@@ -55,6 +53,18 @@ public class ManageCanvas : MonoBehaviour
     public void QuiteGame()
     {
         Application.Quit();
+    }
+
+    public void restart()
+    {
+        Time.timeScale = 1;
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+    public void throwFail()
+    {
+        Animator.Play(animatonName);
     }
 
 

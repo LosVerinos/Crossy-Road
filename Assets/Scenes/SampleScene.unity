@@ -140,7 +140,6 @@ GameObject:
   - component: {fileID: 11726665}
   - component: {fileID: 11726664}
   - component: {fileID: 11726663}
-  - component: {fileID: 11726666}
   m_Layer: 5
   m_Name: ShopButton
   m_TagString: Untagged
@@ -262,20 +261,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11726661}
   m_CullTransparentMesh: 1
---- !u!114 &11726666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11726661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e02f8972c644e66b937c0dea9f977d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 382703564}
-  StartMenu: {fileID: 584060406}
 --- !u!1 &45350947
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,8 +785,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
         m_MethodName: DePause_onClick
         m_Mode: 1
         m_Arguments:
@@ -2894,18 +2879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39818fd905cf14691b3ffaa074a123bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMenuPanel: {fileID: 0}
-  shopPanel: {fileID: 0}
-  identityPanel: {fileID: 0}
   pausePanel: {fileID: 0}
   pauseButtonPanel: {fileID: 0}
-  failPanel: {fileID: 0}
-  leaderBoardPanel: {fileID: 0}
-  paramPanel: {fileID: 0}
-  paramButtonPanel: {fileID: 0}
   coinsPanel: {fileID: 0}
   scorePanel: {fileID: 0}
-  animator: {fileID: 0}
+  animatonName: Fail
 --- !u!1 &600112847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3650,7 +3628,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -323.77, y: 909.22}
+  m_AnchoredPosition: {x: -301, y: 779}
   m_SizeDelta: {x: -670.8288, y: -1618.3358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739140467
@@ -4081,7 +4059,6 @@ GameObject:
   - component: {fileID: 840886184}
   - component: {fileID: 840886183}
   - component: {fileID: 840886182}
-  - component: {fileID: 840886186}
   - component: {fileID: 840886187}
   - component: {fileID: 840886188}
   m_Layer: 5
@@ -4184,19 +4161,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &840886186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840886180}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fff6ab82819241168d85eb80c1c1cd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 382703564}
 --- !u!114 &840886187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4209,18 +4173,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39818fd905cf14691b3ffaa074a123bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startMenuPanel: {fileID: 584060406}
-  shopPanel: {fileID: 382703564}
-  identityPanel: {fileID: 0}
   pausePanel: {fileID: 1878745376}
   pauseButtonPanel: {fileID: 1129659498}
-  failPanel: {fileID: 1978204214}
-  leaderBoardPanel: {fileID: 474104835}
-  paramPanel: {fileID: 2035222910}
-  paramButtonPanel: {fileID: 739140465}
   coinsPanel: {fileID: 1772956487}
   scorePanel: {fileID: 444943300}
-  animator: {fileID: 0}
+  animatonName: Fail
 --- !u!95 &840886188
 Animator:
   serializedVersion: 5
@@ -5322,9 +5279,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
-        m_MethodName: DePause_onClick
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: restart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5576,8 +5533,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
         m_MethodName: pause_onClick
         m_Mode: 1
         m_Arguments:
@@ -7330,7 +7287,6 @@ GameObject:
   - component: {fileID: 1610258699}
   - component: {fileID: 1610258698}
   - component: {fileID: 1610258697}
-  - component: {fileID: 1610258696}
   m_Layer: 5
   m_Name: IdentityButton
   m_TagString: Untagged
@@ -7358,20 +7314,6 @@ RectTransform:
   m_AnchoredPosition: {x: 18.4558, y: -1503.2186}
   m_SizeDelta: {x: 261.4914, y: 136.4259}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1610258696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610258694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72e02f8972c644e66b937c0dea9f977d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 382703564}
-  StartMenu: {fileID: 584060406}
 --- !u!114 &1610258697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8666,7 +8608,6 @@ GameObject:
   - component: {fileID: 1860503755}
   - component: {fileID: 1860503758}
   - component: {fileID: 1860503757}
-  - component: {fileID: 1860503759}
   - component: {fileID: 1860503760}
   m_Layer: 5
   m_Name: StartButton
@@ -8733,24 +8674,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860503754}
   m_CullTransparentMesh: 1
---- !u!114 &1860503759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1860503754}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7ef945d384d84857939ae00d2c6affd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 584060406}
-  Panel2: {fileID: 1406743198}
-  Panel3: {fileID: 1772956487}
-  Panel4: {fileID: 739140465}
-  score: {fileID: 444943300}
-  buttonPause: {fileID: 1129659498}
 --- !u!114 &1860503760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9539,7 +9462,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.049804688, y: -3468.8}
+  m_AnchoredPosition: {x: 0.05029297, y: -3468.8}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978204216
