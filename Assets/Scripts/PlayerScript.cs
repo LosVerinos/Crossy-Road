@@ -44,7 +44,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && !_isHopping)
+        if (Input.GetKeyDown(KeyCode.W) && !_isHopping && GlobalVariables.run)
         {
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
@@ -59,7 +59,7 @@ public class PlayerScript : MonoBehaviour
                 _scoreBuffer = 0;
             }
         }
-        if (Input.GetKeyDown(KeyCode.S) && !_isHopping)
+        if (Input.GetKeyDown(KeyCode.S) && !_isHopping && GlobalVariables.run)
         {
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
@@ -69,11 +69,11 @@ public class PlayerScript : MonoBehaviour
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
         }
-        if (Input.GetKeyDown(KeyCode.A) && !_isHopping)
+        if (Input.GetKeyDown(KeyCode.A) && !_isHopping && GlobalVariables.run)
         {
             MovePlayer(new Vector3(0,0,1));
         }
-        if (Input.GetKeyDown(KeyCode.D) && !_isHopping)
+        if (Input.GetKeyDown(KeyCode.D) && !_isHopping && GlobalVariables.run)
         {
             MovePlayer(new Vector3(0,0,-1));
         }
