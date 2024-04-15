@@ -55,7 +55,10 @@ public class ManageCanvas : MonoBehaviour
     public void restart()
     {
         Time.timeScale = 1;
+        GlobalVariables.isPlayerKilled = false;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
+
+        
     }
 }
