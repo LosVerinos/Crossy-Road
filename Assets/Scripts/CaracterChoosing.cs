@@ -7,11 +7,12 @@ public class CaracterChoosing : MonoBehaviour
 
     [SerializeField] private List<SkinData> skinData = new();
     [SerializeField] private Transform parentTransform;
+    GameObject player;
     // Start is called before the first frame update
     void Start()
     {
         int whichSkin = Random.Range(0, skinData.Count);
-        GameObject player = Instantiate(skinData[whichSkin].Model, parentTransform);
+        player = Instantiate(skinData[whichSkin].Model, parentTransform);
         Debug.Log(skinData[whichSkin].Model.name);
     }
 

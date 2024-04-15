@@ -12,11 +12,16 @@ public class PlayerScript : MonoBehaviour
     private bool _isHopping;
     private int _score = 0;
     private int _scoreBuffer = 0;
+    [SerializeField] private List<SkinData> skinData = new();
+    [SerializeField] private Transform parentTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        _animator = GetComponent<Animator>();
+        int whichSkin = Random.Range(0, skinData.Count);
+        GameObject player = Instantiate(skinData[0].Model, parentTransform);
+        Debug.Log(skinData[0].Model.name);
+        _animator = player.GetComponent<Animator>();
     }
     
     private bool IsMovingForward()
