@@ -7,6 +7,7 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
     [SerializeField] private Text scoreText;
+    [SerializeField] private ScoreScript ScoreScript;
     private Animator _animator;
     private readonly static int Hop = Animator.StringToHash("hop");
     private bool _isHopping;
@@ -22,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     public void KillPlayer()
     {
         // actions
-        
+        ScoreScript.Instance.WriteScore("Player");
         Destroy(this);
     }
     
@@ -61,7 +62,7 @@ public class PlayerScript : MonoBehaviour
             _scoreBuffer++;
             if (_scoreBuffer > 0)
             {
-                _score++;
+                ScoreScript.Instance.UpdateScore();
                 _scoreBuffer = 0;
             }
         }
@@ -83,7 +84,7 @@ public class PlayerScript : MonoBehaviour
         {
             MovePlayer(new Vector3(0,0,-1));
         }
-        scoreText.text = "Score: " + _score;
+        scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -9,7 +9,7 @@ public class KillPlayerOnTouch : MonoBehaviour
     {
        if(other.gameObject.CompareTag("Player"))
        {
-           Destroy(other.gameObject);
+           other.gameObject.GetComponent<PlayerScript>().KillPlayer();
            
        }
     }
@@ -18,7 +18,7 @@ public class KillPlayerOnTouch : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<PlayerScript>().KillPlayer();
         }
     }
 }
