@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 5951596026900364641}
   - component: {fileID: 1461828744457277214}
   - component: {fileID: 7770091790964735998}
-  - component: {fileID: 2949736345376652800}
   - component: {fileID: -3130790392244583160}
+  - component: {fileID: 711455238810130024}
   m_Layer: 0
   m_Name: RS6
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,18 +108,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 0.75}
   m_Center: {x: 0, y: 1.39, z: -0.04}
---- !u!114 &2949736345376652800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 275996120478420784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42877ab4f759c748b795243b016fc56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-3130790392244583160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +124,18 @@ MonoBehaviour:
   lenghtEnd: {fileID: 0}
   islog: 0
   logLenght: 0
+--- !u!114 &711455238810130024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275996120478420784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42877ab4f759c748b795243b016fc56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6865622951195143993
 PrefabInstance:
   m_ObjectHideFlags: 0

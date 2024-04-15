@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KillPlayerOnTouch : MonoBehaviour
 {
@@ -9,16 +10,22 @@ public class KillPlayerOnTouch : MonoBehaviour
     {
        if(other.gameObject.CompareTag("Player"))
        {
+
+           GlobalVariables.isPlayerKilled = true;
+
            Destroy(other.gameObject);
-           
-       }
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            GlobalVariables.isPlayerKilled = true;
+
             Destroy(other.gameObject);
+
         }
     }
 }
