@@ -13,16 +13,17 @@ public class PlayerScript : MonoBehaviour
     private int _score = 0;
     private int _scoreBuffer = 0;
     [SerializeField] private List<SkinData> skinData = new();
-    [SerializeField] private Transform parentTransform;
+    [SerializeField] private Transform parentPos;
+    [SerializeField] private Transform parentObject;
 
     // Start is called before the first frame update
     void Start()
     {
         int whichSkin = Random.Range(0, skinData.Count);
-        GameObject player = Instantiate(skinData[0].Model, parentTransform);
+        GameObject player = Instantiate(skinData[0].Model, parentPos);
         Debug.Log(skinData[0].Model.name);
-        _animator = parentTransform.GetComponent<Animator>();
-        Debug.Log(parentTransform.name);
+        _animator = parentObject.GetComponent<Animator>();
+        Debug.Log(parentObject.name);
     }
     
     private bool IsMovingForward()
