@@ -17,31 +17,26 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         _animator = GetComponent<Animator>();
-        Debug.Log("animator loaded");
     }
     
     private bool IsMovingForward()
     {
-        Debug.Log("W");
         return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
         
     }
     
     private bool IsMovingBackward()
     {
-        Debug.Log("S");
         return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
     }
     
     private bool IsMovingLeft()
     {
-        Debug.Log("A");
         return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
     }
     
     private bool IsMovingRight()
     {
-        Debug.Log("D");
         return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
     }
     
@@ -49,10 +44,8 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("waiting for key input");
         if (Input.GetKeyDown(KeyCode.W) && !_isHopping)
         {
-            Debug.Log("W");
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
             {
@@ -68,7 +61,6 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.S) && !_isHopping)
         {
-            Debug.Log("S");
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
             {
@@ -79,16 +71,13 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A) && !_isHopping)
         {
-            Debug.Log("A");
             MovePlayer(new Vector3(0,0,1));
         }
         if (Input.GetKeyDown(KeyCode.D) && !_isHopping)
         {
-            Debug.Log("D");
             MovePlayer(new Vector3(0,0,-1));
         }
         scoreText.text = "Score: " + _score;
-        Debug.Log("Update End");
     }
 
     private void OnCollisionEnter(Collision collision)

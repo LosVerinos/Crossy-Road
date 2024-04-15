@@ -13,22 +13,16 @@ public class ManageCanvas : MonoBehaviour
     public GameObject scorePanel;
     public GameObject failPanel;
 
-
-
-    private Animator Animator;
-    public string animatonName = "Fail";
-
-
-    public void Start()
-    {
-        Debug.Log("scrip started well");
-        Animator = GetComponent<Animator>();
-        
-    }
+    private bool visible = false;
 
     public void Update()
     {
-       
+        if (GlobalVariables.isPlayerKilled && visible == false && failPanel!=null)
+        {
+            Debug.Log("isplayed is currently setted on true");
+            failPanel.SetActive(true);
+            visible = true;
+        }
     }
 
 
@@ -64,11 +58,4 @@ public class ManageCanvas : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
-
-    public void throwFail()
-    {
-        Animator.Play(animatonName);
-    }
-
-
 }

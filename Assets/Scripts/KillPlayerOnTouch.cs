@@ -2,21 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KillPlayerOnTouch : MonoBehaviour
 {
-    public GameObject panel;
-
     private void OnCollisionEnter(Collision other)
     {
        if(other.gameObject.CompareTag("Player"))
        {
 
-            GlobalVariables.isPlayerKilled = true;
+           GlobalVariables.isPlayerKilled = true;
 
            Destroy(other.gameObject);
-
-           Debug.Log("Première fonction");
 
         }
     }
@@ -28,8 +25,6 @@ public class KillPlayerOnTouch : MonoBehaviour
             GlobalVariables.isPlayerKilled = true;
 
             Destroy(other.gameObject);
-
-            Debug.Log("Deuxième fonction");
 
         }
     }
