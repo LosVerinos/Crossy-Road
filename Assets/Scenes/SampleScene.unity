@@ -5909,7 +5909,6 @@ MonoBehaviour:
   scoreText: {fileID: 1952646538}
   skinData:
   - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
-  - {fileID: 11400000, guid: 8d6bc0bf949464090b6db8719fc9ff09, type: 2}
   - {fileID: 11400000, guid: 110371f80f8b94d30a7f086cf4be3fe9, type: 2}
   - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
   parentPos: {fileID: 1621938620}
