@@ -20,8 +20,8 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         int whichSkin = Random.Range(0, skinData.Count);
-        GameObject player = Instantiate(skinData[0].Model, parentPos);
-        Debug.Log(skinData[0].Model.name);
+        GameObject player = Instantiate(skinData[3].Model, parentPos);
+        Debug.Log(skinData[3].Model.name);
         _animator = parentObject.GetComponent<Animator>();
         Debug.Log(parentObject.name);
     }
