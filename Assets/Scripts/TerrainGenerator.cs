@@ -45,9 +45,9 @@ public class TerrainGenerator : MonoBehaviour
                 wichTerrain = Random.Range(0, terrainData.Count);
             }while(terrainData[wichTerrain].probabilityOfSpawning < Random.Range(0f,1.0f));
             
-            Debug.Log(terrainData[wichTerrain].name);
+            //Debug.Log(terrainData[wichTerrain].name);
             successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
-            Debug.Log(successive);
+            //Debug.Log(successive);
             
 
             for (int i=0; i< successive; i++)
@@ -57,7 +57,7 @@ public class TerrainGenerator : MonoBehaviour
                     
                     do{
                         whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
-                        Debug.Log(terrainData[wichTerrain].PossibleTerrain[whichOne].name);
+                        //Debug.Log(terrainData[wichTerrain].PossibleTerrain[whichOne].name);
 
                        
                     }while(whichOne == lastOne || (terrainData[wichTerrain].PossibleTerrain[whichOne].name.StartsWith("Lilipads") && wasLilipadsTwoRowsAgo < 2));
@@ -67,18 +67,18 @@ public class TerrainGenerator : MonoBehaviour
                         else{
                             wasLilipadsTwoRowsAgo++;
                         }
-                    Debug.Log("Lilipad was : " + wasLilipadsTwoRowsAgo);
+                    //Debug.Log("Lilipad was : " + wasLilipadsTwoRowsAgo);
                 }
                 else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
                     wasLilipadsTwoRowsAgo++;
                 }
                 if(lastOne != -1){
-                    Debug.Log("lastOne was : " + lastOne + " " + terrainData[wichTerrain].PossibleTerrain[lastOne].name);
+                    //Debug.Log("lastOne was : " + lastOne + " " + terrainData[wichTerrain].PossibleTerrain[lastOne].name);
                 }
                 lastOne = whichOne;
-                Debug.Log("whichOne is : " + whichOne + " " + terrainData[wichTerrain].PossibleTerrain[whichOne].name);
-                Debug.Log("lastOne is now : " + lastOne);
+                //Debug.Log("whichOne is : " + whichOne + " " + terrainData[wichTerrain].PossibleTerrain[whichOne].name);
+                //Debug.Log("lastOne is now : " + lastOne);
                 GameObject newTerrain = Instantiate(terrainData[wichTerrain].PossibleTerrain[whichOne], currentPosition, Quaternion.identity, terrainHolder); ;
                 _currentTerrains.Add(newTerrain);
                     if (!isStart)
