@@ -21,7 +21,8 @@ public class PlayerScript : MonoBehaviour
         int whichSkin = Random.Range(0, skinData.Count);
         GameObject player = Instantiate(skinData[0].Model, parentTransform);
         Debug.Log(skinData[0].Model.name);
-        _animator = player.GetComponent<Animator>();
+        _animator = parentTransform.GetComponent<Animator>();
+        Debug.Log(parentTransform.name);
     }
     
     private bool IsMovingForward()

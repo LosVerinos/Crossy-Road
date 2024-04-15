@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1252654667352619424
 Transform:
   m_ObjectHideFlags: 0
@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TerrainGenerator: {fileID: 0}
   scoreText: {fileID: 0}
+  skinData: []
+  parentTransform: {fileID: 0}
 --- !u!65 &7786956987402831179
 BoxCollider:
   m_ObjectHideFlags: 0
