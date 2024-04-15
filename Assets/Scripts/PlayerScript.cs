@@ -18,6 +18,13 @@ public class PlayerScript : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
+
+    public void KillPlayer()
+    {
+        // actions
+        
+        Destroy(this);
+    }
     
     private bool IsMovingForward()
     {
