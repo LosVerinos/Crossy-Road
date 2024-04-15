@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     private bool IsMovingForward()
     {
         return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
+        
     }
     
     private bool IsMovingBackward()
