@@ -128,6 +128,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5992525011731577635, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
   m_PrefabInstance: {fileID: 3496694019794422526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4952641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4952635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936df2f29f9394ac88f926745405f241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  failPanel: {fileID: 0}
 --- !u!1 &11726661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2883,6 +2896,7 @@ MonoBehaviour:
   pauseButtonPanel: {fileID: 0}
   coinsPanel: {fileID: 0}
   scorePanel: {fileID: 0}
+  failPanel: {fileID: 0}
   animatonName: Fail
 --- !u!1 &600112847
 GameObject:
@@ -4177,6 +4191,7 @@ MonoBehaviour:
   pauseButtonPanel: {fileID: 1129659498}
   coinsPanel: {fileID: 1772956487}
   scorePanel: {fileID: 444943300}
+  failPanel: {fileID: 1978204214}
   animatonName: Fail
 --- !u!95 &840886188
 Animator:
@@ -9875,7 +9890,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5992525011731577635, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4952641}
   m_SourcePrefab: {fileID: 100100000, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

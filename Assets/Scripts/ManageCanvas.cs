@@ -11,6 +11,9 @@ public class ManageCanvas : MonoBehaviour
     public GameObject pauseButtonPanel;
     public GameObject coinsPanel;
     public GameObject scorePanel;
+    public GameObject failPanel;
+
+
 
     private Animator Animator;
     public string animatonName = "Fail";
@@ -25,7 +28,7 @@ public class ManageCanvas : MonoBehaviour
 
     public void Update()
     {
-        
+       
     }
 
 
