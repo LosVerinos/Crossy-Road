@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0f92c3045096f49bc1868c40c2e532, type: 3}
+  m_Name: GrassSW
+  m_EditorClassIdentifier: 
+  PossibleTerrain:
+  - {fileID: 3026940675598252949, guid: 3ba93a58347374cf99afa7bfd0071461, type: 3}
+  - {fileID: 3026940675598252949, guid: 2e9872320f49a4c51a49e7228b267167, type: 3}
+  - {fileID: 3026940675598252949, guid: d98c357df187c499c9edc95e810d41be, type: 3}
+  - {fileID: 3026940675598252949, guid: eec39fdd4e49f4e4c8bbd682f3a2a479, type: 3}
+  maxSuccessive: 4
+  probabilityOfSpawning: 0.85
