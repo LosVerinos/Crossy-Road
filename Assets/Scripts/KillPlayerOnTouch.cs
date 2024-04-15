@@ -12,6 +12,7 @@ public class KillPlayerOnTouch : MonoBehaviour
        {
 
            GlobalVariables.isPlayerKilled = true;
+           GlobalVariables.run = false;
 
            Destroy(other.gameObject);
 
@@ -23,6 +24,7 @@ public class KillPlayerOnTouch : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             GlobalVariables.isPlayerKilled = true;
+            GlobalVariables.run = false;
 
             Destroy(other.gameObject);
 

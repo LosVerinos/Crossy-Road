@@ -61,4 +61,8 @@ public class ManageCanvas : MonoBehaviour
 
         
     }
+    public void Start_click()
+    {
+        GlobalVariables.run = true;
+    }
 }
