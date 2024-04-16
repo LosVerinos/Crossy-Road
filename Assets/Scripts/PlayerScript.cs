@@ -7,12 +7,11 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
     [SerializeField] private Text scoreText;
-    [SerializeField] private ScoreScript ScoreScript;
     private Animator _animator;
     private readonly static int Hop = Animator.StringToHash("hop");
     private bool _isHopping;
-    private int _score = 0;
     private int _scoreBuffer = 0;
+    public string playerName;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +21,22 @@ public class PlayerScript : MonoBehaviour
 
     public void KillPlayer()
     {
-        // actions
-        ScoreScript.Instance.WriteScore("Player");
-        Destroy(this);
+        if (GlobalVariables.isPlayerKilled)
+        {
+            return;
+        }
+        GlobalVariables.isPlayerKilled = true;
+        GlobalVariables.run = false;
+        ScoreScript.Instance.WriteScore();
+        ScoreScript.Instance.ResetScore();
+        Destroy(GameObject.Find("Player").GetComponent<PlayerScript>());
+    }
+    
+    public void SetPlayerName()
+    {
+        Debug.Log(GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text);
+        playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text;
+        Debug.Log(playerName);
     }
     
     private bool IsMovingForward()
