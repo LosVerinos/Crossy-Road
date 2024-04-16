@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 98c2b65deb2f84ecba6d2e2cd7ea2acd, type: 2}
+  - {fileID: 2100000, guid: 49b7605d7fd424fb6a6386b764a654cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,12 +120,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsToPlace:
-  - {fileID: 5918782133070423383, guid: 160e5706f19924cddaaffdaaf231bae4, type: 3}
-  - {fileID: 5918782133070423383, guid: 1c0e620153394411085b1eff809c9340, type: 3}
-  - {fileID: 5918782133070423383, guid: d9970556eb4fb4770b4c46489efb18fb, type: 3}
-  - {fileID: 5918782133070423383, guid: b7cd2a2e51c9a44b383af87c9ef51eb4, type: 3}
-  - {fileID: 5918782133070423383, guid: e648824f16a264c5ba9b4e211a919af2, type: 3}
   - {fileID: 5918782133070423383, guid: 3ca943c5185a841dd93c62bbede93e73, type: 3}
+  - {fileID: 5918782133070423383, guid: 2500146dc24fe43aeaeff56b2476465a, type: 3}
+  - {fileID: 5918782133070423383, guid: 8fc16f730193b470088fcbc1766d9d6b, type: 3}
   numberMax: 6
   spawnPos: {fileID: 4049492038463167664}
   obstacleLayer:
