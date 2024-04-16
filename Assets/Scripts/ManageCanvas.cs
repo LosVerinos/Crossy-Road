@@ -14,11 +14,17 @@ public class ManageCanvas : MonoBehaviour
     public GameObject scorePanel;
     public GameObject failPanel;
     public GameObject leaderBoardPanel;
+    public GameObject startPanel;
 
     private bool visible = false;
 
     public void Update()
     {
+        if (GlobalVariables.isPlayerKilled && startPanel!=null)
+        {
+            startPanel.SetActive(false);
+        }
+
         if (GlobalVariables.isPlayerKilled && visible == false && failPanel!=null)
         {
             Debug.Log("isplayed is currently setted on true");

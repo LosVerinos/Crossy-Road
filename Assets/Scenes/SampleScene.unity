@@ -1880,7 +1880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -800, y: 0}
+  m_AnchoredPosition: {x: -800.0503, y: -0.0009765625}
   m_SizeDelta: {x: 0.00048828, y: 0.00012207}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474104837
@@ -2526,6 +2526,7 @@ MonoBehaviour:
   scorePanel: {fileID: 0}
   failPanel: {fileID: 0}
   leaderBoardPanel: {fileID: 0}
+  startPanel: {fileID: 0}
 --- !u!1 &600112847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,6 +3640,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1978204215}
   - {fileID: 474104836}
   - {fileID: 584060407}
   - {fileID: 382703565}
@@ -3649,7 +3651,6 @@ RectTransform:
   - {fileID: 1772956488}
   - {fileID: 1878745377}
   - {fileID: 1129659499}
-  - {fileID: 1978204215}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3675,6 +3676,7 @@ MonoBehaviour:
   scorePanel: {fileID: 444943300}
   failPanel: {fileID: 1978204214}
   leaderBoardPanel: {fileID: 474104835}
+  startPanel: {fileID: 584060406}
 --- !u!95 &840886188
 Animator:
   serializedVersion: 5
@@ -4210,19 +4212,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: LeaderBoard2_Button
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 840886187}
-        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
-        m_MethodName: OnEnterLeaderBoard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LeaderBoard_Button2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &980510315
@@ -7062,6 +7052,18 @@ MonoBehaviour:
           m_StringArgument: Right_button
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 840886188}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Right_button2
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1685611249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8413,7 +8415,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.05029297, y: 0.0009765625}
+  m_AnchoredPosition: {x: 0, y: -0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978204216
