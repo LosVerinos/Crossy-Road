@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DarthVader
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: 6c3e8e0881bef40c8be06445f90c365e, type: 3}
-  isStarWars: 1
+  isStarWars: StarWars

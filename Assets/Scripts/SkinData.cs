@@ -6,5 +6,5 @@ using UnityEngine;
 public class SkinData : ScriptableObject
 {
     public GameObject Model;
-    public bool isStarWars;
+    public string isStarWars;
 }
