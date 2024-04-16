@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlobalVariables : MonoBehaviour
 {
     public static bool isPlayerKilled = false;
+    public static bool isStarWars;
         
     void Start()
     {

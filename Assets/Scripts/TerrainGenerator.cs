@@ -7,7 +7,9 @@ public class TerrainGenerator : MonoBehaviour
 {
     [SerializeField] private int minDistanceFromPlayer;
     private int maxTerrainCount = 18;
-    [SerializeField] private List<TerrainData> terrainData = new();
+    private List<TerrainData> terrainData = new();
+    [SerializeField] private List<TerrainData> terrainsNormal = new();
+    [SerializeField] private List<TerrainData> terrainsStarWars = new();
     [SerializeField] private Transform terrainHolder;
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
     private List<GameObject> _currentTerrains = new();
@@ -17,8 +19,8 @@ public class TerrainGenerator : MonoBehaviour
     private int wasLilipadsTwoRowsAgo=2;
     private void Start()
     {
-
-            SpawnInitialTerrain();
+        ThemeDetermination();
+        SpawnInitialTerrain();
         
         for (var i=0; i< maxTerrainCount; i++){
             SpawnTerrain(true, new Vector3(0,0,0));
@@ -94,4 +96,17 @@ public class TerrainGenerator : MonoBehaviour
             currentPosition.x = 5;
         }
     }
+
+    private void ThemeDetermination(){
+        if(GlobalVariables.isStarWars){
+            terrainData = terrainsStarWars;
+            Debug.Log("SW");
+        }
+        else{
+            terrainData = terrainsNormal;
+            Debug.Log("!SW");
+        }
+    }
 }
+
+

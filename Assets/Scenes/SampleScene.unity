@@ -7546,18 +7546,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7436308746237723329, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
   m_PrefabInstance: {fileID: 3496694019794422526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1615417760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615417756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 936df2f29f9394ac88f926745405f241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1615417761
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9604,11 +9592,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceFromPlayer: 20
-  terrainData:
+  terrainsNormal:
   - {fileID: 11400000, guid: d7fbdf0c9a6ba4047831ca2a5a632802, type: 2}
-  - {fileID: 11400000, guid: c3fdcae3326e66440b37d9b95e09cd68, type: 2}
   - {fileID: 11400000, guid: f2ba1dc675ee7254cbc012458ec9417e, type: 2}
   - {fileID: 11400000, guid: 1aa65e6c0fdb74785bcb53745aab30f6, type: 2}
+  - {fileID: 11400000, guid: c3fdcae3326e66440b37d9b95e09cd68, type: 2}
+  terrainsStarWars:
+  - {fileID: 11400000, guid: 38d72c3a96f464505adef74d56e08fc3, type: 2}
+  - {fileID: 11400000, guid: d5afeb149344e43b8878f21ba3ed24d7, type: 2}
+  - {fileID: 11400000, guid: 98258f94af0b64e1c927edad486e11fc, type: 2}
+  - {fileID: 11400000, guid: 5eac983584d57412aa88c31d36cc0e8d, type: 2}
   terrainHolder: {fileID: 955307681}
   currentPosition: {x: 0, y: 0, z: 0}
   startTerrain: {fileID: 2897610081443693650, guid: 8d00e93cc9cea43db8bf42dea7993a52, type: 3}
@@ -10090,9 +10083,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7436308746237723329, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1615417760}
     - targetCorrespondingSourceObject: {fileID: 7436308746237723329, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1615417761}
