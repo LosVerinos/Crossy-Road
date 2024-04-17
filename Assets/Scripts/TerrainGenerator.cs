@@ -14,7 +14,8 @@ public class TerrainGenerator : MonoBehaviour
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
     private List<GameObject> _currentTerrains = new();
     private List<GameObject> _bufferTerrains = new();
-    [SerializeField] private GameObject startTerrain;
+    [SerializeField] private List<GameObject> startTerrains = new();
+    private GameObject startTerrain;
     public float lastTerrainX;
     private int wasLilipadsTwoRowsAgo=2;
     private void Start()
@@ -100,10 +101,12 @@ public class TerrainGenerator : MonoBehaviour
     private void ThemeDetermination(){
         if(GlobalVariables.isStarWars){
             terrainData = terrainsStarWars;
+            startTerrain = startTerrains[1];
             Debug.Log("SW");
         }
         else{
             terrainData = terrainsNormal;
+            startTerrain = startTerrains[0];
             Debug.Log("!SW");
         }
     }
