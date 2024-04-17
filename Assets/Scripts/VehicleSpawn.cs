@@ -83,7 +83,7 @@ public class VehicleSpawn : MonoBehaviour
         if (selectedVehicle.name.StartsWith("RS6") || selectedVehicle.name.StartsWith("X-Wings")){
             speed = Random.Range(2.5f,4f);
         }
-        if (selectedVehicle.name.StartsWith("Truck")){
+        if (selectedVehicle.name.StartsWith("Truck") || selectedVehicle.name.StartsWith("Sandcrawler")){
             speed = Random.Range(1.5f,2f);
             maxSeparationTime *= 1.5f;
             minSeparationTime += 1.0f;
