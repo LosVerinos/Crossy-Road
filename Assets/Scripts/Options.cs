@@ -5,9 +5,29 @@ using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
+
+    //working on the new things here
+    public GameObject startMenuPanel;
+    public GameObject shopPanel;
+    public GameObject runPanel;
+    public GameObject identityPanel;
+    public GameObject pausePanel;
+    public GameObject failPanel;
+    public GameObject leaderBoardPanel;
+    public GameObject paramPanel;
+
+    //BELOW
+
+
+
     public GameObject Panel;
     public Dropdown DResolution;
     bool visible = false;
+
+    public GameObject PausePanel;
+
+    public GameObject OptionPanel;
+    public GameObject StartPanel;
 
     public AudioSource audioSrc;
     public Slider sld;
@@ -24,13 +44,30 @@ public class Options : MonoBehaviour
         {
             visible = !visible;
             Panel.SetActive(visible);
+            
         }
     }
+
+    public void pause_onClick()
+    {
+        Panel.SetActive(false);
+        PausePanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void DePause_onClick()
+    {
+        PausePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
 
     public void SetResolution()
     {
         Resolution selectedResolution = Screen.resolutions[DResolution.value];
-        Screen.SetResolution(selectedResolution.width, selectedResolution.height, true);
+        float targetAspectRatio = 16f / 9f;
+        int targetWidth = Mathf.RoundToInt(selectedResolution.height * targetAspectRatio);
+        Screen.SetResolution(targetWidth, selectedResolution.height, true);
     }
 
     public void SliderChange()
@@ -67,5 +104,11 @@ public class Options : MonoBehaviour
         DResolution.value = resolutionOptions.IndexOf(currentResolutionString);
 
         DResolution.RefreshShownValue();
+    }
+
+    public void ShowMenu()
+    {
+        StartPanel.SetActive(false);
+        OptionPanel.SetActive(true);
     }
 }
