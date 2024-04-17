@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.Player = GameObject.Find("Player").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
     }
 
@@ -31,7 +32,7 @@ public class PlayerScript : MonoBehaviour
         GlobalVariables.run = false;
         ScoreScript.Instance.WriteScore();
         ScoreScript.Instance.ResetScore();
-        Destroy(GameObject.Find("Player").GetComponent<PlayerScript>().gameObject);
+        Destroy(GlobalVariables.Player.GameObject());
     }
     
     public void SetPlayerName()
@@ -65,7 +66,7 @@ public class PlayerScript : MonoBehaviour
 
             _backwardsCount = 0;
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S))
         {
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
@@ -75,7 +76,7 @@ public class PlayerScript : MonoBehaviour
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
         }
-        if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
             float xDiff = 0;
             if (transform.position.x % 1 != 0)
@@ -84,7 +85,7 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(xDiff,0,1));
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             float xDiff = 0;
             if (transform.position.x % 1 != 0)
