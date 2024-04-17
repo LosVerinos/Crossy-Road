@@ -37,10 +37,8 @@ public class ScoreScript : MonoBehaviour
     public void WriteScore()
     {
         // display function that called this function
-        Debug.LogWarning("WriteScore called from " + new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().Name);
-        Debug.Log("Writing score");
         System.IO.StreamWriter writer = new System.IO.StreamWriter(Application.persistentDataPath + "/score.txt", true);
-        writer.WriteLine(GameObject.Find("Player").GetComponent<PlayerScript>().playerName + ":" + score);
+        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score);
         writer.Close();
     }
 

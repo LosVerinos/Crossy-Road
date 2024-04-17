@@ -23,7 +23,7 @@ public class MovingObjectScript : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * (speed * Time.deltaTime));
         if((transform.position.z * direction >= 45f) || terrainGenerator.lastTerrainX >= transform.position.x){
             Destroy(gameObject);
         }
