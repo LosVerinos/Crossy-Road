@@ -73,14 +73,14 @@ public class VehicleSpawn : MonoBehaviour
     }
 
     private void SelectSpeed(GameObject selectedVehicle){
-        if (selectedVehicle.name.StartsWith("Cabriolet")){
+        if (selectedVehicle.name.StartsWith("Cabriolet") || selectedVehicle.name.StartsWith("Tie")){
             speed = Random.Range(2f,3.5f);  
         }
         
         if (selectedVehicle.name.StartsWith("F40")){
             speed = Random.Range(5f,7f);
         }
-        if (selectedVehicle.name.StartsWith("RS6")){
+        if (selectedVehicle.name.StartsWith("RS6") || selectedVehicle.name.StartsWith("X-Wings")){
             speed = Random.Range(2.5f,4f);
         }
         if (selectedVehicle.name.StartsWith("Truck")){
@@ -88,9 +88,10 @@ public class VehicleSpawn : MonoBehaviour
             maxSeparationTime *= 1.5f;
             minSeparationTime += 1.0f;
         }
-        if (selectedVehicle.name.StartsWith("Hummer")){
+        if (selectedVehicle.name.StartsWith("Hummer") || selectedVehicle.name.StartsWith("Y-Wings")){
             speed = Random.Range(2f,3f);
         }
+
     }
 
     private void FirstVehicles(GameObject selectedVehicle){
