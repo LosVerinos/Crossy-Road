@@ -44,7 +44,11 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && !_isHopping && GlobalVariables.run)
+        if (_isHopping || !GlobalVariables.run)
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
@@ -61,7 +65,7 @@ public class PlayerScript : MonoBehaviour
 
             _backwardsCount = 0;
         }
-        if (Input.GetKeyDown(KeyCode.S) && !_isHopping && GlobalVariables.run)
+        if (Input.GetKeyDown(KeyCode.S))
         {
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
@@ -71,7 +75,7 @@ public class PlayerScript : MonoBehaviour
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
         }
-        if (Input.GetKeyDown(KeyCode.A) && !_isHopping && GlobalVariables.run)
+        if (Input.GetKeyDown(KeyCode.A))
         {
             float xDiff = 0;
             if (transform.position.x % 1 != 0)
@@ -80,7 +84,7 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(xDiff,0,1));
         }
-        if (Input.GetKeyDown(KeyCode.D) && !_isHopping && GlobalVariables.run)
+        if (Input.GetKeyDown(KeyCode.D))
         {
             float xDiff = 0;
             if (transform.position.x % 1 != 0)
@@ -92,7 +96,7 @@ public class PlayerScript : MonoBehaviour
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
         if (_backwardsCount >= 3)
         {
-            Destroy(this.gameObject);
+            KillPlayer();
             //TODO: display the game ended message @Reaub1
         }
     }
