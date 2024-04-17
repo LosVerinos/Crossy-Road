@@ -73,11 +73,21 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A) && !_isHopping && GlobalVariables.run)
         {
-            MovePlayer(new Vector3(0,0,1));
+            float xDiff = 0;
+            if (transform.position.x % 1 != 0)
+            {
+                xDiff = Mathf.Round(transform.position.x) - transform.position.x;
+            }
+            MovePlayer(new Vector3(xDiff,0,1));
         }
         if (Input.GetKeyDown(KeyCode.D) && !_isHopping && GlobalVariables.run)
         {
-            MovePlayer(new Vector3(0,0,-1));
+            float xDiff = 0;
+            if (transform.position.x % 1 != 0)
+            {
+                xDiff = Mathf.Round(transform.position.x) - transform.position.x;
+            }
+            MovePlayer(new Vector3(xDiff,0,-1));
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
         if (_backwardsCount >= 3)
@@ -105,6 +115,7 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer(Vector3 diff)
     {
+        
         Vector3 newPosition = transform.position + diff;
 
         Collider[] colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
@@ -117,6 +128,7 @@ public class PlayerScript : MonoBehaviour
         }
         
         _animator.SetTrigger(Hop);
+        _isHopping = true;
         var position = transform.position;
         transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
         TerrainGenerator.SpawnTerrain(false, position);
