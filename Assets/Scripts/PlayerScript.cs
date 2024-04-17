@@ -31,7 +31,7 @@ public class PlayerScript : MonoBehaviour
         GlobalVariables.run = false;
         ScoreScript.Instance.WriteScore();
         ScoreScript.Instance.ResetScore();
-        Destroy(GameObject.Find("Player").GetComponent<PlayerScript>());
+        Destroy(GameObject.Find("Player").GetComponent<PlayerScript>().gameObject);
     }
     
     public void SetPlayerName()
