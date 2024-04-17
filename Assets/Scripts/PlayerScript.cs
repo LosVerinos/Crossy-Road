@@ -11,16 +11,35 @@ public class PlayerScript : MonoBehaviour
     private Animator _animator;
     private readonly static int Hop = Animator.StringToHash("hop");
     private bool _isHopping;
-    private int _score = 0;
     private int _scoreBuffer = 0;
+    public string playerName;
     private byte _backwardsCount = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
     }
+
+    public void KillPlayer()
+    {
+        if (GlobalVariables.isPlayerKilled)
+        {
+            return;
+        }
+        GlobalVariables.isPlayerKilled = true;
+        GlobalVariables.run = false;
+        ScoreScript.Instance.WriteScore();
+        ScoreScript.Instance.ResetScore();
+        Destroy(GameObject.Find("Player").GetComponent<PlayerScript>().gameObject);
+    }
     
+    public void SetPlayerName()
+    {
+        Debug.Log(GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text);
+        playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text;
+        Debug.Log(playerName);
+    }
 
     // Update is called once per frame
     void Update()
@@ -36,7 +55,7 @@ public class PlayerScript : MonoBehaviour
             _scoreBuffer++;
             if (_scoreBuffer > 0)
             {
-                _score++;
+                ScoreScript.Instance.UpdateScore();
                 _scoreBuffer = 0;
             }
 
@@ -60,7 +79,7 @@ public class PlayerScript : MonoBehaviour
         {
             MovePlayer(new Vector3(0,0,-1));
         }
-        scoreText.text = "Score: " + _score;
+        scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
         if (_backwardsCount >= 3)
         {
             Destroy(this.gameObject);

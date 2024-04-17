@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,11 +13,18 @@ public class ManageCanvas : MonoBehaviour
     public GameObject coinsPanel;
     public GameObject scorePanel;
     public GameObject failPanel;
+    public GameObject leaderBoardPanel;
+    public GameObject startPanel;
 
     private bool visible = false;
 
     public void Update()
     {
+        if (GlobalVariables.isPlayerKilled && startPanel!=null)
+        {
+            startPanel.SetActive(false);
+        }
+
         if (GlobalVariables.isPlayerKilled && visible == false && failPanel!=null)
         {
             Debug.Log("isplayed is currently setted on true");
@@ -64,5 +72,23 @@ public class ManageCanvas : MonoBehaviour
     public void Start_click()
     {
         GlobalVariables.run = true;
+    }
+    
+    public void OnEnterLeaderBoard()
+    {
+        var scoreBoard = ScoreScript.Instance.GetScoreBoard();
+        Text text = leaderBoardPanel.GetComponentInChildren<Text>();
+        text.text = "";
+        // sort the score board
+        scoreBoard.Sort((x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
+        int i = 1;
+        scoreBoard.ForEach(score =>
+        {
+            if (i > 10)
+            {
+                return;
+            }
+            text.text += i++ + ". " + score + "\n";
+        });
     }
 }
