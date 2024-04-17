@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,8 @@ public class PlayerScript : MonoBehaviour
     private bool _isHopping;
     private int _scoreBuffer = 0;
     public string playerName;
-
+    private byte _backwardsCount = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,28 +40,6 @@ public class PlayerScript : MonoBehaviour
         playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text;
         Debug.Log(playerName);
     }
-    
-    private bool IsMovingForward()
-    {
-        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-        
-    }
-    
-    private bool IsMovingBackward()
-    {
-        return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
-    }
-    
-    private bool IsMovingLeft()
-    {
-        return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
-    }
-    
-    private bool IsMovingRight()
-    {
-        return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-    }
-    
 
     // Update is called once per frame
     void Update()
@@ -78,6 +58,8 @@ public class PlayerScript : MonoBehaviour
                 ScoreScript.Instance.UpdateScore();
                 _scoreBuffer = 0;
             }
+
+            _backwardsCount = 0;
         }
         if (Input.GetKeyDown(KeyCode.S) && !_isHopping && GlobalVariables.run)
         {
@@ -98,6 +80,11 @@ public class PlayerScript : MonoBehaviour
             MovePlayer(new Vector3(0,0,-1));
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
+        if (_backwardsCount >= 3)
+        {
+            Destroy(this.gameObject);
+            //TODO: display the game ended message @Reaub1
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -130,9 +117,9 @@ public class PlayerScript : MonoBehaviour
         }
         
         _animator.SetTrigger(Hop);
-        _isHopping = true;
-        transform.position = newPosition;
-        TerrainGenerator.SpawnTerrain(false, transform.position);
+        var position = transform.position;
+        transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
+        TerrainGenerator.SpawnTerrain(false, position);
     }
 
     public void HopAnimationEnd()
