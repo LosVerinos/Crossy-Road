@@ -9593,10 +9593,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minDistanceFromPlayer: 20
   terrainsNormal:
-  - {fileID: 11400000, guid: d7fbdf0c9a6ba4047831ca2a5a632802, type: 2}
   - {fileID: 11400000, guid: f2ba1dc675ee7254cbc012458ec9417e, type: 2}
   - {fileID: 11400000, guid: 1aa65e6c0fdb74785bcb53745aab30f6, type: 2}
   - {fileID: 11400000, guid: c3fdcae3326e66440b37d9b95e09cd68, type: 2}
+  - {fileID: 11400000, guid: d7fbdf0c9a6ba4047831ca2a5a632802, type: 2}
   terrainsStarWars:
   - {fileID: 11400000, guid: 38d72c3a96f464505adef74d56e08fc3, type: 2}
   - {fileID: 11400000, guid: d5afeb149344e43b8878f21ba3ed24d7, type: 2}
