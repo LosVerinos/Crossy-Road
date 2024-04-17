@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     private bool _isHopping;
     private int _score = 0;
     private int _scoreBuffer = 0;
+    private byte _backwardsCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,32 +21,11 @@ public class PlayerScript : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
     
-    private bool IsMovingForward()
-    {
-        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-        
-    }
-    
-    private bool IsMovingBackward()
-    {
-        return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
-    }
-    
-    private bool IsMovingLeft()
-    {
-        return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
-    }
-    
-    private bool IsMovingRight()
-    {
-        return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-    }
-    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && !_isHopping && GlobalVariables.run)
+        if (Input.GetKeyDown(KeyCode.W) && !_isHopping)
         {
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
@@ -58,8 +39,10 @@ public class PlayerScript : MonoBehaviour
                 _score++;
                 _scoreBuffer = 0;
             }
+
+            _backwardsCount = 0;
         }
-        if (Input.GetKeyDown(KeyCode.S) && !_isHopping && GlobalVariables.run)
+        if (Input.GetKeyDown(KeyCode.S) && !_isHopping)
         {
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
@@ -68,16 +51,22 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
+            _backwardsCount++;
         }
-        if (Input.GetKeyDown(KeyCode.A) && !_isHopping && GlobalVariables.run)
+        if (Input.GetKeyDown(KeyCode.A) && !_isHopping)
         {
             MovePlayer(new Vector3(0,0,1));
         }
-        if (Input.GetKeyDown(KeyCode.D) && !_isHopping && GlobalVariables.run)
+        if (Input.GetKeyDown(KeyCode.D) && !_isHopping)
         {
             MovePlayer(new Vector3(0,0,-1));
         }
         scoreText.text = "Score: " + _score;
+        if (_backwardsCount >= 3)
+        {
+            Destroy(this.gameObject);
+            //TODO: display the game ended message @Reaub1
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -98,21 +87,13 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer(Vector3 diff)
     {
-        Vector3 newPosition = transform.position + diff;
-
-        Collider[] colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
-        foreach (var collider in colliders)
-        {
-            if (collider.CompareTag("Obstacle"))
-            {
-                return;
-            }
-        }
-        
-        _animator.SetTrigger(Hop);
+        // transform.position = transform.position + diff;
         _isHopping = true;
-        transform.position = newPosition;
-        TerrainGenerator.SpawnTerrain(false, transform.position);
+        _animator.SetTrigger(Hop);
+        var position = transform.position;
+        transform.position = Vector3.Slerp(transform.position, transform.position + diff, 1f);
+        // transform.position = Vector3.Lerp(transform.position, transform.position + diff, 1f);
+        TerrainGenerator.SpawnTerrain(false, position);
     }
 
     public void HopAnimationEnd()
