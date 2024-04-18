@@ -73,6 +73,8 @@ public class VehicleSpawn : MonoBehaviour
     }
 
     private void SelectSpeed(GameObject selectedVehicle){
+
+        //METTRE DES TAGS 
         if (selectedVehicle.name.StartsWith("Cabriolet") || selectedVehicle.name.StartsWith("Sandspeeder")){
             speed = Random.Range(2f,3.5f);  
         }
