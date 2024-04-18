@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: GrassSW
   m_EditorClassIdentifier: 
   PossibleTerrain:
-  - {fileID: 3026940675598252949, guid: 3ba93a58347374cf99afa7bfd0071461, type: 3}
-  - {fileID: 3026940675598252949, guid: 2e9872320f49a4c51a49e7228b267167, type: 3}
-  - {fileID: 3026940675598252949, guid: d98c357df187c499c9edc95e810d41be, type: 3}
   - {fileID: 3026940675598252949, guid: eec39fdd4e49f4e4c8bbd682f3a2a479, type: 3}
   maxSuccessive: 4
   probabilityOfSpawning: 0.85
