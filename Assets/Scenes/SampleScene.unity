@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2527,6 +2527,7 @@ MonoBehaviour:
   failPanel: {fileID: 0}
   leaderBoardPanel: {fileID: 0}
   startPanel: {fileID: 0}
+  coinsText: {fileID: 0}
 --- !u!1 &600112847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,6 +3678,7 @@ MonoBehaviour:
   failPanel: {fileID: 1978204214}
   leaderBoardPanel: {fileID: 474104835}
   startPanel: {fileID: 584060406}
+  coinsText: {fileID: 1328561429}
 --- !u!95 &840886188
 Animator:
   serializedVersion: 5
@@ -5998,7 +6000,7 @@ GameObject:
   - component: {fileID: 1328561430}
   - component: {fileID: 1328561429}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: CoinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

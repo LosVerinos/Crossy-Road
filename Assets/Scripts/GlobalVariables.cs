@@ -6,7 +6,7 @@ public class GlobalVariables : MonoBehaviour
 {
     public static bool isPlayerKilled = false;
     public static bool run = false;
-    public static int coins;
+    public static int coins = 0;
     public static PlayerScript Player { get; set; }
 
     void Start()

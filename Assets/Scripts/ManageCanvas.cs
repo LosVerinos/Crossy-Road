@@ -16,6 +16,8 @@ public class ManageCanvas : MonoBehaviour
     public GameObject leaderBoardPanel;
     public GameObject startPanel;
 
+    public Text coinsText;
+
     private bool visible = false;
 
     public void Update()
@@ -30,6 +32,11 @@ public class ManageCanvas : MonoBehaviour
             Debug.Log("isplayed is currently setted on true");
             failPanel.SetActive(true);
             visible = true;
+        }
+
+        if (coinsText != null)
+        {
+            coinsText.text = GlobalVariables.coins.ToString();
         }
     }
 
