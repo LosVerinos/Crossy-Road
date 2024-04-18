@@ -207,8 +207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsToPlace:
   - {fileID: 4897930009466680938, guid: 9bbcea5b063e947d3902f069db4be502, type: 3}
-  numberMax: 100
+  numberMax: 1
   spawnPos: {fileID: 4203224216735154285}
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  isRoadOrTrain: 1
