@@ -13,7 +13,6 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private Transform terrainHolder;
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
     private List<GameObject> _currentTerrains = new();
-    private List<GameObject> _bufferTerrains = new();
     [SerializeField] private List<GameObject> startTerrains = new();
     private GameObject startTerrain;
     public float lastTerrainX;
@@ -94,7 +93,7 @@ public class TerrainGenerator : MonoBehaviour
         {
             GameObject newTerrain = Instantiate(startTerrain, new Vector3(-1, 0, 0), Quaternion.identity, terrainHolder);
             _currentTerrains.Add(newTerrain);
-            currentPosition.x = 5;
+            currentPosition.x = 6;
         }
     }
 

@@ -7,7 +7,6 @@ public class ElementsPlacement : MonoBehaviour
     [SerializeField] private List<GameObject> prefabsToPlace;
     [SerializeField] private int numberMax;
     [SerializeField] private Transform spawnPos;
-    [SerializeField] private LayerMask obstacleLayer;
     private int numberToPlace;
     private List<int> takenPlaces = new();
 

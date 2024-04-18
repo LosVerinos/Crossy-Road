@@ -125,11 +125,9 @@ MonoBehaviour:
   - {fileID: 5918782133070423383, guid: 8fc16f730193b470088fcbc1766d9d6b, type: 3}
   - {fileID: 5918782133070423383, guid: f63d6057777f44375bc7faa8a31eba81, type: 3}
   - {fileID: 5918782133070423383, guid: 2671c7ebba3bd4ad2a611e4d5317c767, type: 3}
+  - {fileID: 5918782133070423383, guid: 9a20028d77a9d477a8b0ddefa3f6ea96, type: 3}
   numberMax: 6
   spawnPos: {fileID: 4049492038463167664}
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &5209685284092140390
 GameObject:
   m_ObjectHideFlags: 0
