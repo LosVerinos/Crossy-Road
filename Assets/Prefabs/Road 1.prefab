@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 9073012337655940684}
   - component: {fileID: 3543671565277252481}
   - component: {fileID: -3862479709324997014}
+  - component: {fileID: 4923152350531461849}
   m_Layer: 0
   m_Name: Road 1
   m_TagString: Untagged
@@ -160,3 +161,22 @@ MonoBehaviour:
   minSeparationTime: 2
   maxSeparationTime: 10
   direction: -1
+--- !u!114 &4923152350531461849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819908639339404136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee4bd2e36b3746d8a99a84fad67fd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabsToPlace:
+  - {fileID: 4897930009466680938, guid: 9bbcea5b063e947d3902f069db4be502, type: 3}
+  numberMax: 100
+  spawnPos: {fileID: 0}
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
