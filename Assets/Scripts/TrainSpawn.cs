@@ -93,7 +93,7 @@ public class TrainSpawn : MonoBehaviour
                 newTrain.transform.Rotate(new Vector3(0,180,0));
             }
             train.SetDirection(direction);
-            train.SetSpeed(30f);
+            train.SetSpeed(40f);
             alarmController.TriggerAlarmOn();
             yield return new WaitForSeconds(0.1f);
             alarmController.TriggerAlarmOff();

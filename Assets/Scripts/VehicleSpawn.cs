@@ -77,7 +77,7 @@ public class VehicleSpawn : MonoBehaviour
             speed = Random.Range(2f,3.5f);  
         }
         
-        if (selectedVehicle.name.StartsWith("F40") || selectedVehicle.name.StartsWith("X-Wings")){
+        if (selectedVehicle.name.StartsWith("F40") || selectedVehicle.name.StartsWith("X-Wings") || selectedVehicle.name.StartsWith("Interceptor")){
             speed = Random.Range(5f,6f);
         }
         if (selectedVehicle.name.StartsWith("RS6") || selectedVehicle.name.StartsWith("Tie")){
