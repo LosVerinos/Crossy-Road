@@ -41,7 +41,7 @@ public class AlarmController : MonoBehaviour
 
     public void TriggerLasersOn(float direction){
         alarmDirection = direction;
-        InvokeRepeating("InstantiateLasers", 0f, 0.07f);
+        InvokeRepeating("InstantiateLasers", 0f, 0.1f);
     }
     public void TriggerLasersOff(){
         CancelInvoke("InstantiateLasers");
