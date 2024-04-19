@@ -12,6 +12,11 @@ public class KillPlayerOnTouch : MonoBehaviour
            other.gameObject.GetComponent<PlayerScript>().KillPlayer();
            
        }
+      else if (other.gameObject.CompareTag("Agent")){
+        Debug.Log("Killed Trigger");
+        other.gameObject.GetComponent<AIAgentScript>().SetReward(-5f);
+        other.gameObject.GetComponent<AIAgentScript>().EndEpisode();
+      }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -19,6 +24,11 @@ public class KillPlayerOnTouch : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerScript>().KillPlayer();
+        }
+        else if (other.gameObject.CompareTag("Agent")){
+          Debug.Log("Killed Trigger");
+          other.gameObject.GetComponent<AIAgentScript>().SetReward(-5f);
+          other.gameObject.GetComponent<AIAgentScript>().EndEpisode();
         }
     }
 }
