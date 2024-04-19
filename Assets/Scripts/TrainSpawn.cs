@@ -7,7 +7,6 @@ public class TrainSpawn : MonoBehaviour
     [SerializeField] private Transform SpawnPos;
     [SerializeField] private float minSeparationTime;
     [SerializeField] private float maxSeparationTime;
-
     [SerializeField] private float direction;
     private float timeBeforeComing;
     private bool alarm;
@@ -16,7 +15,6 @@ public class TrainSpawn : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
         StartCoroutine(SpawnVehicle());
     }
 
@@ -26,15 +24,22 @@ public class TrainSpawn : MonoBehaviour
         {
             timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
             yield return new WaitForSeconds(timeBeforeComing - 3f);
-
-            if(gameObject.name.EndsWith("SW")){
-                //Fonction for StarWars
-                InstantiateVehicle();
+            Debug.Log(gameObject.name);
+            if(gameObject.name.EndsWith("SW(Clone)")){
+                if (alarmController != null){
+                    Debug.Log("Appel");
+                    alarmController.TriggerLasersOn(direction);
+                    yield return new WaitForSeconds(3.1f);
+                    InstantiateVehicle();
+                    yield return new WaitForSeconds(0.5f);
+                    alarmController.TriggerLasersOff();
+                }
+                else{
+                    Debug.LogError("Alarm controller not assigned!");
+                } 
             }
             else{
-                
-                if (alarmController != null)
-                {
+                if (alarmController != null){
                     /*
                     alarmController.TriggerAlarmOn();
                     yield return new WaitForSeconds(0.1f);
@@ -47,18 +52,16 @@ public class TrainSpawn : MonoBehaviour
                     CancelInvoke("TriggerAlarmOn");
                     CancelInvoke("TurnOffAlarm");
                     InstantiateVehicle();
-                    InvokeRepeating("TriggerAlarmOn", 0f, 0.2f);
+                    /*InvokeRepeating("TriggerAlarmOn", 0f, 0.2f);
                     InvokeRepeating("TurnOffAlarm", 0.1f, 0.2f);
                     yield return new WaitForSeconds(0.9f);
                     CancelInvoke("TriggerAlarmOn");
-                    CancelInvoke("TurnOffAlarm");
+                    CancelInvoke("TurnOffAlarm");*/
                 }
-                else
-                {
+                else{
                     Debug.LogError("Alarm controller not assigned!");
                 }   
             }
-            
         }
     }
 
@@ -75,7 +78,6 @@ public class TrainSpawn : MonoBehaviour
 
     private void TriggerAlarmOn()
     {
-        Debug.Log("CACA");
         alarmController.TriggerAlarmOn();
     }
 
@@ -83,4 +85,5 @@ public class TrainSpawn : MonoBehaviour
     {
         alarmController.TriggerAlarmOff();
     }
+
 }

@@ -14,7 +14,6 @@ public class StartTerrainScript : MonoBehaviour
     private void PlacePrefabs(){
         
         for(int x = -11; x <= 5; x++){
-            Debug.Log("Plaed");
             if(x == -6 || x ==-7 || x == -8 || x == -9 || x ==-10 || x == -11 ){
                 for(int z=-10; z<=10; z++){
                     Instantiate(x, z);

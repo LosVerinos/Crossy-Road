@@ -225,6 +225,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red-laser.vox (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 436f62b72956c499686634ef2416d2fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -303,6 +307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red-laser.vox (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 436f62b72956c499686634ef2416d2fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -380,6 +388,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
       propertyPath: m_Name
       value: Green-laser.vox (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -729,6 +741,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green-laser.vox (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -807,6 +823,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red-laser.vox (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 436f62b72956c499686634ef2416d2fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -884,6 +904,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
       propertyPath: m_Name
       value: Green-laser.vox (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1061,6 +1085,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red-laser.vox
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 436f62b72956c499686634ef2416d2fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1138,6 +1166,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 436f62b72956c499686634ef2416d2fc, type: 3}
       propertyPath: m_Name
       value: Red-laser.vox (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 436f62b72956c499686634ef2416d2fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1217,6 +1249,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green-laser.vox (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1294,6 +1330,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
       propertyPath: m_Name
       value: Green-laser.vox (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1471,6 +1511,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green-laser.vox (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1548,6 +1592,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
       propertyPath: m_Name
       value: Green-laser.vox
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1823,6 +1871,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red-laser.vox (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 436f62b72956c499686634ef2416d2fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1937,7 +1989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.54
+      value: 9.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1974,6 +2026,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
       propertyPath: m_Name
       value: Green-laser.vox (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 22cabcfadb5b2421e9e4cfd69529c232, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
