@@ -15,11 +15,11 @@ public class ElementsPlacement : MonoBehaviour
     private void Start()
     {
         numberToPlace = Mathf.RoundToInt(Random.Range(0, numberMax));
-        Debug.Log(gameObject.name + numberToPlace);
+        //Debug.Log(gameObject.name + numberToPlace);
         if(isRoadOrTrain){
             probaOfCoinSpawn = 0.4f;
         }
-        Debug.Log(probaOfCoinSpawn);
+        //Debug.Log(probaOfCoinSpawn);
         PlacePrefabs();
     }
 
@@ -39,7 +39,7 @@ public class ElementsPlacement : MonoBehaviour
             Vector3 spawnPosition = new Vector3(spawnPos.position.x, spawnPos.position.y, positionZ);
             randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
             prefabToPlace = prefabsToPlace[randomPrefabIndex];
-            Debug.Log(prefabToPlace.CompareTag("Coins"));
+            //Debug.Log(prefabToPlace.CompareTag("Coins"));
             if(prefabToPlace.CompareTag("Coins") && isRoadOrTrain && Random.Range(0f, 1f) < probaOfCoinSpawn){
                 Instantiate(prefabToPlace, spawnPosition, Quaternion.identity);
             }

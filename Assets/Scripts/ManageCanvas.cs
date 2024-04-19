@@ -36,7 +36,8 @@ public class ManageCanvas : MonoBehaviour
 
         if (coinsText != null)
         {
-            coinsText.text = GlobalVariables.coins.ToString();
+            coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+            //coinsText.text = GlobalVariables.coins.ToString();
         }
     }
 
