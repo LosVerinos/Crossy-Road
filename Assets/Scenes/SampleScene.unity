@@ -1451,7 +1451,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 289532976}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 382703568}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Buy_button
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &289532976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,6 +1513,7 @@ GameObject:
   - component: {fileID: 382703565}
   - component: {fileID: 382703567}
   - component: {fileID: 382703566}
+  - component: {fileID: 382703568}
   m_Layer: 5
   m_Name: Shop_Panel
   m_TagString: Untagged
@@ -1527,7 +1540,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 790, y: 0.0008544922}
+  m_AnchoredPosition: {x: 804, y: 0.0007324219}
   m_SizeDelta: {x: 802, y: 1735.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382703566
@@ -1568,6 +1581,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382703564}
   m_CullTransparentMesh: 1
+--- !u!95 &382703568
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382703564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4018a8e8c1de740ec89f1a16237dd21b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &444943300
 GameObject:
   m_ObjectHideFlags: 0
