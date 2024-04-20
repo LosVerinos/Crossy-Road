@@ -60,17 +60,21 @@ public class TerrainGenerator : MonoBehaviour
                     }while(whichOne == lastOne || (terrainData[wichTerrain].PossibleTerrain[whichOne].name.StartsWith("Lilipads") && wasLilipadsTwoRowsAgo < 2));
                     if(terrainData[wichTerrain].PossibleTerrain[whichOne].name.StartsWith("Lilipads")){
                             wasLilipadsTwoRowsAgo = 0;
+                            if(GlobalVariables.isStarWars){
+                            Debug.Log(currentPosition.x);
+                            Transform lavaRock = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff.vox");
+                            lavaRock.gameObject.SetActive(true);
+                            if(lavaRock != null && currentPosition.x < 60f)
+                            {
+                                
+                                lavaRock.gameObject.SetActive(false); 
+                            }
+                        }
                         }
                         else{
                             wasLilipadsTwoRowsAgo++;
                         }
-                        if(GlobalVariables.isStarWars){
-                            Transform lavaRock = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("Lava-Rock");
-                            if(lavaRock != null)
-                            {
-                                lavaRock.gameObject.SetActive(false); // Destruction de l'objet Lava-Rock
-                            }
-                        }
+                        
                 }
                 else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
