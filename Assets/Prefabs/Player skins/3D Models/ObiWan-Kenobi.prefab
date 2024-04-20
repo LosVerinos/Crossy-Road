@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 664650176937323604}
   serializedVersion: 2
   m_LocalRotation: {x: 0.28024793, y: 0, z: 0, w: 0.9599277}
-  m_LocalPosition: {x: 0.096, y: 0.57, z: 0.299}
+  m_LocalPosition: {x: 0.096, y: 0.541, z: 0.345}
   m_LocalScale: {x: 0.70180994, y: 0.70181, z: 0.70180994}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -43,8 +43,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.95294124, g: 0.15294118, b: 0.16470589, a: 1}
-  m_Intensity: 7
+  m_Color: {r: 0, g: 0.70244, b: 1, a: 1}
+  m_Intensity: 3
   m_Range: 1.34
   m_SpotAngle: 81
   m_InnerSpotAngle: 1
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1252654667352619424}
   m_Layer: 0
-  m_Name: DarthVader
+  m_Name: ObiWan-Kenobi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,10 +124,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1198292056724946851}
-  - {fileID: 4722838397360632323}
+  - {fileID: 4089254527479623718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1001 &5044133848258713064
+--- !u!1001 &4554628163009370061
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -135,73 +135,73 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1252654667352619424}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.375
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.375
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.375
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.25
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
+    - target: {fileID: 919132149155446097, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
       propertyPath: m_Name
-      value: DarthVader.vox
+      value: Obi-Wan-Kenobi.vox
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
---- !u!4 &4722838397360632323 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
+--- !u!4 &4089254527479623718 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 30e19485e4c32461084382fb8afc0cbb, type: 3}
-  m_PrefabInstance: {fileID: 5044133848258713064}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1241dba78929143b9aaa9212e4ec7eac, type: 3}
+  m_PrefabInstance: {fileID: 4554628163009370061}
   m_PrefabAsset: {fileID: 0}
