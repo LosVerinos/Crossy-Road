@@ -6,6 +6,7 @@ public class StartTerrainScript : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private List<GameObject> prefabsToPlace;
+    private int[] angles = { 0, 90, -90, 180 };
     void Start()
     {
         PlacePrefabs();
@@ -42,8 +43,9 @@ public class StartTerrainScript : MonoBehaviour
 
     private void Instantiate(int x, int z){
         Vector3 spawnPosition = new Vector3(x-1,0.5f,z);
-        int randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
-        GameObject prefabToPlace = prefabsToPlace[randomPrefabIndex];
-        Instantiate(prefabToPlace, spawnPosition, Quaternion.identity);
+        int randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);    
+        GameObject prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
+        int randomAngleIndex = Random.Range(0, angles.Length);
+        prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
     }
 }

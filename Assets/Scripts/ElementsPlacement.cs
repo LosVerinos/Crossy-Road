@@ -9,6 +9,7 @@ public class ElementsPlacement : MonoBehaviour
     [SerializeField] private Transform spawnPos;
     private int numberToPlace;
     private List<int> takenPlaces = new();
+    private int[] angles = { 0, 90, -90, 180 };
 
     private void Start()
     {
@@ -27,10 +28,12 @@ public class ElementsPlacement : MonoBehaviour
             } while (positionZ == 0 || IsPositionOccupied(positionZ));
             takenPlaces.Add(positionZ);
             Vector3 spawnPosition = new Vector3(spawnPos.position.x, spawnPos.position.y, positionZ);
-
             int randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
-            GameObject prefabToPlace = prefabsToPlace[randomPrefabIndex];
-            Instantiate(prefabToPlace, spawnPosition, Quaternion.identity);
+            
+            GameObject prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
+
+            int randomAngleIndex = Random.Range(0, angles.Length);
+            prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
         }
     }
 
