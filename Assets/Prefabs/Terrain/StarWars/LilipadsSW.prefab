@@ -178,7 +178,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5918782133070423383, guid: 6cad589dfc8b74daebe7393ac69c3bab, type: 3}
       propertyPath: m_Name
-      value: Lava-Rock (1)
+      value: Lava-Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 5918782133070423383, guid: 6cad589dfc8b74daebe7393ac69c3bab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6651284685069179510, guid: 6cad589dfc8b74daebe7393ac69c3bab, type: 3}
       propertyPath: m_LocalScale.x

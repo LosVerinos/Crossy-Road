@@ -15,6 +15,7 @@ public class TerrainGenerator : MonoBehaviour
     private List<GameObject> _currentTerrains = new();
     [SerializeField] private List<GameObject> startTerrains = new();
     private GameObject startTerrain;
+    public GameObject rock;
     public float lastTerrainX;
     private int wasLilipadsTwoRowsAgo=2;
     private void Start()
@@ -63,13 +64,22 @@ public class TerrainGenerator : MonoBehaviour
                         else{
                             wasLilipadsTwoRowsAgo++;
                         }
+                        if(GlobalVariables.isStarWars){
+                            Transform lavaRock = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("Lava-Rock");
+                            if(lavaRock != null)
+                            {
+                                lavaRock.gameObject.SetActive(false); // Destruction de l'objet Lava-Rock
+                            }
+                        }
                 }
                 else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
                     wasLilipadsTwoRowsAgo++;
                 }
                 lastOne = whichOne;
+
                 GameObject newTerrain = Instantiate(terrainData[wichTerrain].PossibleTerrain[whichOne], currentPosition, Quaternion.identity, terrainHolder);
+
                 _currentTerrains.Add(newTerrain);
                     if (!isStart)
                     {
