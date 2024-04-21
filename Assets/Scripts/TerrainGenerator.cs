@@ -71,25 +71,26 @@ public class TerrainGenerator : MonoBehaviour
                             Transform southCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-South.vox");
                             southCliff.gameObject.SetActive(true);
                             
-                            if(i != 0)
+                            if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads"))
                             {
                                 southCliff.gameObject.SetActive(false); 
-                            }
-
-                            Transform northCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-North.vox");
-                            if(northCliff != null){
-                                northCliff.gameObject.SetActive(true);
-                                if(i < successive - 1){
-                                    if (northCliff != null)
-                                    {
-                                        northCliff.gameObject.SetActive(false);
-                                    }
-                                }
                             }
                         }
                 }
                 else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
+                    if(GlobalVariables.isStarWars && currentPosition.x > 6){
+                        Transform northCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("Cliff");
+                                if(northCliff != null){
+                                    northCliff.gameObject.SetActive(false);
+                                    if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads")){
+                                        if (northCliff != null)
+                                        {
+                                            northCliff.gameObject.SetActive(true);
+                                        }
+                                    }
+                                }
+                    }
                     wasLilipadsTwoRowsAgo++;
                 }
                 lastOne = whichOne;
@@ -116,8 +117,7 @@ public class TerrainGenerator : MonoBehaviour
     }
 
 
-    private void SpawnInitialTerrain()
-    {
+    private void SpawnInitialTerrain(){
         if (startTerrain != null)
         {
             GameObject newTerrain = Instantiate(startTerrain, new Vector3(-1, 0, 0), Quaternion.identity, terrainHolder);
