@@ -1,20 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Buy_script : MonoBehaviour
 {
     public Animator animator;
+    public Text coinsText;
+
 
     public void buy_click()
     {
-        Debug.Log("click done");
 
-        Debug.Log(PlayerPrefs.GetInt("Coins").ToString());
-
-        if (PlayerPrefs.GetInt("Coins") > 100)
+        if (PlayerPrefs.GetInt("Coins") >= 100)
         {
             PlayAnimation("Buy_button");
+
+            int coins = PlayerPrefs.GetInt("Coins");
+
+            coins = coins - 100;
+
+            PlayerPrefs.SetInt("Coins", coins);
+
+            PlayerPrefs.Save();
+
+            coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+
         }
         else
         {
@@ -29,7 +40,6 @@ public class Buy_script : MonoBehaviour
             animator.StopPlayback();
 
             animator.Play(animationName);
-            Debug.Log("animation just played");
         }
         else
         {
