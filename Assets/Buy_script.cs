@@ -8,6 +8,10 @@ public class Buy_script : MonoBehaviour
 
     public void buy_click()
     {
+        Debug.Log("click done");
+
+        Debug.Log(PlayerPrefs.GetInt("Coins").ToString());
+
         if (PlayerPrefs.GetInt("Coins") > 100)
         {
             PlayAnimation("Buy_button");
@@ -22,7 +26,10 @@ public class Buy_script : MonoBehaviour
     {
         if (animator != null)
         {
+            animator.StopPlayback();
+
             animator.Play(animationName);
+            Debug.Log("animation just played");
         }
         else
         {
