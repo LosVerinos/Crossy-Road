@@ -14,6 +14,8 @@ public class PlayerScript : MonoBehaviour
     private int _scoreBuffer = 0;
     public string playerName;
     private byte _backwardsCount = 0;
+    private char lastInput = 'W';
+
     
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,22 @@ public class PlayerScript : MonoBehaviour
             {
                 zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             }
+
+            switch (lastInput)
+            {
+                case 'S':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                case 'A':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                default:
+                    break;
+            }
+
             MovePlayer(new Vector3(1,0, zDiff));
             _scoreBuffer++;
             if (_scoreBuffer > 0)
@@ -65,9 +83,27 @@ public class PlayerScript : MonoBehaviour
             }
 
             _backwardsCount = 0;
+
+            lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
+
+            switch (lastInput)
+            {
+                case 'W':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                case 'A':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                default:
+                    break;
+            }
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
             {
@@ -75,24 +111,57 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
+            lastInput = 'S';
         }
         else if (Input.GetKeyDown(KeyCode.A))
         {
+            switch (lastInput)
+            {
+                case 'S':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                case 'W':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                default:
+                    break;
+            }
+
             float xDiff = 0;
             if (transform.position.x % 1 != 0)
             {
                 xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             }
             MovePlayer(new Vector3(xDiff,0,1));
+            lastInput = 'A';
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
+            switch (lastInput)
+            {
+                case 'S':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                case 'A':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                case 'W':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                default:
+                    break;
+            }
+
             float xDiff = 0;
             if (transform.position.x % 1 != 0)
             {
                 xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             }
             MovePlayer(new Vector3(xDiff,0,-1));
+            lastInput = 'D';
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
         if (_backwardsCount >= 3)
