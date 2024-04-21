@@ -8,13 +8,18 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
     [SerializeField] private Text scoreText;
+    [SerializeField] private AudioClip sound;
+
     private Animator _animator;
+    private AudioSource _audioSource;
     private readonly static int Hop = Animator.StringToHash("hop");
     private bool _isHopping;
     private int _scoreBuffer = 0;
     public string playerName;
     private byte _backwardsCount = 0;
     private char lastInput = 'W';
+    private bool soundIsPlayed = false;
+    
 
     
     // Start is called before the first frame update
@@ -22,6 +27,7 @@ public class PlayerScript : MonoBehaviour
     {
         GlobalVariables.Player = GameObject.Find("Player").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void KillPlayer()
@@ -77,6 +83,7 @@ public class PlayerScript : MonoBehaviour
 
             MovePlayer(new Vector3(1,0, zDiff));
             _scoreBuffer++;
+            soundIsPlayed = false;
             if (_scoreBuffer > 0)
             {
                 ScoreScript.Instance.UpdateScore();
@@ -163,6 +170,18 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(xDiff,0,-1));
             lastInput = 'D';
+        }
+        if (ScoreScript.Instance.GetScore() % 50 == 0 && ScoreScript.Instance.GetScore()!=0 && !soundIsPlayed)
+        {
+            soundIsPlayed = true;
+            Debug.Log("3 points");
+            
+            if (sound != null)
+            {
+                _audioSource.clip = sound;
+                _audioSource.Play();
+            }
+
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
         if (_backwardsCount >= 3)
