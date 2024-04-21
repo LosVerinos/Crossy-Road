@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -53,7 +52,7 @@ public class TerrainGenerator : MonoBehaviour
             successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
             Debug.Log(currentPosition.x + " : "+ terrainData[wichTerrain].name +  " (" + successive +")");
 
-            for (int i=0; i< successive; i++)
+            for (int i=0; i < successive; i++)
             {
                 int whichOne;
                 if(terrainData[wichTerrain].name.StartsWith("Water")){
@@ -72,14 +71,15 @@ public class TerrainGenerator : MonoBehaviour
                             Transform southCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-South.vox");
                             southCliff.gameObject.SetActive(true);
                             
-                            if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads"))
+                            if(i != 0)
                             {
                                 southCliff.gameObject.SetActive(false); 
                             }
+
                             Transform northCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-North.vox");
                             if(northCliff != null){
                                 northCliff.gameObject.SetActive(true);
-                                if(i != successive - 1){
+                                if(i < successive - 1){
                                     if (northCliff != null)
                                     {
                                         northCliff.gameObject.SetActive(false);
@@ -139,5 +139,6 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 }
+
 
 
