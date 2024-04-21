@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1451,7 +1451,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 289532976}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 382703569}
+        m_TargetAssemblyTypeName: Buy_script, Assembly-CSharp
+        m_MethodName: buy_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Buy_button
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &289532976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,6 +1513,8 @@ GameObject:
   - component: {fileID: 382703565}
   - component: {fileID: 382703567}
   - component: {fileID: 382703566}
+  - component: {fileID: 382703568}
+  - component: {fileID: 382703569}
   m_Layer: 5
   m_Name: Shop_Panel
   m_TagString: Untagged
@@ -1527,7 +1541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 790, y: 0.0008544922}
+  m_AnchoredPosition: {x: 804, y: 0.0007324219}
   m_SizeDelta: {x: 802, y: 1735.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &382703566
@@ -1568,6 +1582,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382703564}
   m_CullTransparentMesh: 1
+--- !u!95 &382703568
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382703564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4018a8e8c1de740ec89f1a16237dd21b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &382703569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382703564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bdc64f0ba93b4999bdbdf5e42c7a976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 382703568}
+  coinsText: {fileID: 1328561429}
 --- !u!1 &444943300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,7 +2540,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2527,6 +2576,7 @@ MonoBehaviour:
   failPanel: {fileID: 0}
   leaderBoardPanel: {fileID: 0}
   startPanel: {fileID: 0}
+  coinsText: {fileID: 0}
 --- !u!1 &600112847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3149,7 +3199,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -3677,6 +3727,7 @@ MonoBehaviour:
   failPanel: {fileID: 1978204214}
   leaderBoardPanel: {fileID: 474104835}
   startPanel: {fileID: 584060406}
+  coinsText: {fileID: 1328561429}
 --- !u!95 &840886188
 Animator:
   serializedVersion: 5
@@ -5998,7 +6049,7 @@ GameObject:
   - component: {fileID: 1328561430}
   - component: {fileID: 1328561429}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: CoinsText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6857,18 +6908,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7436308746237723329, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
   m_PrefabInstance: {fileID: 3496694019794422526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1615417760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615417756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 936df2f29f9394ac88f926745405f241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1615417761
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7604,7 +7643,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 222.45, y: 917.2}
+  m_AnchoredPosition: {x: 222.45, y: 816}
   m_SizeDelta: {x: -444.8044, y: -1634.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1772956489
@@ -8762,9 +8801,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7436308746237723329, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1615417760}
     - targetCorrespondingSourceObject: {fileID: 7436308746237723329, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1615417761}

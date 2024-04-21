@@ -21,7 +21,7 @@ public class ScoreScript : MonoBehaviour
         }
         _instance = this;
         score = 0;
-        Debug.Log("ScoreScript created");
+        //Debug.Log("ScoreScript created");
     }
 
     public void UpdateScore()
@@ -52,7 +52,7 @@ public class ScoreScript : MonoBehaviour
         }
         _instance = this;
         score = 0;
-        Debug.Log("ScoreScript created");
+        //Debug.Log("ScoreScript created");
     }
 
     public List<string> GetScoreBoard()

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Log
   - Obstacle
+  - Coins
   layers:
   - Default
   - TransparentFX
