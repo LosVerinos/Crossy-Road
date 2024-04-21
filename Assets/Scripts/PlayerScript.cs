@@ -174,8 +174,7 @@ public class PlayerScript : MonoBehaviour
         if (ScoreScript.Instance.GetScore() % 50 == 0 && ScoreScript.Instance.GetScore()!=0 && !soundIsPlayed)
         {
             soundIsPlayed = true;
-            Debug.Log("3 points");
-            
+
             if (sound != null)
             {
                 _audioSource.clip = sound;
