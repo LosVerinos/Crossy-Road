@@ -24,10 +24,9 @@ public class TrainSpawn : MonoBehaviour
         {
             timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
             yield return new WaitForSeconds(timeBeforeComing - 3f);
-            Debug.Log(gameObject.name);
+
             if(gameObject.name.EndsWith("SW(Clone)")){
                 if (alarmController != null){
-                    Debug.Log("Appel");
                     alarmController.TriggerLasersOn(direction);
                     yield return new WaitForSeconds(3.1f);
                     InstantiateVehicle();

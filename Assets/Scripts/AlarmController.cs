@@ -48,19 +48,17 @@ public class AlarmController : MonoBehaviour
     }
 
     private void InstantiateLasers(){
-        Debug.Log("Active");
-            Debug.Log("Instanciated");
-            float y = Random.Range(0.41f,1.5f);
-            float x = Random.Range(-0.5f, 0.5f);
-            int redOrGreen = Random.Range(0, 2);
-            GameObject newLaser = Instantiate(Activated[redOrGreen], new Vector3(lasersSpawnPos.position.x + x,y,lasersSpawnPos.position.z), Quaternion.identity);
-            MovingObjectScript laser = newLaser.GetComponent<MovingObjectScript>();
-            if (alarmDirection < 0)
-            {
-                newLaser.transform.Rotate(new Vector3(0,180,0));
-            }
-            laser.SetDirection(alarmDirection);
-            laser.SetSpeed(60f);
+        float y = Random.Range(0.41f,1.5f);
+        float x = Random.Range(-0.5f, 0.5f);
+        int redOrGreen = Random.Range(0, 2);
+        GameObject newLaser = Instantiate(Activated[redOrGreen], new Vector3(lasersSpawnPos.position.x + x,y,lasersSpawnPos.position.z), Quaternion.identity);
+        MovingObjectScript laser = newLaser.GetComponent<MovingObjectScript>();
+        if (alarmDirection < 0)
+        {
+            newLaser.transform.Rotate(new Vector3(0,180,0));
+        }
+        laser.SetDirection(alarmDirection);
+        laser.SetSpeed(60f);
     } 
 }
 
