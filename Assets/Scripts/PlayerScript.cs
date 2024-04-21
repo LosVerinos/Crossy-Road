@@ -53,11 +53,6 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
-            float zDiff = 0;
-            if (transform.position.z % 1 != 0)
-            {
-                zDiff = Mathf.Round(transform.position.z) - transform.position.z;
-            }
 
             switch (lastInput)
             {
@@ -72,6 +67,12 @@ public class PlayerScript : MonoBehaviour
                     break;
                 default:
                     break;
+            }
+
+            float zDiff = 0;
+            if (transform.position.z % 1 != 0)
+            {
+                zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             }
 
             MovePlayer(new Vector3(1,0, zDiff));
@@ -95,10 +96,10 @@ public class PlayerScript : MonoBehaviour
                     transform.Rotate(Vector3.up, 180f);
                     break;
                 case 'A':
-                    transform.Rotate(Vector3.up, 90f);
+                    transform.Rotate(Vector3.up, -90f);
                     break;
                 case 'D':
-                    transform.Rotate(Vector3.up, -90f);
+                    transform.Rotate(Vector3.up, 90f);
                     break;
                 default:
                     break;
@@ -118,13 +119,13 @@ public class PlayerScript : MonoBehaviour
             switch (lastInput)
             {
                 case 'S':
-                    transform.Rotate(Vector3.up, 180f);
-                    break;
-                case 'W':
                     transform.Rotate(Vector3.up, 90f);
                     break;
-                case 'D':
+                case 'W':
                     transform.Rotate(Vector3.up, -90f);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.up, 180f);
                     break;
                 default:
                     break;
@@ -143,13 +144,13 @@ public class PlayerScript : MonoBehaviour
             switch (lastInput)
             {
                 case 'S':
-                    transform.Rotate(Vector3.up, 180f);
+                    transform.Rotate(Vector3.up, -90f);
                     break;
                 case 'A':
-                    transform.Rotate(Vector3.up, 90f);
+                    transform.Rotate(Vector3.up, 180f);
                     break;
                 case 'W':
-                    transform.Rotate(Vector3.up, -90f);
+                    transform.Rotate(Vector3.up, 90f);
                     break;
                 default:
                     break;
