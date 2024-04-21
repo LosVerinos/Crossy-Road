@@ -16,6 +16,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private List<GameObject> startTerrains = new();
     private GameObject startTerrain;
     public GameObject rock;
+    private GameObject lastTerrain;
     public float lastTerrainX;
     private int wasLilipadsTwoRowsAgo=2;
     private void Start()
@@ -44,37 +45,48 @@ public class TerrainGenerator : MonoBehaviour
             int wichTerrain;
             int successive;
             int lastOne = -1;
+            
             do{
                 wichTerrain = Random.Range(0, terrainData.Count);
             }while(terrainData[wichTerrain].probabilityOfSpawning < Random.Range(0f,1.0f));
 
             successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
-            
+            Debug.Log(currentPosition.x + " : "+ terrainData[wichTerrain].name +  " (" + successive +")");
+
             for (int i=0; i< successive; i++)
             {
                 int whichOne;
                 if(terrainData[wichTerrain].name.StartsWith("Water")){
-                    
                     do{
                         whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
                     }while(whichOne == lastOne || (terrainData[wichTerrain].PossibleTerrain[whichOne].name.StartsWith("Lilipads") && wasLilipadsTwoRowsAgo < 2));
+                    
                     if(terrainData[wichTerrain].PossibleTerrain[whichOne].name.StartsWith("Lilipads")){
-                            wasLilipadsTwoRowsAgo = 0;
-                            if(GlobalVariables.isStarWars){
-                            Debug.Log(currentPosition.x);
-                            Transform lavaRock = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff.vox");
-                            lavaRock.gameObject.SetActive(true);
-                            if(lavaRock != null && currentPosition.x < 60f)
+                        wasLilipadsTwoRowsAgo = 0;
+                    }
+                    else{
+                        wasLilipadsTwoRowsAgo++;
+                    }
+
+                    if(GlobalVariables.isStarWars && currentPosition.x > 6){
+                            Transform southCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-South.vox");
+                            southCliff.gameObject.SetActive(true);
+                            
+                            if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads"))
                             {
-                                
-                                lavaRock.gameObject.SetActive(false); 
+                                southCliff.gameObject.SetActive(false); 
+                            }
+                            Transform northCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-North.vox");
+                            if(northCliff != null){
+                                northCliff.gameObject.SetActive(true);
+                                if(i != successive - 1){
+                                    if (northCliff != null)
+                                    {
+                                        northCliff.gameObject.SetActive(false);
+                                    }
+                                }
                             }
                         }
-                        }
-                        else{
-                            wasLilipadsTwoRowsAgo++;
-                        }
-                        
                 }
                 else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
@@ -83,7 +95,7 @@ public class TerrainGenerator : MonoBehaviour
                 lastOne = whichOne;
 
                 GameObject newTerrain = Instantiate(terrainData[wichTerrain].PossibleTerrain[whichOne], currentPosition, Quaternion.identity, terrainHolder);
-
+                
                 _currentTerrains.Add(newTerrain);
                     if (!isStart)
                     {
@@ -94,8 +106,11 @@ public class TerrainGenerator : MonoBehaviour
                             _currentTerrains.RemoveAt(0);
                         }
                     }
-                    currentPosition.x++;
+                currentPosition.x++;
+                lastTerrain = terrainData[wichTerrain].PossibleTerrain[whichOne];
             }
+            
+
         }
         
     }
@@ -115,12 +130,12 @@ public class TerrainGenerator : MonoBehaviour
         if(GlobalVariables.isStarWars){
             terrainData = terrainsStarWars;
             startTerrain = startTerrains[1];
-            Debug.Log("SW");
+
         }
         else{
             terrainData = terrainsNormal;
             startTerrain = startTerrains[0];
-            Debug.Log("!SW");
+
         }
     }
 }
