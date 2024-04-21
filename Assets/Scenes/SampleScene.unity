@@ -2134,6 +2134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 536203981}
   - component: {fileID: 536203980}
+  - component: {fileID: 536203982}
   m_Layer: 0
   m_Name: Sound
   m_TagString: Untagged
@@ -2252,6 +2253,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536203982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536203979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7adeaa273324d3dab5185188dfb2ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicList:
+  - {fileID: 8300000, guid: 100fbcfca2ed640289ad09fef355e855, type: 3}
+  - {fileID: 8300000, guid: 44810c290597f4fa68eb921c74f81fca, type: 3}
+  - {fileID: 8300000, guid: f7c86a74233184f91b8162de26b278d4, type: 3}
+  - {fileID: 8300000, guid: d950b269e692a4238a0766d5edf0b5d0, type: 3}
+  - {fileID: 8300000, guid: 6270c4e4e4781443f91a5c66d77f3bfe, type: 3}
+  - {fileID: 8300000, guid: 17fd966823724446da3c49dc5b4ed0a3, type: 3}
+  - {fileID: 8300000, guid: ad097dd2e2b204cb5b0d12461023a796, type: 3}
+  - {fileID: 8300000, guid: 05d9455dc8fae4e408571bd146638032, type: 3}
+  - {fileID: 8300000, guid: d665f267f91c84214889f3a8a2a45164, type: 3}
+  - {fileID: 8300000, guid: a0583572728194283a2268593115d054, type: 3}
 --- !u!1 &568618369
 GameObject:
   m_ObjectHideFlags: 0
