@@ -5913,6 +5913,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
   - {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
   - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
+  - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
   parentPos: {fileID: 1621938620}
   parentObject: {fileID: 1215677304}
 --- !u!1 &1220220796
