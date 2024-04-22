@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,15 +8,23 @@ public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
     [SerializeField] private Text scoreText;
+    [SerializeField] private AudioClip sound;
+
     private Animator _animator;
+    private AudioSource _audioSource;
     private readonly static int Hop = Animator.StringToHash("hop");
     private bool _isHopping;
-    private int _score = 0;
     private int _scoreBuffer = 0;
     [SerializeField] private List<SkinData> skinData = new();
     [SerializeField] private Transform parentPos;
     [SerializeField] private Transform parentObject;
+    public string playerName;
+    private byte _backwardsCount = 0;
+    private char lastInput = 'W';
+    private bool soundIsPlayed = false;
+    
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,50 +32,93 @@ public class PlayerScript : MonoBehaviour
         GameObject player = Instantiate(skinData[whichSkin].Model, parentPos);
         GlobalVariables.isStarWars = skinData[whichSkin].theme == "StarWars";
         _animator = parentObject.GetComponent<Animator>();
+        GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
     }
-    
-    private bool IsMovingForward()
+
+    public void KillPlayer()
     {
-        return Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
-        
+        if (GlobalVariables.isPlayerKilled)
+        {
+            return;
+        }
+        GlobalVariables.isPlayerKilled = true;
+        GlobalVariables.run = false;
+        ScoreScript.Instance.WriteScore();
+        ScoreScript.Instance.ResetScore();
+        Destroy(GlobalVariables.Player.GameObject());
     }
     
-    private bool IsMovingBackward()
+    public void SetPlayerName()
     {
-        return Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow);
+        Debug.Log(GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text);
+        playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text;
+        Debug.Log(playerName);
     }
-    
-    private bool IsMovingLeft()
-    {
-        return Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow);
-    }
-    
-    private bool IsMovingRight()
-    {
-        return Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow);
-    }
-    
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && !_isHopping)
+        if (_isHopping || !GlobalVariables.run)
         {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        {
+
+            switch (lastInput)
+            {
+                case 'S':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                case 'A':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                default:
+                    break;
+            }
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
             {
                 zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             }
+
             MovePlayer(new Vector3(1,0, zDiff));
             _scoreBuffer++;
+            soundIsPlayed = false;
             if (_scoreBuffer > 0)
             {
-                _score++;
+                ScoreScript.Instance.UpdateScore();
                 _scoreBuffer = 0;
             }
+
+            _backwardsCount = 0;
+
+            lastInput = 'W';
         }
-        if (Input.GetKeyDown(KeyCode.S) && !_isHopping)
+        else if (Input.GetKeyDown(KeyCode.S))
         {
+
+            switch (lastInput)
+            {
+                case 'W':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                case 'A':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                default:
+                    break;
+            }
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0)
             {
@@ -74,16 +126,75 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
+            lastInput = 'S';
         }
-        if (Input.GetKeyDown(KeyCode.A) && !_isHopping)
+        else if (Input.GetKeyDown(KeyCode.A))
         {
-            MovePlayer(new Vector3(0,0,1));
+            switch (lastInput)
+            {
+                case 'S':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                case 'W':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                case 'D':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                default:
+                    break;
+            }
+
+            float xDiff = 0;
+            if (transform.position.x % 1 != 0)
+            {
+                xDiff = Mathf.Round(transform.position.x) - transform.position.x;
+            }
+            MovePlayer(new Vector3(xDiff,0,1));
+            lastInput = 'A';
         }
-        if (Input.GetKeyDown(KeyCode.D) && !_isHopping)
+        else if (Input.GetKeyDown(KeyCode.D))
         {
-            MovePlayer(new Vector3(0,0,-1));
+            switch (lastInput)
+            {
+                case 'S':
+                    transform.Rotate(Vector3.up, -90f);
+                    break;
+                case 'A':
+                    transform.Rotate(Vector3.up, 180f);
+                    break;
+                case 'W':
+                    transform.Rotate(Vector3.up, 90f);
+                    break;
+                default:
+                    break;
+            }
+
+            float xDiff = 0;
+            if (transform.position.x % 1 != 0)
+            {
+                xDiff = Mathf.Round(transform.position.x) - transform.position.x;
+            }
+            MovePlayer(new Vector3(xDiff,0,-1));
+            lastInput = 'D';
         }
-        scoreText.text = "Score: " + _score;
+        if (ScoreScript.Instance.GetScore() % 50 == 0 && ScoreScript.Instance.GetScore()!=0 && !soundIsPlayed)
+        {
+            soundIsPlayed = true;
+
+            if (sound != null)
+            {
+                _audioSource.clip = sound;
+                _audioSource.Play();
+            }
+
+        }
+        scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
+        if (_backwardsCount >= 3)
+        {
+            KillPlayer();
+            //TODO: display the game ended message @Reaub1
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -104,6 +215,7 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer(Vector3 diff)
     {
+        
         Vector3 newPosition = transform.position + diff;
 
         Collider[] colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
@@ -117,8 +229,9 @@ public class PlayerScript : MonoBehaviour
         
         _animator.SetTrigger(Hop);
         _isHopping = true;
-        transform.position = newPosition;
-        TerrainGenerator.SpawnTerrain(false, transform.position);
+        var position = transform.position;
+        transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
+        TerrainGenerator.SpawnTerrain(false, position);
     }
 
     public void HopAnimationEnd()

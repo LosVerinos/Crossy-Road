@@ -11,6 +11,7 @@ TagManager:
   - BigCar
   - MidCar
   - Truck
+  - Coins
   layers:
   - Default
   - TransparentFX

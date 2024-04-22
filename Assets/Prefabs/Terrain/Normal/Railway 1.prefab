@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &587073177466564952
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 972769415041383653}
+  m_Layer: 0
+  m_Name: SpawnCoin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &972769415041383653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587073177466564952}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.01}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3358122736023118150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832517132485483306
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +476,7 @@ GameObject:
   - component: {fileID: 9073012337655940684}
   - component: {fileID: 3543671565277252481}
   - component: {fileID: 6725418901722967772}
+  - component: {fileID: 7469918583179992838}
   m_Layer: 0
   m_Name: Railway 1
   m_TagString: Untagged
@@ -479,6 +511,7 @@ Transform:
   - {fileID: 2659442935726647712}
   - {fileID: 1401471497884473341}
   - {fileID: 1969165554521939530}
+  - {fileID: 972769415041383653}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7720804348558057137
@@ -570,6 +603,23 @@ MonoBehaviour:
   maxSeparationTime: 35
   direction: -1
   alarmController: {fileID: 9017475949399371176}
+--- !u!114 &7469918583179992838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819908639339404136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee4bd2e36b3746d8a99a84fad67fd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabsToPlace:
+  - {fileID: 4897930009466680938, guid: 9bbcea5b063e947d3902f069db4be502, type: 3}
+  numberMax: 1
+  spawnPos: {fileID: 972769415041383653}
+  isRoadOrTrain: 1
 --- !u!1001 &1038724634062233144
 PrefabInstance:
   m_ObjectHideFlags: 0
