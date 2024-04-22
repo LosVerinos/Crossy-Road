@@ -525,7 +525,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 47429034}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318418433}
+        m_TargetAssemblyTypeName: Identity_manager, Assembly-CSharp
+        m_MethodName: Select_Natural
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &47429034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1547,7 +1559,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 278600334}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318418433}
+        m_TargetAssemblyTypeName: Identity_manager, Assembly-CSharp
+        m_MethodName: Select_Hp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &278600334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2084,7 +2108,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 470385433}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318418433}
+        m_TargetAssemblyTypeName: Identity_manager, Assembly-CSharp
+        m_MethodName: Select_Sw
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &470385433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5156,7 +5192,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1127307172}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1318418433}
+        m_TargetAssemblyTypeName: Identity_manager, Assembly-CSharp
+        m_MethodName: Select_Lor
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1127307172
 MonoBehaviour:
   m_ObjectHideFlags: 0

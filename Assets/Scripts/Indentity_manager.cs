@@ -43,4 +43,21 @@ public class Identity_manager : MonoBehaviour
         bool acquired = PlayerPrefs.GetInt(themeName) == 1;
         return acquired;
     }
+
+    public void Select_Sw()
+    {
+        GlobalVariables.theme = "StarWars";
+    }
+    public void Select_Natural()
+    {
+        GlobalVariables.theme = "Natural";
+    }
+    public void Select_Lor()
+    {
+        GlobalVariables.theme = "LordsOfRings";
+    }
+    public void Select_Hp()
+    {
+        GlobalVariables.theme = "HarryPotters";
+    }
 }
