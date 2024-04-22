@@ -14,8 +14,16 @@ public class ThemeManager : MonoBehaviour
 
     void Start()
     {
-     
+        /*
+        RemoveTheme("StarWars");
+        RemoveTheme("HarryPotters");
+        RemoveTheme("LordOfRings");
+        */
+
+        LoadThemes();
+        SaveThemes();
     }
+
 
     public void InitializeThemes()
     {

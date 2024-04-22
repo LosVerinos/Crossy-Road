@@ -26,6 +26,8 @@ public class Buy_script : MonoBehaviour
 
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
 
+            CheckAndSetFirstUnacquiredTheme();
+
         }
         else
         {
@@ -44,6 +46,28 @@ public class Buy_script : MonoBehaviour
         else
         {
             Debug.LogWarning("L'Animator n'a pas été attribué au script.");
+        }
+    }
+
+    private void CheckAndSetFirstUnacquiredTheme()
+    {
+        if (PlayerPrefs.GetInt("StarWars") == 0)
+        {
+            PlayerPrefs.SetInt("StarWars", 1);
+            PlayerPrefs.Save();
+            return;
+        }
+        if (PlayerPrefs.GetInt("HarryPotters") == 0)
+        {
+            PlayerPrefs.SetInt("HarryPotters", 1);
+            PlayerPrefs.Save();
+            return;
+        }
+        if (PlayerPrefs.GetInt("LordOfRings") == 0)
+        {
+            PlayerPrefs.SetInt("LordOfRings", 1);
+            PlayerPrefs.Save();
+            return;
         }
     }
 }
