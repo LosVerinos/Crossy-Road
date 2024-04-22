@@ -19,7 +19,6 @@ public class VehicleSpawn : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        // Choix aléatoire d'un véhicule dans la liste
         int randomIndex = Random.Range(0, vehicles.Count);
         GameObject selectedVehicle = vehicles[randomIndex];
         SelectSpeed(selectedVehicle);
@@ -73,24 +72,27 @@ public class VehicleSpawn : MonoBehaviour
     }
 
     private void SelectSpeed(GameObject selectedVehicle){
-        if (selectedVehicle.name.StartsWith("Cabriolet")){
+
+        //METTRE DES TAGS 
+        if (selectedVehicle.CompareTag("LittleCar")){
             speed = Random.Range(2f,3.5f);  
         }
         
-        if (selectedVehicle.name.StartsWith("F40")){
-            speed = Random.Range(5f,7f);
+        if (selectedVehicle.CompareTag("FastCar")){
+            speed = Random.Range(5f,6f);
         }
-        if (selectedVehicle.name.StartsWith("RS6")){
+        if (selectedVehicle.CompareTag("MidCar")){
             speed = Random.Range(2.5f,4f);
         }
-        if (selectedVehicle.name.StartsWith("Truck")){
+        if (selectedVehicle.CompareTag("Truck")){
             speed = Random.Range(1.5f,2f);
             maxSeparationTime *= 1.5f;
             minSeparationTime += 1.0f;
         }
-        if (selectedVehicle.name.StartsWith("Hummer")){
+        if (selectedVehicle.CompareTag("BigCar")){
             speed = Random.Range(2f,3f);
         }
+
     }
 
     private void FirstVehicles(GameObject selectedVehicle){

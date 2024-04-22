@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -7698058937173454903}
   m_Layer: 0
   m_Name: Hummer
-  m_TagString: Obstacle
+  m_TagString: BigCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

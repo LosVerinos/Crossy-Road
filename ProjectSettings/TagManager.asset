@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Log
   - Obstacle
+  - FastCar
+  - LittleCar
+  - BigCar
+  - MidCar
+  - Truck
   - Coins
   layers:
   - Default

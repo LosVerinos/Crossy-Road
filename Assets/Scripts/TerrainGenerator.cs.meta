@@ -7,7 +7,7 @@ MonoImporter:
   - terrainHolder: {instanceID: 0}
   - initialTerrain: {instanceID: 0}
   - startTerrain: {instanceID: 0}
-  executionOrder: 0
+  executionOrder: 200
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 

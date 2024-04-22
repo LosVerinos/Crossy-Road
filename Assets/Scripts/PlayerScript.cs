@@ -15,6 +15,9 @@ public class PlayerScript : MonoBehaviour
     private readonly static int Hop = Animator.StringToHash("hop");
     private bool _isHopping;
     private int _scoreBuffer = 0;
+    [SerializeField] private List<SkinData> skinData = new();
+    [SerializeField] private Transform parentPos;
+    [SerializeField] private Transform parentObject;
     public string playerName;
     private byte _backwardsCount = 0;
     private char lastInput = 'W';
@@ -25,7 +28,11 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GlobalVariables.Player = GameObject.Find("Player").GetComponent<PlayerScript>();
+        int whichSkin = Random.Range(0, skinData.Count);
+        GameObject player = Instantiate(skinData[whichSkin].Model, parentPos);
+        GlobalVariables.isStarWars = skinData[whichSkin].theme == "StarWars";
+        _animator = parentObject.GetComponent<Animator>();
+        GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
     }
