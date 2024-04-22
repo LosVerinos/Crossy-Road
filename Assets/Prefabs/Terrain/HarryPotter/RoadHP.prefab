@@ -186,9 +186,9 @@ MonoBehaviour:
   vehicles:
   - {fileID: 275996120478420784, guid: 5b4705cd630c441bcaed59a6377ce71a, type: 3}
   - {fileID: 275996120478420784, guid: 81241f468534e453eadc753aabb81e26, type: 3}
-  - {fileID: 275996120478420784, guid: 4bcec0eba213f4fb6896643e327b7f0a, type: 3}
+  - {fileID: 275996120478420784, guid: ec86c03b9d3a74b67a0d81b3802e5017, type: 3}
   - {fileID: 275996120478420784, guid: 2e9aeb88b4e2c42368dcbca37e413b04, type: 3}
-  - {fileID: 275996120478420784, guid: cb64d0731daa642bbae9ca74288c4887, type: 3}
+  - {fileID: 275996120478420784, guid: 431d2c2614d614a2e92129e12acbee8e, type: 3}
   SpawnPos: {fileID: 1487960368392179030}
   minSeparationTime: 2
   maxSeparationTime: 10
