@@ -9,6 +9,7 @@ public class TerrainGenerator : MonoBehaviour
     private List<TerrainData> terrainData = new();
     [SerializeField] private List<TerrainData> terrainsNormal = new();
     [SerializeField] private List<TerrainData> terrainsStarWars = new();
+    [SerializeField] private List<TerrainData> terrainsHarryPotter = new();
     [SerializeField] private Transform terrainHolder;
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
     private List<GameObject> _currentTerrains = new();
@@ -67,7 +68,7 @@ public class TerrainGenerator : MonoBehaviour
                         wasLilipadsTwoRowsAgo++;
                     }
 
-                    if(GlobalVariables.isStarWars && currentPosition.x > 6){
+                    if(GlobalVariables.theme == "StarWars" && currentPosition.x > 6){
                             Transform southCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-South.vox");
                             southCliff.gameObject.SetActive(true);
                             
@@ -79,17 +80,17 @@ public class TerrainGenerator : MonoBehaviour
                 }
                 else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
-                    if(GlobalVariables.isStarWars && currentPosition.x > 6){
+                    if(GlobalVariables.theme == "StarWars" && currentPosition.x > 6){
                         Transform northCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("Cliff");
-                                if(northCliff != null){
-                                    northCliff.gameObject.SetActive(false);
-                                    if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads")){
-                                        if (northCliff != null)
-                                        {
-                                            northCliff.gameObject.SetActive(true);
-                                        }
+                            if(northCliff != null){
+                                northCliff.gameObject.SetActive(false);
+                                if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads")){
+                                    if (northCliff != null)
+                                    {
+                                        northCliff.gameObject.SetActive(true);
                                     }
                                 }
+                            }
                     }
                     wasLilipadsTwoRowsAgo++;
                 }
@@ -127,10 +128,14 @@ public class TerrainGenerator : MonoBehaviour
     }
 
     private void ThemeDetermination(){
-        if(GlobalVariables.isStarWars){
+        if(GlobalVariables.theme == "StarWars"){
             terrainData = terrainsStarWars;
             startTerrain = startTerrains[1];
 
+        }
+        else if(GlobalVariables.theme == "HarryPotter"){
+            terrainData = terrainsHarryPotter;
+            startTerrain = startTerrains[1];
         }
         else{
             terrainData = terrainsNormal;

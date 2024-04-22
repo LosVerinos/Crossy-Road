@@ -134,7 +134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 3496694019794422526}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4952635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 14b15dc70398f9446a53a1d6715a91b8, type: 3}
   m_Name: 
@@ -5594,6 +5594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TerrainGenerator: {fileID: 1968209797}
   scoreText: {fileID: 1952646538}
+  sound: {fileID: 0}
   skinData:
   - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
   - {fileID: 11400000, guid: 110371f80f8b94d30a7f086cf4be3fe9, type: 2}
@@ -5601,8 +5602,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
   - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
   - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
+  - {fileID: 11400000, guid: 508fa7a7636724dff8278e6b011a103f, type: 2}
   parentPos: {fileID: 1621938620}
   parentObject: {fileID: 1215677304}
+  playerName: 
 --- !u!1 &1220220796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8695,6 +8698,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d5afeb149344e43b8878f21ba3ed24d7, type: 2}
   - {fileID: 11400000, guid: 98258f94af0b64e1c927edad486e11fc, type: 2}
   - {fileID: 11400000, guid: 5eac983584d57412aa88c31d36cc0e8d, type: 2}
+  terrainsHarryPotter:
+  - {fileID: 11400000, guid: f6a6953390a434665b8dc2a48326478e, type: 2}
+  - {fileID: 11400000, guid: b5f2d922681764f25b9392f32ab28d5a, type: 2}
+  - {fileID: 11400000, guid: c6b45d51d029c4b038935b235c93f4be, type: 2}
+  - {fileID: 11400000, guid: 8603130ee25d945fca5fc8c7fb0ba013, type: 2}
   terrainHolder: {fileID: 955307681}
   currentPosition: {x: 0, y: 0, z: 0}
   startTerrains:
@@ -8754,7 +8762,6 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: -0}
-  m_AnchoredPosition: {x: 0.05029297, y: 0.0009765625}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1978204216

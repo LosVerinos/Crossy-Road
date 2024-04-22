@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
     {
         int whichSkin = Random.Range(0, skinData.Count);
         GameObject player = Instantiate(skinData[whichSkin].Model, parentPos);
-        GlobalVariables.isStarWars = skinData[whichSkin].theme == "StarWars";
+        GlobalVariables.theme = skinData[whichSkin].theme;
         _animator = parentObject.GetComponent<Animator>();
         GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();

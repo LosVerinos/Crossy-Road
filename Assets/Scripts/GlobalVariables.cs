@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlobalVariables : MonoBehaviour
 {
     public static bool isPlayerKilled = false;
-    public static bool isStarWars;
+    public static string theme;
 
     public static GameObject previousTerrain;
     public static GameObject previousPreviousTerrain;
