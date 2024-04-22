@@ -40,19 +40,19 @@ public class ElementsPlacement : MonoBehaviour
             Vector3 spawnPosition = new Vector3(spawnPos.position.x, spawnPos.position.y, positionZ);
 
             randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
-            
-            prefabToPlace = prefabsToPlace[randomPrefabIndex];
 
             int randomAngleIndex = Random.Range(0, angles.Length);
-            prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
+            
             //Debug.Log(prefabToPlace.CompareTag("Coins"));
-            if(prefabToPlace.CompareTag("Coins") && isRoadOrTrain && Random.Range(0f, 1f) < probaOfCoinSpawn){
-                Instantiate(prefabToPlace, spawnPosition, Quaternion.identity);
+            if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain && Random.Range(0f, 1f) < probaOfCoinSpawn){
+                Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
             }
-            else if(prefabToPlace.CompareTag("Coins") && isRoadOrTrain){
+            else if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain){
                 break;
             }
-            Instantiate(prefabToPlace, spawnPosition, Quaternion.identity);
+            prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
+            prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
+            
         }
     }
 
