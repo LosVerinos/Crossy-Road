@@ -456,7 +456,7 @@ GameObject:
   - component: {fileID: 47429034}
   - component: {fileID: 47429033}
   m_Layer: 5
-  m_Name: SelectButton (3)
+  m_Name: NaturalButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -479,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203.21822, y: 435.3514}
+  m_AnchoredPosition: {x: 200, y: 400}
   m_SizeDelta: {x: 142.2993, y: 64.3188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &47429033
@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 278600334}
   - component: {fileID: 278600333}
   m_Layer: 5
-  m_Name: SelectButton (2)
+  m_Name: HPButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1501,7 +1501,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 221.34503, y: -299.99988}
+  m_AnchoredPosition: {x: 200, y: -500}
   m_SizeDelta: {x: 142.2993, y: 64.3188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &278600333
@@ -1732,6 +1732,7 @@ GameObject:
   - component: {fileID: 382703566}
   - component: {fileID: 382703568}
   - component: {fileID: 382703569}
+  - component: {fileID: 382703570}
   m_Layer: 5
   m_Name: Shop_Panel
   m_TagString: Untagged
@@ -1819,7 +1820,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 1
 --- !u!114 &382703569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1834,6 +1835,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 382703568}
   coinsText: {fileID: 1328561429}
+--- !u!114 &382703570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382703564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b08ee0130d445b4a0277b3bf8bc850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &444943300
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,7 +2015,7 @@ GameObject:
   - component: {fileID: 470385433}
   - component: {fileID: 470385432}
   m_Layer: 5
-  m_Name: SelectButton
+  m_Name: SWButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2025,7 +2038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 215.60822, y: 120.76941}
+  m_AnchoredPosition: {x: 200, y: 100}
   m_SizeDelta: {x: 142.2993, y: 64.3188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &470385432
@@ -2866,7 +2879,7 @@ GameObject:
   - component: {fileID: 613506067}
   - component: {fileID: 613506066}
   m_Layer: 5
-  m_Name: SelectButton
+  m_Name: lor_button_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3185,7 +3198,7 @@ GameObject:
   - component: {fileID: 716678141}
   - component: {fileID: 716678140}
   m_Layer: 5
-  m_Name: SelectButton
+  m_Name: hp_button_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3207,7 +3220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -22, y: -215}
+  m_AnchoredPosition: {x: 0.0003624, y: -0.000030518}
   m_SizeDelta: {x: 142.3, y: 137.4868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &716678140
@@ -4002,7 +4015,7 @@ GameObject:
   - component: {fileID: 844508510}
   - component: {fileID: 844508509}
   m_Layer: 5
-  m_Name: OtherSkin (2)
+  m_Name: HPSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4024,7 +4037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -155.61, y: -521}
+  m_AnchoredPosition: {x: -150, y: -500}
   m_SizeDelta: {x: 299.89, y: 213.7047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844508509
@@ -4077,7 +4090,7 @@ GameObject:
   - component: {fileID: 867376602}
   - component: {fileID: 867376601}
   m_Layer: 5
-  m_Name: SelectButton
+  m_Name: Natural_button_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4099,7 +4112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32, y: -19}
+  m_AnchoredPosition: {x: 0.00034261, y: -10}
   m_SizeDelta: {x: 142.3, y: 137.4868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &867376601
@@ -5074,7 +5087,7 @@ GameObject:
   - component: {fileID: 1127307172}
   - component: {fileID: 1127307171}
   m_Layer: 5
-  m_Name: SelectButton (1)
+  m_Name: LORButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5097,7 +5110,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 185, y: -213}
+  m_AnchoredPosition: {x: 200, y: -200}
   m_SizeDelta: {x: 142.2993, y: 64.3188}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1127307171
@@ -6412,6 +6425,7 @@ GameObject:
   - component: {fileID: 1318418430}
   - component: {fileID: 1318418432}
   - component: {fileID: 1318418431}
+  - component: {fileID: 1318418433}
   m_Layer: 5
   m_Name: Identity_Panel
   m_TagString: Untagged
@@ -6485,6 +6499,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1318418429}
   m_CullTransparentMesh: 1
+--- !u!114 &1318418433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1318418429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ddedb03d2b1c4680abd9aad6bf6241d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  natural_Button: {fileID: 47429033}
+  sw_Button: {fileID: 470385432}
+  lor_Button: {fileID: 1127307171}
+  hp_Button: {fileID: 278600333}
+  natural_image: {fileID: 1421460574}
+  sw_image: {fileID: 1528774455}
+  lor_image: {fileID: 2073295087}
+  hp_image: {fileID: 844508507}
+  natural: {fileID: 867376601}
+  sw: {fileID: 1418630224}
+  lor: {fileID: 613506066}
+  hp: {fileID: 716678140}
 --- !u!1 &1328561427
 GameObject:
   m_ObjectHideFlags: 0
@@ -6797,7 +6835,7 @@ GameObject:
   - component: {fileID: 1418630225}
   - component: {fileID: 1418630224}
   m_Layer: 5
-  m_Name: SelectButton
+  m_Name: sw_button_image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6819,7 +6857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -32, y: -19}
+  m_AnchoredPosition: {x: 0.00033569, y: 0.000039101}
   m_SizeDelta: {x: 142.3, y: 137.4868}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1418630224
@@ -6835,7 +6873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.92941177}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6872,7 +6910,7 @@ GameObject:
   - component: {fileID: 1421460577}
   - component: {fileID: 1421460576}
   m_Layer: 5
-  m_Name: OtherSkin (3)
+  m_Name: NaturalSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7155,7 +7193,7 @@ GameObject:
   - component: {fileID: 1528774458}
   - component: {fileID: 1528774457}
   m_Layer: 5
-  m_Name: OtherSkin
+  m_Name: SWSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9110,7 +9148,7 @@ GameObject:
   - component: {fileID: 2073295090}
   - component: {fileID: 2073295089}
   m_Layer: 5
-  m_Name: OtherSkin (1)
+  m_Name: LORSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9132,7 +9170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -165.98, y: -213}
+  m_AnchoredPosition: {x: -150, y: -200}
   m_SizeDelta: {x: 279.1475, y: 197.9274}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2073295089

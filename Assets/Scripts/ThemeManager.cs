@@ -1,68 +1,98 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ThemeManager : MonoBehaviour
 {
-    private const string themesKey = "Themes";
+    private const string THEME_STARWARS = "StarWars";
+    private const string THEME_HARRYPOTTERS = "HarryPotters";
+    private const string THEME_NATURAL = "Natural";
+    private const string THEME_LORDOFRINGS = "LordOfRings";
 
-    private Dictionary<string, bool> themesAcquired = new Dictionary<string, bool>();
+    private int themeStarWarsAcquired;
+    private int themeHarryPottersAcquired;
+    private int themeNaturalAcquired;
+    private int themeLordOfRingsAcquired;
 
     void Start()
     {
-        LoadThemes();
+     
     }
 
     public void InitializeThemes()
     {
-        themesAcquired.Add("StarWars", false);
-        themesAcquired.Add("HarryPotters", false);
+        themeStarWarsAcquired = 0;
+        themeHarryPottersAcquired = 0;
+        themeNaturalAcquired = 1;
+        themeLordOfRingsAcquired = 0;
     }
 
     private void LoadThemes()
     {
-        if (PlayerPrefs.HasKey(themesKey))
-        {
-            string themesJson = PlayerPrefs.GetString(themesKey);
-            themesAcquired = JsonUtility.FromJson<Dictionary<string, bool>>(themesJson);
-        }
-        else
-        {
-            InitializeThemes();
-            SaveThemes();
-        }
+        themeStarWarsAcquired = PlayerPrefs.GetInt(THEME_STARWARS);
+        themeHarryPottersAcquired = PlayerPrefs.GetInt(THEME_HARRYPOTTERS);
+        themeNaturalAcquired = PlayerPrefs.GetInt(THEME_NATURAL);
+        themeLordOfRingsAcquired = PlayerPrefs.GetInt(THEME_LORDOFRINGS);
     }
 
     public void SaveThemes()
     {
-        string themesJson = JsonUtility.ToJson(themesAcquired);
-        PlayerPrefs.SetString(themesKey, themesJson);
+        PlayerPrefs.SetInt(THEME_STARWARS, themeStarWarsAcquired);
+        PlayerPrefs.SetInt(THEME_HARRYPOTTERS, themeHarryPottersAcquired);
+        PlayerPrefs.SetInt(THEME_NATURAL, themeNaturalAcquired);
+        PlayerPrefs.SetInt(THEME_LORDOFRINGS, themeLordOfRingsAcquired);
+
         PlayerPrefs.Save();
+
+        Debug.Log("Theme StarWars acquired: " + themeStarWarsAcquired);
+        Debug.Log("Theme HarryPotters acquired: " + themeHarryPottersAcquired);
+        Debug.Log("Theme Natural acquired: " + themeNaturalAcquired);
+        Debug.Log("Theme LordOfRings acquired: " + themeLordOfRingsAcquired);
     }
 
-    public bool GetThemeAcquired(string themeName)
+    public int GetThemeAcquired(string themeName)
     {
-        if (themesAcquired.ContainsKey(themeName))
+        switch (themeName)
         {
-            return themesAcquired[themeName];
-        }
-        else
-        {
-            Debug.LogWarning("Le thème '" + themeName + "' n'existe pas dans le dictionnaire de thèmes.");
-            return false;
+            case THEME_STARWARS:
+                return themeStarWarsAcquired;
+            case THEME_HARRYPOTTERS:
+                return themeHarryPottersAcquired;
+            case THEME_NATURAL:
+                return themeNaturalAcquired;
+            case THEME_LORDOFRINGS:
+                return themeLordOfRingsAcquired;
+            default:
+                Debug.LogWarning("Theme '" + themeName + "' is not recognized.");
+                return 0;
         }
     }
 
-    public void SetThemeAcquired(string themeName, bool acquired)
+    public void SetThemeAcquired(string themeName, int acquired)
     {
-        if (themesAcquired.ContainsKey(themeName))
+        switch (themeName)
         {
-            themesAcquired[themeName] = acquired;
-            SaveThemes();
+            case THEME_STARWARS:
+                themeStarWarsAcquired = acquired;
+                break;
+            case THEME_HARRYPOTTERS:
+                themeHarryPottersAcquired = acquired;
+                break;
+            case THEME_NATURAL:
+                themeNaturalAcquired = acquired;
+                break;
+            case THEME_LORDOFRINGS:
+                themeLordOfRingsAcquired = acquired;
+                break;
+            default:
+                Debug.LogWarning("Theme '" + themeName + "' is not recognized.");
+                break;
         }
-        else
-        {
-            Debug.LogWarning("Le thème '" + themeName + "' n'existe pas dans le dictionnaire de thèmes.");
-        }
+
+        SaveThemes();
+    }
+
+    public void RemoveTheme(string themeName)
+    {
+        PlayerPrefs.DeleteKey(themeName);
+        PlayerPrefs.Save();
     }
 }
