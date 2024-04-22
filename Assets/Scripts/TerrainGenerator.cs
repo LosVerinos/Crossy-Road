@@ -136,7 +136,18 @@ public class TerrainGenerator : MonoBehaviour
         else if(GlobalVariables.theme == "HarryPotter"){
             terrainData = terrainsHarryPotter;
             startTerrain = startTerrains[1];
-        }
+            LightController lightController = FindObjectOfType<LightController>();
+
+            if (lightController != null)
+            {
+                // Appelle ChangeLightIntensity avec une intensité de 2.0
+                lightController.ChangeLightIntensity(0f);
+            }
+            else
+            {
+                Debug.LogError("Script LightController non trouvé.");
+            }
+            }
         else{
             terrainData = terrainsNormal;
             startTerrain = startTerrains[0];
