@@ -51,7 +51,7 @@ public class TerrainGenerator : MonoBehaviour
             }while(terrainData[wichTerrain].probabilityOfSpawning < Random.Range(0f,1.0f));
 
             successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
-            Debug.Log(currentPosition.x + " : "+ terrainData[wichTerrain].name +  " (" + successive +")");
+            //Debug.Log(currentPosition.x + " : "+ terrainData[wichTerrain].name +  " (" + successive +")");
 
             for (int i=0; i < successive; i++)
             {

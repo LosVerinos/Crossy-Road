@@ -52,9 +52,9 @@ public class PlayerScript : MonoBehaviour
     
     public void SetPlayerName()
     {
-        Debug.Log(GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text);
+        //Debug.Log(GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text);
         playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text;
-        Debug.Log(playerName);
+        //Debug.Log(playerName);
     }
 
     // Update is called once per frame
