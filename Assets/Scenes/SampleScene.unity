@@ -5620,6 +5620,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18fcba1be66084976867094f41fdfd0d, type: 2}
   - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
   - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
+  - {fileID: 11400000, guid: 9dd640caff28b4457a9ef4341c47e15e, type: 2}
+  - {fileID: 11400000, guid: be34b06aade3e4b61913fd64c3dd4449, type: 2}
   parentPos: {fileID: 1621938620}
   parentObject: {fileID: 1215677304}
   playerName: 
