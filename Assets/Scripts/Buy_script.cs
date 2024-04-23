@@ -7,7 +7,7 @@ public class Buy_script : MonoBehaviour
 {
     public Animator animator;
     public Text coinsText;
-
+    public List<SkinData> skinDataList;
 
     public void buy_click()
     {
@@ -26,7 +26,7 @@ public class Buy_script : MonoBehaviour
 
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
 
-            CheckAndSetFirstUnacquiredTheme();
+            UnlockRandomSkin();
 
         }
         else
@@ -49,25 +49,30 @@ public class Buy_script : MonoBehaviour
         }
     }
 
-    private void CheckAndSetFirstUnacquiredTheme()
+    public void UnlockRandomSkin()
     {
-        if (PlayerPrefs.GetInt("StarWars") == 0)
+        List<SkinData> lockedSkins = new List<SkinData>();
+
+        foreach (SkinData skinData in skinDataList)
         {
-            PlayerPrefs.SetInt("StarWars", 1);
-            PlayerPrefs.Save();
-            return;
+            if (!skinData.unlocked)
+            {
+                lockedSkins.Add(skinData);
+            }
         }
-        if (PlayerPrefs.GetInt("HarryPotters") == 0)
+
+        if (lockedSkins.Count > 0)
         {
-            PlayerPrefs.SetInt("HarryPotters", 1);
-            PlayerPrefs.Save();
-            return;
+            int randomIndex = Random.Range(0, lockedSkins.Count);
+            SkinData randomSkin = lockedSkins[randomIndex];
+
+            randomSkin.unlocked = true;
+
+            Debug.Log("Skin '" + randomSkin.theme + "' unlocked!");
         }
-        if (PlayerPrefs.GetInt("LordOfRings") == 0)
+        else
         {
-            PlayerPrefs.SetInt("LordOfRings", 1);
-            PlayerPrefs.Save();
-            return;
+            Debug.LogError("Tous les skins sont déjà déverrouillés!");
         }
     }
 }

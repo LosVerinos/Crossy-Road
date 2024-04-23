@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Cube
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: 2f4c5ae7715484668a79382ef75b1ac4, type: 3}
-  theme: None
+  theme: Natural
+  unlocked: 0
+  sprite: {fileID: 0}

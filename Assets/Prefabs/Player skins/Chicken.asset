@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: Chicken
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: 32a491b9a944e448fbb89959bb464f22, type: 3}
-  theme: None
+  theme: Natural
+  unlocked: 1
+  sprite: {fileID: 21300000, guid: 7b881239dddab42b8a1d5ef2589b1302, type: 3}
