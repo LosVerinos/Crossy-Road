@@ -184,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicles:
-  - {fileID: 275996120478420784, guid: 5b4705cd630c441bcaed59a6377ce71a, type: 3}
+  - {fileID: 275996120478420784, guid: 4781237a6134e4a1fab7d52249e2f450, type: 3}
   - {fileID: 275996120478420784, guid: a3a968a470de048288d10853b179cf94, type: 3}
   - {fileID: 275996120478420784, guid: ec86c03b9d3a74b67a0d81b3802e5017, type: 3}
   - {fileID: 275996120478420784, guid: 79e1ad2088c7b42a8aba6780089667be, type: 3}

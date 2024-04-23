@@ -135,7 +135,7 @@ public class TerrainGenerator : MonoBehaviour
         }
         else if(GlobalVariables.theme == "HarryPotter"){
             terrainData = terrainsHarryPotter;
-            startTerrain = startTerrains[1];
+            startTerrain = startTerrains[0];
             LightController lightController = FindObjectOfType<LightController>();
 
             if (lightController != null)

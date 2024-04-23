@@ -50,8 +50,10 @@ public class ElementsPlacement : MonoBehaviour
             else if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain){
                 break;
             }
+            else{
             prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
             prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
+            }
             
         }
     }
