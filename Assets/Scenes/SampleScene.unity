@@ -5619,6 +5619,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 50638dd70966c40fbb533a966668ca81, type: 2}
   - {fileID: 11400000, guid: 18fcba1be66084976867094f41fdfd0d, type: 2}
   - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
+  - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
   parentPos: {fileID: 1621938620}
   parentObject: {fileID: 1215677304}
   playerName: 
@@ -8719,6 +8720,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b5f2d922681764f25b9392f32ab28d5a, type: 2}
   - {fileID: 11400000, guid: c6b45d51d029c4b038935b235c93f4be, type: 2}
   - {fileID: 11400000, guid: 8603130ee25d945fca5fc8c7fb0ba013, type: 2}
+  terrainsLOTR:
+  - {fileID: 11400000, guid: 3ca9a969f9bda48c89f4e07ec827d99a, type: 2}
+  - {fileID: 11400000, guid: 61d1003b309864e9ba1c04ca4f464fb6, type: 2}
+  - {fileID: 11400000, guid: 369bd897ecc8b4944a06c357bb5d3e09, type: 2}
+  - {fileID: 11400000, guid: 883adf492306b463da5075b3b3fbe08e, type: 2}
   terrainHolder: {fileID: 955307681}
   currentPosition: {x: 0, y: 0, z: 0}
   startTerrains:

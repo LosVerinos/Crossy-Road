@@ -10,6 +10,7 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private List<TerrainData> terrainsNormal = new();
     [SerializeField] private List<TerrainData> terrainsStarWars = new();
     [SerializeField] private List<TerrainData> terrainsHarryPotter = new();
+    [SerializeField] private List<TerrainData> terrainsLOTR = new();
     [SerializeField] private Transform terrainHolder;
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
     private List<GameObject> _currentTerrains = new();
@@ -148,6 +149,10 @@ public class TerrainGenerator : MonoBehaviour
                 Debug.LogError("Script LightController non trouvé.");
             }
             }
+        else if(GlobalVariables.theme == "LOTR"){
+            terrainData = terrainsLOTR;
+            startTerrain = startTerrains[1];
+        }
         else{
             terrainData = terrainsNormal;
             startTerrain = startTerrains[0];

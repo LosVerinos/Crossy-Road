@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0f92c3045096f49bc1868c40c2e532, type: 3}
+  m_Name: RoadLOTR
+  m_EditorClassIdentifier: 
+  PossibleTerrain:
+  - {fileID: 5819908639339404136, guid: 3f353746c0296440c91fdc58b9702c7f, type: 3}
+  - {fileID: 5819908639339404136, guid: 314ddf1ed6b4349a68c02a88a62bcb93, type: 3}
+  maxSuccessive: 4
+  probabilityOfSpawning: 0.9

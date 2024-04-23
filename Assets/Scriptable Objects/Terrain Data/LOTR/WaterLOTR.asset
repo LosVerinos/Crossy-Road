@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0f92c3045096f49bc1868c40c2e532, type: 3}
+  m_Name: WaterLOTR
+  m_EditorClassIdentifier: 
+  PossibleTerrain:
+  - {fileID: 7719632426951286384, guid: a10ad063839d34768b175324d35e2735, type: 3}
+  - {fileID: 7719632426951286384, guid: 47a6d8f30e18641f3906eb5946bb1623, type: 3}
+  - {fileID: 7719632426951286384, guid: 6c57ddc2717214e16b8d53164cf9fb62, type: 3}
+  maxSuccessive: 3
+  probabilityOfSpawning: 0.7
