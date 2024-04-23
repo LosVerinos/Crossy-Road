@@ -31,7 +31,7 @@ public class SkinButtonManager: MonoBehaviour
             Text buttonText = newButton.GetComponentInChildren<Text>();
             if (buttonText != null)
             {
-                buttonText.text = skinData.theme; // Utiliser le thème du skinData pour le nom du bouton
+                buttonText.text = skinData.Model.name; // Utiliser le thème du skinData pour le nom du bouton
             }
 
             // Récupérer le composant d'image du bouton pour afficher l'image du skin (si disponible)

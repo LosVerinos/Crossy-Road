@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: ea9039130837549aa80a3e70d1e92b31, type: 3}
   theme: None
+  unlocked: 0
+  image: {fileID: 0}
