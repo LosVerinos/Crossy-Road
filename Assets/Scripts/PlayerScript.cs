@@ -28,9 +28,14 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int whichSkin = Random.Range(0, skinData.Count);
+        /*int whichSkin = Random.Range(0, skinData.Count);
         GameObject player = Instantiate(skinData[whichSkin].Model, parentPos);
-        GlobalVariables.theme = skinData[whichSkin].theme;
+        GlobalVariables.theme = skinData[whichSkin].theme;*/
+        GlobalVariables.skin = skinData[Random.Range(0, skinData.Count)];
+        GameObject player = Instantiate(GlobalVariables.skin.Model, parentPos);
+        GlobalVariables.theme = GlobalVariables.skin.theme;
+        
+        
         _animator = parentObject.GetComponent<Animator>();
         GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
