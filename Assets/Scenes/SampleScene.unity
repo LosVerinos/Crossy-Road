@@ -2912,7 +2912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -301, y: 791}
+  m_AnchoredPosition: {x: -301, y: 950}
   m_SizeDelta: {x: -670.8288, y: -1618.3358}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739140467
@@ -3281,16 +3281,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 840886187}
-        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
-        m_MethodName: ParamButton_click
-        m_Mode: 1
+      - m_Target: {fileID: 840886188}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Option_Click
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &836021271
@@ -5110,16 +5110,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 840886187}
-        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
-        m_MethodName: MenuFromParamButton_click
-        m_Mode: 1
+      - m_Target: {fileID: 840886188}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Menu_click
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1220220799
@@ -5718,6 +5718,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 338901345541135644, guid: bb8f229d0cb5d4f5dbbd2f4756d5e9e0, type: 3}
   panel: {fileID: 1318418430}
   skinDataList:
+  - {fileID: 11400000, guid: c03e5f1459413450799307f3fa859a70, type: 2}
   - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
   - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
   - {fileID: 11400000, guid: 8d6bc0bf949464090b6db8719fc9ff09, type: 2}
@@ -8098,7 +8099,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1598.3, y: -0.44921875}
+  m_AnchoredPosition: {x: 1605, y: -0.44921875}
   m_SizeDelta: {x: 800, y: 1734.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2035222914

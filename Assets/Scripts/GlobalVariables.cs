@@ -14,6 +14,7 @@ public class GlobalVariables : MonoBehaviour
     public static int coins = 0;
     public static PlayerScript Player { get; set; }
 
+
     void Start()
     {
         run = false;
