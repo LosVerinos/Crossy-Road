@@ -184,11 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vehicles:
-  - {fileID: 275996120478420784, guid: 5b4705cd630c441bcaed59a6377ce71a, type: 3}
-  - {fileID: 275996120478420784, guid: 81241f468534e453eadc753aabb81e26, type: 3}
-  - {fileID: 275996120478420784, guid: 4bcec0eba213f4fb6896643e327b7f0a, type: 3}
-  - {fileID: 275996120478420784, guid: 2e9aeb88b4e2c42368dcbca37e413b04, type: 3}
-  - {fileID: 275996120478420784, guid: cb64d0731daa642bbae9ca74288c4887, type: 3}
+  - {fileID: 275996120478420784, guid: a994d21b70e404a8faad9581de0ec0af, type: 3}
+  - {fileID: 275996120478420784, guid: 874bf6f2a673746548fabd174e51e26b, type: 3}
+  - {fileID: 275996120478420784, guid: 86c6453678a354201a37868cd90e39ee, type: 3}
+  - {fileID: 275996120478420784, guid: 26f3b7802769f457b8ae22acbaca1d46, type: 3}
+  - {fileID: 275996120478420784, guid: 3c1fad05852e94d6991a7c0d90e7d1a1, type: 3}
   SpawnPos: {fileID: 1487960368392179030}
   minSeparationTime: 2
   maxSeparationTime: 10
