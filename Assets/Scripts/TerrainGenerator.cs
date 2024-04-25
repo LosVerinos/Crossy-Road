@@ -16,7 +16,6 @@ public class TerrainGenerator : MonoBehaviour
     private List<GameObject> _currentTerrains = new();
     [SerializeField] private List<GameObject> startTerrains = new();
     private GameObject startTerrain;
-    public GameObject rock;
     private GameObject lastTerrain;
     public float lastTerrainX;
     private int wasLilipadsTwoRowsAgo=2;
@@ -151,7 +150,7 @@ public class TerrainGenerator : MonoBehaviour
             }
         else if(GlobalVariables.theme == "LOTR"){
             terrainData = terrainsLOTR;
-            startTerrain = startTerrains[1];
+            startTerrain = startTerrains[2];
         }
         else{
             terrainData = terrainsNormal;

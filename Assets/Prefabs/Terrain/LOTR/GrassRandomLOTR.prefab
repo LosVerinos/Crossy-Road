@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb1870922569d824395420fb3a36ed68, type: 2}
+  - {fileID: 2100000, guid: 1a97f0b1c09754e1886e535e55238160, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsToPlace:
-  - {fileID: 5918782133070423383, guid: 160e5706f19924cddaaffdaaf231bae4, type: 3}
+  - {fileID: 5918782133070423383, guid: 48b8b87d342e34088a8e10e29586529e, type: 3}
   - {fileID: 5918782133070423383, guid: 1c0e620153394411085b1eff809c9340, type: 3}
   - {fileID: 5918782133070423383, guid: d9970556eb4fb4770b4c46489efb18fb, type: 3}
   - {fileID: 5918782133070423383, guid: b7cd2a2e51c9a44b383af87c9ef51eb4, type: 3}
@@ -129,9 +129,7 @@ MonoBehaviour:
   - {fileID: 5918782133070423383, guid: 5176e767503c54e08b9195a38c67a22a, type: 3}
   numberMax: 6
   spawnPos: {fileID: 4049492038463167664}
-  obstacleLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  isRoadOrTrain: 0
 --- !u!1 &5209685284092140390
 GameObject:
   m_ObjectHideFlags: 0
