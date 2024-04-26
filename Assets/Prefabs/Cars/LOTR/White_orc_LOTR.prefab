@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: -7293147885032020665}
   - component: {fileID: -6842344706253782643}
   m_Layer: 0
-  m_Name: F40LOTR
-  m_TagString: FastCar
+  m_Name: White_orc_LOTR
+  m_TagString: MidCar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
