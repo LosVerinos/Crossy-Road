@@ -5701,6 +5701,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
   - {fileID: 11400000, guid: 9dd640caff28b4457a9ef4341c47e15e, type: 2}
   - {fileID: 11400000, guid: be34b06aade3e4b61913fd64c3dd4449, type: 2}
+  - {fileID: 11400000, guid: 737bfe22af29448cb8f0f6e2a122a142, type: 2}
   parentPos: {fileID: 1621938620}
   parentObject: {fileID: 1215677304}
   playerName: 
@@ -8812,7 +8813,6 @@ MonoBehaviour:
   - {fileID: 2897610081443693650, guid: 87c189d76c9c0418fba9e011202583c5, type: 3}
   - {fileID: 2897610081443693650, guid: 19c89b81e8c724cf09bca43b824e1f80, type: 3}
   - {fileID: 2897610081443693650, guid: 17684cd6a34514d32b1a890ec9f615b4, type: 3}
-  rock: {fileID: 5918782133070423383, guid: 6cad589dfc8b74daebe7393ac69c3bab, type: 3}
   lastTerrainX: 0
 --- !u!4 &1968209798
 Transform:
