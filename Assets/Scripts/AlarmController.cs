@@ -8,7 +8,6 @@ public class AlarmController : MonoBehaviour
 {
     public List<GameObject> Activated; // Référence à l'objet à déplacer lors du déclenchement de l'alarme
     [SerializeField] private Transform lasersSpawnPos;
-    private bool active;
     private float alarmDirection;
 
     // Méthode pour déclencher l'alarme
@@ -31,8 +30,7 @@ public class AlarmController : MonoBehaviour
         if (Activated != null)
         {
             Activated[0].transform.Translate(Vector3.down * 1f);
-            }
-        
+        }
         else
         {
             Debug.LogError("Object to move not assigned!");
@@ -60,6 +58,15 @@ public class AlarmController : MonoBehaviour
         laser.SetDirection(alarmDirection);
         laser.SetSpeed(60f);
     } 
+
+    public void TriggerVibrationsOn(){
+        Activated[0].transform.Translate(Vector3.up * 0.025f);
+    }
+    public void TriggerVibrationsOff(){
+        Activated[0].transform.Translate(Vector3.down * 0.025f);
+    }
+
+
 }
 
             

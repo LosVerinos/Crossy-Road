@@ -29,9 +29,24 @@ public class TrainSpawn : MonoBehaviour
                 if (alarmController != null){
                     alarmController.TriggerLasersOn(direction);
                     yield return new WaitForSeconds(3.1f);
-                    InstantiateVehicle();
+                    InstantiateVehicle(40f);
                     yield return new WaitForSeconds(0.5f);
                     alarmController.TriggerLasersOff();
+                }
+                else{
+                    Debug.LogError("Alarm controller not assigned!");
+                } 
+            }
+            else if(gameObject.name.EndsWith("LOTR(Clone)")){
+                if (alarmController != null){
+                    InvokeRepeating("TriggerVibrationsOn", 0f, 0.01f);
+                    InvokeRepeating("TriggerVibrationsOff", 0.005f, 0.01f);
+                    yield return new WaitForSeconds(3f);
+                    InstantiateVehicle(25f);
+                    yield return new WaitForSeconds(3.005f);
+                    CancelInvoke("TriggerVibrationsOn");
+                    CancelInvoke("TriggerVibrationsOff");
+
                 }
                 else{
                     Debug.LogError("Alarm controller not assigned!");
@@ -50,7 +65,7 @@ public class TrainSpawn : MonoBehaviour
                     yield return new WaitForSeconds(3.1f);
                     CancelInvoke("TriggerAlarmOn");
                     CancelInvoke("TurnOffAlarm");
-                    InstantiateVehicle();
+                    InstantiateVehicle(40f);
                     /*InvokeRepeating("TriggerAlarmOn", 0f, 0.2f);
                     InvokeRepeating("TurnOffAlarm", 0.1f, 0.2f);
                     yield return new WaitForSeconds(0.9f);
@@ -64,7 +79,7 @@ public class TrainSpawn : MonoBehaviour
         }
     }
 
-    private void InstantiateVehicle(){
+    private void InstantiateVehicle(float speed){
         GameObject newTrain = Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
         MovingObjectScript train = newTrain.GetComponent<MovingObjectScript>();
         if (direction < 0)
@@ -72,7 +87,8 @@ public class TrainSpawn : MonoBehaviour
             newTrain.transform.Rotate(new Vector3(0,180,0));
         }
         train.SetDirection(direction);
-        train.SetSpeed(40f);
+            train.SetSpeed(speed);
+        
     }
 
     private void TriggerAlarmOn()
@@ -83,6 +99,13 @@ public class TrainSpawn : MonoBehaviour
     private void TurnOffAlarm()
     {
         alarmController.TriggerAlarmOff();
+    }
+
+    private void TriggerVibrationsOn(){
+        alarmController.TriggerVibrationsOn();
+    }
+    private void TriggerVibrationsOff(){
+        alarmController.TriggerVibrationsOff();
     }
 
 }
