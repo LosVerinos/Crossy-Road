@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents.Sensors.Reflection;
 using UnityEngine;
 
 public class ElementsPlacement : MonoBehaviour
@@ -52,6 +53,7 @@ public class ElementsPlacement : MonoBehaviour
             else if(prefabToPlace.CompareTag("Coins") && isRoadOrTrain){
                 break;
             }
+            
             Instantiate(prefabToPlace, spawnPosition, Quaternion.identity);
         }
     }

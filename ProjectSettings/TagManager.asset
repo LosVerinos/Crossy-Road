@@ -12,6 +12,9 @@ TagManager:
   - MidCar
   - Truck
   - Coins
+  - Goal
+  - Lillypad
+  - Train
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3499363483430664108}
   m_Layer: 0
   m_Name: Useless-Train_inverted
-  m_TagString: Untagged
+  m_TagString: Train
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,8 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c343be042ebe4694918db4a459f467a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lenghtStart: {fileID: 0}
+  lenghtEnd: {fileID: 0}
+  speed: 0
   islog: 0
-  direction: -1
+  logLenght: 0
 --- !u!1001 &1598582256451999417
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.MLAgents.Sensors.Reflection;
 using UnityEngine;
 
 
 public class VehicleSpawn : MonoBehaviour
 {
+    
     [SerializeField] private List<GameObject> vehicles;
     [SerializeField] private Transform SpawnPos;
     [SerializeField] private float minSeparationTime;
@@ -15,6 +17,7 @@ public class VehicleSpawn : MonoBehaviour
     private float thirdPart;
     private float speed;
     private float timeToWait;
+    
 
     // Start is called before the first frame update
     private void Start()

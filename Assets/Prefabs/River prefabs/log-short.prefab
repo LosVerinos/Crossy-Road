@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 5869551692042203754}
   m_Layer: 0
   m_Name: log-short
-  m_TagString: Untagged
+  m_TagString: Log
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lenghtStart: {fileID: 997303331062977176}
   lenghtEnd: {fileID: 8399963030072695509}
+  speed: 0
   islog: 1
   logLenght: 0
 --- !u!65 &5869551692042203754

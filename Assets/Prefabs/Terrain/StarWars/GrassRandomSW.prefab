@@ -331,6 +331,7 @@ MonoBehaviour:
   - {fileID: 5918782133070423383, guid: 9a20028d77a9d477a8b0ddefa3f6ea96, type: 3}
   numberMax: 6
   spawnPos: {fileID: 4049492038463167664}
+  isRoadOrTrain: 0
 --- !u!1 &5209685284092140390
 GameObject:
   m_ObjectHideFlags: 0
