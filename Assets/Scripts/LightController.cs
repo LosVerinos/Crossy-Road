@@ -13,7 +13,7 @@ public class LightController : MonoBehaviour
 
         if (lightComponent == null)
         {
-            Debug.LogError("Aucun composant de lumière trouvé sur cet objet.");
+            Debug.LogError("Composant de lumière non trouvé.");
         }
     }
 
