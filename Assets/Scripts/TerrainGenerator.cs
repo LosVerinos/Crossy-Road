@@ -9,12 +9,13 @@ public class TerrainGenerator : MonoBehaviour
     private List<TerrainData> terrainData = new();
     [SerializeField] private List<TerrainData> terrainsNormal = new();
     [SerializeField] private List<TerrainData> terrainsStarWars = new();
+    [SerializeField] private List<TerrainData> terrainsHarryPotter = new();
+    [SerializeField] private List<TerrainData> terrainsLOTR = new();
     [SerializeField] private Transform terrainHolder;
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
     private List<GameObject> _currentTerrains = new();
     [SerializeField] private List<GameObject> startTerrains = new();
     private GameObject startTerrain;
-    public GameObject rock;
     private GameObject lastTerrain;
     public float lastTerrainX;
     private int wasLilipadsTwoRowsAgo=2;
@@ -50,7 +51,6 @@ public class TerrainGenerator : MonoBehaviour
             }while(terrainData[wichTerrain].probabilityOfSpawning < Random.Range(0f,1.0f));
 
             successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
-            Debug.Log(currentPosition.x + " : "+ terrainData[wichTerrain].name +  " (" + successive +")");
 
             for (int i=0; i < successive; i++)
             {
@@ -67,7 +67,7 @@ public class TerrainGenerator : MonoBehaviour
                         wasLilipadsTwoRowsAgo++;
                     }
 
-                    if(GlobalVariables.isStarWars && currentPosition.x > 6){
+                    if(GlobalVariables.theme == "StarWars" && currentPosition.x > 6){
                             Transform southCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("cliff-South.vox");
                             southCliff.gameObject.SetActive(true);
                             
@@ -79,17 +79,17 @@ public class TerrainGenerator : MonoBehaviour
                 }
                 else{
                     whichOne = Random.Range(0, terrainData[wichTerrain].PossibleTerrain.Count);
-                    if(GlobalVariables.isStarWars && currentPosition.x > 6){
+                    if(GlobalVariables.theme == "StarWars" && currentPosition.x > 6){
                         Transform northCliff = terrainData[wichTerrain].PossibleTerrain[whichOne].transform.Find("Cliff");
-                                if(northCliff != null){
-                                    northCliff.gameObject.SetActive(false);
-                                    if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads")){
-                                        if (northCliff != null)
-                                        {
-                                            northCliff.gameObject.SetActive(true);
-                                        }
+                            if(northCliff != null){
+                                northCliff.gameObject.SetActive(false);
+                                if(lastTerrain.transform.name.StartsWith("Water") || lastTerrain.transform.name.StartsWith("Lilipads")){
+                                    if (northCliff != null)
+                                    {
+                                        northCliff.gameObject.SetActive(true);
                                     }
                                 }
+                            }
                     }
                     wasLilipadsTwoRowsAgo++;
                 }
@@ -127,10 +127,29 @@ public class TerrainGenerator : MonoBehaviour
     }
 
     private void ThemeDetermination(){
-        if(GlobalVariables.isStarWars){
+        if(GlobalVariables.theme == "StarWars"){
             terrainData = terrainsStarWars;
             startTerrain = startTerrains[1];
 
+        }
+        else if(GlobalVariables.theme == "HarryPotter"){
+            terrainData = terrainsHarryPotter;
+            startTerrain = startTerrains[0];
+            LightController lightController = FindObjectOfType<LightController>();
+
+            if (lightController != null)
+            {
+                // Appelle ChangeLightIntensity avec une intensité de 2.0
+                lightController.ChangeLightIntensity(0f);
+            }
+            else
+            {
+                Debug.LogError("Script LightController non trouvé.");
+            }
+            }
+        else if(GlobalVariables.theme == "LOTR"){
+            terrainData = terrainsLOTR;
+            startTerrain = startTerrains[2];
         }
         else{
             terrainData = terrainsNormal;

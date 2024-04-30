@@ -691,6 +691,7 @@ MonoBehaviour:
   - {fileID: 5918782133070423383, guid: 6cad589dfc8b74daebe7393ac69c3bab, type: 3}
   numberMax: 4
   spawnPos: {fileID: 474365945843550481}
+  isRoadOrTrain: 0
 --- !u!1 &7852693945374315793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d1f897512694d433a868d344a1c52e8e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: d1f897512694d433a868d344a1c52e8e, type: 3}
       propertyPath: m_LocalScale.x
