@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7770091790964735998}
   - component: {fileID: -3130790392244583160}
   - component: {fileID: 711455238810130024}
+  - component: {fileID: 4721647905732908981}
   m_Layer: 0
   m_Name: Orc_LOTR
   m_TagString: LittleCar
@@ -136,6 +137,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42877ab4f759c748b795243b016fc56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4721647905732908981
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275996120478420784}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 252cb4735b1bc433e8ef987513605588, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &4057682757899898046
 PrefabInstance:
   m_ObjectHideFlags: 0
