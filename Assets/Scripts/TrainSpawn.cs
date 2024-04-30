@@ -39,11 +39,11 @@ public class TrainSpawn : MonoBehaviour
             }
             else if(gameObject.name.EndsWith("LOTR(Clone)")){
                 if (alarmController != null){
-                    InvokeRepeating("TriggerVibrationsOn", 0f, 0.01f);
-                    InvokeRepeating("TriggerVibrationsOff", 0.005f, 0.01f);
+                    InvokeRepeating("TriggerVibrationsOn", 0f, 0.05f);
+                    InvokeRepeating("TriggerVibrationsOff", 0.025f, 0.05f);
                     yield return new WaitForSeconds(3f);
                     InstantiateVehicle(25f);
-                    yield return new WaitForSeconds(3.005f);
+                    yield return new WaitForSeconds(3.075f);
                     CancelInvoke("TriggerVibrationsOn");
                     CancelInvoke("TriggerVibrationsOff");
 

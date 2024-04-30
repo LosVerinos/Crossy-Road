@@ -60,10 +60,10 @@ public class AlarmController : MonoBehaviour
     } 
 
     public void TriggerVibrationsOn(){
-        Activated[0].transform.Translate(Vector3.up * 0.025f);
+        Activated[0].transform.Translate(Vector3.up * 0.05f);
     }
     public void TriggerVibrationsOff(){
-        Activated[0].transform.Translate(Vector3.down * 0.025f);
+        Activated[0].transform.Translate(Vector3.down * 0.05f);
     }
 
 
