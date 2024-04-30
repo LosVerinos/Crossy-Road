@@ -10,12 +10,12 @@ public class TerrainGenerator : MonoBehaviour
     [SerializeField] private List<TerrainData> terrainsNormal = new();
     [SerializeField] private List<TerrainData> terrainsStarWars = new();
     [SerializeField] private List<TerrainData> terrainsHarryPotter = new();
+    [SerializeField] private List<TerrainData> terrainsLOTR = new();
     [SerializeField] private Transform terrainHolder;
     [HideInInspector] public Vector3 currentPosition = new(0, 0, 0);
     private List<GameObject> _currentTerrains = new();
     [SerializeField] private List<GameObject> startTerrains = new();
     private GameObject startTerrain;
-    public GameObject rock;
     private GameObject lastTerrain;
     public float lastTerrainX;
     private int wasLilipadsTwoRowsAgo=2;
@@ -51,7 +51,6 @@ public class TerrainGenerator : MonoBehaviour
             }while(terrainData[wichTerrain].probabilityOfSpawning < Random.Range(0f,1.0f));
 
             successive = Random.Range(1, terrainData[wichTerrain].maxSuccessive);
-            //Debug.Log(currentPosition.x + " : "+ terrainData[wichTerrain].name +  " (" + successive +")");
 
             for (int i=0; i < successive; i++)
             {
@@ -135,7 +134,22 @@ public class TerrainGenerator : MonoBehaviour
         }
         else if(GlobalVariables.theme == "HarryPotter"){
             terrainData = terrainsHarryPotter;
-            startTerrain = startTerrains[1];
+            startTerrain = startTerrains[0];
+            LightController lightController = FindObjectOfType<LightController>();
+
+            if (lightController != null)
+            {
+                // Appelle ChangeLightIntensity avec une intensité de 2.0
+                lightController.ChangeLightIntensity(0f);
+            }
+            else
+            {
+                Debug.LogError("Script LightController non trouvé.");
+            }
+            }
+        else if(GlobalVariables.theme == "LOTR"){
+            terrainData = terrainsLOTR;
+            startTerrain = startTerrains[2];
         }
         else{
             terrainData = terrainsNormal;

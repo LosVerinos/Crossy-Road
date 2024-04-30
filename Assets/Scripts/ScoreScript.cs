@@ -65,7 +65,6 @@ public class ScoreScript : MonoBehaviour
         foreach (var line in lines)
         {
             string[] parts = line.Split(':');
-            Debug.Log(parts[0] + " " + parts[1]);
             scores.Add(new Tuple<string, int>(parts[0], int.Parse(parts[1])));
         }
         
