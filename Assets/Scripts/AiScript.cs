@@ -1,22 +1,16 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Sensors;
-using Unity.VisualScripting;
-using UnityEngine.SocialPlatforms;
 
 
 public class AiScript : Agent
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
     [SerializeField]
-    private int goalScore = 15;
+    private int goalScore = 30;
     private int _scoreBuffer = 0;
     private int score = 0;
+    private bool isOnLog = false;
     public override void OnEpisodeBegin()
     {
         transform.localPosition = new Vector3(0, 1.03f, 0);
@@ -26,19 +20,22 @@ public class AiScript : Agent
     {
         if (actions.DiscreteActions[0] == 1)
         {
-            Debug.Log("Move Forward");
+            if (isOnLog){
+                AddReward(+1f);
+            }
+            AddReward(+0.3f);
             MovePlayer(Vector3.forward);
             _scoreBuffer++;
             if (_scoreBuffer > 0)
             {
                 score++;
                 _scoreBuffer = 0;
-                AddReward(0.5f);
+                AddReward(0.4f);
                 EndEpisode();
             }
             if (score == goalScore)
             {
-                AddReward(1f);
+                AddReward(0.9f);
                 goalScore += 5;
             }
         }
@@ -47,7 +44,7 @@ public class AiScript : Agent
             Debug.Log("Move Backward");
             MovePlayer(Vector3.back);
             _scoreBuffer--;
-            AddReward(-0.333f);
+            AddReward(-0.2f);
         }
         else if (actions.DiscreteActions[0] == 3)
         {
@@ -90,7 +87,6 @@ public class AiScript : Agent
 
     private void MovePlayer(Vector3 diff)
     {
-        
         Vector3 newPosition = transform.localPosition + diff;
         
         Collider[] colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
@@ -99,7 +95,7 @@ public class AiScript : Agent
             if (collider.CompareTag("Obstacle"))
             {
                 
-                AddReward(-0.5f);
+                AddReward(-0.2f);
                 return;
             }
         }
@@ -127,7 +123,8 @@ public class AiScript : Agent
             if (collision.collider.GetComponent<MovingObjectScript>().islog)
             {
                 transform.parent = collision.collider.transform;
-                AddReward(0.1f);
+                AddReward(+0.2f);
+                isOnLog = true;
             }
             
         }
