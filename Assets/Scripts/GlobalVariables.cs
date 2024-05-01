@@ -14,6 +14,7 @@ public class GlobalVariables : MonoBehaviour
 
     void Start()
     {
+
         run = false;
 
         PlayerPrefs.SetInt("Coins", coins);

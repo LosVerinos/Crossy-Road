@@ -19,23 +19,33 @@ public class TerrainGenerator : MonoBehaviour
     private GameObject lastTerrain;
     public float lastTerrainX;
     private int wasLilipadsTwoRowsAgo=2;
+    public bool isStart;
+
     private void Start()
     {
-        ThemeDetermination();
-        SpawnInitialTerrain();
-        
-        for (var i=0; i< maxTerrainCount; i++){
-            SpawnTerrain(true, new Vector3(0,0,0));
+        if (isStart)
+        {
+            ThemeDetermination();
+            SpawnInitialTerrain();
+
+            for (var i = 0; i < maxTerrainCount; i++)
+            {
+                SpawnTerrain(true, new Vector3(0, 0, 0));
+            }
         }
     }
 
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (isStart)
         {
-            SpawnTerrain(false, new Vector3(0,0,0));
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                SpawnTerrain(false, new Vector3(0, 0, 0));
+            }
         }
+        
     }
 
     public void SpawnTerrain(bool isStart, Vector3 playerPos)
@@ -128,11 +138,13 @@ public class TerrainGenerator : MonoBehaviour
 
     private void ThemeDetermination(){
         if(GlobalVariables.theme == "StarWars"){
+            Debug.Log("terrain determined is StarWars");
             terrainData = terrainsStarWars;
             startTerrain = startTerrains[1];
 
         }
         else if(GlobalVariables.theme == "HarryPotter"){
+            Debug.Log("terrain determined is HarryPotter");
             terrainData = terrainsHarryPotter;
             startTerrain = startTerrains[0];
             LightController lightController = FindObjectOfType<LightController>();
@@ -148,15 +160,18 @@ public class TerrainGenerator : MonoBehaviour
             }
             }
         else if(GlobalVariables.theme == "LOTR"){
+            Debug.Log("terrain determined is LOTR");
             terrainData = terrainsLOTR;
             startTerrain = startTerrains[2];
         }
         else{
+            Debug.Log("terrain determined is natural");
             terrainData = terrainsNormal;
             startTerrain = startTerrains[0];
 
         }
     }
+
 }
 
 

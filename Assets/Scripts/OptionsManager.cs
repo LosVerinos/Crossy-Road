@@ -10,9 +10,6 @@ public class OptionsManager : MonoBehaviour
     public Slider sld;
     public Text txtVolume;
 
-
-
-
     // Start is called before the first frame update
     private void Start()
     {

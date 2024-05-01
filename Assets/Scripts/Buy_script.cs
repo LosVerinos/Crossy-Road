@@ -12,7 +12,7 @@ public class Buy_script : MonoBehaviour
     public void buy_click()
     {
 
-        if (PlayerPrefs.GetInt("Coins") >= 100)
+        if (PlayerPrefs.GetInt("Coins") >= 1)
         {
             PlayAnimation("Buy_button");
 

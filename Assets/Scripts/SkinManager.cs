@@ -73,6 +73,7 @@ public class SkinButtonManager : MonoBehaviour
     void SelectSkin(SkinData skinData)
     {
         Debug.Log("Skin selected: " + skinData.theme);
+        GlobalVariables.skin = skinData;
         GlobalVariables.theme = skinData.theme;
     }
 }
