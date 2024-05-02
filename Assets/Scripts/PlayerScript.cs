@@ -22,7 +22,8 @@ public class PlayerScript : MonoBehaviour
     private byte _backwardsCount = 0;
     private char lastInput = 'W';
     private bool soundIsPlayed = false;
-    
+    private float timeWithoutScoreIncrease = 0f;
+    private const float maxTimeWithoutScore = 10f;
 
     
     // Start is called before the first frame update
@@ -63,6 +64,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (_isHopping || !GlobalVariables.run)
         {
             return;
@@ -97,6 +99,7 @@ public class PlayerScript : MonoBehaviour
             if (_scoreBuffer > 0)
             {
                 ScoreScript.Instance.UpdateScore();
+                timeWithoutScoreIncrease = 0f;
                 _scoreBuffer = 0;
             }
 
@@ -129,6 +132,7 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
+            _backwardsCount++;
             lastInput = 'S';
         }
         else if (Input.GetKeyDown(KeyCode.A))
@@ -197,6 +201,14 @@ public class PlayerScript : MonoBehaviour
         {
             KillPlayer();
             //TODO: display the game ended message @Reaub1
+        }
+
+        if (ScoreScript.Instance.isCounting){
+            timeWithoutScoreIncrease += Time.deltaTime; 
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore)
+            {
+                KillPlayer();
+            }
         }
     }
 

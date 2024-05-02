@@ -8,9 +8,9 @@ using Object = System.Object;
 public class ScoreScript : MonoBehaviour
 {
     private static ScoreScript _instance;
-
     public static ScoreScript Instance => _instance;
     private int score;
+    public bool isCounting = false;
     
     private void Awake()
     {
@@ -27,6 +27,7 @@ public class ScoreScript : MonoBehaviour
     public void UpdateScore()
     {
         score++;
+        isCounting = true;
     }
     
     public int GetScore()
