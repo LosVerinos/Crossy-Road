@@ -172,6 +172,29 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
+    public void STP()
+    {
+        ThemeDetermination();
+
+        // Supprimer tous les terrains existants
+        foreach (GameObject terrain in _currentTerrains)
+        {
+            Destroy(terrain);
+        }
+        _currentTerrains.Clear();
+
+        // Réinitialiser la position actuelle du terrain
+        currentPosition = new Vector3(0, 0, 0);
+
+        // Régénérer le terrain initial
+        SpawnInitialTerrain();
+
+        // Régénérer les terrains supplémentaires
+        for (int i = 0; i < maxTerrainCount; i++)
+        {
+            SpawnTerrain(true, new Vector3(0, 0, 0));
+        }
+    }
 }
 
 
