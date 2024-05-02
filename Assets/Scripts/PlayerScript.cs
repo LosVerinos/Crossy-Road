@@ -23,7 +23,7 @@ public class PlayerScript : MonoBehaviour
     private char lastInput = 'W';
     private bool soundIsPlayed = false;
     private float timeWithoutScoreIncrease = 0f;
-    private const float maxTimeWithoutScore = 10f;
+    private const float maxTimeWithoutScore = 8f;
 
     
     // Start is called before the first frame update
