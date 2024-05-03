@@ -24,9 +24,6 @@ public class LogSpawnScript : MonoBehaviour
 
     private void Update(){
         minSeparationTime = (0.2f + logLenght)/speed;
-        if(minSeparationTime < 0f){
-            Debug.Log(minSeparationTime + "     ALERT minSeparationTime");
-        }
     }
 
     private IEnumerator SpawnLog()
@@ -35,7 +32,7 @@ public class LogSpawnScript : MonoBehaviour
         {
             float timeToWait = Random.Range(minSeparationTime, maxSeparationTime);
             if(timeToWait < logLenght/speed){
-                Debug.Log(timeToWait + "     ALERT");
+                Debug.Log(timeToWait + "     ALERT LOG");
             }
             yield return new WaitForSeconds(timeToWait);
             
