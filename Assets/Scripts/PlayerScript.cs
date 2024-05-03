@@ -18,6 +18,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private List<SkinData> skinData = new();
     [SerializeField] private Transform parentPos;
     [SerializeField] private Transform parentObject;
+    [SerializeField] private Transform Eagle;
+
     public string playerName;
     private byte _backwardsCount = 0;
     private char lastInput = 'W';
@@ -199,6 +201,9 @@ public class PlayerScript : MonoBehaviour
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
         if (_backwardsCount >= 3)
         {
+            EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+            eagleScript.CatchPlayer();
+
             KillPlayer();
             //TODO: display the game ended message @Reaub1
         }
@@ -207,6 +212,9 @@ public class PlayerScript : MonoBehaviour
             timeWithoutScoreIncrease += Time.deltaTime; 
             if (timeWithoutScoreIncrease >= maxTimeWithoutScore)
             {
+                EagleScript eagleScript = Eagle.GetComponent<EagleScript>();
+                eagleScript.CatchPlayer();
+
                 KillPlayer();
             }
         }
@@ -258,4 +266,6 @@ public class PlayerScript : MonoBehaviour
     {
         return transform.position;
     }
+
+
 }
