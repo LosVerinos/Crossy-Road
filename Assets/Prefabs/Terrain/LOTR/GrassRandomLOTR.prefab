@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 5918782133070423383, guid: e648824f16a264c5ba9b4e211a919af2, type: 3}
   - {fileID: 5918782133070423383, guid: 3ca943c5185a841dd93c62bbede93e73, type: 3}
   - {fileID: 5918782133070423383, guid: 5176e767503c54e08b9195a38c67a22a, type: 3}
-  numberMax: 6
+  numberMax: 7
   spawnPos: {fileID: 4049492038463167664}
   isRoadOrTrain: 0
 --- !u!1 &5209685284092140390

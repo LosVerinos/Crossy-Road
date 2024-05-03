@@ -765,9 +765,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsToPlace:
   - {fileID: 5918782133070423383, guid: 6cad589dfc8b74daebe7393ac69c3bab, type: 3}
-  numberMax: 4
+  numberMax: 5
   spawnPos: {fileID: 474365945843550481}
   isRoadOrTrain: 0
+  isLilypads: 1
 --- !u!1 &7852693945374315793
 GameObject:
   m_ObjectHideFlags: 0

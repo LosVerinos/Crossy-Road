@@ -36,9 +36,9 @@ public class StartTerrainScript : MonoBehaviour
                     Instantiate(x, z);
                 }
             }
-
-            
         }
+        Instantiate(6, 10);
+        Instantiate(6, 10);
     }
 
     private void Instantiate(int x, int z){

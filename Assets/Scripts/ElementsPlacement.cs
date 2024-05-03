@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.Compression;
 using UnityEngine;
 
 public class ElementsPlacement : MonoBehaviour
@@ -11,7 +12,13 @@ public class ElementsPlacement : MonoBehaviour
     private List<int> takenPlaces = new();
     private int[] angles = { 0, 90, -90, 180 };
     [SerializeField] bool isRoadOrTrain;
+    [SerializeField] bool isLilypads;
     private float probaOfCoinSpawn = 1.5f;
+    private Vector3 spawnPosition;
+    private int positionZ;
+    private int randomPrefabIndex;
+    private GameObject prefabToPlace;
+    private int randomAngleIndex;
 
     private void Start()
     {
@@ -20,6 +27,7 @@ public class ElementsPlacement : MonoBehaviour
         if(isRoadOrTrain){
             probaOfCoinSpawn = 0.4f;
         }
+
         //Debug.Log(probaOfCoinSpawn);
         PlacePrefabs();
     }
@@ -28,20 +36,16 @@ public class ElementsPlacement : MonoBehaviour
     {
         for (int i = 0; i < numberToPlace; i++)
         {
-            int positionZ;
-            int randomPrefabIndex;
-            GameObject prefabToPlace;
-
-            do
-            {
-                positionZ = Mathf.RoundToInt(Random.Range(-5f, 5f));
+            do{
+                positionZ = Mathf.RoundToInt(Random.Range(-9f, 9f));
             } while (positionZ == 0 || IsPositionOccupied(positionZ));
+
             takenPlaces.Add(positionZ);
-            Vector3 spawnPosition = new Vector3(spawnPos.position.x, spawnPos.position.y, positionZ);
+            spawnPosition = new Vector3(spawnPos.position.x, spawnPos.position.y, positionZ);
 
             randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
 
-            int randomAngleIndex = Random.Range(0, angles.Length);
+            randomAngleIndex = Random.Range(0, angles.Length);
             
             //Debug.Log(prefabToPlace.CompareTag("Coins"));
             if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain && Random.Range(0f, 1f) < probaOfCoinSpawn){
@@ -55,6 +59,18 @@ public class ElementsPlacement : MonoBehaviour
             prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
             }
             
+        }
+
+        if(!isRoadOrTrain && !isLilypads){
+            for(int z = 10; z < 20; z++){
+                spawnPosition.z = z;
+                randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
+                randomAngleIndex = Random.Range(0, angles.Length);
+                prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
+                prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
+                spawnPosition.z = -z;
+                prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
+            }
         }
     }
 
