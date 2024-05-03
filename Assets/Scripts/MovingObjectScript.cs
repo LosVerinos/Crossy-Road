@@ -17,7 +17,7 @@ public class MovingObjectScript : MonoBehaviour
         terrainGenerator = FindObjectOfType<TerrainGenerator>();
         if(islog)
         {
-            logLenght = lenghtEnd.position.z - lenghtStart.position.z;
+            logLenght = direction * (lenghtEnd.position.z - lenghtStart.position.z);
         }
     }
 

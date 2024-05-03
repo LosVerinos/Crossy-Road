@@ -8,8 +8,8 @@ public class LogSpawnScript : MonoBehaviour
 {
     [SerializeField] private List<GameObject> logs;
     [SerializeField] private Transform SpawnPos;
-    [SerializeField] private float minSeparationTime;
-    [SerializeField] private float maxSeparationTime;
+    private float minSeparationTime = 0.25f;
+    private float maxSeparationTime = 1.5f;
     [SerializeField] private float direction;
     private float speed;
     private float logLenght;
@@ -23,15 +23,21 @@ public class LogSpawnScript : MonoBehaviour
     }
 
     private void Update(){
-        minSeparationTime = (0.5f + logLenght)/speed;
+        minSeparationTime = (0.2f + logLenght)/speed;
+        if(minSeparationTime < 0f){
+            Debug.Log(minSeparationTime + "     ALERT minSeparationTime");
+        }
     }
 
     private IEnumerator SpawnLog()
     {
         while (true)
         {
-            
-            yield return new WaitForSeconds(Random.Range(minSeparationTime, maxSeparationTime));
+            float timeToWait = Random.Range(minSeparationTime, maxSeparationTime);
+            if(timeToWait < logLenght/speed){
+                Debug.Log(timeToWait + "     ALERT");
+            }
+            yield return new WaitForSeconds(timeToWait);
             
             int randomIndex = Random.Range(0, logs.Count);
             GameObject selectedLog = logs[randomIndex];
@@ -39,6 +45,7 @@ public class LogSpawnScript : MonoBehaviour
             GameObject newLog = Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
             MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
             logLenght = log.logLenght;
+
             if (direction < 0)
             {
                 newLog.transform.Rotate(new Vector3(0,180,0));
