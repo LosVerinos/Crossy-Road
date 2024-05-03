@@ -1004,7 +1004,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1968209797}
         m_TargetAssemblyTypeName: TerrainGenerator, Assembly-CSharp
-        m_MethodName: STP
+        m_MethodName: destroyAll
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5901,7 +5901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9e66b867fb84f439205aee343aecdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 5049112069634579342, guid: 5842911072ca3445abe7e607c71e6fee, type: 3}
+  buttonPrefab: {fileID: 9007759493961035155, guid: edb05ef07d2a647fab29d10081155dd0, type: 3}
   panel: {fileID: 1318418430}
   skinDataList:
   - {fileID: 11400000, guid: c03e5f1459413450799307f3fa859a70, type: 2}
@@ -6511,7 +6511,6 @@ GameObject:
   - component: {fileID: 1610258699}
   - component: {fileID: 1610258698}
   - component: {fileID: 1610258697}
-  - component: {fileID: 1610258700}
   m_Layer: 5
   m_Name: IdentityButton
   m_TagString: Untagged
@@ -6633,33 +6632,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610258694}
   m_CullTransparentMesh: 1
---- !u!114 &1610258700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1610258694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f9e66b867fb84f439205aee343aecdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 9007759493961035155, guid: edb05ef07d2a647fab29d10081155dd0, type: 3}
-  panel: {fileID: 1318418430}
-  skinDataList:
-  - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
-  - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
-  - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
-  - {fileID: 11400000, guid: 8d6bc0bf949464090b6db8719fc9ff09, type: 2}
-  - {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
-  - {fileID: 11400000, guid: 50638dd70966c40fbb533a966668ca81, type: 2}
-  - {fileID: 11400000, guid: 9dd640caff28b4457a9ef4341c47e15e, type: 2}
-  - {fileID: 11400000, guid: be34b06aade3e4b61913fd64c3dd4449, type: 2}
-  - {fileID: 11400000, guid: 508fa7a7636724dff8278e6b011a103f, type: 2}
-  buttonSpacing: 1
-  buttonSize: 300
-  maxButtonsPerColumn: 5
 --- !u!1 &1615417756 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7436308746237723329, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}

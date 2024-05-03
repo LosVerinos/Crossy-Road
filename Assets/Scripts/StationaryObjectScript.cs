@@ -13,6 +13,12 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Update()
     {
+        if (GlobalVariables.reload)
+        {
+            Destroy(gameObject);
+        }
+
+
         if(terrainGenerator.lastTerrainX > 5 && terrainGenerator.lastTerrainX >= transform.position.x){
             Destroy(gameObject);
         }

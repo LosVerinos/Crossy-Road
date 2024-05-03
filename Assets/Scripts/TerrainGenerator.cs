@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class TerrainGenerator : MonoBehaviour
@@ -23,6 +24,10 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Start()
     {
+
+        PlayerPrefs.SetInt("Coins", 1000);
+        PlayerPrefs.Save();
+
         if (isStart)
         {
             ThemeDetermination();
@@ -113,6 +118,8 @@ public class TerrainGenerator : MonoBehaviour
                         if (_currentTerrains.Count > maxTerrainCount)
                         {
                             lastTerrainX = _currentTerrains[0].transform.position.x;
+                            Debug.Log("real delete : " + _currentTerrains[0]);
+                            
                             Destroy(_currentTerrains[0]);
                             _currentTerrains.RemoveAt(0);
                         }
@@ -172,28 +179,42 @@ public class TerrainGenerator : MonoBehaviour
         }
     }
 
-    public void STP()
-    {
-        ThemeDetermination();
 
-        // Supprimer tous les terrains existants
-        foreach (GameObject terrain in _currentTerrains)
+    public void destroyAll()
+    {
+        GlobalVariables.reload = true;
+
+        foreach(GameObject terrain in _currentTerrains)
         {
             Destroy(terrain);
         }
+
         _currentTerrains.Clear();
 
-        // Réinitialiser la position actuelle du terrain
-        currentPosition = new Vector3(0, 0, 0);
+        Invoke("NoReload",0.02f);
 
-        // Régénérer le terrain initial
+        Invoke("Reloadterrain",0.03f);
+
+    }
+
+    void NoReload()
+    {
+        GlobalVariables.reload = false;
+    }
+
+    private void Reloadterrain()
+    {
+        ThemeDetermination();
+
+        currentPosition = Vector3.zero;
+
         SpawnInitialTerrain();
 
-        // Régénérer les terrains supplémentaires
         for (int i = 0; i < maxTerrainCount; i++)
         {
-            SpawnTerrain(true, new Vector3(0, 0, 0));
+            SpawnTerrain(true, Vector3.zero);
         }
+
     }
 }
 
