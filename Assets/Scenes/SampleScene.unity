@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.4964124, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3452,6 +3452,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1215677302}
+  isCatching: 0
 --- !u!95 &743029738
 Animator:
   serializedVersion: 5
@@ -6443,6 +6444,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1325893885}
   - component: {fileID: 1325893886}
+  - component: {fileID: 1325893887}
+  - component: {fileID: 1325893888}
   m_Layer: 0
   m_Name: Eagle
   m_TagString: Untagged
@@ -6481,6 +6484,41 @@ MonoBehaviour:
   player: {fileID: 1215677302}
   smoothSpeed: 1
   offset: {x: 0, y: 0, z: 0}
+--- !u!95 &1325893887
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325893884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fed41b314cf9e471d97be048e63f0f4f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1325893888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325893884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df601d6d0970f4aa5b73a8015525c3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4952635}
+  isCatching: 0
 --- !u!1 &1328561427
 GameObject:
   m_ObjectHideFlags: 0
@@ -9218,6 +9256,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: Eagle
+      value: 
+      objectReference: {fileID: 1325893885}
     - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
       propertyPath: m_Enabled
       value: 0
