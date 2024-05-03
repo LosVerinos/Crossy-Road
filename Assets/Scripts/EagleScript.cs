@@ -5,7 +5,7 @@ using UnityEngine;
 public class EagleScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
-    
+    [SerializeField] GameObject eaglePrebaf;
     private Animator _animator;
     private static readonly int Catch = Animator.StringToHash("catch");
     public bool isCatching = false;
@@ -24,12 +24,12 @@ public class EagleScript : MonoBehaviour
     }
     
     public void GrabPlayer(){
-        player.transform.position = transform.position;
-        player.transform.parent = transform;
+        player.transform.position = eaglePrebaf.transform.position;
+        player.transform.parent = eaglePrebaf.transform;
     }
     
     public void EndCatch(){
-        isCatching = false;
         player.GetComponent<PlayerScript>().KillPlayer();
+        isCatching = false;
     }
 }
