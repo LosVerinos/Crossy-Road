@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EagleScript : MonoBehaviour
 {
-    [SerializeField] readonly GameObject player;
+    [SerializeField] GameObject player;
     private Animator _animator;
     private readonly static int Catch = Animator.StringToHash("catch");
     // Start is called before the first frame update
@@ -13,9 +13,9 @@ public class EagleScript : MonoBehaviour
          _animator = GetComponent<Animator>();
     }
 
-    public IEnumerable CatchPlayer(){
+    public void CatchPlayer(){
         _animator.Play(Catch);
-        yield return new WaitForSeconds(5f);
+        //yield return new WaitForSeconds(5f);
         player.GetComponent<PlayerScript>().KillPlayer();
 
     }

@@ -199,23 +199,20 @@ public class PlayerScript : MonoBehaviour
 
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
-        if (_backwardsCount >= 3)
-        {
+        if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
 
-            KillPlayer();
+            //KillPlayer();
             //TODO: display the game ended message @Reaub1
         }
 
         if (ScoreScript.Instance.isCounting){
             timeWithoutScoreIncrease += Time.deltaTime; 
-            if (timeWithoutScoreIncrease >= maxTimeWithoutScore)
-            {
-                EagleScript eagleScript = Eagle.GetComponent<EagleScript>();
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
+                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
                 eagleScript.CatchPlayer();
-
-                KillPlayer();
+                //KillPlayer();
             }
         }
     }
