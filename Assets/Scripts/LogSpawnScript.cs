@@ -31,13 +31,15 @@ public class LogSpawnScript : MonoBehaviour
 
     private IEnumerator SpawnLog()
     {
+        int logNumber=0;
         while (true)
         {
+            
             randomIndex = Random.Range(0, logs.Count);
             selectedLog = logs[randomIndex];
-
-            yield return new WaitForSeconds(DetermineTimeToWait());
-        
+            if(logNumber != 0){
+                yield return new WaitForSeconds(DetermineTimeToWait());
+            }
             GameObject newLog = Instantiate(selectedLog, SpawnPos.position, Quaternion.identity);
             MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
 
@@ -50,7 +52,7 @@ public class LogSpawnScript : MonoBehaviour
             minSeparationTime = (0.2f+logLenght)/speed;
             maxSeparationTime = minSeparationTime + 2f;
             log.SetSpeed(speed);
-            
+            logNumber++;
         }
         
     }
@@ -63,6 +65,9 @@ public class LogSpawnScript : MonoBehaviour
         
             GameObject newLog = Instantiate(selectedLog, new Vector3(SpawnPos.position.x, SpawnPos.position.y, LogsZ), Quaternion.identity);
             MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
+
+            logLenght =  log.lenghtEnd.position.z - log.lenghtStart.position.z;
+
             if (direction < 0)
             {
                 newLog.transform.Rotate(new Vector3(0,180,0));
@@ -71,7 +76,12 @@ public class LogSpawnScript : MonoBehaviour
             log.SetSpeed(speed);
 
             LogsZ -= speed*Random.Range(minSeparationTime, maxSeparationTime) + maxLogLenght;
+            
         }
+        
+        minSeparationTime = (0.2f+logLenght)/speed;
+        maxSeparationTime = minSeparationTime + 2f;
+        lastLogLenght = logLenght;
     }
 
     private float DetermineTimeToWait(){
