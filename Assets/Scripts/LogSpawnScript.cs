@@ -9,7 +9,7 @@ public class LogSpawnScript : MonoBehaviour
     [SerializeField] private List<GameObject> logs;
     [SerializeField] private Transform SpawnPos;
     private float minSeparationTime = 0.25f;
-    private float maxSeparationTime = 1.5f;
+    private float maxSeparationTime = 2.25f;
     [SerializeField] private float direction;
     private float speed;
     private float logLenght;
@@ -48,7 +48,7 @@ public class LogSpawnScript : MonoBehaviour
             log.SetDirection(direction);
 
             minSeparationTime = (0.2f+logLenght)/speed;
-            maxSeparationTime = minSeparationTime + 1.25f;
+            maxSeparationTime = minSeparationTime + 2f;
             log.SetSpeed(speed);
             
         }

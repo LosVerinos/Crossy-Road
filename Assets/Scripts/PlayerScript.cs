@@ -202,8 +202,6 @@ public class PlayerScript : MonoBehaviour
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
-
-            //KillPlayer();
             //TODO: display the game ended message @Reaub1
         }
 
@@ -212,8 +210,11 @@ public class PlayerScript : MonoBehaviour
             if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
                 EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
                 eagleScript.CatchPlayer();
-                //KillPlayer();
             }
+        }
+
+        if(transform.position.z < -15f || transform.position.z > 15f){
+            KillPlayer();
         }
     }
 
