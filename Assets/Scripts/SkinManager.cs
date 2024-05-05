@@ -72,8 +72,15 @@ public class SkinButtonManager : MonoBehaviour
 
     void SelectSkin(SkinData skinData)
     {
-        Debug.Log("Skin selected: " + skinData.theme);
         GlobalVariables.skin = skinData;
         GlobalVariables.theme = skinData.theme;
+
+        Debug.Log("data model saved : " + skinData.Model);
+
+        foreach(SkinData skin in skinDataList)
+        {
+            skin.selected = false;
+        }
+        skinData.selected = true;
     }
 }

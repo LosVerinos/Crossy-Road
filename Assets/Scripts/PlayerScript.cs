@@ -22,24 +22,64 @@ public class PlayerScript : MonoBehaviour
     private byte _backwardsCount = 0;
     private char lastInput = 'W';
     private bool soundIsPlayed = false;
-    
+    public List<SkinData> skinDataList = new List<SkinData>();
 
-    
-    // Start is called before the first frame update
+
     void Start()
     {
-        /*int whichSkin = Random.Range(0, skinData.Count);
-        GameObject player = Instantiate(skinData[whichSkin].Model, parentPos);
-        GlobalVariables.theme = skinData[whichSkin].theme;*/
-        GlobalVariables.skin = skinData[Random.Range(0, skinData.Count)];
-        GameObject player = Instantiate(GlobalVariables.skin.Model, parentPos);
-        GlobalVariables.theme = GlobalVariables.skin.theme;
-        
-        
+        if (skinDataList.Count == 0)
+        {
+            Debug.Log("La liste skinDataList est vide.");
+        }
+        else
+        {
+            foreach (SkinData skin in skinDataList)
+            {
+                if (skin.selected)
+                {
+                    GameObject player = Instantiate(skin.Model, parentPos);
+                    GlobalVariables.theme = skin.theme;
+                }
+            }
+        }
+
         _animator = parentObject.GetComponent<Animator>();
         GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    public void reloadSkin()
+    {
+        
+        GameObject playerObject = GameObject.FindWithTag("Skin");
+        if (playerObject != null)
+        {
+            Destroy(playerObject);
+        }
+        
+
+        if (skinDataList.Count == 0)
+        {
+            Debug.Log("La liste skinDataList est vide.");
+        }
+        else
+        {
+            foreach (SkinData skin in skinDataList)
+            {
+                if (skin.selected)
+                {
+                    GameObject player = Instantiate(skin.Model, parentPos);
+                    GlobalVariables.theme = skin.theme;
+                }
+            }
+        }
+
+        _animator = parentObject.GetComponent<Animator>();
+        GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+
     }
 
     public void KillPlayer()
@@ -60,7 +100,6 @@ public class PlayerScript : MonoBehaviour
         playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_isHopping || !GlobalVariables.run)

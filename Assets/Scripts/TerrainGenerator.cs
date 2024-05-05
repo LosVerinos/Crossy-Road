@@ -25,8 +25,8 @@ public class TerrainGenerator : MonoBehaviour
     private void Start()
     {
 
-        PlayerPrefs.SetInt("Coins", 1000);
-        PlayerPrefs.Save();
+        //PlayerPrefs.SetInt("Coins", 1000);
+        //PlayerPrefs.Save();
 
         if (isStart)
         {

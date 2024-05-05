@@ -128,17 +128,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5992525011731577635, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
   m_PrefabInstance: {fileID: 3496694019794422526}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4952639 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
-  m_PrefabInstance: {fileID: 3496694019794422526}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4952635}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b15dc70398f9446a53a1d6715a91b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &4952644
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1005,6 +994,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1968209797}
         m_TargetAssemblyTypeName: TerrainGenerator, Assembly-CSharp
         m_MethodName: destroyAll
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1215677308}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: reloadSkin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4902,7 +4903,7 @@ MonoBehaviour:
   m_OnDidEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4952639}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
         m_MethodName: SetPlayerName
         m_Mode: 1
@@ -5213,6 +5214,22 @@ MonoBehaviour:
   parentPos: {fileID: 1621938620}
   parentObject: {fileID: 1215677304}
   playerName: 
+  skinDataList:
+  - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
+  - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
+  - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
+  - {fileID: 11400000, guid: 8d6bc0bf949464090b6db8719fc9ff09, type: 2}
+  - {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
+  - {fileID: 11400000, guid: 50638dd70966c40fbb533a966668ca81, type: 2}
+  - {fileID: 11400000, guid: 9dd640caff28b4457a9ef4341c47e15e, type: 2}
+  - {fileID: 11400000, guid: be34b06aade3e4b61913fd64c3dd4449, type: 2}
+  - {fileID: 11400000, guid: 508fa7a7636724dff8278e6b011a103f, type: 2}
+  - {fileID: 11400000, guid: 18fcba1be66084976867094f41fdfd0d, type: 2}
+  - {fileID: 11400000, guid: 110371f80f8b94d30a7f086cf4be3fe9, type: 2}
+  - {fileID: 11400000, guid: 737bfe22af29448cb8f0f6e2a122a142, type: 2}
+  - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
+  - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
+  - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
 --- !u!1 &1220220796
 GameObject:
   m_ObjectHideFlags: 0
@@ -5913,6 +5930,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 110371f80f8b94d30a7f086cf4be3fe9, type: 2}
   - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
   - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
+  - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
+  - {fileID: 11400000, guid: 50638dd70966c40fbb533a966668ca81, type: 2}
+  - {fileID: 11400000, guid: 9dd640caff28b4457a9ef4341c47e15e, type: 2}
+  - {fileID: 11400000, guid: be34b06aade3e4b61913fd64c3dd4449, type: 2}
+  - {fileID: 11400000, guid: 18fcba1be66084976867094f41fdfd0d, type: 2}
+  - {fileID: 11400000, guid: 737bfe22af29448cb8f0f6e2a122a142, type: 2}
+  - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
   buttonSpacing: 10
   buttonSize: 100
   maxButtonsPerColumn: 10
@@ -8366,6 +8390,70 @@ PrefabInstance:
       propertyPath: TerrainGenerator
       value: 
       objectReference: {fileID: 1968209797}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.size
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8d6bc0bf949464090b6db8719fc9ff09, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: 50638dd70966c40fbb533a966668ca81, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9dd640caff28b4457a9ef4341c47e15e, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: be34b06aade3e4b61913fd64c3dd4449, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[8]
+      value: 
+      objectReference: {fileID: 11400000, guid: 508fa7a7636724dff8278e6b011a103f, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[9]
+      value: 
+      objectReference: {fileID: 11400000, guid: 18fcba1be66084976867094f41fdfd0d, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[10]
+      value: 
+      objectReference: {fileID: 11400000, guid: 110371f80f8b94d30a7f086cf4be3fe9, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[11]
+      value: 
+      objectReference: {fileID: 11400000, guid: 737bfe22af29448cb8f0f6e2a122a142, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[12]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[13]
+      value: 
+      objectReference: {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
+    - target: {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
+      propertyPath: skinDataList.Array.data[14]
+      value: 
+      objectReference: {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
     - target: {fileID: 1252654667352619424, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8438,7 +8526,8 @@ PrefabInstance:
       propertyPath: m_ProvidesContacts
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1115329958517931954, guid: a24c806950d8a6246ae6854ec0a2b65b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

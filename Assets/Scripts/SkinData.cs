@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-
+using System.IO;
 
 [CreateAssetMenu(fileName = "SkinData", menuName = "SkinData")]
 public class SkinData : ScriptableObject
@@ -11,4 +8,5 @@ public class SkinData : ScriptableObject
     public string theme;
     public bool unlocked;
     public Sprite sprite;
+    public bool selected;
 }
