@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class MovingObjectScript : MonoBehaviour
 {
-    [SerializeField] private Transform lenghtStart;
-    [SerializeField] private Transform lenghtEnd;
+    [SerializeField] public Transform lenghtStart;
+    [SerializeField] public Transform lenghtEnd;
+    private float initialSpeed = 10f;
     private float speed;
     public bool islog;
     [DoNotSerialize] public float logLenght;
@@ -23,12 +24,17 @@ public class MovingObjectScript : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.forward * (speed * Time.deltaTime));
+        if(islog && transform.position.z * direction <= -10f){
+            transform.Translate(Vector3.forward * (initialSpeed * Time.deltaTime));
+        }
+        else{
+            transform.Translate(Vector3.forward * (speed * Time.deltaTime));
+        }
         if((transform.position.z * direction >= 45f) || terrainGenerator.lastTerrainX >= transform.position.x){
             Destroy(gameObject);
         }
-        if(islog && transform.position.z * direction >= 50f-10f*3f){
-            SetSpeed(10f);
+        if(islog && transform.position.z * direction >= 10f){
+            SetSpeed(initialSpeed);
         }
     }
 

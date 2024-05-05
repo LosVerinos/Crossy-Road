@@ -34,6 +34,9 @@ public class ElementsPlacement : MonoBehaviour
 
     private void PlacePrefabs()
     {
+        if(numberToPlace == 0){
+            Debug.Log("Placing 0 at : " + spawnPos.transform.position.x);
+        }
         for (int i = 0; i < numberToPlace; i++)
         {
             do{

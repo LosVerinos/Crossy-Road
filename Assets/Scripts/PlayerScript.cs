@@ -211,7 +211,7 @@ public class PlayerScript : MonoBehaviour
             timeWithoutScoreIncrease += Time.deltaTime; 
             if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
                 EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-                //eagleScript.CatchPlayer();
+                eagleScript.CatchPlayer();
                 //KillPlayer();
             }
         }
