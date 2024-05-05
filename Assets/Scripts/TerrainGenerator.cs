@@ -96,7 +96,7 @@ public class TerrainGenerator : MonoBehaviour
                 lastOne = whichOne;
 
                 GameObject newTerrain = Instantiate(terrainData[wichTerrain].PossibleTerrain[whichOne], currentPosition, Quaternion.identity, terrainHolder);
-                
+
                 _currentTerrains.Add(newTerrain);
                     if (!isStart)
                     {
