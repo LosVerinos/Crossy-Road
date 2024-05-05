@@ -333,6 +333,7 @@ MonoBehaviour:
   numberMax: 7
   spawnPos: {fileID: 4049492038463167664}
   isRoadOrTrain: 0
+  isLilypads: 0
 --- !u!1 &5209685284092140390
 GameObject:
   m_ObjectHideFlags: 0
