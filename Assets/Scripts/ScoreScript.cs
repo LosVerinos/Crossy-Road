@@ -19,6 +19,8 @@ public class ScoreScript : MonoBehaviour
 
     private Button selectedButton;
 
+    public Text Rank;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -100,9 +102,11 @@ public class ScoreScript : MonoBehaviour
 
         List<string> scoreBoard = GetScoreBoard(difficulty);
 
+        Rank.text = "";
         foreach (string scoreEntry in scoreBoard)
         {
             Debug.Log(scoreEntry);
+            Rank.text = Rank.text + scoreEntry + "\n";
         }
     }
 

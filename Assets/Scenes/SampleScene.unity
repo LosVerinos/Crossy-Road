@@ -465,6 +465,7 @@ MonoBehaviour:
   Easy_button: {fileID: 187931787}
   Medium_button: {fileID: 1371543679}
   Hard_button: {fileID: 305754314}
+  Rank: {fileID: 478159974}
 --- !u!4 &51700166
 Transform:
   m_ObjectHideFlags: 0
