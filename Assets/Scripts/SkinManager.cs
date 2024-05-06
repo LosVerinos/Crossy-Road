@@ -52,7 +52,7 @@ public class SkinButtonManager : MonoBehaviour
             Text txtComponent = newButton.GetComponentInChildren<Text>();
             if (txtComponent != null)
             {
-                txtComponent.text = skinData.theme;
+                txtComponent.text = "";
             }
 
             Image imgComponent = newButton.GetComponentInChildren<Image>();
