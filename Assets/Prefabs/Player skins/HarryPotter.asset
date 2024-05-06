@@ -16,3 +16,4 @@ MonoBehaviour:
   theme: HarryPotter
   unlocked: 0
   sprite: {fileID: 21300000, guid: b8df8e77504ea43df9f23579c7ca97bc, type: 3}
+  selected: 0

@@ -1606,13 +1606,20 @@ MonoBehaviour:
   animator: {fileID: 382703568}
   coinsText: {fileID: 1328561429}
   skinDataList:
+  - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
   - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
   - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
   - {fileID: 11400000, guid: 8d6bc0bf949464090b6db8719fc9ff09, type: 2}
   - {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
+  - {fileID: 11400000, guid: 50638dd70966c40fbb533a966668ca81, type: 2}
+  - {fileID: 11400000, guid: 9dd640caff28b4457a9ef4341c47e15e, type: 2}
+  - {fileID: 11400000, guid: be34b06aade3e4b61913fd64c3dd4449, type: 2}
   - {fileID: 11400000, guid: 508fa7a7636724dff8278e6b011a103f, type: 2}
+  - {fileID: 11400000, guid: 18fcba1be66084976867094f41fdfd0d, type: 2}
   - {fileID: 11400000, guid: 110371f80f8b94d30a7f086cf4be3fe9, type: 2}
+  - {fileID: 11400000, guid: 737bfe22af29448cb8f0f6e2a122a142, type: 2}
   - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
+  - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
   - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
 --- !u!1 &444943300
 GameObject:
@@ -5924,11 +5931,11 @@ MonoBehaviour:
   buttonPrefab: {fileID: 9007759493961035155, guid: edb05ef07d2a647fab29d10081155dd0, type: 3}
   panel: {fileID: 1318418430}
   skinDataList:
-  - {fileID: 11400000, guid: c03e5f1459413450799307f3fa859a70, type: 2}
+  - {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
   - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
   - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
   - {fileID: 11400000, guid: 8d6bc0bf949464090b6db8719fc9ff09, type: 2}
-  - {fileID: 11400000, guid: b2a7d14325e7342ceaed5f7a39ded84d, type: 2}
+  - {fileID: 11400000, guid: c03e5f1459413450799307f3fa859a70, type: 2}
   - {fileID: 11400000, guid: 508fa7a7636724dff8278e6b011a103f, type: 2}
   - {fileID: 11400000, guid: 110371f80f8b94d30a7f086cf4be3fe9, type: 2}
   - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
@@ -5940,9 +5947,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18fcba1be66084976867094f41fdfd0d, type: 2}
   - {fileID: 11400000, guid: 737bfe22af29448cb8f0f6e2a122a142, type: 2}
   - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
-  buttonSpacing: 10
-  buttonSize: 100
-  maxButtonsPerColumn: 10
 --- !u!1 &1328561427
 GameObject:
   m_ObjectHideFlags: 0
