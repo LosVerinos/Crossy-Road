@@ -31,5 +31,13 @@ public class DetectCoins : MonoBehaviour
     public void Update()
     {
         isColliding = false;
+
+        if (GlobalVariables.reload)
+        {
+            if (this.gameObject != null)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
