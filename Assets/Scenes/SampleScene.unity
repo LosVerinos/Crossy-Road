@@ -1649,8 +1649,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -301, y: 1437}
-  m_SizeDelta: {x: -1213.017, y: -80.802734}
+  m_AnchoredPosition: {x: -301, y: 1011}
+  m_SizeDelta: {x: -1096.5552, y: -1364.9379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444943302
 MonoBehaviour:
@@ -2476,6 +2476,7 @@ MonoBehaviour:
   failPanel: {fileID: 0}
   leaderBoardPanel: {fileID: 0}
   startPanel: {fileID: 0}
+  scoreText: {fileID: 0}
   coinsText: {fileID: 0}
 --- !u!1 &600112847
 GameObject:
@@ -3643,6 +3644,7 @@ MonoBehaviour:
   failPanel: {fileID: 1978204214}
   leaderBoardPanel: {fileID: 474104835}
   startPanel: {fileID: 584060406}
+  scoreText: {fileID: 1952646536}
   coinsText: {fileID: 1328561429}
 --- !u!95 &840886188
 Animator:

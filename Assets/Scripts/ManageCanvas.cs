@@ -15,6 +15,7 @@ public class ManageCanvas : MonoBehaviour
     public GameObject failPanel;
     public GameObject leaderBoardPanel;
     public GameObject startPanel;
+    public GameObject scoreText;
 
     public Text coinsText;
 
@@ -30,6 +31,11 @@ public class ManageCanvas : MonoBehaviour
         if (GlobalVariables.isPlayerKilled && visible == false && failPanel!=null)
         {
             failPanel.SetActive(true);
+            if (scoreText != null)
+            {
+                scoreText.transform.position = new Vector3(600f, 1800f, 0f);
+                scoreText.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            }
             visible = true;
         }
 
