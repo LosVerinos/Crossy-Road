@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: 6c3e8e0881bef40c8be06445f90c365e, type: 3}
   theme: StarWars
-  unlocked: 0
+  unlocked: 1
   sprite: {fileID: 21300000, guid: fe90c8eca2f4b4e7fb701b5d1b223ef5, type: 3}
-  selected: 0
+  selected: 1
