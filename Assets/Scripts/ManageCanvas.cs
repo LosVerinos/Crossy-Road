@@ -33,7 +33,7 @@ public class ManageCanvas : MonoBehaviour
             failPanel.SetActive(true);
             if (scoreText != null)
             {
-                scoreText.transform.position = new Vector3(600f, 1800f, 0f);
+                scoreText.transform.position = new Vector3(550f, 1800f, 0f);
                 scoreText.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             }
             visible = true;

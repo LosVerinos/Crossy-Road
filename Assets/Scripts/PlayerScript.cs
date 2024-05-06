@@ -37,8 +37,25 @@ public class PlayerScript : MonoBehaviour
             {
                 if (skin.selected)
                 {
-                    GameObject player = Instantiate(skin.Model, parentPos);
-                    GlobalVariables.theme = skin.theme;
+                    if (skin.theme == "Random")
+                    {
+                        int randomIndex = Random.Range(0, skinDataList.Count);
+                        SkinData randomSkin = skinDataList[randomIndex];
+
+                        do
+                        {
+                            randomIndex = Random.Range(0, skinDataList.Count);
+                            randomSkin = skinDataList[randomIndex];
+                        } while (!randomSkin.unlocked);
+
+                        GameObject player = Instantiate(randomSkin.Model, parentPos);
+                        GlobalVariables.theme = randomSkin.theme;
+                    }
+                    else
+                    {
+                        GameObject player = Instantiate(skin.Model, parentPos);
+                        GlobalVariables.theme = skin.theme;
+                    }
                 }
             }
         }
@@ -69,8 +86,25 @@ public class PlayerScript : MonoBehaviour
             {
                 if (skin.selected)
                 {
-                    GameObject player = Instantiate(skin.Model, parentPos);
-                    GlobalVariables.theme = skin.theme;
+                    if (skin.theme == "Random")
+                    {
+                        int randomIndex = Random.Range(0, skinDataList.Count);
+                        SkinData randomSkin = skinDataList[randomIndex];
+
+                        do
+                        {
+                            randomIndex = Random.Range(0, skinDataList.Count);
+                            randomSkin = skinDataList[randomIndex];
+                        } while (!randomSkin.unlocked);
+
+                        GameObject player = Instantiate(randomSkin.Model, parentPos);
+                        GlobalVariables.theme = randomSkin.theme;
+                    }
+                    else
+                    {
+                        GameObject player = Instantiate(skin.Model, parentPos);
+                        GlobalVariables.theme = skin.theme;
+                    }
                 }
             }
         }

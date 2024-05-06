@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Random
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: 4af370add5e904edea3c7a0a7da9e985, type: 3}
-  theme: none
+  theme: Random
   unlocked: 1
   sprite: {fileID: 21300000, guid: 9702b1ba68f804037b8e220ec29e5918, type: 3}
+  selected: 0
