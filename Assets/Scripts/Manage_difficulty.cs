@@ -18,19 +18,19 @@ public class Manage_difficulty : MonoBehaviour
         Hard_button.onClick.AddListener(Hard_click);
     }
 
-    void Easy_click()
+    public void Easy_click()
     {
         SetButtonState(Easy_button);
         GlobalVariables.difficulty = 1.0f;
     }
 
-    void Medium_click()
+    public void Medium_click()
     {
         SetButtonState(Medium_button);
         GlobalVariables.difficulty = 1.2f;
     }
 
-    void Hard_click()
+    public void Hard_click()
     {
         SetButtonState(Hard_button);
         GlobalVariables.difficulty = 1.5f;

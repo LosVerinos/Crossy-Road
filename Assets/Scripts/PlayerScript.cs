@@ -127,7 +127,26 @@ private float timeWithoutScoreIncrease = 0f;
         }
         GlobalVariables.isPlayerKilled = true;
         GlobalVariables.run = false;
-        ScoreScript.Instance.WriteScore();
+
+        string str_difficulty = "";
+
+        switch (GlobalVariables.difficulty)
+        {
+            case 1.0f:
+                str_difficulty = "easy";
+                break;
+            case 1.2f:
+                str_difficulty = "medium";
+                break;
+            case 1.5f:
+                str_difficulty = "hard";
+                break;
+            default:
+                Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
+                break;
+        }
+
+        ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
         Destroy(GlobalVariables.Player.GameObject());
     }

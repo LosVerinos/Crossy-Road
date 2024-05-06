@@ -462,6 +462,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCounting: 0
+  Easy_button: {fileID: 187931787}
+  Medium_button: {fileID: 1371543679}
+  Hard_button: {fileID: 305754314}
 --- !u!4 &51700166
 Transform:
   m_ObjectHideFlags: 0
@@ -1289,7 +1292,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 187931788}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 51700165}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: easy_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &187931788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1692,7 +1707,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 305754315}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 51700165}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: hard_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &305754315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6288,7 +6315,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1318519078}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1561661103}
+        m_TargetAssemblyTypeName: Manage_difficulty, Assembly-CSharp
+        m_MethodName: Medium_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1318519078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6710,7 +6749,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1371543680}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 51700165}
+        m_TargetAssemblyTypeName: ScoreScript, Assembly-CSharp
+        m_MethodName: medium_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1371543680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8495,7 +8546,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1837378512}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1561661103}
+        m_TargetAssemblyTypeName: Manage_difficulty, Assembly-CSharp
+        m_MethodName: Hard_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1837378512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9367,7 +9430,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2128180575}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1561661103}
+        m_TargetAssemblyTypeName: Manage_difficulty, Assembly-CSharp
+        m_MethodName: Easy_click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2128180575
 MonoBehaviour:
   m_ObjectHideFlags: 0
