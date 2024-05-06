@@ -16,29 +16,29 @@ public class StartTerrainScript : MonoBehaviour
         
         for(int x = -11; x <= 5; x++){
             if(x == -6 || x ==-7 || x == -8 || x == -9 || x ==-10 || x == -11 ){
-                for(int z=-10; z<=10; z++){
+                for(int z=-15; z<=15; z++){
                     Instantiate(x, z);
                 }
             }
             else if(x == 5){
-                for(int z=-10; z<=-4; z++){
+                for(int z=-15; z<=-4; z++){
                     Instantiate(x, z);
                 }
-                for(int z=4; z<=10; z++){
+                for(int z=4; z<=15; z++){
                     Instantiate(x, z);
                 }
             }
             else{
-                for(int z=-10; z<=-5; z++){
+                for(int z=-15; z<=-5; z++){
                     Instantiate(x, z);
                 }
-                for(int z=5; z<=10; z++){
+                for(int z=5; z<=15; z++){
                     Instantiate(x, z);
                 }
             }
-
-            
         }
+        Instantiate(6, 10);
+        Instantiate(6, -10);
     }
 
     private void Instantiate(int x, int z){

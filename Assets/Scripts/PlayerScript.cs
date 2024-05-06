@@ -18,12 +18,15 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private List<SkinData> skinData = new();
     [SerializeField] private Transform parentPos;
     [SerializeField] private Transform parentObject;
+    [SerializeField] private Transform Eagle;
+
     public string playerName;
     private byte _backwardsCount = 0;
     private char lastInput = 'W';
     private bool soundIsPlayed = false;
     public List<SkinData> skinDataList = new List<SkinData>();
-
+private float timeWithoutScoreIncrease = 0f;
+    private const float maxTimeWithoutScore = 8f;
 
     void Start()
     {
@@ -136,6 +139,7 @@ public class PlayerScript : MonoBehaviour
 
     void Update()
     {
+
         if (_isHopping || !GlobalVariables.run)
         {
             return;
@@ -170,6 +174,7 @@ public class PlayerScript : MonoBehaviour
             if (_scoreBuffer > 0)
             {
                 ScoreScript.Instance.UpdateScore();
+                timeWithoutScoreIncrease = 0f;
                 _scoreBuffer = 0;
             }
 
@@ -202,6 +207,7 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
+            _backwardsCount++;
             lastInput = 'S';
         }
         else if (Input.GetKeyDown(KeyCode.A))
@@ -266,10 +272,22 @@ public class PlayerScript : MonoBehaviour
 
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
-        if (_backwardsCount >= 3)
-        {
-            KillPlayer();
+        if (_backwardsCount >= 3){
+            EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+            eagleScript.CatchPlayer();
             //TODO: display the game ended message @Reaub1
+        }
+
+        if (ScoreScript.Instance.isCounting){
+            timeWithoutScoreIncrease += Time.deltaTime; 
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
+                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+                eagleScript.CatchPlayer();
+            }
+        }
+
+        if(transform.position.z < -15f || transform.position.z > 15f){
+            KillPlayer();
         }
     }
 
@@ -319,4 +337,6 @@ public class PlayerScript : MonoBehaviour
     {
         return transform.position;
     }
+
+
 }
