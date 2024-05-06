@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: 869ed5c8b74f046229c36e6ea6b0cf6e, type: 3}
   theme: LOTR
+  unlocked: 0
+  sprite: {fileID: 21300000, guid: b9fd79a5c74c2465b941387c42155fe7, type: 3}
+  selected: 0

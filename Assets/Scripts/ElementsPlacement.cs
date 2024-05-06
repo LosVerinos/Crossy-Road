@@ -82,4 +82,16 @@ public class ElementsPlacement : MonoBehaviour
             prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
         }
     }
+
+    public void reloadComponents()
+    {
+        numberToPlace = Mathf.RoundToInt(Random.Range(0, numberMax));
+        //Debug.Log(gameObject.name + numberToPlace);
+        if (isRoadOrTrain)
+        {
+            probaOfCoinSpawn = 0.4f;
+        }
+        //Debug.Log(probaOfCoinSpawn);
+        PlacePrefabs();
+    }
 }

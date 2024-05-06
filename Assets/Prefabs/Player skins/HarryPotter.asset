@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: 128755d4822ab4df7b0eedac06421ab6, type: 3}
   theme: HarryPotter
+  unlocked: 0
+  sprite: {fileID: 21300000, guid: b8df8e77504ea43df9f23579c7ca97bc, type: 3}
+  selected: 0

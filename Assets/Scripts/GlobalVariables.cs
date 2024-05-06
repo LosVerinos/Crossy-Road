@@ -10,13 +10,14 @@ public class GlobalVariables : MonoBehaviour
     public static bool run = false;
     public static int coins = 0;
     public static PlayerScript Player { get; set; }
+    public static bool reload = false;
 
     void Start()
     {
+
         run = false;
 
         PlayerPrefs.SetInt("Coins", coins);
-
     }
 
     // Update is called once per frame

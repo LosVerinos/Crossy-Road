@@ -24,6 +24,11 @@ public class MovingObjectScript : MonoBehaviour
 
     void Update()
     {
+        if (GlobalVariables.reload)
+        {
+            Destroy(gameObject);
+        }
+
         if(islog && transform.position.z * direction <= -10f){
             transform.Translate(Vector3.forward * (initialSpeed * Time.deltaTime));
         }
