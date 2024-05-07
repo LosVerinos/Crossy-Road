@@ -26,7 +26,7 @@ public class PlayerScript : MonoBehaviour
     private bool soundIsPlayed = false;
     public List<SkinData> skinDataList = new List<SkinData>();
 private float timeWithoutScoreIncrease = 0f;
-    private const float maxTimeWithoutScore = 8f;
+    private float maxTimeWithoutScore = 8f;
 
     void Start()
     {
@@ -127,7 +127,26 @@ private float timeWithoutScoreIncrease = 0f;
         }
         GlobalVariables.isPlayerKilled = true;
         GlobalVariables.run = false;
-        ScoreScript.Instance.WriteScore();
+
+        string str_difficulty = "";
+
+        switch (GlobalVariables.difficulty)
+        {
+            case 1.0f:
+                str_difficulty = "easy";
+                break;
+            case 1.2f:
+                str_difficulty = "medium";
+                break;
+            case 1.5f:
+                str_difficulty = "hard";
+                break;
+            default:
+                Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
+                break;
+        }
+
+        ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
         Destroy(GlobalVariables.Player.GameObject());
     }
@@ -336,6 +355,11 @@ private float timeWithoutScoreIncrease = 0f;
     public Vector3 GetPlayerPosition()
     {
         return transform.position;
+    }
+
+    public void setDifficulty()
+    {
+        maxTimeWithoutScore = maxTimeWithoutScore / GlobalVariables.difficulty;
     }
 
 

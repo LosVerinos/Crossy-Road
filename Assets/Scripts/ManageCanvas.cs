@@ -88,7 +88,7 @@ public class ManageCanvas : MonoBehaviour
     
     public void OnEnterLeaderBoard()
     {
-        var scoreBoard = ScoreScript.Instance.GetScoreBoard();
+        var scoreBoard = ScoreScript.Instance.GetScoreBoard("easy");
         Text text = leaderBoardPanel.GetComponentInChildren<Text>();
         text.text = "";
         // sort the score board
