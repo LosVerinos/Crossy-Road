@@ -26,7 +26,7 @@ public class PlayerScript : MonoBehaviour
     private bool soundIsPlayed = false;
     public List<SkinData> skinDataList = new List<SkinData>();
 private float timeWithoutScoreIncrease = 0f;
-    private const float maxTimeWithoutScore = 8f;
+    private float maxTimeWithoutScore = 8f;
 
     void Start()
     {
@@ -355,6 +355,12 @@ private float timeWithoutScoreIncrease = 0f;
     public Vector3 GetPlayerPosition()
     {
         return transform.position;
+    }
+
+    public void setDifficulty()
+    {
+        maxTimeWithoutScore = maxTimeWithoutScore / GlobalVariables.difficulty;
+        Debug.Log("Value of max time without score : " + maxTimeWithoutScore.ToString());
     }
 
 
