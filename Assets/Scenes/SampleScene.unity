@@ -2755,6 +2755,7 @@ MonoBehaviour:
   leaderBoardPanel: {fileID: 0}
   startPanel: {fileID: 0}
   scoreText: {fileID: 0}
+  animator: {fileID: 0}
   coinsText: {fileID: 0}
 --- !u!1 &600112847
 GameObject:
@@ -3214,7 +3215,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 840886187}
         m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
-        m_MethodName: restart
+        m_MethodName: menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3940,6 +3941,7 @@ MonoBehaviour:
   leaderBoardPanel: {fileID: 474104835}
   startPanel: {fileID: 584060406}
   scoreText: {fileID: 1952646536}
+  animator: {fileID: 840886188}
   coinsText: {fileID: 1328561429}
 --- !u!95 &840886188
 Animator:
@@ -7026,9 +7028,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Options, Assembly-CSharp
-        m_MethodName: DePause_onClick
+      - m_Target: {fileID: 840886187}
+        m_TargetAssemblyTypeName: ManageCanvas, Assembly-CSharp
+        m_MethodName: menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -17,6 +17,8 @@ public class ManageCanvas : MonoBehaviour
     public GameObject startPanel;
     public GameObject scoreText;
 
+    public Animator animator;
+
     public Text coinsText;
 
     private bool visible = false;
@@ -42,6 +44,22 @@ public class ManageCanvas : MonoBehaviour
         if (coinsText != null)
         {
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+        }
+    }
+
+    private void Start()
+    {
+        if(GlobalVariables.restart)
+        {
+            if (startPanel != null)
+            {
+
+                animator.Play("Start");
+                //startPanel.SetActive(false);
+                GlobalVariables.run = true;
+                GlobalVariables.restart = false;
+
+            }
         }
     }
 
@@ -73,6 +91,18 @@ public class ManageCanvas : MonoBehaviour
     }
 
     public void restart()
+    {
+        Time.timeScale = 1;
+        GlobalVariables.isPlayerKilled = false;
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        GlobalVariables.restart = true;
+
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+
+    public void menu()
     {
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
