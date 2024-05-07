@@ -53,6 +53,9 @@ public class ScoreScript : MonoBehaviour
     void Start()
     {
         Debug.Log(Application.persistentDataPath);
+
+        checkFiles();
+
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -114,10 +117,12 @@ public class ScoreScript : MonoBehaviour
         List<string> scoreBoard = GetScoreBoard(difficulty);
 
         Rank.text = "";
+        int i = 1;
         foreach (string scoreEntry in scoreBoard)
-        {
+        {     
             Debug.Log(scoreEntry);
-            Rank.text = Rank.text + scoreEntry + "\n";
+            Rank.text = Rank.text + i.ToString()+ " - "+scoreEntry + "\n";
+            i++;
         }
     }
 
@@ -158,6 +163,24 @@ public class ScoreScript : MonoBehaviour
         ColorBlock clickedColors = clickedButton.colors;
         clickedColors.normalColor = new Color(0.6f, 0.6f, 0.6f);
         clickedButton.colors = clickedColors;
+    }
+
+    void checkFiles()
+    {
+        string[] difficulties = { "easy", "medium", "hard" };
+
+        foreach (string difficulty in difficulties)
+        {
+            string filePath = Application.persistentDataPath + $"/score_{difficulty}.txt";
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("1:0"); 
+                }
+            }
+        }
     }
 
 }
