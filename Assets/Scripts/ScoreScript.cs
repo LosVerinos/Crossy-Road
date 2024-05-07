@@ -70,7 +70,17 @@ public class ScoreScript : MonoBehaviour
     public List<string> GetScoreBoard(string difficulty)
     {
         List<string> scoreBoard = new List<string>();
-        string[] lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
+        string[] lines;
+        try
+        {
+            
+            lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
+        }
+        catch (Exception)
+        {
+            System.IO.File.Create(Application.persistentDataPath + $"/score_{difficulty}.txt");
+            return GetScoreBoard(difficulty);
+        }
         List<Tuple<string, int>> scores = new List<Tuple<string, int>>();
 
         foreach (var line in lines)
