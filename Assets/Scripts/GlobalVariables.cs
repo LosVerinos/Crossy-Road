@@ -12,6 +12,7 @@ public class GlobalVariables : MonoBehaviour
     public static PlayerScript Player { get; set; }
     public static bool reload = false;
     public static float difficulty = 1.0f;
+    public static bool restart = false;
 
     void Start()
     {
