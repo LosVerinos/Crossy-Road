@@ -18,7 +18,7 @@ public class Buy_script : MonoBehaviour
 
             int coins = PlayerPrefs.GetInt("Coins");
 
-            coins = coins - 100;
+            coins = coins - 1;
 
             PlayerPrefs.SetInt("Coins", coins);
 
