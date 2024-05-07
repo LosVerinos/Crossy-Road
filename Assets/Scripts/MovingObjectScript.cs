@@ -33,7 +33,7 @@ public class MovingObjectScript : MonoBehaviour
             transform.Translate(Vector3.forward * (initialSpeed * Time.deltaTime));
         }
         else{
-            transform.Translate(Vector3.forward * (speed * Time.deltaTime));
+            transform.Translate(Vector3.forward * (speed*GlobalVariables.difficulty * Time.deltaTime));
         }
         if((transform.position.z * direction >= 45f) || terrainGenerator.lastTerrainX >= transform.position.x){
             Destroy(gameObject);

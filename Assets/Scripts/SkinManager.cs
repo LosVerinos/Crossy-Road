@@ -70,7 +70,6 @@ public class SkinButtonManager : MonoBehaviour
             buttonsInColumn++;
             if (buttonsInColumn >= maxButtonsPerColumn)
             {
-                Debug.Log("changement de colonnes");
                 column++;
                 row = 0;
                 buttonsInColumn = 0;

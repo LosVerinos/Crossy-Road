@@ -360,7 +360,6 @@ private float timeWithoutScoreIncrease = 0f;
     public void setDifficulty()
     {
         maxTimeWithoutScore = maxTimeWithoutScore / GlobalVariables.difficulty;
-        Debug.Log("Value of max time without score : " + maxTimeWithoutScore.ToString());
     }
 
 
