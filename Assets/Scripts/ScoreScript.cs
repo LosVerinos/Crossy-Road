@@ -52,8 +52,6 @@ public class ScoreScript : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(Application.persistentDataPath);
-
         checkFiles();
 
         if (_instance != null && _instance != this)
@@ -120,7 +118,6 @@ public class ScoreScript : MonoBehaviour
         int i = 1;
         foreach (string scoreEntry in scoreBoard)
         {     
-            Debug.Log(scoreEntry);
             Rank.text = Rank.text + i.ToString()+ " - "+scoreEntry + "\n";
             i++;
         }
