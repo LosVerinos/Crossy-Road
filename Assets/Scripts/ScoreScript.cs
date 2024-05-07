@@ -52,6 +52,7 @@ public class ScoreScript : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
