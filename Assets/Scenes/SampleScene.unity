@@ -7184,7 +7184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1215677302}
-  smoothSpeed: 1
+  smoothSpeed: 300
   offset: {x: 0, y: 0, z: 0}
 --- !u!4 &1473168916
 Transform:
