@@ -28,7 +28,7 @@ public class FolowPlayer : MonoBehaviour
             }
             else if(GlobalVariables.difficulty == 1.2f && GlobalVariables.run)
             {
-                offset = new Vector3(0.005f, 0.005f, 0);
+                offset = new Vector3(0.03f, 0.03f, 0);
                 Vector3 desiredPosition = historicPosition + offset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
@@ -36,7 +36,7 @@ public class FolowPlayer : MonoBehaviour
             }
             else if(GlobalVariables.difficulty == 1.5f && GlobalVariables.run)
             {
-                offset = new Vector3(0.01f, 0.01f, 0);
+                offset = new Vector3(0.05f, 0.05f, 0);
                 Vector3 desiredPosition = historicPosition + offset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
