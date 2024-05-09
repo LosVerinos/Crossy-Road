@@ -158,7 +158,6 @@ public class TerrainGenerator : MonoBehaviour
 
             if (lightController != null)
             {
-                // Appelle ChangeLightIntensity avec une intensité de 2.0
                 lightController.ChangeLightIntensity(0f);
             }
             else

@@ -34,7 +34,7 @@ public class OptionsManager : MonoBehaviour
 
     private void initSliderChange()
     {
-        if(PlayerPrefs.GetFloat("volume")!=null)
+        if(PlayerPrefs.GetFloat("volume")!= 0f)
         {
             sld.value = PlayerPrefs.GetFloat("volume");
             SliderChange();
