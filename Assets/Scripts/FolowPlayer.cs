@@ -6,12 +6,14 @@ public class FolowPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float smoothSpeed;
-    [SerializeField] private Vector3 offset;
+    [SerializeField] private Vector3 offset = new Vector3(0,1,0);
     private Vector3 historicPosition;
 
     private void Start()
     {
-        historicPosition = player.transform.position;
+        historicPosition = new Vector3(0,4,0);
+        //historicPosition = player.transform.position;
+        transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -22,13 +24,13 @@ public class FolowPlayer : MonoBehaviour
            
             if(GlobalVariables.difficulty == 1.0f)
             {
-                Vector3 desiredPosition = player.transform.position;
+                Vector3 desiredPosition = player.transform.position + offset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
             }
             else if(GlobalVariables.difficulty == 1.2f && GlobalVariables.run)
             {
-                offset = new Vector3(0.03f, 0.03f, 0);
+                offset = new Vector3(0.03f, 0, 0);
                 Vector3 desiredPosition = historicPosition + offset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
@@ -36,7 +38,7 @@ public class FolowPlayer : MonoBehaviour
             }
             else if(GlobalVariables.difficulty == 1.5f && GlobalVariables.run)
             {
-                offset = new Vector3(0.05f, 0.05f, 0);
+                offset = new Vector3(0.05f, 0, 0);
                 Vector3 desiredPosition = historicPosition + offset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
