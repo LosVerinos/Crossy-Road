@@ -53,11 +53,13 @@ private float timeWithoutScoreIncrease = 0f;
 
                         GameObject player = Instantiate(randomSkin.Model, parentPos);
                         GlobalVariables.theme = randomSkin.theme;
+                        break;
                     }
                     else
                     {
                         GameObject player = Instantiate(skin.Model, parentPos);
                         GlobalVariables.theme = skin.theme;
+                        break;
                     }
                 }
             }
