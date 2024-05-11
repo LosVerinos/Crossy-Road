@@ -14,7 +14,6 @@ public class LogSpawnScript : MonoBehaviour
     private float speed;
     private float logLenght;
     private float lastLogLenght;
-    private float maxLogLenght = 3.64f;
     private float initialSpeed = 10f;
     private float timeWhithInitialSpeed = 4f;
     private int randomIndex;
@@ -66,7 +65,11 @@ public class LogSpawnScript : MonoBehaviour
             GameObject newLog = Instantiate(selectedLog, new Vector3(SpawnPos.position.x, SpawnPos.position.y, LogsZ), Quaternion.identity);
             MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
 
+            lastLogLenght = logLenght;
             logLenght =  log.lenghtEnd.position.z - log.lenghtStart.position.z;
+            if(logLenght > lastLogLenght){
+                LogsZ -= logLenght/2;
+            }
 
             if (direction < 0)
             {
@@ -75,7 +78,7 @@ public class LogSpawnScript : MonoBehaviour
             log.SetDirection(direction);
             log.SetSpeed(speed);
 
-            LogsZ -= speed*Random.Range(minSeparationTime, maxSeparationTime) + maxLogLenght;
+            LogsZ -= logLenght + 0.2f;
             
         }
         
