@@ -131,6 +131,7 @@ MonoBehaviour:
   numberMax: 7
   spawnPos: {fileID: 4049492038463167664}
   isRoadOrTrain: 0
+  isLilypads: 0
 --- !u!1 &5209685284092140390
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,8 +215,8 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: 10}
+  m_Size: {x: 1, y: 2, z: 10}
+  m_Center: {x: 0, y: 0, z: 15}
 --- !u!65 &2171267706748267764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -235,5 +236,5 @@ BoxCollider:
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 2, z: 1}
-  m_Center: {x: 0, y: 0, z: -10}
+  m_Size: {x: 1, y: 2, z: 10}
+  m_Center: {x: 0, y: 0, z: -15}
