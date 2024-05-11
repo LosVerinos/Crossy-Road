@@ -52,6 +52,8 @@ public class ScoreScript : MonoBehaviour
 
     void Start()
     {
+        checkFiles();
+
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -70,7 +72,17 @@ public class ScoreScript : MonoBehaviour
     public List<string> GetScoreBoard(string difficulty)
     {
         List<string> scoreBoard = new List<string>();
-        string[] lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
+        string[] lines;
+        try
+        {
+            
+            lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
+        }
+        catch (Exception)
+        {
+            System.IO.File.Create(Application.persistentDataPath + $"/score_{difficulty}.txt");
+            return GetScoreBoard(difficulty);
+        }
         List<Tuple<string, int>> scores = new List<Tuple<string, int>>();
 
         foreach (var line in lines)
@@ -103,10 +115,11 @@ public class ScoreScript : MonoBehaviour
         List<string> scoreBoard = GetScoreBoard(difficulty);
 
         Rank.text = "";
+        int i = 1;
         foreach (string scoreEntry in scoreBoard)
-        {
-            Debug.Log(scoreEntry);
-            Rank.text = Rank.text + scoreEntry + "\n";
+        {     
+            Rank.text = Rank.text + i.ToString()+ " - "+scoreEntry + "\n";
+            i++;
         }
     }
 
@@ -147,6 +160,24 @@ public class ScoreScript : MonoBehaviour
         ColorBlock clickedColors = clickedButton.colors;
         clickedColors.normalColor = new Color(0.6f, 0.6f, 0.6f);
         clickedButton.colors = clickedColors;
+    }
+
+    void checkFiles()
+    {
+        string[] difficulties = { "easy", "medium", "hard" };
+
+        foreach (string difficulty in difficulties)
+        {
+            string filePath = Application.persistentDataPath + $"/score_{difficulty}.txt";
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(filePath, true))
+                {
+                    writer.WriteLine("1:0"); 
+                }
+            }
+        }
     }
 
 }
