@@ -57,29 +57,28 @@ public class LogSpawnScript : MonoBehaviour
     }
 
     private void FirstLogs(){
-        float LogsZ = Mathf.Abs(SpawnPos.position.z + direction*(initialSpeed * timeWhithInitialSpeed));
+        float spawnLimit = Mathf.Abs(SpawnPos.position.z + direction*(initialSpeed * timeWhithInitialSpeed));
+        float LogsZ = spawnLimit;
         while(LogsZ > -Mathf.Abs(SpawnPos.position.z + direction*(initialSpeed * timeWhithInitialSpeed))){
             int randomIndex = Random.Range(0, logs.Count);
             GameObject selectedLog = logs[randomIndex];
-        
-            GameObject newLog = Instantiate(selectedLog, new Vector3(SpawnPos.position.x, SpawnPos.position.y, LogsZ), Quaternion.identity);
-            MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
-
-            lastLogLenght = logLenght;
-            logLenght =  log.lenghtEnd.position.z - log.lenghtStart.position.z;
-            if(logLenght > lastLogLenght){
-                LogsZ -= logLenght/2;
+            MovingObjectScript selected = selectedLog.GetComponent<MovingObjectScript>();
+            logLenght =  selected.lenghtEnd.position.z - selected.lenghtStart.position.z;
+            LogsZ -= lastLogLenght/2 + 0.2f + logLenght;
+            if(LogsZ-logLenght/2 < -spawnLimit){
+                break;
             }
 
+            GameObject newLog = Instantiate(selectedLog, new Vector3(SpawnPos.position.x, SpawnPos.position.y, LogsZ), Quaternion.identity);
+            MovingObjectScript log = newLog.GetComponent<MovingObjectScript>();
+            
             if (direction < 0)
             {
                 newLog.transform.Rotate(new Vector3(0,180,0));
             }
             log.SetDirection(direction);
             log.SetSpeed(speed);
-
-            LogsZ -= logLenght + 0.2f;
-            
+            lastLogLenght = logLenght;
         }
         
         minSeparationTime = (0.2f+logLenght)/speed;
