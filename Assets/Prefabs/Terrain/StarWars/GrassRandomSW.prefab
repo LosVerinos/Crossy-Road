@@ -330,6 +330,7 @@ MonoBehaviour:
   - {fileID: 5918782133070423383, guid: 8fc16f730193b470088fcbc1766d9d6b, type: 3}
   - {fileID: 5918782133070423383, guid: f63d6057777f44375bc7faa8a31eba81, type: 3}
   - {fileID: 5918782133070423383, guid: 2671c7ebba3bd4ad2a611e4d5317c767, type: 3}
+  - {fileID: 4897930009466680938, guid: 9bbcea5b063e947d3902f069db4be502, type: 3}
   numberMax: 7
   spawnPos: {fileID: 4049492038463167664}
   isRoadOrTrain: 0

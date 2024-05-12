@@ -131,6 +131,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3097805411995184828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2486087642978691247}
+  m_Layer: 0
+  m_Name: SpawnCoin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2486087642978691247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097805411995184828}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.07}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3358122736023118150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4121230192011059713
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8834206945104471782
 Transform:
   m_ObjectHideFlags: 0
@@ -294,6 +325,7 @@ GameObject:
   - component: {fileID: 9073012337655940684}
   - component: {fileID: 3543671565277252481}
   - component: {fileID: 6725418901722967772}
+  - component: {fileID: 7658775853674908828}
   m_Layer: 0
   m_Name: Railway 1SW
   m_TagString: Untagged
@@ -314,6 +346,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2486087642978691247}
   - {fileID: 1703774827541580455}
   - {fileID: 8834206945104471782}
   - {fileID: 7701197497878898504}
@@ -409,6 +442,24 @@ MonoBehaviour:
   maxSeparationTime: 35
   direction: -1
   alarmController: {fileID: 9017475949399371176}
+--- !u!114 &7658775853674908828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5819908639339404136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eee4bd2e36b3746d8a99a84fad67fd25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabsToPlace:
+  - {fileID: 4897930009466680938, guid: 9bbcea5b063e947d3902f069db4be502, type: 3}
+  numberMax: 1
+  spawnPos: {fileID: 2486087642978691247}
+  isRoadOrTrain: 1
+  isLilypads: 0
 --- !u!1 &6080975786599664310
 GameObject:
   m_ObjectHideFlags: 0

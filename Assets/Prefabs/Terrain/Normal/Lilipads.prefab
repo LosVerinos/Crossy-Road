@@ -242,7 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabsToPlace:
   - {fileID: 5918782133070423383, guid: f3c7557fea36b404389e736bf41cbb7a, type: 3}
-  numberMax: 5
+  numberMax: 6
   spawnPos: {fileID: 474365945843550481}
   isRoadOrTrain: 0
   isLilypads: 1

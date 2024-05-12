@@ -19,6 +19,7 @@ public class ElementsPlacement : MonoBehaviour
     private int randomPrefabIndex;
     private GameObject prefabToPlace;
     private int randomAngleIndex;
+    private bool coinAlreadySpawned = false;
 
     private void Start()
     {
@@ -52,15 +53,16 @@ public class ElementsPlacement : MonoBehaviour
             randomAngleIndex = Random.Range(0, angles.Length);
             
             //Debug.Log(prefabToPlace.CompareTag("Coins"));
-            if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain && Random.Range(0f, 1f) < probaOfCoinSpawn){
+            if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && Random.Range(0f, 1f) < probaOfCoinSpawn && !coinAlreadySpawned){
                 Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
+                coinAlreadySpawned = true;
             }
-            else if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain){
+            else if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain || coinAlreadySpawned){
                 break;
             }
             else{
-            prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
-            prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
+                prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
+                prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
             }
             
         }
@@ -74,7 +76,7 @@ public class ElementsPlacement : MonoBehaviour
     private void PlaceLimitsElements(){
         for(int z = 10; z < 20; z++){
             spawnPosition = new Vector3(spawnPos.position.x, spawnPos.position.y, z);
-            randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
+            randomPrefabIndex = Random.Range(0, prefabsToPlace.Count-1);
             randomAngleIndex = Random.Range(0, angles.Length);
             prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
             prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
