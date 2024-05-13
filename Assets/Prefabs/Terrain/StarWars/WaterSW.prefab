@@ -774,8 +774,6 @@ MonoBehaviour:
   - {fileID: 3305718274531061757, guid: 9514a6b4eea3b49c68c1acdb1bdd3d94, type: 3}
   - {fileID: 9119807306214891880, guid: 1940c321a20bd49d780cdf848d198e6f, type: 3}
   SpawnPos: {fileID: 139909793620997579}
-  minSeparationTime: 0.25
-  maxSeparationTime: 2
   direction: 1
 --- !u!1 &8429505584507844031
 GameObject:

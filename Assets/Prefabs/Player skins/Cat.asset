@@ -13,4 +13,7 @@ MonoBehaviour:
   m_Name: Cat
   m_EditorClassIdentifier: 
   Model: {fileID: 5992525011731577635, guid: ea9039130837549aa80a3e70d1e92b31, type: 3}
-  theme: None
+  theme: Natural
+  unlocked: 1
+  sprite: {fileID: 21300000, guid: 455eba9e2679945ddb71edc9cbc49dfc, type: 3}
+  selected: 0

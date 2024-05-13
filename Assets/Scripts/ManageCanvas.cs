@@ -15,6 +15,9 @@ public class ManageCanvas : MonoBehaviour
     public GameObject failPanel;
     public GameObject leaderBoardPanel;
     public GameObject startPanel;
+    public GameObject scoreText;
+
+    public Animator animator;
 
     public Text coinsText;
 
@@ -30,12 +33,33 @@ public class ManageCanvas : MonoBehaviour
         if (GlobalVariables.isPlayerKilled && visible == false && failPanel!=null)
         {
             failPanel.SetActive(true);
+            if (scoreText != null)
+            {
+                scoreText.transform.position = new Vector3(550f, 1800f, 0f);
+                scoreText.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+            }
             visible = true;
         }
 
         if (coinsText != null)
         {
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+        }
+    }
+
+    private void Start()
+    {
+        if(GlobalVariables.restart)
+        {
+            if (startPanel != null)
+            {
+
+                animator.Play("Start");
+                //startPanel.SetActive(false);
+                GlobalVariables.run = true;
+                GlobalVariables.restart = false;
+
+            }
         }
     }
 
@@ -71,6 +95,19 @@ public class ManageCanvas : MonoBehaviour
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
         Scene currentScene = SceneManager.GetActiveScene();
+
+        GlobalVariables.restart = true;
+
+        SceneManager.LoadScene(currentScene.name);
+    }
+
+
+    public void menu()
+    {
+        Time.timeScale = 1;
+        GlobalVariables.isPlayerKilled = false;
+        GlobalVariables.run = false;
+        Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
 
         
@@ -82,7 +119,7 @@ public class ManageCanvas : MonoBehaviour
     
     public void OnEnterLeaderBoard()
     {
-        var scoreBoard = ScoreScript.Instance.GetScoreBoard();
+        var scoreBoard = ScoreScript.Instance.GetScoreBoard("easy");
         Text text = leaderBoardPanel.GetComponentInChildren<Text>();
         text.text = "";
         // sort the score board

@@ -18,23 +18,107 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private List<SkinData> skinData = new();
     [SerializeField] private Transform parentPos;
     [SerializeField] private Transform parentObject;
+    [SerializeField] private Transform Eagle;
+
     public string playerName;
     private byte _backwardsCount = 0;
     private char lastInput = 'W';
     private bool soundIsPlayed = false;
-    
+    public List<SkinData> skinDataList = new List<SkinData>();
+private float timeWithoutScoreIncrease = 0f;
+    private float maxTimeWithoutScore = 8f;
 
-    
-    // Start is called before the first frame update
     void Start()
     {
-        int whichSkin = Random.Range(0, skinData.Count);
-        GameObject player = Instantiate(skinData[whichSkin].Model, parentPos);
-        GlobalVariables.isStarWars = skinData[whichSkin].theme == "StarWars";
+        if (skinDataList.Count == 0)
+        {
+            Debug.Log("La liste skinDataList est vide.");
+        }
+        else
+        {
+            foreach (SkinData skin in skinDataList)
+            {
+                if (skin.selected)
+                {
+                    if (skin.theme == "Random")
+                    {
+                        int randomIndex = Random.Range(0, skinDataList.Count);
+                        SkinData randomSkin = skinDataList[randomIndex];
+
+                        do
+                        {
+                            randomIndex = Random.Range(0, skinDataList.Count);
+                            randomSkin = skinDataList[randomIndex];
+                        } while (!randomSkin.unlocked);
+
+                        GameObject player = Instantiate(randomSkin.Model, parentPos);
+                        GlobalVariables.theme = randomSkin.theme;
+                        break;
+                    }
+                    else
+                    {
+                        GameObject player = Instantiate(skin.Model, parentPos);
+                        GlobalVariables.theme = skin.theme;
+                        break;
+                    }
+                }
+            }
+        }
+
         _animator = parentObject.GetComponent<Animator>();
         GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
+    }
+
+    public void reloadSkin()
+    {
+        
+        GameObject playerObject = GameObject.FindWithTag("Skin");
+        if (playerObject != null)
+        {
+            Destroy(playerObject);
+        }
+        
+
+        if (skinDataList.Count == 0)
+        {
+            Debug.Log("La liste skinDataList est vide.");
+        }
+        else
+        {
+            foreach (SkinData skin in skinDataList)
+            {
+                if (skin.selected)
+                {
+                    if (skin.theme == "Random")
+                    {
+                        int randomIndex = Random.Range(0, skinDataList.Count);
+                        SkinData randomSkin = skinDataList[randomIndex];
+
+                        do
+                        {
+                            randomIndex = Random.Range(0, skinDataList.Count);
+                            randomSkin = skinDataList[randomIndex];
+                        } while (!randomSkin.unlocked);
+
+                        GameObject player = Instantiate(randomSkin.Model, parentPos);
+                        GlobalVariables.theme = randomSkin.theme;
+                    }
+                    else
+                    {
+                        GameObject player = Instantiate(skin.Model, parentPos);
+                        GlobalVariables.theme = skin.theme;
+                    }
+                }
+            }
+        }
+
+        _animator = parentObject.GetComponent<Animator>();
+        GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+
     }
 
     public void KillPlayer()
@@ -45,21 +129,38 @@ public class PlayerScript : MonoBehaviour
         }
         GlobalVariables.isPlayerKilled = true;
         GlobalVariables.run = false;
-        ScoreScript.Instance.WriteScore();
+
+        string str_difficulty = "";
+
+        switch (GlobalVariables.difficulty)
+        {
+            case 1.0f:
+                str_difficulty = "easy";
+                break;
+            case 1.2f:
+                str_difficulty = "medium";
+                break;
+            case 1.5f:
+                str_difficulty = "hard";
+                break;
+            default:
+                Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
+                break;
+        }
+
+        ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
         Destroy(GlobalVariables.Player.GameObject());
     }
     
     public void SetPlayerName()
     {
-        Debug.Log(GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text);
         playerName = GameObject.Find("InputPlayerName").GetComponent<InputField>().textComponent.text;
-        Debug.Log(playerName);
     }
 
-    // Update is called once per frame
     void Update()
     {
+
         if (_isHopping || !GlobalVariables.run)
         {
             return;
@@ -94,6 +195,7 @@ public class PlayerScript : MonoBehaviour
             if (_scoreBuffer > 0)
             {
                 ScoreScript.Instance.UpdateScore();
+                timeWithoutScoreIncrease = 0f;
                 _scoreBuffer = 0;
             }
 
@@ -126,6 +228,7 @@ public class PlayerScript : MonoBehaviour
             }
             MovePlayer(new Vector3(-1,0, zDiff));
             _scoreBuffer--;
+            _backwardsCount++;
             lastInput = 'S';
         }
         else if (Input.GetKeyDown(KeyCode.A))
@@ -190,10 +293,22 @@ public class PlayerScript : MonoBehaviour
 
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
-        if (_backwardsCount >= 3)
-        {
-            KillPlayer();
+        if (_backwardsCount >= 3){
+            EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+            eagleScript.CatchPlayer();
             //TODO: display the game ended message @Reaub1
+        }
+
+        if (ScoreScript.Instance.isCounting){
+            timeWithoutScoreIncrease += Time.deltaTime; 
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
+                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+                eagleScript.CatchPlayer();
+            }
+        }
+
+        if(transform.position.z < -15f || transform.position.z > 15f){
+            KillPlayer();
         }
     }
 
@@ -243,4 +358,11 @@ public class PlayerScript : MonoBehaviour
     {
         return transform.position;
     }
+
+    public void setDifficulty()
+    {
+        maxTimeWithoutScore = maxTimeWithoutScore / GlobalVariables.difficulty;
+    }
+
+
 }
