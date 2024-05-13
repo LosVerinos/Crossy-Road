@@ -54,6 +54,7 @@ public class ScoreScript : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Application.persistentDataPath);
         checkFiles();
 
         if (_instance != null && _instance != this)
@@ -182,7 +183,7 @@ public class ScoreScript : MonoBehaviour
             {
                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter(filePath, true))
                 {
-                    writer.WriteLine("1:0"); 
+                    writer.WriteLine("1:0:00:00");
                 }
             }
         }
