@@ -13,6 +13,7 @@ public class GlobalVariables : MonoBehaviour
     public static bool reload = false;
     public static float difficulty = 1.0f;
     public static bool restart = false;
+    public static bool goForward = false;
 
     void Start()
     {

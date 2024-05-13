@@ -167,7 +167,6 @@ private float timeWithoutScoreIncrease = 0f;
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
-
             switch (lastInput)
             {
                 case 'S':
@@ -200,7 +199,7 @@ private float timeWithoutScoreIncrease = 0f;
             }
 
             _backwardsCount = 0;
-
+            GlobalVariables.goForward = false;
             lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
@@ -300,7 +299,10 @@ private float timeWithoutScoreIncrease = 0f;
         }
 
         if (ScoreScript.Instance.isCounting){
-            timeWithoutScoreIncrease += Time.deltaTime; 
+            timeWithoutScoreIncrease += Time.deltaTime;
+            if(timeWithoutScoreIncrease > 0.5f){
+                GlobalVariables.goForward = true;
+            }
             if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
                 EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
                 eagleScript.CatchPlayer();
