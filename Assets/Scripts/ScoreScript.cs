@@ -10,7 +10,6 @@ public class ScoreScript : MonoBehaviour
     private static ScoreScript _instance;
     public static ScoreScript Instance => _instance;
     private int score;
-    private string timer="";
     public bool isCounting = false;
     private float currentDifficulty = 1.0f;
 
@@ -49,7 +48,7 @@ public class ScoreScript : MonoBehaviour
     public void WriteScore(string difficulty)
     {
         System.IO.StreamWriter writer = new System.IO.StreamWriter(Application.persistentDataPath + $"/score_{difficulty}.txt", true);
-        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score);
+        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score + ":" + timerText.text);
         writer.Close();
     }
 
@@ -85,21 +84,24 @@ public class ScoreScript : MonoBehaviour
             System.IO.File.Create(Application.persistentDataPath + $"/score_{difficulty}.txt");
             return GetScoreBoard(difficulty);
         }
-        List<Tuple<string, int>> scores = new List<Tuple<string, int>>();
+        List<Tuple<string, int,string, string>> scores = new List<Tuple<string, int, string, string>>();
 
         foreach (var line in lines)
         {
             string[] parts = line.Split(':');
             string playerName = parts[0];
             int score = int.Parse(parts[1]);
+            string minutes = parts[2];
+            string secondes = parts[3];
 
-            scores.Add(new Tuple<string, int>(playerName, score));
+
+            scores.Add(new Tuple<string, int, string, string>(playerName, score, minutes, secondes));
         }
 
         scores.Sort((x, y) => y.Item2.CompareTo(x.Item2));
         for (int i = 0; i < 10 && i < scores.Count; i++)
         {
-            scoreBoard.Add($" - {scores[i].Item1} : {scores[i].Item2}");
+            scoreBoard.Add($" - {scores[i].Item1} - {scores[i].Item2} - {scores[i].Item3}:{scores[i].Item4} ");
         }
         return scoreBoard;
     }
@@ -123,7 +125,8 @@ public class ScoreScript : MonoBehaviour
         Rank.text = "";
         int i = 1;
         foreach (string scoreEntry in scoreBoard)
-        {     
+        {
+            Debug.Log(scoreEntry);
             Rank.text = Rank.text + i.ToString()+ " - "+scoreEntry + "\n";
             i++;
         }
