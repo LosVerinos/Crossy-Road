@@ -10,10 +10,6 @@ public class KillPlayerOnTouch : MonoBehaviour
     {
        if(other.gameObject.CompareTag("Player"))
        {
-           // other.gameObject.GetComponent<PlayerScript>().KillPlayer();
-           other.gameObject.GetComponent<AiScript>().AddReward(-0.8f);
-           other.gameObject.GetComponent<AiScript>().EndEpisode();
-
            other.gameObject.GetComponent<PlayerScript>().KillPlayer();
        }
     }
@@ -22,9 +18,7 @@ public class KillPlayerOnTouch : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            // other.gameObject.GetComponent<PlayerScript>().KillPlayer();
-            other.gameObject.GetComponent<AiScript>().AddReward(-0.8f);
-            other.gameObject.GetComponent<AiScript>().EndEpisode();
+            other.gameObject.GetComponent<PlayerScript>().KillPlayer();
 
         }
     }

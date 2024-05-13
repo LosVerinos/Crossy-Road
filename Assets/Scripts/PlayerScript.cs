@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Unity.MLAgents;
+using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Policies;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : Agent
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
     [SerializeField] private Text scoreText;
@@ -27,6 +30,74 @@ public class PlayerScript : MonoBehaviour
     public List<SkinData> skinDataList = new List<SkinData>();
 private float timeWithoutScoreIncrease = 0f;
     private float maxTimeWithoutScore = 8f;
+    [SerializeField]
+    private bool _isAi = false;
+    
+    
+    
+    public override void OnEpisodeBegin()
+    {
+        transform.localPosition = new Vector3(0, 1.03f, 0);
+    }
+    
+    public override void OnActionReceived(ActionBuffers actions)
+    {
+        if (_isHopping)
+        {
+            return;
+        }
+        if (actions.DiscreteActions[0] == 1)
+        {
+            AddReward(+0.3f);
+            MovePlayer(Vector3.forward);
+            _scoreBuffer++;
+            if (_scoreBuffer > 0)
+            {
+                ScoreScript.Instance.UpdateScore();
+                timeWithoutScoreIncrease = 0f;
+                _scoreBuffer = 0;
+            }
+            if (_isAi)
+            {
+                AddReward(0.4f);
+            }
+        }
+        else if (actions.DiscreteActions[0] == 2)
+        {
+            Debug.Log("Move Backward");
+            MovePlayer(Vector3.back);
+            _scoreBuffer--;
+            AddReward(-0.2f);
+        }
+        else if (actions.DiscreteActions[0] == 3)
+        {
+            Debug.Log("Move Left");
+            MovePlayer(Vector3.left);
+        }
+        else if (actions.DiscreteActions[0] == 4)
+        {
+            Debug.Log("Move Right");
+            MovePlayer(Vector3.right);
+        }
+    }
+    
+    public override void Heuristic(in ActionBuffers actionsOut)
+    {
+        if (_isHopping)
+        {
+            return;
+        }
+        var actions = actionsOut.DiscreteActions;
+        actions[0] = 0;
+    }
+    
+    public void SetAi(bool isAi)
+    {
+        _isAi = isAi;
+        this.GetComponent<BehaviorParameters>().BehaviorType = isAi ? BehaviorType.InferenceOnly : BehaviorType.HeuristicOnly;
+    }
+    
+    
 
     void Start()
     {
@@ -69,6 +140,7 @@ private float timeWithoutScoreIncrease = 0f;
         GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
+        this.GetComponent<BehaviorParameters>().BehaviorType = BehaviorType.Default;
     }
 
     public void reloadSkin()
@@ -150,6 +222,8 @@ private float timeWithoutScoreIncrease = 0f;
 
         ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
+        AddReward(-1f);
+        EndEpisode();
         Destroy(GlobalVariables.Player.GameObject());
     }
     
@@ -191,10 +265,12 @@ private float timeWithoutScoreIncrease = 0f;
 
             MovePlayer(new Vector3(1,0, zDiff));
             _scoreBuffer++;
+            AddReward(+0.2f);
             soundIsPlayed = false;
             if (_scoreBuffer > 0)
             {
                 ScoreScript.Instance.UpdateScore();
+                AddReward(+0.5f);
                 timeWithoutScoreIncrease = 0f;
                 _scoreBuffer = 0;
             }
@@ -205,7 +281,7 @@ private float timeWithoutScoreIncrease = 0f;
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-
+            AddReward(-0.3f);
             switch (lastInput)
             {
                 case 'W':
@@ -338,6 +414,7 @@ private float timeWithoutScoreIncrease = 0f;
         {
             if (collider.CompareTag("Obstacle"))
             {
+                AddReward(-0.2f);
                 return;
             }
         }
