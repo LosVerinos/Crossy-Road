@@ -11,7 +11,7 @@ public class FolowPlayer : MonoBehaviour
 
     private void Start()
     {
-        historicPosition = new Vector3(0,4,0);
+        historicPosition = new Vector3(0,3.1f,0);
         //historicPosition = player.transform.position;
         transform.position = new Vector3(0, 0, 0);
     }
@@ -23,13 +23,13 @@ public class FolowPlayer : MonoBehaviour
         {
             Vector3 playerPosition = player.transform.position;
 
-            if (GlobalVariables.difficulty == 1.0f)
+            if (GlobalVariables.difficulty == 1.0f || !this.CompareTag("MainCamera"))
             {
                 Vector3 desiredPosition = player.transform.position + offset;
                 Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
             }
-            else if(GlobalVariables.difficulty == 1.2f && GlobalVariables.run)
+            else if(GlobalVariables.difficulty == 1.2f && GlobalVariables.run && this.CompareTag("MainCamera"))
             {
                 offset = new Vector3(0.03f, 0,playerPosition.z );
                 Vector3 desiredPosition = historicPosition + offset;
@@ -37,7 +37,7 @@ public class FolowPlayer : MonoBehaviour
                 transform.position = smoothedPosition;
                 historicPosition = new Vector3(desiredPosition.x, desiredPosition.y, 0);
             }
-            else if(GlobalVariables.difficulty == 1.5f && GlobalVariables.run)
+            else if(GlobalVariables.difficulty == 1.5f && GlobalVariables.run && this.CompareTag("MainCamera"))
             {
                 offset = new Vector3(0.05f, 0, playerPosition.z);
                 Vector3 desiredPosition = historicPosition + offset;
