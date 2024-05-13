@@ -14,8 +14,6 @@ public class FolowPlayer : MonoBehaviour
         historicPosition = new Vector3(0,3.1f,0);
         //historicPosition = player.transform.position;
         transform.position = new Vector3(0, 0, 0);
-
-        Debug.Log(Application.persistentDataPath);
     }
 
     // Update is called once per frame

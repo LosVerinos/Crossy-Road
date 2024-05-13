@@ -126,7 +126,6 @@ public class ScoreScript : MonoBehaviour
         int i = 1;
         foreach (string scoreEntry in scoreBoard)
         {
-            Debug.Log(scoreEntry);
             Rank.text = Rank.text + i.ToString()+ " - "+scoreEntry + "\n";
             i++;
         }
