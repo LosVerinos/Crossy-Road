@@ -17,6 +17,8 @@ public class ScoreScript : MonoBehaviour
     public Button Medium_button;
     public Button Hard_button;
 
+    public Text timerText;
+
     private Button selectedButton;
 
     public Text Rank;
@@ -46,7 +48,7 @@ public class ScoreScript : MonoBehaviour
     public void WriteScore(string difficulty)
     {
         System.IO.StreamWriter writer = new System.IO.StreamWriter(Application.persistentDataPath + $"/score_{difficulty}.txt", true);
-        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score);
+        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score + ":" + timerText.text);
         writer.Close();
     }
 
@@ -75,7 +77,6 @@ public class ScoreScript : MonoBehaviour
         string[] lines;
         try
         {
-            
             lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
         }
         catch (Exception)
@@ -83,21 +84,28 @@ public class ScoreScript : MonoBehaviour
             System.IO.File.Create(Application.persistentDataPath + $"/score_{difficulty}.txt");
             return GetScoreBoard(difficulty);
         }
-        List<Tuple<string, int>> scores = new List<Tuple<string, int>>();
+        List<Tuple<string, int,string, string>> scores = new List<Tuple<string, int, string, string>>();
 
         foreach (var line in lines)
         {
             string[] parts = line.Split(':');
-            scores.Add(new Tuple<string, int>(parts[0], int.Parse(parts[1])));
+            string playerName = parts[0];
+            int score = int.Parse(parts[1]);
+            string minutes = parts[2];
+            string secondes = parts[3];
+
+
+            scores.Add(new Tuple<string, int, string, string>(playerName, score, minutes, secondes));
         }
 
         scores.Sort((x, y) => y.Item2.CompareTo(x.Item2));
         for (int i = 0; i < 10 && i < scores.Count; i++)
         {
-            scoreBoard.Add(scores[i].Item1 + ":" + scores[i].Item2);
+            scoreBoard.Add($" - {scores[i].Item1} - {scores[i].Item2} - {scores[i].Item3}:{scores[i].Item4} ");
         }
         return scoreBoard;
     }
+
 
     public void ResetScore()
     {
@@ -117,7 +125,7 @@ public class ScoreScript : MonoBehaviour
         Rank.text = "";
         int i = 1;
         foreach (string scoreEntry in scoreBoard)
-        {     
+        {
             Rank.text = Rank.text + i.ToString()+ " - "+scoreEntry + "\n";
             i++;
         }
