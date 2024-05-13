@@ -10,12 +10,15 @@ public class ScoreScript : MonoBehaviour
     private static ScoreScript _instance;
     public static ScoreScript Instance => _instance;
     private int score;
+    private string timer="";
     public bool isCounting = false;
     private float currentDifficulty = 1.0f;
 
     public Button Easy_button;
     public Button Medium_button;
     public Button Hard_button;
+
+    public Text timerText;
 
     private Button selectedButton;
 
@@ -75,7 +78,6 @@ public class ScoreScript : MonoBehaviour
         string[] lines;
         try
         {
-            
             lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
         }
         catch (Exception)
@@ -88,16 +90,20 @@ public class ScoreScript : MonoBehaviour
         foreach (var line in lines)
         {
             string[] parts = line.Split(':');
-            scores.Add(new Tuple<string, int>(parts[0], int.Parse(parts[1])));
+            string playerName = parts[0];
+            int score = int.Parse(parts[1]);
+
+            scores.Add(new Tuple<string, int>(playerName, score));
         }
 
         scores.Sort((x, y) => y.Item2.CompareTo(x.Item2));
         for (int i = 0; i < 10 && i < scores.Count; i++)
         {
-            scoreBoard.Add(scores[i].Item1 + ":" + scores[i].Item2);
+            scoreBoard.Add($" - {scores[i].Item1} : {scores[i].Item2}");
         }
         return scoreBoard;
     }
+
 
     public void ResetScore()
     {
