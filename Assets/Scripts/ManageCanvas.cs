@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class ManageCanvas : MonoBehaviour
 {
-
     public GameObject pausePanel;
     public GameObject pauseButtonPanel;
     public GameObject coinsPanel;
@@ -25,12 +24,9 @@ public class ManageCanvas : MonoBehaviour
 
     public void Update()
     {
-        if (GlobalVariables.isPlayerKilled && startPanel!=null)
-        {
-            startPanel.SetActive(false);
-        }
+        if (GlobalVariables.isPlayerKilled && startPanel != null) startPanel.SetActive(false);
 
-        if (GlobalVariables.isPlayerKilled && visible == false && failPanel!=null)
+        if (GlobalVariables.isPlayerKilled && visible == false && failPanel != null)
         {
             failPanel.SetActive(true);
             if (scoreText != null)
@@ -38,29 +34,23 @@ public class ManageCanvas : MonoBehaviour
                 scoreText.transform.position = new Vector3(550f, 1800f, 0f);
                 scoreText.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             }
+
             visible = true;
         }
 
-        if (coinsText != null)
-        {
-            coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
-        }
+        if (coinsText != null) coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 
     private void Start()
     {
-        if(GlobalVariables.restart)
-        {
+        if (GlobalVariables.restart)
             if (startPanel != null)
             {
-
                 animator.Play("Start");
                 //startPanel.SetActive(false);
                 GlobalVariables.run = true;
                 GlobalVariables.restart = false;
-
             }
-        }
     }
 
 
@@ -94,7 +84,7 @@ public class ManageCanvas : MonoBehaviour
     {
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
-        Scene currentScene = SceneManager.GetActiveScene();
+        var currentScene = SceneManager.GetActiveScene();
 
         GlobalVariables.restart = true;
 
@@ -107,30 +97,26 @@ public class ManageCanvas : MonoBehaviour
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
         GlobalVariables.run = false;
-        Scene currentScene = SceneManager.GetActiveScene();
+        var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
-
-        
     }
+
     public void Start_click()
     {
         GlobalVariables.run = true;
     }
-    
+
     public void OnEnterLeaderBoard()
     {
         var scoreBoard = ScoreScript.Instance.GetScoreBoard("easy");
-        Text text = leaderBoardPanel.GetComponentInChildren<Text>();
+        var text = leaderBoardPanel.GetComponentInChildren<Text>();
         text.text = "";
         // sort the score board
         scoreBoard.Sort((x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
-        int i = 1;
+        var i = 1;
         scoreBoard.ForEach(score =>
         {
-            if (i > 10)
-            {
-                return;
-            }
+            if (i > 10) return;
             text.text += i++ + ". " + score + "\n";
         });
     }

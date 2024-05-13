@@ -14,17 +14,15 @@ public class GlobalVariables : MonoBehaviour
     public static float difficulty = 1.0f;
     public static bool restart = false;
 
-    void Start()
+    private void Start()
     {
-
         run = false;
 
         PlayerPrefs.SetInt("Coins", coins);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 }

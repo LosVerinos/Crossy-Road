@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class DetectCoins : MonoBehaviour
 {
-
     private bool isColliding = false;
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player") && !isColliding) 
+        if (other.gameObject.CompareTag("Player") && !isColliding)
         {
             isColliding = true;
 
-            int coin = PlayerPrefs.GetInt("Coins");
+            var coin = PlayerPrefs.GetInt("Coins");
 
             coin++;
 
@@ -24,7 +23,7 @@ public class DetectCoins : MonoBehaviour
 
             //GlobalVariables.coins++;
             GetComponent<AiScript>().AddReward(+0.5f);
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
@@ -33,11 +32,7 @@ public class DetectCoins : MonoBehaviour
         isColliding = false;
 
         if (GlobalVariables.reload)
-        {
-            if (this.gameObject != null)
-            {
-                Destroy(this.gameObject);
-            }
-        }
+            if (gameObject != null)
+                Destroy(gameObject);
     }
 }

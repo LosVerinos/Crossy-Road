@@ -6,46 +6,45 @@ public class FolowPlayer : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private float smoothSpeed;
-    [SerializeField] private Vector3 offset = new Vector3(0,1,0);
+    [SerializeField] private Vector3 offset = new(0, 1, 0);
     private Vector3 historicPosition;
 
     private void Start()
     {
-        historicPosition = new Vector3(0,4,0);
+        historicPosition = new Vector3(0, 4, 0);
         //historicPosition = player.transform.position;
         transform.position = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (player != null)
         {
-            Vector3 playerPosition = player.transform.position;
+            var playerPosition = player.transform.position;
 
             if (GlobalVariables.difficulty == 1.0f)
             {
-                Vector3 desiredPosition = player.transform.position + offset;
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+                var desiredPosition = player.transform.position + offset;
+                var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
             }
-            else if(GlobalVariables.difficulty == 1.2f && GlobalVariables.run)
+            else if (GlobalVariables.difficulty == 1.2f && GlobalVariables.run)
             {
-                offset = new Vector3(0.03f, 0,playerPosition.z );
-                Vector3 desiredPosition = historicPosition + offset;
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+                offset = new Vector3(0.03f, 0, playerPosition.z);
+                var desiredPosition = historicPosition + offset;
+                var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
                 historicPosition = new Vector3(desiredPosition.x, desiredPosition.y, 0);
             }
-            else if(GlobalVariables.difficulty == 1.5f && GlobalVariables.run)
+            else if (GlobalVariables.difficulty == 1.5f && GlobalVariables.run)
             {
                 offset = new Vector3(0.05f, 0, playerPosition.z);
-                Vector3 desiredPosition = historicPosition + offset;
-                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+                var desiredPosition = historicPosition + offset;
+                var smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
                 transform.position = smoothedPosition;
                 historicPosition = new Vector3(desiredPosition.x, desiredPosition.y, 0);
             }
-            
         }
     }
 }

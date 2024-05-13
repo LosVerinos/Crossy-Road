@@ -11,12 +11,11 @@ public class Buy_script : MonoBehaviour
 
     public void buy_click()
     {
-
         if (PlayerPrefs.GetInt("Coins") >= 1)
         {
             PlayAnimation("Buy_button");
 
-            int coins = PlayerPrefs.GetInt("Coins");
+            var coins = PlayerPrefs.GetInt("Coins");
 
             coins = coins - 1;
 
@@ -27,7 +26,6 @@ public class Buy_script : MonoBehaviour
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
 
             UnlockRandomSkin();
-
         }
         else
         {
@@ -35,7 +33,7 @@ public class Buy_script : MonoBehaviour
         }
     }
 
-    void PlayAnimation(string animationName)
+    private void PlayAnimation(string animationName)
     {
         if (animator != null)
         {
@@ -51,20 +49,16 @@ public class Buy_script : MonoBehaviour
 
     public void UnlockRandomSkin()
     {
-        List<SkinData> lockedSkins = new List<SkinData>();
+        var lockedSkins = new List<SkinData>();
 
-        foreach (SkinData skinData in skinDataList)
-        {
+        foreach (var skinData in skinDataList)
             if (!skinData.unlocked)
-            {
                 lockedSkins.Add(skinData);
-            }
-        }
 
         if (lockedSkins.Count > 0)
         {
-            int randomIndex = Random.Range(0, lockedSkins.Count);
-            SkinData randomSkin = lockedSkins[randomIndex];
+            var randomIndex = Random.Range(0, lockedSkins.Count);
+            var randomSkin = lockedSkins[randomIndex];
 
             randomSkin.unlocked = true;
 

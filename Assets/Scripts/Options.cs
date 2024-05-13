@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
-
     //working on the new things here
     public GameObject startMenuPanel;
     public GameObject shopPanel;
@@ -19,10 +18,9 @@ public class Options : MonoBehaviour
     //BELOW
 
 
-
     public GameObject Panel;
     public Dropdown DResolution;
-    bool visible = false;
+    private bool visible = false;
 
     public GameObject PausePanel;
 
@@ -38,13 +36,13 @@ public class Options : MonoBehaviour
         InitializeResolutionsDropdown();
         SliderChange();
     }
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             visible = !visible;
             Panel.SetActive(visible);
-            
         }
     }
 
@@ -64,9 +62,9 @@ public class Options : MonoBehaviour
 
     public void SetResolution()
     {
-        Resolution selectedResolution = Screen.resolutions[DResolution.value];
-        float targetAspectRatio = 16f / 9f;
-        int targetWidth = Mathf.RoundToInt(selectedResolution.height * targetAspectRatio);
+        var selectedResolution = Screen.resolutions[DResolution.value];
+        var targetAspectRatio = 16f / 9f;
+        var targetWidth = Mathf.RoundToInt(selectedResolution.height * targetAspectRatio);
         Screen.SetResolution(targetWidth, selectedResolution.height, true);
     }
 
@@ -83,24 +81,20 @@ public class Options : MonoBehaviour
 
     private void InitializeResolutionsDropdown()
     {
-        
         DResolution.ClearOptions();
 
-        List<string> resolutionOptions = new List<string>();
+        var resolutionOptions = new List<string>();
 
-        foreach (Resolution resolution in Screen.resolutions)
+        foreach (var resolution in Screen.resolutions)
         {
-            string resolutionString = $"{resolution.width} x {resolution.height}";
-            if (!resolutionOptions.Contains(resolutionString))
-            {
-                resolutionOptions.Add(resolutionString);
-            }
+            var resolutionString = $"{resolution.width} x {resolution.height}";
+            if (!resolutionOptions.Contains(resolutionString)) resolutionOptions.Add(resolutionString);
         }
 
         DResolution.AddOptions(resolutionOptions);
 
-        Resolution currentResolution = Screen.currentResolution;
-        string currentResolutionString = $"{currentResolution.width} x {currentResolution.height}";
+        var currentResolution = Screen.currentResolution;
+        var currentResolutionString = $"{currentResolution.width} x {currentResolution.height}";
         DResolution.value = resolutionOptions.IndexOf(currentResolutionString);
 
         DResolution.RefreshShownValue();

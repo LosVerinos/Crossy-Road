@@ -6,11 +6,11 @@ using Unity.MLAgents.Actuators;
 public class AiScript : Agent
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
-    [SerializeField]
-    private int goalScore = 30;
+    [SerializeField] private int goalScore = 30;
     private int _scoreBuffer = 0;
     private int score = 0;
     private bool isOnLog = false;
+
     public override void OnEpisodeBegin()
     {
         transform.localPosition = new Vector3(0, 1.03f, 0);
@@ -20,9 +20,7 @@ public class AiScript : Agent
     {
         if (actions.DiscreteActions[0] == 1)
         {
-            if (isOnLog){
-                AddReward(+1f);
-            }
+            if (isOnLog) AddReward(+1f);
             AddReward(+0.3f);
             MovePlayer(Vector3.forward);
             _scoreBuffer++;
@@ -33,6 +31,7 @@ public class AiScript : Agent
                 AddReward(0.4f);
                 EndEpisode();
             }
+
             if (score == goalScore)
             {
                 AddReward(0.9f);
@@ -60,10 +59,7 @@ public class AiScript : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
-        if (_isHopping)
-        {
-            return;
-        }
+        if (_isHopping) return;
         var actions = actionsOut.DiscreteActions;
         actions[0] = 0;
         if (Input.GetKey(KeyCode.W))
@@ -87,38 +83,35 @@ public class AiScript : Agent
 
     private void MovePlayer(Vector3 diff)
     {
-        Vector3 newPosition = transform.localPosition + diff;
-        
-        Collider[] colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
+        var newPosition = transform.localPosition + diff;
+
+        var colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
         foreach (var collider in colliders)
-        {
             if (collider.CompareTag("Obstacle"))
             {
-                
                 AddReward(-0.2f);
                 return;
             }
-        }
-        
+
         var position = transform.localPosition;
         transform.localPosition = Vector3.Lerp(position, newPosition, 1f);
         TerrainGenerator.SpawnTerrain(false, position);
-        if (!(transform.localPosition.x is < -5 or > 5 || transform.localPosition.z < -5 )) return;
+        if (!(transform.localPosition.x is < -5 or > 5 || transform.localPosition.z < -5)) return;
         AddReward(-0.5f);
         EndEpisode();
     }
-    
-    
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Goal")) return;
         SetReward(+1f);
         EndEpisode();
     }
-    
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.GetComponent<MovingObjectScript>() != null)
+        if (collision.collider.GetComponent<MovingObjectScript>() != null)
         {
             if (collision.collider.GetComponent<MovingObjectScript>().islog)
             {
@@ -126,7 +119,6 @@ public class AiScript : Agent
                 AddReward(+0.2f);
                 isOnLog = true;
             }
-            
         }
         else
         {
