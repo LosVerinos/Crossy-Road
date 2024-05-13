@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -16,12 +17,15 @@ public class ManageCanvas : MonoBehaviour
     public GameObject leaderBoardPanel;
     public GameObject startPanel;
     public GameObject scoreText;
+    public Text timeText;
 
     public Animator animator;
 
     public Text coinsText;
 
     private bool visible = false;
+
+    private float time = 0f;
 
     public void Update()
     {
@@ -45,6 +49,21 @@ public class ManageCanvas : MonoBehaviour
         {
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
         }
+
+        if (GlobalVariables.run && timeText != null)
+        {
+            time += Time.deltaTime;
+
+            int minutes = Mathf.FloorToInt(time / 60);
+            int seconds = Mathf.FloorToInt(time % 60);
+
+            string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            if (timeText.text != timeString)
+            {
+                timeText.text = timeString;
+            }
+        }
     }
 
     private void Start()
@@ -55,7 +74,6 @@ public class ManageCanvas : MonoBehaviour
             {
 
                 animator.Play("Start");
-                //startPanel.SetActive(false);
                 GlobalVariables.run = true;
                 GlobalVariables.restart = false;
 
