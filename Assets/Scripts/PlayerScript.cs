@@ -167,7 +167,6 @@ private float timeWithoutScoreIncrease = 0f;
         }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
-
             switch (lastInput)
             {
                 case 'S':
@@ -200,7 +199,6 @@ private float timeWithoutScoreIncrease = 0f;
             }
 
             _backwardsCount = 0;
-
             lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
@@ -293,17 +291,20 @@ private float timeWithoutScoreIncrease = 0f;
 
         }
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
+        GlobalVariables.eagleCatch = false;
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
+            GlobalVariables.eagleCatch = true;
             //TODO: display the game ended message @Reaub1
         }
 
         if (ScoreScript.Instance.isCounting){
-            timeWithoutScoreIncrease += Time.deltaTime; 
+            timeWithoutScoreIncrease += Time.deltaTime;
             if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
                 EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
                 eagleScript.CatchPlayer();
+                GlobalVariables.eagleCatch = true;
             }
         }
 
