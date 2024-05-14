@@ -39,6 +39,7 @@ public class PlayerScript : Agent
 
     public override void OnEpisodeBegin()
     {
+        bestScore = ScoreScript.Instance.GetScore() > bestScore ? ScoreScript.Instance.GetScore() : bestScore;
         ScoreScript.Instance.ResetScore();
         transform.localPosition = new Vector3(0, 1.03f, 0);
     }
@@ -46,13 +47,21 @@ public class PlayerScript : Agent
     public override void OnActionReceived(ActionBuffers actions)
     {
         if (_isHopping) return;
-        if (actions.DiscreteActions[0] == 1)
-            MovePlayer(Vector3.forward);
-        else if (actions.DiscreteActions[0] == 2)
-            MovePlayer(Vector3.back);
-        else if (actions.DiscreteActions[0] == 3)
-            MovePlayer(Vector3.left);
-        else if (actions.DiscreteActions[0] == 4) MovePlayer(Vector3.right);
+        switch (actions.DiscreteActions[0])
+        {
+            case 1:
+                MovePlayer(Vector3.forward);
+                break;
+            case 2:
+                MovePlayer(Vector3.back);
+                break;
+            case 3:
+                MovePlayer(Vector3.left);
+                break;
+            case 4:
+                MovePlayer(Vector3.right);
+                break;
+        }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -176,8 +185,8 @@ public class PlayerScript : Agent
         //
         // ScoreScript.Instance.WriteScore(str_difficulty);
         // ScoreScript.Instance.ResetScore();
-        if (ScoreScript.Instance.GetScore() > bestScore) bestScore = ScoreScript.Instance.GetScore();
-        AddReward(-0.5f);
+        
+        SetReward(-1f);
         EndEpisode();
         // Destroy(GlobalVariables.Player.GameObject());
     }
@@ -212,7 +221,7 @@ public class PlayerScript : Agent
 
             MovePlayer(new Vector3(1, 0, zDiff));
             _scoreBuffer++;
-            AddReward(+0.2f);
+            AddReward(+0.1f);
             soundIsPlayed = false;
             if (_scoreBuffer > 0)
             {
@@ -220,6 +229,7 @@ public class PlayerScript : Agent
                 AddReward(+0.5f);
                 timeWithoutScoreIncrease = 0f;
                 _scoreBuffer = 0;
+                
             }
 
             _backwardsCount = 0;
@@ -348,41 +358,68 @@ public class PlayerScript : Agent
     {
         var newPosition = transform.position + diff;
 
-        var colliders = Physics.OverlapBox(newPosition, Vector3.one * 0.2f);
-        foreach (var collider in colliders)
-            if (collider.CompareTag("Obstacle"))
-            {
-                AddReward(-0.3f);
-                return;
-            }
+        var results = new Collider[1];
+        var size = Physics.OverlapBoxNonAlloc(newPosition, Vector3.one * 0.2f, results);
+        if (size > 0)
+        {
+            AddReward(-0.2f);
+            return;
+        }
+        
 
         if (diff == Vector3.right)
         {
             _scoreBuffer++;
-            AddReward(0.2f);
+            AddReward(0.1f);
             if (_scoreBuffer > 0)
             {
                 ScoreScript.Instance.UpdateScore();
                 _scoreBuffer = 0;
                 AddReward(0.2f);
+                if (ScoreScript.Instance.GetScore() > bestScore)
+                {
+                    bestScore = ScoreScript.Instance.GetScore();
+                    AddReward(+0.7f);
+                    EndEpisode();
+                }
             }
+            
         }
         else if (diff == Vector3.left)
         {
             _scoreBuffer--;
             AddReward(-0.2f);
             if (_scoreBuffer < 0) AddReward(-0.1f);
-
             if (_scoreBuffer == -3) KillPlayer();
         }
-
-        if (ScoreScript.Instance.GetScore() < bestScore) AddReward(+0.8f);
 
         _animator.SetTrigger(Hop);
         _isHopping = true;
         var position = transform.position;
         transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
         TerrainGenerator.SpawnTerrain(false, position);
+        
+        // get the prefab the player is on
+        foreach (var terrain in TerrainGenerator._currentTerrains
+                     .Where(terrain => terrain.transform.position.x <= transform.position.x)
+                     .Where(terrain => terrain.CompareTag("LillyPad")
+                        || terrain.CompareTag("Water")
+                        || terrain.CompareTag("Log")
+                        || terrain.CompareTag("Railway")
+                        || terrain.CompareTag("Road")))
+        {
+            if (Mathf.Approximately(terrain.transform.position.x, transform.position.x -1))
+            {
+                AddReward(+0.7f);
+            }
+
+            if (!Mathf.Approximately(terrain.transform.position.x, transform.position.x)) continue;
+            if (terrain.CompareTag("LillyPad"))
+            {
+                AddReward(+0.2f);
+            }
+        }
+        
     }
 
     public void HopAnimationEnd()

@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: -5168948374703239173}
   m_Layer: 0
   m_Name: Water 1HP
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +168,4 @@ MonoBehaviour:
   - {fileID: 3305718274531061757, guid: a6765cdfd9cad490fa180be96514dd9a, type: 3}
   - {fileID: 9119807306214891880, guid: 994e2914a0d5244919c2bb2f305cb062, type: 3}
   SpawnPos: {fileID: 139909793620997579}
-  minSeparationTime: 0.25
-  maxSeparationTime: 2
   direction: -1
