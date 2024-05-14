@@ -69,7 +69,7 @@ public class ScoreScript : MonoBehaviour
         Easy_button.onClick.AddListener(easy_click);
         Medium_button.onClick.AddListener(medium_click);
         Hard_button.onClick.AddListener(hard_click);
-        
+
     }
 
     public List<string> GetScoreBoard(string difficulty)

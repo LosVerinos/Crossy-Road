@@ -140,8 +140,7 @@ public class ManageCanvas : MonoBehaviour
         var scoreBoard = ScoreScript.Instance.GetScoreBoard("easy");
         Text text = leaderBoardPanel.GetComponentInChildren<Text>();
         text.text = "";
-        // sort the score board
-        scoreBoard.Sort((x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
+   
         int i = 1;
         scoreBoard.ForEach(score =>
         {
@@ -149,7 +148,7 @@ public class ManageCanvas : MonoBehaviour
             {
                 return;
             }
-            text.text += i++ + ". " + score + "\n";
+            text.text += i++ + " - " + score + "\n";
         });
     }
 }
