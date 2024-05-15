@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class SoundsManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private AudioSource audioSource;
+    private int themeNumber;
+    [SerializeField] private AudioClip[] sounds;
+
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        DetermineThemeNumber();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlaySound()
     {
-        
+
+        if (audioSource != null && audioSource.clip != null)
+        {
+            audioSource.clip = sounds[themeNumber];
+
+            audioSource.Play();
+        }
+        else
+        {
+            Debug.LogError("AudioSource ou AudioClip non défini dans le SoundManager.");
+        }
     }
+
+    void DetermineThemeNumber(){
+        Debug.Log(GlobalVariables.theme);
+        if(GlobalVariables.theme == "None"){
+            themeNumber = 0;
+        }
+        else if(GlobalVariables.theme == "StarWars"){
+            themeNumber = 1;
+        }
+        else if(GlobalVariables.theme == "HarryPotter"){
+            themeNumber = 2;
+        }
+        else if(GlobalVariables.theme == "LOTR"){
+            themeNumber = 3;
+        }
+    }
+    
 }
