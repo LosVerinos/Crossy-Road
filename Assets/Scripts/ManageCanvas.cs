@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ManageCanvas : MonoBehaviour
 {
+
     public GameObject pausePanel;
     public GameObject pauseButtonPanel;
     public GameObject coinsPanel;
@@ -15,12 +16,15 @@ public class ManageCanvas : MonoBehaviour
     public GameObject leaderBoardPanel;
     public GameObject startPanel;
     public GameObject scoreText;
+    public Text timeText;
 
     public Animator animator;
 
     public Text coinsText;
 
     private bool visible = false;
+
+    private float time = 0f;
 
     public void Update()
     {
@@ -34,23 +38,44 @@ public class ManageCanvas : MonoBehaviour
                 scoreText.transform.position = new Vector3(550f, 1800f, 0f);
                 scoreText.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
             }
-
             visible = true;
         }
 
-        if (coinsText != null) coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+        if (coinsText != null)
+        {
+            coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+        }
+
+        if (GlobalVariables.run && timeText != null)
+        {
+            time += Time.deltaTime;
+
+            int minutes = Mathf.FloorToInt(time / 60);
+            int seconds = Mathf.FloorToInt(time % 60);
+
+            string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
+
+            if (timeText.text != timeString)
+            {
+                timeText.text = timeString;
+            }
+        }
     }
 
     private void Start()
     {
-        if (GlobalVariables.restart)
+        if(GlobalVariables.restart)
+        {
             if (startPanel != null)
             {
+
                 animator.Play("Start");
                 //startPanel.SetActive(false);
                 GlobalVariables.run = true;
                 GlobalVariables.restart = false;
+
             }
+        }
     }
 
 
@@ -99,13 +124,14 @@ public class ManageCanvas : MonoBehaviour
         GlobalVariables.run = false;
         var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
-    }
 
+        
+    }
     public void Start_click()
     {
         GlobalVariables.run = true;
     }
-
+    
     public void OnEnterLeaderBoard()
     {
         var scoreBoard = ScoreScript.Instance.GetScoreBoard("easy");

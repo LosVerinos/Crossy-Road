@@ -9,15 +9,18 @@ public class Buy_script : MonoBehaviour
     public Text coinsText;
     public List<SkinData> skinDataList;
 
+    private bool availaible = true;
+
     public void buy_click()
     {
-        if (PlayerPrefs.GetInt("Coins") >= 1)
+
+        if (PlayerPrefs.GetInt("Coins") >= 100 && availaible)
         {
             PlayAnimation("Buy_button");
 
-            var coins = PlayerPrefs.GetInt("Coins");
+            int coins = PlayerPrefs.GetInt("Coins");
 
-            coins = coins - 1;
+            coins = coins - 100;
 
             PlayerPrefs.SetInt("Coins", coins);
 
@@ -26,6 +29,7 @@ public class Buy_script : MonoBehaviour
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
 
             UnlockRandomSkin();
+
         }
         else
         {
@@ -33,7 +37,7 @@ public class Buy_script : MonoBehaviour
         }
     }
 
-    private void PlayAnimation(string animationName)
+    void PlayAnimation(string animationName)
     {
         if (animator != null)
         {
@@ -49,16 +53,20 @@ public class Buy_script : MonoBehaviour
 
     public void UnlockRandomSkin()
     {
-        var lockedSkins = new List<SkinData>();
+        List<SkinData> lockedSkins = new List<SkinData>();
 
-        foreach (var skinData in skinDataList)
+        foreach (SkinData skinData in skinDataList)
+        {
             if (!skinData.unlocked)
+            {
                 lockedSkins.Add(skinData);
+            }
+        }
 
         if (lockedSkins.Count > 0)
         {
-            var randomIndex = Random.Range(0, lockedSkins.Count);
-            var randomSkin = lockedSkins[randomIndex];
+            int randomIndex = Random.Range(0, lockedSkins.Count);
+            SkinData randomSkin = lockedSkins[randomIndex];
 
             randomSkin.unlocked = true;
 
@@ -66,7 +74,9 @@ public class Buy_script : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Tous les skins sont déjà déverrouillés!");
+            Debug.Log("Tous les skins sont déjà déverrouillés!");
+            availaible = false;
+
         }
     }
 }

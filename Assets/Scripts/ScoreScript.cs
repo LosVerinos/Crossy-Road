@@ -19,6 +19,8 @@ public class ScoreScript : MonoBehaviour
     public Button Medium_button;
     public Button Hard_button;
 
+    public Text timerText;
+
     private Button selectedButton;
 
     public Text Rank;
@@ -54,23 +56,24 @@ public class ScoreScript : MonoBehaviour
         writer.Close();
     }
 
-    private void Start()
+    void Start()
     {
         checkFiles();
 
         if (_instance != null && _instance != this)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
             return;
         }
 
         _instance = this;
         score = 0;
 
-
+        
         Easy_button.onClick.AddListener(easy_click);
         Medium_button.onClick.AddListener(medium_click);
         Hard_button.onClick.AddListener(hard_click);
+        
     }
 
     public List<string> GetScoreBoard(string difficulty)
@@ -79,6 +82,7 @@ public class ScoreScript : MonoBehaviour
         string[] lines;
         try
         {
+            
             lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
         }
         catch (Exception)
@@ -127,18 +131,19 @@ public class ScoreScript : MonoBehaviour
     {
         SetButtonState(Easy_button);
         ReloadScoreBoard("easy");
-    }
 
+    }
     public void medium_click()
     {
         SetButtonState(Medium_button);
         ReloadScoreBoard("medium");
-    }
 
+    }
     public void hard_click()
     {
         SetButtonState(Hard_button);
         ReloadScoreBoard("hard");
+
     }
 
     private void SetButtonState(Button clickedButton)
@@ -174,6 +179,8 @@ public class ScoreScript : MonoBehaviour
                 {
                     writer.WriteLine("1:0");
                 }
+            }
         }
     }
+
 }

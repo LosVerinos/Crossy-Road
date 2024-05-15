@@ -24,6 +24,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private void Start()
     {
+
         //PlayerPrefs.SetInt("Coins", 1000);
         //PlayerPrefs.Save();
 
@@ -101,10 +102,8 @@ public class TerrainGenerator : MonoBehaviour
                                     northCliff.gameObject.SetActive(true);
                         }
                     }
-
                     wasLilipadsTwoRowsAgo++;
                 }
-
                 lastOne = whichOne;
 
                 var newTerrain = Instantiate(terrainData[wichTerrain].PossibleTerrain[whichOne], currentPosition,
@@ -115,16 +114,17 @@ public class TerrainGenerator : MonoBehaviour
                     if (_currentTerrains.Count > maxTerrainCount)
                     {
                         lastTerrainX = _currentTerrains[0].transform.position.x;
-                        Debug.Log("real delete : " + _currentTerrains[0]);
 
                         Destroy(_currentTerrains[0]);
                         _currentTerrains.RemoveAt(0);
                     }
-
                 currentPosition.x++;
                 lastTerrain = terrainData[wichTerrain].PossibleTerrain[whichOne];
             }
+            
+
         }
+        
     }
 
 
@@ -202,3 +202,6 @@ public class TerrainGenerator : MonoBehaviour
         for (var i = 0; i < maxTerrainCount; i++) SpawnTerrain(true, Vector3.zero);
     }
 }
+
+
+
