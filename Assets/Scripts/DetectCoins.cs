@@ -22,7 +22,6 @@ public class DetectCoins : MonoBehaviour
 
 
             //GlobalVariables.coins++;
-            GetComponent<AiScript>().AddReward(+0.5f);
             Destroy(gameObject);
         }
     }

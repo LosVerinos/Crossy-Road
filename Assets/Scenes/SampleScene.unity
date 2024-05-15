@@ -5161,7 +5161,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
   - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
   - {fileID: 11400000, guid: c03e5f1459413450799307f3fa859a70, type: 2}
-  _isAi: 1
+  _isAi: 0
 --- !u!114 &1215677309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5185,18 +5185,22 @@ MonoBehaviour:
   - MidCar
   - Truck
   - Coins
-  m_RaysPerDirection: 20
+  - Road
+  - Railway
+  - Water
+  - Train
+  m_RaysPerDirection: 50
   m_MaxRayDegrees: 180
-  m_SphereCastRadius: 1
-  m_RayLength: 20
+  m_SphereCastRadius: 5
+  m_RayLength: 30
   m_RayLayerMask:
     serializedVersion: 2
     m_Bits: 4294967291
-  m_ObservationStacks: 1
+  m_ObservationStacks: 5
   rayHitColor: {r: 1, g: 0, b: 0, a: 1}
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
-  m_EndVerticalOffset: -0.5
+  m_EndVerticalOffset: 0
 --- !u!114 &1215677310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5219,7 +5223,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
+  m_Model: {fileID: 5022602860645237092, guid: eb5cff8c84130604e9e7e067e47a2e9b, type: 3}
   m_InferenceDevice: 3
   m_BehaviorType: 0
   m_BehaviorName: My Behavior
@@ -8167,6 +8171,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 883adf492306b463da5075b3b3fbe08e, type: 2}
   terrainHolder: {fileID: 955307681}
   currentPosition: {x: 0, y: 0, z: 0}
+  _currentTerrains: []
   startTerrains:
   - {fileID: 2897610081443693650, guid: 87c189d76c9c0418fba9e011202583c5, type: 3}
   - {fileID: 2897610081443693650, guid: 19c89b81e8c724cf09bca43b824e1f80, type: 3}

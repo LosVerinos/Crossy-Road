@@ -34,11 +34,13 @@ public class PlayerScript : Agent
     [SerializeField] private bool _isAi = false;
 
     private bool isOnLog;
-    private static int bestScore = 0;
+    private int bestScore = 0;
 
 
     public override void OnEpisodeBegin()
     {
+        scoreText.text = "BestScore: " + bestScore + "\nScore: " + 0;
+        _scoreBuffer = 0;
         bestScore = ScoreScript.Instance.GetScore() > bestScore ? ScoreScript.Instance.GetScore() : bestScore;
         ScoreScript.Instance.ResetScore();
         transform.localPosition = new Vector3(0, 1.03f, 0);
@@ -49,6 +51,10 @@ public class PlayerScript : Agent
         if (_isHopping) return;
         switch (actions.DiscreteActions[0])
         {
+            // case 0:
+            //     MovePlayer(Vector3.zero);
+            //     SetReward(+0.01f);
+            //     break;
             case 1:
                 MovePlayer(Vector3.forward);
                 break;
@@ -81,6 +87,7 @@ public class PlayerScript : Agent
 
     private void Start()
     {
+        skinDataList[3].selected = true;
         if (skinDataList.Count == 0)
             Debug.Log("La liste skinDataList est vide.");
         else
@@ -114,7 +121,7 @@ public class PlayerScript : Agent
         GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
-        GetComponent<BehaviorParameters>().BehaviorType = BehaviorType.Default;
+        GetComponent<BehaviorParameters>().BehaviorType = BehaviorType.HeuristicOnly;
     }
 
     public void reloadSkin()
@@ -158,37 +165,36 @@ public class PlayerScript : Agent
 
     public void KillPlayer()
     {
-        // if (GlobalVariables.isPlayerKilled)
-        // {
-        //     return;
-        // }
-        // GlobalVariables.isPlayerKilled = true;
-        // GlobalVariables.run = false;
-        //
-        // string str_difficulty = "";
-        //
-        // switch (GlobalVariables.difficulty)
-        // {
-        //     case 1.0f:
-        //         str_difficulty = "easy";
-        //         break;
-        //     case 1.2f:
-        //         str_difficulty = "medium";
-        //         break;
-        //     case 1.5f:
-        //         str_difficulty = "hard";
-        //         break;
-        //     default:
-        //         Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
-        //         break;
-        // }
-        //
-        // ScoreScript.Instance.WriteScore(str_difficulty);
-        // ScoreScript.Instance.ResetScore();
+        if (GlobalVariables.isPlayerKilled)
+        {
+            return;
+        }
+        GlobalVariables.isPlayerKilled = true;
+        GlobalVariables.run = false;
         
-        SetReward(-1f);
+        string str_difficulty = "";
+        
+        switch (GlobalVariables.difficulty)
+        {
+            case 1.0f:
+                str_difficulty = "easy";
+                break;
+            case 1.2f:
+                str_difficulty = "medium";
+                break;
+            case 1.5f:
+                str_difficulty = "hard";
+                break;
+            default:
+                Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
+                break;
+        }
+        
+        ScoreScript.Instance.WriteScore(str_difficulty);
+        ScoreScript.Instance.ResetScore();
+        AddReward(-1f);
         EndEpisode();
-        // Destroy(GlobalVariables.Player.GameObject());
+        Destroy(GlobalVariables.Player.GameObject());
     }
 
     public void SetPlayerName()
@@ -215,30 +221,28 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-
+    
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
-
+    
             MovePlayer(new Vector3(1, 0, zDiff));
             _scoreBuffer++;
-            AddReward(+0.1f);
             soundIsPlayed = false;
             if (_scoreBuffer > 0)
             {
                 ScoreScript.Instance.UpdateScore();
-                AddReward(+0.5f);
+                scoreText.text = ScoreScript.Instance.GetScore().ToString();
                 timeWithoutScoreIncrease = 0f;
                 _scoreBuffer = 0;
                 
             }
-
+    
             _backwardsCount = 0;
-
+    
             lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            AddReward(-0.3f);
             switch (lastInput)
             {
                 case 'W':
@@ -253,7 +257,7 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-
+    
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             MovePlayer(new Vector3(-1, 0, zDiff));
@@ -277,7 +281,7 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-
+    
             float xDiff = 0;
             if (transform.position.x % 1 != 0) xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             MovePlayer(new Vector3(xDiff, 0, 1));
@@ -299,39 +303,39 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-
+    
             float xDiff = 0;
             if (transform.position.x % 1 != 0) xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             MovePlayer(new Vector3(xDiff, 0, -1));
             lastInput = 'D';
         }
-
+    
         if (ScoreScript.Instance.GetScore() % 50 == 0 && ScoreScript.Instance.GetScore() != 0 && !soundIsPlayed)
         {
             soundIsPlayed = true;
-
+    
             if (sound != null)
             {
                 _audioSource.clip = sound;
                 _audioSource.Play();
             }
         }
-
+    
         scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
-        // if (_backwardsCount >= 3){
-        //     EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-        //     eagleScript.CatchPlayer();
-        //     //TODO: display the game ended message @Reaub1
-        // }
-        //
-        // if (ScoreScript.Instance.isCounting){
-        //     timeWithoutScoreIncrease += Time.deltaTime; 
-        //     if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
-        //         EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-        //         eagleScript.CatchPlayer();
-        //     }
-        // }
-
+        if (_backwardsCount >= 3){
+            EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+            eagleScript.CatchPlayer();
+            //TODO: display the game ended message @Reaub1
+        }
+        
+        if (ScoreScript.Instance.isCounting){
+            timeWithoutScoreIncrease += Time.deltaTime; 
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
+                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+                eagleScript.CatchPlayer();
+            }
+        }
+    
         if (transform.position.z < -15f || transform.position.z > 15f) KillPlayer();
     }
 
@@ -341,10 +345,10 @@ public class PlayerScript : Agent
         {
             if (collision.collider.GetComponent<MovingObjectScript>().islog)
             {
-                if (isOnLog) AddReward(+0.5f);
+                if (isOnLog) AddReward(+0.05f);
                 isOnLog = true;
                 transform.parent = collision.collider.transform;
-                AddReward(+0.2f);
+                AddReward(+0.02f);
             }
         }
         else
@@ -362,36 +366,19 @@ public class PlayerScript : Agent
         var size = Physics.OverlapBoxNonAlloc(newPosition, Vector3.one * 0.2f, results);
         if (size > 0)
         {
-            AddReward(-0.2f);
-            return;
+            if (results.Any(collider => collider.CompareTag("Obstacle")))
+            {
+                AddReward(-0.04f);
+                return;
+            }
+            if (results.Any(collider => collider.CompareTag("Coins")))
+            {
+                AddReward(+0.02f);
+            }
         }
         
 
-        if (diff == Vector3.right)
-        {
-            _scoreBuffer++;
-            AddReward(0.1f);
-            if (_scoreBuffer > 0)
-            {
-                ScoreScript.Instance.UpdateScore();
-                _scoreBuffer = 0;
-                AddReward(0.2f);
-                if (ScoreScript.Instance.GetScore() > bestScore)
-                {
-                    bestScore = ScoreScript.Instance.GetScore();
-                    AddReward(+0.7f);
-                    EndEpisode();
-                }
-            }
-            
-        }
-        else if (diff == Vector3.left)
-        {
-            _scoreBuffer--;
-            AddReward(-0.2f);
-            if (_scoreBuffer < 0) AddReward(-0.1f);
-            if (_scoreBuffer == -3) KillPlayer();
-        }
+        
 
         _animator.SetTrigger(Hop);
         _isHopping = true;
@@ -400,24 +387,55 @@ public class PlayerScript : Agent
         TerrainGenerator.SpawnTerrain(false, position);
         
         // get the prefab the player is on
-        foreach (var terrain in TerrainGenerator._currentTerrains
-                     .Where(terrain => terrain.transform.position.x <= transform.position.x)
-                     .Where(terrain => terrain.CompareTag("LillyPad")
-                        || terrain.CompareTag("Water")
-                        || terrain.CompareTag("Log")
-                        || terrain.CompareTag("Railway")
-                        || terrain.CompareTag("Road")))
+        if (diff == Vector3.right)
         {
-            if (Mathf.Approximately(terrain.transform.position.x, transform.position.x -1))
+            _scoreBuffer++;
+            if (_scoreBuffer > 0)
             {
-                AddReward(+0.7f);
+                float currentScore = bestScore / 100f;
+                ScoreScript.Instance.UpdateScore();
+                scoreText.text = "BestScore: " + bestScore + "\nScore:  "+ ScoreScript.Instance.GetScore();
+                _scoreBuffer = 0;
+                AddReward(+0.1f * currentScore);
+                if (ScoreScript.Instance.GetScore() == bestScore)
+                {
+                    Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
+                    bestScore++;
+                    SetReward(+1f);
+                    EndEpisode();
+                }
             }
+            foreach (var terrain in TerrainGenerator._currentTerrains
+                         .Where(terrain => terrain.transform.position.x <= transform.position.x -1)
+                         .Where(terrain => terrain.CompareTag("LillyPad")
+                                           || terrain.CompareTag("Water")
+                                           || terrain.CompareTag("Log")
+                                           || terrain.CompareTag("Railway")
+                                           || terrain.CompareTag("Road")))
+            {
+                if (Mathf.Approximately(terrain.transform.position.x, transform.position.x -1))
+                {
+                    SetReward(+0.4f);
+                }
 
-            if (!Mathf.Approximately(terrain.transform.position.x, transform.position.x)) continue;
-            if (terrain.CompareTag("LillyPad"))
-            {
-                AddReward(+0.2f);
+                if (!Mathf.Approximately(terrain.transform.position.x, transform.position.x)) continue;
+                if (terrain.CompareTag("LillyPad") || terrain.CompareTag("Log"))
+                {
+                    SetReward(+0.4f);
+                }
             }
+            
+        }
+        else if (diff == Vector3.left)
+        {
+            _scoreBuffer--;
+            AddReward(-0.01f);
+            if (_scoreBuffer < 0) AddReward(-0.02f);
+            if (_scoreBuffer == -3) KillPlayer();
+        }
+        else
+        {
+            SetReward(+0.01f);
         }
         
     }
