@@ -94,6 +94,7 @@ public class PlayerScript : Agent
                 {
                     if (skin.theme == "Random")
                     {
+                        Debug.Log("random");
                         var randomIndex = Random.Range(0, skinDataList.Count);
                         var randomSkin = skinDataList[randomIndex];
 
