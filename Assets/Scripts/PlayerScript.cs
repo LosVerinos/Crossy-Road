@@ -407,7 +407,6 @@ public class PlayerScript : Agent
             _backwardsCount++;
             AddReward(-0.01f);
             if (_scoreBuffer < 0) AddReward(-0.02f);
-            if (_scoreBuffer == -3) KillPlayer();
         }
         else
         {
