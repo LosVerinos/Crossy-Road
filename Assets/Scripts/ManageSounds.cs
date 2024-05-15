@@ -24,5 +24,7 @@ public class ManageSounds : MonoBehaviour
         {
             Debug.LogWarning("Aucune liste de musique n'a été fournie.");
         }
+        SoundsManager ambiance = GetComponentInChildren<SoundsManager>();
+        ambiance.PlaySound();
     }
 }

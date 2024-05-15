@@ -20,7 +20,6 @@ public class SoundsManager : MonoBehaviour
         if (audioSource != null && audioSource.clip != null)
         {
             audioSource.clip = sounds[themeNumber];
-
             audioSource.Play();
         }
         else
