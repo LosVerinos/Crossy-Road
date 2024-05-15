@@ -25,20 +25,25 @@ public class TrainSpawn : MonoBehaviour
             timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
             yield return new WaitForSeconds(timeBeforeComing - 3f);
 
-            if(gameObject.name.EndsWith("SW(Clone)")){
-                if (alarmController != null){
+            if (gameObject.name.EndsWith("SW(Clone)"))
+            {
+                if (alarmController != null)
+                {
                     alarmController.TriggerLasersOn(direction);
                     yield return new WaitForSeconds(3.1f);
                     InstantiateVehicle(40f);
                     yield return new WaitForSeconds(0.5f);
                     alarmController.TriggerLasersOff();
                 }
-                else{
+                else
+                {
                     Debug.LogError("Alarm controller not assigned!");
-                } 
+                }
             }
-            else if(gameObject.name.EndsWith("LOTR(Clone)")){
-                if (alarmController != null){
+            else if (gameObject.name.EndsWith("LOTR(Clone)"))
+            {
+                if (alarmController != null)
+                {
                     InvokeRepeating("TriggerVibrationsOn", 0f, 0.05f);
                     InvokeRepeating("TriggerVibrationsOff", 0.025f, 0.05f);
                     yield return new WaitForSeconds(3f);
@@ -46,14 +51,16 @@ public class TrainSpawn : MonoBehaviour
                     yield return new WaitForSeconds(3.075f);
                     CancelInvoke("TriggerVibrationsOn");
                     CancelInvoke("TriggerVibrationsOff");
-
                 }
-                else{
+                else
+                {
                     Debug.LogError("Alarm controller not assigned!");
-                } 
+                }
             }
-            else{
-                if (alarmController != null){
+            else
+            {
+                if (alarmController != null)
+                {
                     /*
                     alarmController.TriggerAlarmOn();
                     yield return new WaitForSeconds(0.1f);
@@ -72,23 +79,21 @@ public class TrainSpawn : MonoBehaviour
                     CancelInvoke("TriggerAlarmOn");
                     CancelInvoke("TurnOffAlarm");*/
                 }
-                else{
+                else
+                {
                     Debug.LogError("Alarm controller not assigned!");
-                }   
+                }
             }
         }
     }
 
-    private void InstantiateVehicle(float speed){
-        GameObject newTrain = Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
-        MovingObjectScript train = newTrain.GetComponent<MovingObjectScript>();
-        if (direction < 0)
-        {
-            newTrain.transform.Rotate(new Vector3(0,180,0));
-        }
+    private void InstantiateVehicle(float speed)
+    {
+        var newTrain = Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+        var train = newTrain.GetComponent<MovingObjectScript>();
+        if (direction < 0) newTrain.transform.Rotate(new Vector3(0, 180, 0));
         train.SetDirection(direction);
-            train.SetSpeed(speed);
-        
+        train.SetSpeed(speed);
     }
 
     private void TriggerAlarmOn()
@@ -101,11 +106,13 @@ public class TrainSpawn : MonoBehaviour
         alarmController.TriggerAlarmOff();
     }
 
-    private void TriggerVibrationsOn(){
+    private void TriggerVibrationsOn()
+    {
         alarmController.TriggerVibrationsOn();
     }
-    private void TriggerVibrationsOff(){
+
+    private void TriggerVibrationsOff()
+    {
         alarmController.TriggerVibrationsOff();
     }
-
 }

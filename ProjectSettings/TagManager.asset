@@ -13,6 +13,11 @@ TagManager:
   - Truck
   - Coins
   - Skin
+  - LillyPad
+  - Train
+  - Water
+  - Railway
+  - Road
   layers:
   - Default
   - TransparentFX

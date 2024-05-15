@@ -13,6 +13,8 @@ public class ScoreScript : MonoBehaviour
     public bool isCounting = false;
     private float currentDifficulty = 1.0f;
 
+    [SerializeField] private Text scoreText;
+    
     public Button Easy_button;
     public Button Medium_button;
     public Button Hard_button;
@@ -27,9 +29,10 @@ public class ScoreScript : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
+
         _instance = this;
         score = 0;
     }
@@ -38,6 +41,7 @@ public class ScoreScript : MonoBehaviour
     {
         score += Mathf.RoundToInt(currentDifficulty);
         isCounting = true;
+        scoreText.text = "Score: " + score;
     }
 
     public int GetScore()
@@ -47,14 +51,13 @@ public class ScoreScript : MonoBehaviour
 
     public void WriteScore(string difficulty)
     {
-        System.IO.StreamWriter writer = new System.IO.StreamWriter(Application.persistentDataPath + $"/score_{difficulty}.txt", true);
-        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score + ":" + timerText.text);
+        var writer = new System.IO.StreamWriter(Application.persistentDataPath + $"/score_{difficulty}.txt", true);
+        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score);
         writer.Close();
     }
 
     void Start()
     {
-        Debug.Log(Application.persistentDataPath);
         checkFiles();
 
         if (_instance != null && _instance != this)
@@ -62,6 +65,7 @@ public class ScoreScript : MonoBehaviour
             Destroy(this.gameObject);
             return;
         }
+
         _instance = this;
         score = 0;
 
@@ -69,15 +73,16 @@ public class ScoreScript : MonoBehaviour
         Easy_button.onClick.AddListener(easy_click);
         Medium_button.onClick.AddListener(medium_click);
         Hard_button.onClick.AddListener(hard_click);
-
+        
     }
 
     public List<string> GetScoreBoard(string difficulty)
     {
-        List<string> scoreBoard = new List<string>();
+        var scoreBoard = new List<string>();
         string[] lines;
         try
         {
+            
             lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
         }
         catch (Exception)
@@ -85,28 +90,19 @@ public class ScoreScript : MonoBehaviour
             System.IO.File.Create(Application.persistentDataPath + $"/score_{difficulty}.txt");
             return GetScoreBoard(difficulty);
         }
-        List<Tuple<string, int,string, string>> scores = new List<Tuple<string, int, string, string>>();
+
+        var scores = new List<Tuple<string, int>>();
 
         foreach (var line in lines)
         {
-            string[] parts = line.Split(':');
-            string playerName = parts[0];
-            int score = int.Parse(parts[1]);
-            string minutes = parts[2];
-            string secondes = parts[3];
-
-
-            scores.Add(new Tuple<string, int, string, string>(playerName, score, minutes, secondes));
+            var parts = line.Split(':');
+            scores.Add(new Tuple<string, int>(parts[0], int.Parse(parts[1])));
         }
 
         scores.Sort((x, y) => y.Item2.CompareTo(x.Item2));
-        for (int i = 0; i < 10 && i < scores.Count; i++)
-        {
-            scoreBoard.Add($" - {scores[i].Item1} - {scores[i].Item2} - {scores[i].Item3}:{scores[i].Item4} ");
-        }
+        for (var i = 0; i < 10 && i < scores.Count; i++) scoreBoard.Add(scores[i].Item1 + ":" + scores[i].Item2);
         return scoreBoard;
     }
-
 
     public void ResetScore()
     {
@@ -120,14 +116,13 @@ public class ScoreScript : MonoBehaviour
 
     public void ReloadScoreBoard(string difficulty)
     {
-
-        List<string> scoreBoard = GetScoreBoard(difficulty);
+        var scoreBoard = GetScoreBoard(difficulty);
 
         Rank.text = "";
-        int i = 1;
-        foreach (string scoreEntry in scoreBoard)
+        var i = 1;
+        foreach (var scoreEntry in scoreBoard)
         {
-            Rank.text = Rank.text + i.ToString()+ " - "+scoreEntry + "\n";
+            Rank.text = Rank.text + i.ToString() + " - " + scoreEntry + "\n";
             i++;
         }
     }
@@ -151,13 +146,13 @@ public class ScoreScript : MonoBehaviour
 
     }
 
-    void SetButtonState(Button clickedButton)
+    private void SetButtonState(Button clickedButton)
     {
         if (selectedButton != null)
         {
             selectedButton.interactable = true;
 
-            ColorBlock colors = selectedButton.colors;
+            var colors = selectedButton.colors;
             colors.normalColor = Color.white;
             selectedButton.colors = colors;
         }
@@ -166,27 +161,24 @@ public class ScoreScript : MonoBehaviour
 
         clickedButton.interactable = false;
 
-        ColorBlock clickedColors = clickedButton.colors;
+        var clickedColors = clickedButton.colors;
         clickedColors.normalColor = new Color(0.6f, 0.6f, 0.6f);
         clickedButton.colors = clickedColors;
     }
 
-    void checkFiles()
+    private void checkFiles()
     {
         string[] difficulties = { "easy", "medium", "hard" };
 
-        foreach (string difficulty in difficulties)
+        foreach (var difficulty in difficulties)
         {
-            string filePath = Application.persistentDataPath + $"/score_{difficulty}.txt";
+            var filePath = Application.persistentDataPath + $"/score_{difficulty}.txt";
 
             if (!System.IO.File.Exists(filePath))
-            {
-                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(filePath, true))
+                using (var writer = new System.IO.StreamWriter(filePath, true))
                 {
-                    writer.WriteLine("1:0:00:00");
+                    writer.WriteLine("1:0");
                 }
             }
         }
     }
-
-}

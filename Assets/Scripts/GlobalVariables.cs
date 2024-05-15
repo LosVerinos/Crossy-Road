@@ -15,17 +15,15 @@ public class GlobalVariables : MonoBehaviour
     public static bool restart = false;
     public static bool eagleCatch = false;
 
-    void Start()
+    private void Start()
     {
-
         run = false;
 
         PlayerPrefs.SetInt("Coins", coins);
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
     }
 }

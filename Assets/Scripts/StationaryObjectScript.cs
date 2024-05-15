@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-
     private TerrainGenerator terrainGenerator;
 
-    void Start(){
+    private void Start()
+    {
         terrainGenerator = FindObjectOfType<TerrainGenerator>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (GlobalVariables.reload)
-        {
-            Destroy(gameObject);
-        }
+        if (GlobalVariables.reload) Destroy(gameObject);
 
 
-        if(terrainGenerator.lastTerrainX > 5 && terrainGenerator.lastTerrainX >= transform.position.x){
+        if (terrainGenerator.lastTerrainX > 5 && terrainGenerator.lastTerrainX >= transform.position.x)
             Destroy(gameObject);
-        }
     }
 }

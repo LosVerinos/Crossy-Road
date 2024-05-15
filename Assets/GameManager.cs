@@ -7,16 +7,17 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     public GameManager Instance => _instance;
-    
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
+
         _instance = this;
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void ShowMainMenu()
@@ -36,8 +37,5 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        
     }
-    
-    
 }

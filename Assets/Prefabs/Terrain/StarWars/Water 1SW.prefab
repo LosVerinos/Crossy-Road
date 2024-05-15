@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: -5168948374703239173}
   m_Layer: 0
   m_Name: Water 1SW
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,7 +1003,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d1f897512694d433a868d344a1c52e8e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: d1f897512694d433a868d344a1c52e8e, type: 3}
       propertyPath: m_LocalScale.x

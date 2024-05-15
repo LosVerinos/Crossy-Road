@@ -14,39 +14,30 @@ public class MovingObjectScript : MonoBehaviour
     private float direction;
     private TerrainGenerator terrainGenerator;
 
-    void Start(){
+    private void Start()
+    {
         terrainGenerator = FindObjectOfType<TerrainGenerator>();
-        if(islog)
-        {
-            logLenght = direction * (lenghtEnd.position.z - lenghtStart.position.z);
-        }
+        if (islog) logLenght = direction * (lenghtEnd.position.z - lenghtStart.position.z);
     }
 
-    void Update()
+    private void Update()
     {
-        if (GlobalVariables.reload)
-        {
-            Destroy(gameObject);
-        }
+        if (GlobalVariables.reload) Destroy(gameObject);
 
-        if(islog && transform.position.z * direction <= -10f){
+        if (islog && transform.position.z * direction <= -10f)
             transform.Translate(Vector3.forward * (initialSpeed * Time.deltaTime));
-        }
-        else{
-            transform.Translate(Vector3.forward * (speed*GlobalVariables.difficulty * Time.deltaTime));
-        }
-        if((transform.position.z * direction >= 45f) || terrainGenerator.lastTerrainX >= transform.position.x){
+        else
+            transform.Translate(Vector3.forward * (speed * GlobalVariables.difficulty * Time.deltaTime));
+        if (transform.position.z * direction >= 45f || terrainGenerator.lastTerrainX >= transform.position.x)
             Destroy(gameObject);
-        }
-        if(islog && transform.position.z * direction >= 10f){
-            SetSpeed(initialSpeed);
-        }
+        if (islog && transform.position.z * direction >= 10f) SetSpeed(initialSpeed);
     }
 
     public void SetSpeed(float newSpeed)
     {
         speed = newSpeed;
     }
+
     public void SetDirection(float way)
     {
         direction = way;

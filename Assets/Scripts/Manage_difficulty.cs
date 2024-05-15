@@ -11,7 +11,7 @@ public class Manage_difficulty : MonoBehaviour
 
     private Button selectedButton;
 
-    void Start()
+    private void Start()
     {
         Easy_button.onClick.AddListener(Easy_click);
         Medium_button.onClick.AddListener(Medium_click);
@@ -36,13 +36,13 @@ public class Manage_difficulty : MonoBehaviour
         GlobalVariables.difficulty = 1.5f;
     }
 
-    void SetButtonState(Button clickedButton)
+    private void SetButtonState(Button clickedButton)
     {
         if (selectedButton != null)
         {
             selectedButton.interactable = true;
 
-            ColorBlock colors = selectedButton.colors;
+            var colors = selectedButton.colors;
             colors.normalColor = Color.white;
             selectedButton.colors = colors;
         }
@@ -51,9 +51,8 @@ public class Manage_difficulty : MonoBehaviour
 
         clickedButton.interactable = false;
 
-        ColorBlock clickedColors = clickedButton.colors;
+        var clickedColors = clickedButton.colors;
         clickedColors.normalColor = new Color(0.6f, 0.6f, 0.6f);
         clickedButton.colors = clickedColors;
     }
-
 }

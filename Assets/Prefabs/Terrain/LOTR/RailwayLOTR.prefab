@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: -4888733427925422292}
   m_Layer: 0
   m_Name: RailwayLOTR
-  m_TagString: Untagged
+  m_TagString: Railway
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

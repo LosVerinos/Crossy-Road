@@ -11,8 +11,8 @@ public class ElementsPlacement : MonoBehaviour
     private int numberToPlace;
     private List<int> takenPlaces = new();
     private int[] angles = { 0, 90, -90, 180 };
-    [SerializeField] bool isRoadOrTrain;
-    [SerializeField] bool isLilypads;
+    [SerializeField] private bool isRoadOrTrain;
+    [SerializeField] private bool isLilypads;
     private float probaOfCoinSpawn = 1.5f;
     private Vector3 spawnPosition;
     private int positionZ;
@@ -23,25 +23,21 @@ public class ElementsPlacement : MonoBehaviour
 
     private void Start()
     {
-        if(!isRoadOrTrain && !isLilypads){
-            PlaceLimitsElements();
-        }
+        if (!isRoadOrTrain && !isLilypads) PlaceLimitsElements();
         numberToPlace = Mathf.RoundToInt(Random.Range(0, numberMax));
         //Debug.Log(gameObject.name + numberToPlace);
-        if(isRoadOrTrain){
-            probaOfCoinSpawn = 0.4f;
-        }
+        if (isRoadOrTrain) probaOfCoinSpawn = 0.4f;
 
         //Debug.Log(probaOfCoinSpawn);
         PlacePrefabs();
-
     }
 
     private void PlacePrefabs()
     {
-        for (int i = 0; i < numberToPlace; i++)
+        for (var i = 0; i < numberToPlace; i++)
         {
-            do{
+            do
+            {
                 positionZ = Mathf.RoundToInt(Random.Range(-9f, 9f));
             } while (positionZ == 0 || IsPositionOccupied(positionZ));
 
@@ -51,20 +47,23 @@ public class ElementsPlacement : MonoBehaviour
             randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
 
             randomAngleIndex = Random.Range(0, angles.Length);
-            
+
             //Debug.Log(prefabToPlace.CompareTag("Coins"));
-            if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && Random.Range(0f, 1f) < probaOfCoinSpawn && !coinAlreadySpawned){
+            if (prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && Random.Range(0f, 1f) < probaOfCoinSpawn &&
+                !coinAlreadySpawned)
+            {
                 Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
                 coinAlreadySpawned = true;
             }
-            else if(prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain || coinAlreadySpawned){
+            else if ((prefabsToPlace[randomPrefabIndex].CompareTag("Coins") && isRoadOrTrain) || coinAlreadySpawned)
+            {
                 break;
             }
-            else{
+            else
+            {
                 prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
-                prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
+                prefabToPlace.transform.Rotate(new Vector3(0, angles[randomAngleIndex], 0));
             }
-            
         }
     }
 
@@ -73,13 +72,15 @@ public class ElementsPlacement : MonoBehaviour
         return takenPlaces.Contains(positionZ);
     }
 
-    private void PlaceLimitsElements(){
-        for(int z = 10; z < 20; z++){
+    private void PlaceLimitsElements()
+    {
+        for (var z = 10; z < 20; z++)
+        {
             spawnPosition = new Vector3(spawnPos.position.x, spawnPos.position.y, z);
-            randomPrefabIndex = Random.Range(0, prefabsToPlace.Count-1);
+            randomPrefabIndex = Random.Range(0, prefabsToPlace.Count - 1);
             randomAngleIndex = Random.Range(0, angles.Length);
             prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
-            prefabToPlace.transform.Rotate(new Vector3(0,angles[randomAngleIndex],0));
+            prefabToPlace.transform.Rotate(new Vector3(0, angles[randomAngleIndex], 0));
             spawnPosition.z = -z;
             prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
         }
@@ -89,10 +90,7 @@ public class ElementsPlacement : MonoBehaviour
     {
         numberToPlace = Mathf.RoundToInt(Random.Range(0, numberMax));
         //Debug.Log(gameObject.name + numberToPlace);
-        if (isRoadOrTrain)
-        {
-            probaOfCoinSpawn = 0.4f;
-        }
+        if (isRoadOrTrain) probaOfCoinSpawn = 0.4f;
         //Debug.Log(probaOfCoinSpawn);
         PlacePrefabs();
     }

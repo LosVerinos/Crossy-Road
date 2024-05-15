@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -29,12 +28,9 @@ public class ManageCanvas : MonoBehaviour
 
     public void Update()
     {
-        if (GlobalVariables.isPlayerKilled && startPanel!=null)
-        {
-            startPanel.SetActive(false);
-        }
+        if (GlobalVariables.isPlayerKilled && startPanel != null) startPanel.SetActive(false);
 
-        if (GlobalVariables.isPlayerKilled && visible == false && failPanel!=null)
+        if (GlobalVariables.isPlayerKilled && visible == false && failPanel != null)
         {
             failPanel.SetActive(true);
             if (scoreText != null)
@@ -74,6 +70,7 @@ public class ManageCanvas : MonoBehaviour
             {
 
                 animator.Play("Start");
+                //startPanel.SetActive(false);
                 GlobalVariables.run = true;
                 GlobalVariables.restart = false;
 
@@ -112,7 +109,7 @@ public class ManageCanvas : MonoBehaviour
     {
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
-        Scene currentScene = SceneManager.GetActiveScene();
+        var currentScene = SceneManager.GetActiveScene();
 
         GlobalVariables.restart = true;
 
@@ -125,7 +122,7 @@ public class ManageCanvas : MonoBehaviour
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
         GlobalVariables.run = false;
-        Scene currentScene = SceneManager.GetActiveScene();
+        var currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
 
         
@@ -138,17 +135,15 @@ public class ManageCanvas : MonoBehaviour
     public void OnEnterLeaderBoard()
     {
         var scoreBoard = ScoreScript.Instance.GetScoreBoard("easy");
-        Text text = leaderBoardPanel.GetComponentInChildren<Text>();
+        var text = leaderBoardPanel.GetComponentInChildren<Text>();
         text.text = "";
-   
-        int i = 1;
+        // sort the score board
+        scoreBoard.Sort((x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
+        var i = 1;
         scoreBoard.ForEach(score =>
         {
-            if (i > 10)
-            {
-                return;
-            }
-            text.text += i++ + " - " + score + "\n";
+            if (i > 10) return;
+            text.text += i++ + ". " + score + "\n";
         });
     }
 }

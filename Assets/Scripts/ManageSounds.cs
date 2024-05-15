@@ -7,14 +7,14 @@ public class ManageSounds : MonoBehaviour
     public AudioClip[] musicList;
     private AudioSource audioSource;
 
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
         if (musicList != null && musicList.Length > 0)
         {
-            int randomIndex = Random.Range(0, musicList.Length);
-            AudioClip randomClip = musicList[randomIndex];
+            var randomIndex = Random.Range(0, musicList.Length);
+            var randomClip = musicList[randomIndex];
 
             audioSource.clip = randomClip;
 
