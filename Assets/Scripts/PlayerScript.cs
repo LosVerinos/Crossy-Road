@@ -227,7 +227,6 @@ public class PlayerScript : Agent
             soundIsPlayed = false;
             timeWithoutScoreIncrease = 0f;
     
-            _backwardsCount = 0;
     
             lastInput = 'W';
         }
@@ -251,7 +250,6 @@ public class PlayerScript : Agent
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             MovePlayer(new Vector3(-1, 0, zDiff));
-            _backwardsCount++;
             lastInput = 'S';
         }
         else if (Input.GetKeyDown(KeyCode.A))
@@ -310,19 +308,7 @@ public class PlayerScript : Agent
             }
         }
     
-        if (_backwardsCount >= 3){
-            EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-            eagleScript.CatchPlayer();
-            //TODO: display the game ended message @Reaub1
-        }
         
-        if (ScoreScript.Instance.isCounting){
-            timeWithoutScoreIncrease += Time.deltaTime; 
-            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
-                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-                eagleScript.CatchPlayer();
-            }
-        }
     
         if (transform.position.z < -15f || transform.position.z > 15f) KillPlayer();
     }
@@ -377,6 +363,7 @@ public class PlayerScript : Agent
         // get the prefab the player is on
         if (diff == Vector3.right)
         {
+            _backwardsCount = 0;
             _scoreBuffer++;
             if (_scoreBuffer > 0)
             {
@@ -416,6 +403,7 @@ public class PlayerScript : Agent
         else if (diff == Vector3.left)
         {
             _scoreBuffer--;
+            _backwardsCount++;
             AddReward(-0.01f);
             if (_scoreBuffer < 0) AddReward(-0.02f);
             if (_scoreBuffer == -3) KillPlayer();
@@ -423,6 +411,20 @@ public class PlayerScript : Agent
         else
         {
             SetReward(+0.01f);
+        }
+        
+        if (_backwardsCount >= 3){
+            EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+            eagleScript.CatchPlayer();
+            //TODO: display the game ended message @Reaub1
+        }
+        
+        if (ScoreScript.Instance.isCounting){
+            timeWithoutScoreIncrease += Time.deltaTime; 
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
+                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+                eagleScript.CatchPlayer();
+            }
         }
         
     }
