@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5224,6 +5224,7 @@ MonoBehaviour:
   Eagle: {fileID: 1325893885}
   playerName: 
   skinDataList:
+  - {fileID: 11400000, guid: c03e5f1459413450799307f3fa859a70, type: 2}
   - {fileID: 11400000, guid: 79cb636f3894d45a486fde5bcf434d1d, type: 2}
   - {fileID: 11400000, guid: fac81fe566e354b9f81e45a96e5d03ba, type: 2}
   - {fileID: 11400000, guid: 2eefb769cd13c49c6bc58d4e50515020, type: 2}
@@ -5239,7 +5240,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
   - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
   - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
-  - {fileID: 11400000, guid: c03e5f1459413450799307f3fa859a70, type: 2}
   _isAi: 0
 --- !u!114 &1215677309
 MonoBehaviour:
