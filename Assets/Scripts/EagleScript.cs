@@ -23,11 +23,14 @@ public class EagleScript : MonoBehaviour
 
     public void GrabPlayer()
     {
-        transform.parent.GetComponent<FolowPlayer>().enabled = false;
-        player.GetComponent<BoxCollider>().enabled = false;
-        player.GetComponent<Rigidbody>().useGravity = false;
-        player.transform.position = eaglePrebaf.transform.position;
-        player.transform.parent = eaglePrebaf.transform;
+        if (player != null)
+        {
+            transform.parent.GetComponent<FolowPlayer>().enabled = false;
+            player.GetComponent<BoxCollider>().enabled = false;
+            player.GetComponent<Rigidbody>().useGravity = false;
+            player.transform.position = eaglePrebaf.transform.position;
+            player.transform.parent = eaglePrebaf.transform;
+        }
     }
 
     public void EndCatch()
