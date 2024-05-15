@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Animations;
 
 public class EagleScript : MonoBehaviour
 {
     [SerializeField] private GameObject player;
-    [SerializeField] private GameObject eaglePrebaf;
+    [SerializeField] private GameObject eaglePrefab;
     private Animator _animator;
     private static readonly int Catch = Animator.StringToHash("catch");
 
@@ -14,27 +13,65 @@ public class EagleScript : MonoBehaviour
     private void Start()
     {
         _animator = GetComponent<Animator>();
+        if (_animator == null)
+        {
+            Debug.LogWarning("Animator component missing from EagleScript");
+        }
     }
 
     public void CatchPlayer()
     {
-        _animator.SetTrigger(Catch);
+        if (_animator != null)
+        {
+            _animator.SetTrigger(Catch);
+        }
     }
 
     public void GrabPlayer()
     {
         if (player != null)
         {
-            transform.parent.GetComponent<FolowPlayer>().enabled = false;
-            player.GetComponent<BoxCollider>().enabled = false;
-            player.GetComponent<Rigidbody>().useGravity = false;
-            player.transform.position = eaglePrebaf.transform.position;
-            player.transform.parent = eaglePrebaf.transform;
+            DisablePlayerComponents();
+            PositionPlayerOnEagle();
         }
+    }
+
+    private void DisablePlayerComponents()
+    {
+        var followPlayerScript = transform.parent.GetComponent<FollowPlayer>();
+        if (followPlayerScript != null)
+        {
+            followPlayerScript.enabled = false;
+        }
+
+        var playerCollider = player.GetComponent<BoxCollider>();
+        if (playerCollider != null)
+        {
+            playerCollider.enabled = false;
+        }
+
+        var playerRigidbody = player.GetComponent<Rigidbody>();
+        if (playerRigidbody != null)
+        {
+            playerRigidbody.useGravity = false;
+        }
+    }
+
+    private void PositionPlayerOnEagle()
+    {
+        player.transform.position = eaglePrefab.transform.position;
+        player.transform.parent = eaglePrefab.transform;
     }
 
     public void EndCatch()
     {
-        player.GetComponent<PlayerScript>().KillPlayer();
+        if (player != null)
+        {
+            var playerScript = player.GetComponent<PlayerScript>();
+            if (playerScript != null)
+            {
+                playerScript.KillPlayer();
+            }
+        }
     }
 }

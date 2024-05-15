@@ -1,7 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
-
 
 public class AiScript : Agent
 {
@@ -101,7 +102,6 @@ public class AiScript : Agent
         EndEpisode();
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Goal")) return;
@@ -113,7 +113,7 @@ public class AiScript : Agent
     {
         if (collision.collider.GetComponent<MovingObjectScript>() != null)
         {
-            if (collision.collider.GetComponent<MovingObjectScript>().islog)
+            if (collision.collider.GetComponent<MovingObjectScript>().isLog)
             {
                 transform.parent = collision.collider.transform;
                 AddReward(+0.2f);

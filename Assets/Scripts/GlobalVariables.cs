@@ -22,8 +22,4 @@ public class GlobalVariables : MonoBehaviour
         PlayerPrefs.SetInt("Coins", coins);
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-    }
 }

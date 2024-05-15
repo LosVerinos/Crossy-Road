@@ -1,82 +1,72 @@
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Buy_script : MonoBehaviour
+public class BuyScript : MonoBehaviour
 {
     public Animator animator;
     public Text coinsText;
     public List<SkinData> skinDataList;
 
-    private bool availaible = true;
+    private bool available = true;
+    private const int skinCost = 100;
 
-    public void buy_click()
+    public void BuyClick()
     {
+        int coins = PlayerPrefs.GetInt("Coins");
 
-        if (PlayerPrefs.GetInt("Coins") >= 100 && availaible)
+        if (coins >= skinCost && available)
         {
             PlayAnimation("Buy_button");
 
-            int coins = PlayerPrefs.GetInt("Coins");
-
-            coins = coins - 100;
-
+            coins -= skinCost;
             PlayerPrefs.SetInt("Coins", coins);
-
             PlayerPrefs.Save();
 
-            coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
-
+            UpdateCoinsText(coins);
             UnlockRandomSkin();
-
         }
         else
         {
-            PlayAnimation("Buy_failled");
+            PlayAnimation("Buy_failed");
         }
     }
 
-    void PlayAnimation(string animationName)
+    private void PlayAnimation(string animationName)
     {
         if (animator != null)
         {
             animator.StopPlayback();
-
             animator.Play(animationName);
         }
         else
         {
-            Debug.LogWarning("L'Animator n'a pas été attribué au script.");
+            Debug.LogWarning("Animator has not been assigned to the script.");
         }
     }
 
-    public void UnlockRandomSkin()
+    private void UpdateCoinsText(int coins)
     {
-        List<SkinData> lockedSkins = new List<SkinData>();
+        coinsText.text = coins.ToString();
+    }
 
-        foreach (SkinData skinData in skinDataList)
-        {
-            if (!skinData.unlocked)
-            {
-                lockedSkins.Add(skinData);
-            }
-        }
+    private void UnlockRandomSkin()
+    {
+        List<SkinData> lockedSkins = skinDataList.Where(skin => !skin.unlocked).ToList();
 
         if (lockedSkins.Count > 0)
         {
             int randomIndex = Random.Range(0, lockedSkins.Count);
             SkinData randomSkin = lockedSkins[randomIndex];
-
             randomSkin.unlocked = true;
 
-            Debug.Log("Skin '" + randomSkin.theme + "' unlocked!");
+            Debug.Log($"Skin '{randomSkin.theme}' unlocked!");
         }
         else
         {
-            Debug.Log("Tous les skins sont déjà déverrouillés!");
-            availaible = false;
-
+            Debug.Log("All skins are already unlocked!");
+            available = false;
         }
     }
 }

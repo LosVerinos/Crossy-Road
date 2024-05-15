@@ -10,13 +10,13 @@ public class SkinButtonManager : MonoBehaviour
 
     private List<Button> buttons = new List<Button>();
 
-    void Start()
+    private void Start()
     {
         CreateButtons();
         UpdateButtons();
     }
 
-    void CreateButtons()
+    private void CreateButtons()
     {
         float buttonSpacing = 10f;
         float buttonSize = 180f;
@@ -78,10 +78,10 @@ public class SkinButtonManager : MonoBehaviour
             SkinData skinData = skinDataList[i];
             Button btnComponent = buttons[i];
 
+            Image imgComponent = btnComponent.GetComponentInChildren<Image>();
             if (!skinData.unlocked)
             {
                 btnComponent.interactable = false;
-                Image imgComponent = btnComponent.GetComponentInChildren<Image>();
                 if (imgComponent != null)
                 {
                     imgComponent.color = Color.gray;
@@ -90,7 +90,6 @@ public class SkinButtonManager : MonoBehaviour
             else
             {
                 btnComponent.interactable = true;
-                Image imgComponent = btnComponent.GetComponentInChildren<Image>();
                 if (imgComponent != null)
                 {
                     imgComponent.color = Color.white;
@@ -99,7 +98,7 @@ public class SkinButtonManager : MonoBehaviour
         }
     }
 
-    void SelectSkin(SkinData skinData)
+    private void SelectSkin(SkinData skinData)
     {
         GlobalVariables.skin = skinData;
         GlobalVariables.theme = skinData.theme;
@@ -109,6 +108,5 @@ public class SkinButtonManager : MonoBehaviour
             skin.selected = false;
         }
         skinData.selected = true;
-
     }
 }

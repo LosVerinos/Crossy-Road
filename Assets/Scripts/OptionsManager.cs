@@ -5,35 +5,38 @@ using UnityEngine.UI;
 
 public class OptionsManager : MonoBehaviour
 {
-    public AudioSource audioSrc;
-    public Slider sld;
-    public Text txtVolume;
+    public AudioSource audioSource;
+    public Slider volumeSlider;
+    public Text volumeText;
+
+    private const string VolumePrefKey = "volume";
 
     // Start is called before the first frame update
     private void Start()
     {
-        initSliderChange();
-        SliderChange();
+        InitializeVolumeSettings();
     }
 
-    // Update is called once per frame
-    private void Update()
+    public void OnVolumeSliderChange()
     {
-    }
+        float volume = volumeSlider.value;
+        audioSource.volume = volume;
+        volumeText.text = $"Volume: {(volume * 100):00}%";
 
-
-    public void SliderChange()
-    {
-        audioSrc.volume = sld.value;
-        txtVolume.text = "Volume : " + (sld.value * 100).ToString("00") + "%";
-
-        PlayerPrefs.SetFloat("volume", sld.value);
+        PlayerPrefs.SetFloat(VolumePrefKey, volume);
         PlayerPrefs.Save();
     }
 
-    private void initSliderChange()
+    private void InitializeVolumeSettings()
     {
-        sld.value = PlayerPrefs.GetFloat("volume");
-        SliderChange();
+        if (PlayerPrefs.HasKey(VolumePrefKey))
+        {
+            volumeSlider.value = PlayerPrefs.GetFloat(VolumePrefKey);
+        }
+        else
+        {
+            volumeSlider.value = 1f; // Default volume value
+        }
+        OnVolumeSliderChange();
     }
 }

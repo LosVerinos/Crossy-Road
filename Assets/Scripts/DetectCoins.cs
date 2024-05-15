@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DetectCoins : MonoBehaviour
 {
@@ -13,25 +12,32 @@ public class DetectCoins : MonoBehaviour
         {
             isColliding = true;
 
-            var coin = PlayerPrefs.GetInt("Coins");
+            IncrementCoinCount();
 
-            coin++;
-
-            PlayerPrefs.SetInt("Coins", coin);
-            PlayerPrefs.Save();
-
-
-            //GlobalVariables.coins++;
             Destroy(gameObject);
         }
     }
 
-    public void Update()
+    private void IncrementCoinCount()
+    {
+        int coin = PlayerPrefs.GetInt("Coins", 0);
+        coin++;
+        PlayerPrefs.SetInt("Coins", coin);
+        PlayerPrefs.Save();
+    }
+
+    private void Update()
+    {
+        ResetCollisionFlag();
+
+        if (GlobalVariables.reload && gameObject != null)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void ResetCollisionFlag()
     {
         isColliding = false;
-
-        if (GlobalVariables.reload)
-            if (gameObject != null)
-                Destroy(gameObject);
     }
 }

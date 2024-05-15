@@ -1,18 +1,32 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Unity.MLAgents;
 
 public class KillPlayerOnTouch : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision other)
+    private void HandlePlayerCollision(GameObject other)
     {
-        if (other.gameObject.CompareTag("Player")) other.gameObject.GetComponent<PlayerScript>().KillPlayer();
+        if (other.CompareTag("Player"))
+        {
+            var playerScript = other.GetComponent<PlayerScript>();
+            if (playerScript != null)
+            {
+                playerScript.KillPlayer();
+            }
+            else
+            {
+                Debug.LogWarning("Player object does not have a PlayerScript component attached.");
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        HandlePlayerCollision(collision.gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player")) other.gameObject.GetComponent<PlayerScript>().KillPlayer();
+        HandlePlayerCollision(other.gameObject);
     }
 }

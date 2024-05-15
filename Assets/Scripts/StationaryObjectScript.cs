@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class ObjectDestructor : MonoBehaviour
 {
     private TerrainGenerator terrainGenerator;
 
@@ -13,10 +13,15 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Update()
     {
-        if (GlobalVariables.reload) Destroy(gameObject);
-
+        if (GlobalVariables.reload)
+        {
+            Destroy(gameObject);
+            return;
+        }
 
         if (terrainGenerator.lastTerrainX > 5 && terrainGenerator.lastTerrainX >= transform.position.x)
+        {
             Destroy(gameObject);
+        }
     }
 }

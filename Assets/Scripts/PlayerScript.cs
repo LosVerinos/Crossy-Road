@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.MLAgents;
@@ -35,7 +35,6 @@ public class PlayerScript : Agent
     private bool isOnLog;
     private int bestScore = 0;
 
-
     public override void OnEpisodeBegin()
     {
         _scoreBuffer = 0;
@@ -49,10 +48,6 @@ public class PlayerScript : Agent
         if (_isHopping) return;
         switch (actions.DiscreteActions[0])
         {
-            // case 0:
-            //     MovePlayer(Vector3.zero);
-            //     SetReward(+0.01f);
-            //     break;
             case 1:
                 MovePlayer(Vector3.forward);
                 break;
@@ -82,7 +77,6 @@ public class PlayerScript : Agent
             isAi ? BehaviorType.InferenceOnly : BehaviorType.HeuristicOnly;
     }
 
-
     private void Start()
     {
         skinDataList[3].selected = true;
@@ -95,12 +89,12 @@ public class PlayerScript : Agent
                     if (skin.theme == "Random")
                     {
                         Debug.Log("random");
-                        var randomIndex = Random.Range(0, skinDataList.Count);
+                        var randomIndex = UnityEngine.Random.Range(0, skinDataList.Count); // Spécifiez UnityEngine.Random
                         var randomSkin = skinDataList[randomIndex];
 
                         do
                         {
-                            randomIndex = Random.Range(0, skinDataList.Count);
+                            randomIndex = UnityEngine.Random.Range(0, skinDataList.Count); // Spécifiez UnityEngine.Random
                             randomSkin = skinDataList[randomIndex];
                         } while (!randomSkin.unlocked);
 
@@ -128,7 +122,6 @@ public class PlayerScript : Agent
         var playerObject = GameObject.FindWithTag("Skin");
         if (playerObject != null) Destroy(playerObject);
 
-
         if (skinDataList.Count == 0)
             Debug.Log("La liste skinDataList est vide.");
         else
@@ -137,12 +130,12 @@ public class PlayerScript : Agent
                 {
                     if (skin.theme == "Random")
                     {
-                        var randomIndex = Random.Range(0, skinDataList.Count);
+                        var randomIndex = UnityEngine.Random.Range(0, skinDataList.Count); // Spécifiez UnityEngine.Random
                         var randomSkin = skinDataList[randomIndex];
 
                         do
                         {
-                            randomIndex = Random.Range(0, skinDataList.Count);
+                            randomIndex = UnityEngine.Random.Range(0, skinDataList.Count); // Spécifiez UnityEngine.Random
                             randomSkin = skinDataList[randomIndex];
                         } while (!randomSkin.unlocked);
 
@@ -170,9 +163,9 @@ public class PlayerScript : Agent
         }
         GlobalVariables.isPlayerKilled = true;
         GlobalVariables.run = false;
-        
+
         string str_difficulty = "";
-        
+
         switch (GlobalVariables.difficulty)
         {
             case 1.0f:
@@ -188,12 +181,12 @@ public class PlayerScript : Agent
                 Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
                 break;
         }
-        
+
         ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
         AddReward(-1f);
         EndEpisode();
-        Destroy(GlobalVariables.Player.GameObject());
+        Destroy(GlobalVariables.Player.gameObject);
     }
 
     public void SetPlayerName()
@@ -220,15 +213,14 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
-    
+
             MovePlayer(new Vector3(1, 0, zDiff));
             soundIsPlayed = false;
             timeWithoutScoreIncrease = 0f;
-    
-    
+
             lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
@@ -247,7 +239,7 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             MovePlayer(new Vector3(-1, 0, zDiff));
@@ -269,7 +261,7 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float xDiff = 0;
             if (transform.position.x % 1 != 0) xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             MovePlayer(new Vector3(xDiff, 0, 1));
@@ -291,26 +283,24 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float xDiff = 0;
             if (transform.position.x % 1 != 0) xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             MovePlayer(new Vector3(xDiff, 0, -1));
             lastInput = 'D';
         }
-    
+
         if (ScoreScript.Instance.GetScore() % 50 == 0 && ScoreScript.Instance.GetScore() != 0 && !soundIsPlayed)
         {
             soundIsPlayed = true;
-    
+
             if (sound != null)
             {
                 _audioSource.clip = sound;
                 _audioSource.Play();
             }
         }
-    
-        
-    
+
         if (transform.position.z < -15f || transform.position.z > 15f) KillPlayer();
     }
 
@@ -318,7 +308,7 @@ public class PlayerScript : Agent
     {
         if (collision.collider.GetComponent<MovingObjectScript>() != null)
         {
-            if (collision.collider.GetComponent<MovingObjectScript>().islog)
+            if (collision.collider.GetComponent<MovingObjectScript>().isLog)
             {
                 if (isOnLog) AddReward(+0.05f);
                 isOnLog = true;
@@ -351,17 +341,13 @@ public class PlayerScript : Agent
                 AddReward(+0.02f);
             }
         }
-        
-
-        
 
         _animator.SetTrigger(Hop);
         _isHopping = true;
         var position = transform.position;
         transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
         TerrainGenerator.SpawnTerrain(false, position);
-        
-        // get the prefab the player is on
+
         if (diff == Vector3.right)
         {
             _backwardsCount = 0;
@@ -374,21 +360,20 @@ public class PlayerScript : Agent
                 AddReward(+0.1f * currentScore);
                 if (ScoreScript.Instance.GetScore() == bestScore)
                 {
-                    // Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
                     bestScore++;
                     SetReward(+1f);
                     EndEpisode();
                 }
             }
-            foreach (var terrain in TerrainGenerator._currentTerrains
-                         .Where(terrain => terrain.transform.position.x <= transform.position.x -1)
+            foreach (var terrain in TerrainGenerator.GetCurrentTerrains()
+                         .Where(terrain => terrain.transform.position.x <= transform.position.x - 1)
                          .Where(terrain => terrain.CompareTag("LillyPad")
                                            || terrain.CompareTag("Water")
                                            || terrain.CompareTag("Log")
                                            || terrain.CompareTag("Railway")
                                            || terrain.CompareTag("Road")))
             {
-                if (Mathf.Approximately(terrain.transform.position.x, transform.position.x -1))
+                if (Mathf.Approximately(terrain.transform.position.x, transform.position.x - 1))
                 {
                     SetReward(+0.4f);
                 }
@@ -399,7 +384,6 @@ public class PlayerScript : Agent
                     SetReward(+0.4f);
                 }
             }
-            
         }
         else if (diff == Vector3.left)
         {
@@ -413,21 +397,22 @@ public class PlayerScript : Agent
         {
             SetReward(+0.01f);
         }
-        
-        if (_backwardsCount >= 3){
+
+        if (_backwardsCount >= 3)
+        {
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
-            //TODO: display the game ended message @Reaub1
         }
-        
-        if (ScoreScript.Instance.isCounting){
-            timeWithoutScoreIncrease += Time.deltaTime; 
-            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
+
+        if (ScoreScript.Instance.isCounting)
+        {
+            timeWithoutScoreIncrease += Time.deltaTime;
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore)
+            {
                 EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
                 eagleScript.CatchPlayer();
             }
         }
-        
     }
 
     public void HopAnimationEnd()

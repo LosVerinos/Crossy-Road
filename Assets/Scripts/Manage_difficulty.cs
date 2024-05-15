@@ -3,56 +3,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Manage_difficulty : MonoBehaviour
+public class ManageDifficulty : MonoBehaviour
 {
-    public Button Easy_button;
-    public Button Medium_button;
-    public Button Hard_button;
+    [Header("Buttons")]
+    public Button easyButton;
+    public Button mediumButton;
+    public Button hardButton;
 
     private Button selectedButton;
 
     private void Start()
     {
-        Easy_button.onClick.AddListener(Easy_click);
-        Medium_button.onClick.AddListener(Medium_click);
-        Hard_button.onClick.AddListener(Hard_click);
+        easyButton.onClick.AddListener(() => SetDifficulty(easyButton, 1.0f));
+        mediumButton.onClick.AddListener(() => SetDifficulty(mediumButton, 1.2f));
+        hardButton.onClick.AddListener(() => SetDifficulty(hardButton, 1.5f));
     }
 
-    public void Easy_click()
-    {
-        SetButtonState(Easy_button);
-        GlobalVariables.difficulty = 1.0f;
-    }
-
-    public void Medium_click()
-    {
-        SetButtonState(Medium_button);
-        GlobalVariables.difficulty = 1.2f;
-    }
-
-    public void Hard_click()
-    {
-        SetButtonState(Hard_button);
-        GlobalVariables.difficulty = 1.5f;
-    }
-
-    private void SetButtonState(Button clickedButton)
+    private void SetDifficulty(Button button, float difficulty)
     {
         if (selectedButton != null)
         {
             selectedButton.interactable = true;
-
-            var colors = selectedButton.colors;
-            colors.normalColor = Color.white;
-            selectedButton.colors = colors;
+            UpdateButtonColor(selectedButton, Color.white);
         }
 
-        selectedButton = clickedButton;
+        selectedButton = button;
+        selectedButton.interactable = false;
+        UpdateButtonColor(selectedButton, new Color(0.6f, 0.6f, 0.6f));
 
-        clickedButton.interactable = false;
+        GlobalVariables.difficulty = difficulty;
+    }
 
-        var clickedColors = clickedButton.colors;
-        clickedColors.normalColor = new Color(0.6f, 0.6f, 0.6f);
-        clickedButton.colors = clickedColors;
+    private void UpdateButtonColor(Button button, Color color)
+    {
+        var colors = button.colors;
+        colors.normalColor = color;
+        button.colors = colors;
     }
 }

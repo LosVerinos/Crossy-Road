@@ -265,7 +265,7 @@ MonoBehaviour:
   - {fileID: 275996120478420784, guid: 4bcec0eba213f4fb6896643e327b7f0a, type: 3}
   - {fileID: 275996120478420784, guid: 2e9aeb88b4e2c42368dcbca37e413b04, type: 3}
   - {fileID: 275996120478420784, guid: cb64d0731daa642bbae9ca74288c4887, type: 3}
-  SpawnPos: {fileID: 1487960368392179030}
+  spawnPos: {fileID: 1487960368392179030}
   minSeparationTime: 2
   maxSeparationTime: 10
   direction: 1

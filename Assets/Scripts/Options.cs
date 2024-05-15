@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Options : MonoBehaviour
 {
-    //working on the new things here
+    // Panels for different game states
     public GameObject startMenuPanel;
     public GameObject shopPanel;
     public GameObject runPanel;
@@ -15,94 +15,90 @@ public class Options : MonoBehaviour
     public GameObject leaderBoardPanel;
     public GameObject paramPanel;
 
-    //BELOW
+    // Options panel and resolution dropdown
+    public GameObject optionsPanel;
+    public Dropdown resolutionDropdown;
 
+    // Audio settings
+    public AudioSource audioSource;
+    public Slider volumeSlider;
+    public Text volumeText;
 
-    public GameObject Panel;
-    public Dropdown DResolution;
-    private bool visible = false;
-
-    public GameObject PausePanel;
-
-    public GameObject OptionPanel;
-    public GameObject StartPanel;
-
-    public AudioSource audioSrc;
-    public Slider sld;
-    public Text txtVolume;
+    private bool isVisible = false;
 
     private void Start()
     {
         InitializeResolutionsDropdown();
-        SliderChange();
+        UpdateVolume();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            visible = !visible;
-            Panel.SetActive(visible);
+            isVisible = !isVisible;
+            optionsPanel.SetActive(isVisible);
         }
     }
 
-    public void pause_onClick()
+    public void PauseGame()
     {
-        Panel.SetActive(false);
-        PausePanel.SetActive(true);
+        optionsPanel.SetActive(false);
+        pausePanel.SetActive(true);
         Time.timeScale = 0;
     }
 
-    public void DePause_onClick()
+    public void ResumeGame()
     {
-        PausePanel.SetActive(false);
+        pausePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
-
     public void SetResolution()
     {
-        var selectedResolution = Screen.resolutions[DResolution.value];
+        var selectedResolution = Screen.resolutions[resolutionDropdown.value];
         var targetAspectRatio = 16f / 9f;
         var targetWidth = Mathf.RoundToInt(selectedResolution.height * targetAspectRatio);
         Screen.SetResolution(targetWidth, selectedResolution.height, true);
     }
 
-    public void SliderChange()
+    public void UpdateVolume()
     {
-        audioSrc.volume = sld.value;
-        txtVolume.text = "Volume : " + (sld.value * 100).ToString("00") + "%";
+        audioSource.volume = volumeSlider.value;
+        volumeText.text = $"Volume: {(volumeSlider.value * 100):00}%";
     }
 
-    public void QuiteGame()
+    public void QuitGame()
     {
         Application.Quit();
     }
 
     private void InitializeResolutionsDropdown()
     {
-        DResolution.ClearOptions();
+        resolutionDropdown.ClearOptions();
 
         var resolutionOptions = new List<string>();
-
         foreach (var resolution in Screen.resolutions)
         {
             var resolutionString = $"{resolution.width} x {resolution.height}";
-            if (!resolutionOptions.Contains(resolutionString)) resolutionOptions.Add(resolutionString);
+            if (!resolutionOptions.Contains(resolutionString))
+            {
+                resolutionOptions.Add(resolutionString);
+            }
         }
 
-        DResolution.AddOptions(resolutionOptions);
+        resolutionDropdown.AddOptions(resolutionOptions);
 
         var currentResolution = Screen.currentResolution;
         var currentResolutionString = $"{currentResolution.width} x {currentResolution.height}";
-        DResolution.value = resolutionOptions.IndexOf(currentResolutionString);
+        resolutionDropdown.value = resolutionOptions.IndexOf(currentResolutionString);
 
-        DResolution.RefreshShownValue();
+        resolutionDropdown.RefreshShownValue();
     }
 
     public void ShowMenu()
     {
-        StartPanel.SetActive(false);
-        OptionPanel.SetActive(true);
+        startMenuPanel.SetActive(false);
+        optionsPanel.SetActive(true);
     }
 }

@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class StartTerrainScript : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private List<GameObject> prefabsToPlace;
-    private int[] angles = { 0, 90, -90, 180 };
+    private static readonly int[] Angles = { 0, 90, -90, 180 };
+
+    private const int MinX = -11;
+    private const int MaxX = 5;
+    private const int MinZ = -15;
+    private const int MaxZ = 15;
+
+    private const float SpawnY = 0.5f;
+    private const int SkipZoneStartX = -11;
+    private const int SkipZoneEndX = -6;
+    private const int SkipZoneEdgeX = 5;
+    private const int SkipZoneStartZ = -4;
+    private const int SkipZoneEndZ = 4;
+    private const int ExtraObjectX = 6;
+    private const int ExtraObjectZ = 10;
 
     private void Start()
     {
@@ -15,32 +28,42 @@ public class StartTerrainScript : MonoBehaviour
 
     private void PlacePrefabs()
     {
-        for (var x = -11; x <= 5; x++)
-            if (x == -6 || x == -7 || x == -8 || x == -9 || x == -10 || x == -11)
+        for (var x = MinX; x <= MaxX; x++)
+        {
+            if (x <= SkipZoneEndX && x >= SkipZoneStartX)
             {
-                for (var z = -15; z <= 15; z++) Instantiate(x, z);
+                PlaceInZRange(x, MinZ, MaxZ);
             }
-            else if (x == 5)
+            else if (x == SkipZoneEdgeX)
             {
-                for (var z = -15; z <= -4; z++) Instantiate(x, z);
-                for (var z = 4; z <= 15; z++) Instantiate(x, z);
+                PlaceInZRange(x, MinZ, SkipZoneStartZ);
+                PlaceInZRange(x, SkipZoneEndZ, MaxZ);
             }
             else
             {
-                for (var z = -15; z <= -5; z++) Instantiate(x, z);
-                for (var z = 5; z <= 15; z++) Instantiate(x, z);
+                PlaceInZRange(x, MinZ, SkipZoneStartZ - 1);
+                PlaceInZRange(x, SkipZoneEndZ + 1, MaxZ);
             }
+        }
 
-        Instantiate(6, 10);
-        Instantiate(6, -10);
+        InstantiateAtPosition(ExtraObjectX, ExtraObjectZ);
+        InstantiateAtPosition(ExtraObjectX, -ExtraObjectZ);
     }
 
-    private void Instantiate(int x, int z)
+    private void PlaceInZRange(int x, int zStart, int zEnd)
     {
-        var spawnPosition = new Vector3(x - 1, 0.5f, z);
+        for (var z = zStart; z <= zEnd; z++)
+        {
+            InstantiateAtPosition(x, z);
+        }
+    }
+
+    private void InstantiateAtPosition(int x, int z)
+    {
+        var spawnPosition = new Vector3(x - 1, SpawnY, z);
         var randomPrefabIndex = Random.Range(0, prefabsToPlace.Count);
         var prefabToPlace = Instantiate(prefabsToPlace[randomPrefabIndex], spawnPosition, Quaternion.identity);
-        var randomAngleIndex = Random.Range(0, angles.Length);
-        prefabToPlace.transform.Rotate(new Vector3(0, angles[randomAngleIndex], 0));
+        var randomAngleIndex = Random.Range(0, Angles.Length);
+        prefabToPlace.transform.Rotate(new Vector3(0, Angles[randomAngleIndex], 0));
     }
 }

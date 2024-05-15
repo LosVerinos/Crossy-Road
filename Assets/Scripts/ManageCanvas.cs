@@ -1,13 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ManageCanvas : MonoBehaviour
 {
-
+    [Header("UI Panels")]
     public GameObject pausePanel;
     public GameObject pauseButtonPanel;
     public GameObject coinsPanel;
@@ -16,44 +14,69 @@ public class ManageCanvas : MonoBehaviour
     public GameObject leaderBoardPanel;
     public GameObject startPanel;
     public GameObject scoreText;
+
+    [Header("UI Texts")]
     public Text timeText;
-
-    public Animator animator;
-
     public Text coinsText;
 
-    private bool visible = false;
+    [Header("Animator")]
+    public Animator animator;
 
-    private float time = 0f;
+    private bool isFailPanelVisible = false;
+    private float elapsedTime = 0f;
 
-    public void Update()
+    private void Start()
     {
-        if (GlobalVariables.isPlayerKilled && startPanel != null) startPanel.SetActive(false);
-
-        if (GlobalVariables.isPlayerKilled && visible == false && failPanel != null)
+        if (GlobalVariables.restart && startPanel != null)
         {
-            failPanel.SetActive(true);
-            if (scoreText != null)
-            {
-                scoreText.transform.position = new Vector3(550f, 1800f, 0f);
-                scoreText.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-            }
-            visible = true;
+            animator.Play("Start");
+            GlobalVariables.run = true;
+            GlobalVariables.restart = false;
         }
+    }
 
+    private void Update()
+    {
+        HandlePlayerDeath();
+        UpdateCoinsText();
+        UpdateTimeText();
+    }
+
+    private void HandlePlayerDeath()
+    {
+        if (GlobalVariables.isPlayerKilled)
+        {
+            if (startPanel != null) startPanel.SetActive(false);
+
+            if (!isFailPanelVisible && failPanel != null)
+            {
+                failPanel.SetActive(true);
+                if (scoreText != null)
+                {
+                    scoreText.transform.position = new Vector3(550f, 1800f, 0f);
+                    scoreText.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                }
+                isFailPanelVisible = true;
+            }
+        }
+    }
+
+    private void UpdateCoinsText()
+    {
         if (coinsText != null)
         {
             coinsText.text = PlayerPrefs.GetInt("Coins").ToString();
         }
+    }
 
+    private void UpdateTimeText()
+    {
         if (GlobalVariables.run && timeText != null)
         {
-            time += Time.deltaTime;
-
-            int minutes = Mathf.FloorToInt(time / 60);
-            int seconds = Mathf.FloorToInt(time % 60);
-
-            string timeString = string.Format("{0:00}:{1:00}", minutes, seconds);
+            elapsedTime += Time.deltaTime;
+            int minutes = Mathf.FloorToInt(elapsedTime / 60);
+            int seconds = Mathf.FloorToInt(elapsedTime % 60);
+            string timeString = $"{minutes:00}:{seconds:00}";
 
             if (timeText.text != timeString)
             {
@@ -62,88 +85,63 @@ public class ManageCanvas : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void PauseGame()
     {
-        if(GlobalVariables.restart)
-        {
-            if (startPanel != null)
-            {
-
-                animator.Play("Start");
-                //startPanel.SetActive(false);
-                GlobalVariables.run = true;
-                GlobalVariables.restart = false;
-
-            }
-        }
-    }
-
-
-    public void pause_onClick()
-    {
-        scorePanel.SetActive(false);
-        coinsPanel.SetActive(false);
-        pauseButtonPanel.SetActive(false);
-
+        SetGameUI(false);
         pausePanel.SetActive(true);
         Time.timeScale = 0;
     }
 
-    public void DePause_onClick()
+    public void ResumeGame()
     {
         pausePanel.SetActive(false);
-
-        scorePanel.SetActive(true);
-        coinsPanel.SetActive(true);
-        pauseButtonPanel.SetActive(true);
-
+        SetGameUI(true);
         Time.timeScale = 1;
     }
 
-    public void QuiteGame()
+    private void SetGameUI(bool isActive)
+    {
+        scorePanel.SetActive(isActive);
+        coinsPanel.SetActive(isActive);
+        pauseButtonPanel.SetActive(isActive);
+    }
+
+    public void QuitGame()
     {
         Application.Quit();
     }
 
-    public void restart()
+    public void RestartGame()
     {
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
-        var currentScene = SceneManager.GetActiveScene();
-
         GlobalVariables.restart = true;
-
-        SceneManager.LoadScene(currentScene.name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
-    public void menu()
+    public void GoToMenu()
     {
         Time.timeScale = 1;
         GlobalVariables.isPlayerKilled = false;
         GlobalVariables.run = false;
-        var currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
-
-        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void Start_click()
+
+    public void StartGame()
     {
         GlobalVariables.run = true;
     }
-    
-    public void OnEnterLeaderBoard()
+
+    public void ShowLeaderBoard()
     {
         var scoreBoard = ScoreScript.Instance.GetScoreBoard("easy");
         var text = leaderBoardPanel.GetComponentInChildren<Text>();
         text.text = "";
-        // sort the score board
+
         scoreBoard.Sort((x, y) => int.Parse(y.Split(':')[1]).CompareTo(int.Parse(x.Split(':')[1])));
-        var i = 1;
-        scoreBoard.ForEach(score =>
+        for (int i = 0; i < Mathf.Min(scoreBoard.Count, 10); i++)
         {
-            if (i > 10) return;
-            text.text += i++ + ". " + score + "\n";
-        });
+            text.text += $"{i + 1}. {scoreBoard[i]}\n";
+        }
     }
 }

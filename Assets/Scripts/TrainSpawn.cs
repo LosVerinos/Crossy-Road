@@ -4,15 +4,12 @@ using UnityEngine;
 public class TrainSpawn : MonoBehaviour
 {
     [SerializeField] private GameObject vehicle;
-    [SerializeField] private Transform SpawnPos;
+    [SerializeField] private Transform spawnPos;
     [SerializeField] private float minSeparationTime;
     [SerializeField] private float maxSeparationTime;
     [SerializeField] private float direction;
-    private float timeBeforeComing;
-    private bool alarm;
-    public AlarmController alarmController;
+    [SerializeField] private AlarmController alarmController;
 
-    // Start is called before the first frame update
     private void Start()
     {
         StartCoroutine(SpawnVehicle());
@@ -22,74 +19,80 @@ public class TrainSpawn : MonoBehaviour
     {
         while (true)
         {
-            timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
+            float timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
             yield return new WaitForSeconds(timeBeforeComing - 3f);
 
-            if (gameObject.name.EndsWith("SW(Clone)"))
+            switch (gameObject.name)
             {
-                if (alarmController != null)
-                {
-                    alarmController.TriggerLasersOn(direction);
-                    yield return new WaitForSeconds(3.1f);
-                    InstantiateVehicle(40f);
-                    yield return new WaitForSeconds(0.5f);
-                    alarmController.TriggerLasersOff();
-                }
-                else
-                {
-                    Debug.LogError("Alarm controller not assigned!");
-                }
-            }
-            else if (gameObject.name.EndsWith("LOTR(Clone)"))
-            {
-                if (alarmController != null)
-                {
-                    InvokeRepeating("TriggerVibrationsOn", 0f, 0.05f);
-                    InvokeRepeating("TriggerVibrationsOff", 0.025f, 0.05f);
-                    yield return new WaitForSeconds(3f);
-                    InstantiateVehicle(25f);
-                    yield return new WaitForSeconds(3.075f);
-                    CancelInvoke("TriggerVibrationsOn");
-                    CancelInvoke("TriggerVibrationsOff");
-                }
-                else
-                {
-                    Debug.LogError("Alarm controller not assigned!");
-                }
-            }
-            else
-            {
-                if (alarmController != null)
-                {
-                    /*
-                    alarmController.TriggerAlarmOn();
-                    yield return new WaitForSeconds(0.1f);
-                    alarmController.TriggerAlarmOff();
-                    yield return new WaitForSeconds(0.1f);
-                    */
-                    InvokeRepeating("TriggerAlarmOn", 0f, 0.2f);
-                    InvokeRepeating("TurnOffAlarm", 0.1f, 0.2f);
-                    yield return new WaitForSeconds(3.1f);
-                    CancelInvoke("TriggerAlarmOn");
-                    CancelInvoke("TurnOffAlarm");
-                    InstantiateVehicle(40f);
-                    /*InvokeRepeating("TriggerAlarmOn", 0f, 0.2f);
-                    InvokeRepeating("TurnOffAlarm", 0.1f, 0.2f);
-                    yield return new WaitForSeconds(0.9f);
-                    CancelInvoke("TriggerAlarmOn");
-                    CancelInvoke("TurnOffAlarm");*/
-                }
-                else
-                {
-                    Debug.LogError("Alarm controller not assigned!");
-                }
+                case string name when name.EndsWith("SW(Clone)"):
+                    HandleStarWarsScenario();
+                    break;
+                case string name when name.EndsWith("LOTR(Clone)"):
+                    HandleLotrScenario();
+                    break;
+                default:
+                    HandleDefaultScenario();
+                    break;
             }
         }
     }
 
+    private void HandleStarWarsScenario()
+    {
+        if (alarmController == null)
+        {
+            Debug.LogError("Alarm controller not assigned!");
+            return;
+        }
+
+        alarmController.TriggerLasersOn(direction);
+        StartCoroutine(DelayAndInstantiate(3.1f, 40f, alarmController.TriggerLasersOff));
+    }
+
+    private void HandleLotrScenario()
+    {
+        if (alarmController == null)
+        {
+            Debug.LogError("Alarm controller not assigned!");
+            return;
+        }
+
+        InvokeRepeating(nameof(TriggerVibrationsOn), 0f, 0.05f);
+        InvokeRepeating(nameof(TriggerVibrationsOff), 0.025f, 0.05f);
+        StartCoroutine(DelayAndInstantiate(3f, 25f, () =>
+        {
+            CancelInvoke(nameof(TriggerVibrationsOn));
+            CancelInvoke(nameof(TriggerVibrationsOff));
+        }));
+    }
+
+    private void HandleDefaultScenario()
+    {
+        if (alarmController == null)
+        {
+            Debug.LogError("Alarm controller not assigned!");
+            return;
+        }
+
+        InvokeRepeating(nameof(TriggerAlarmOn), 0f, 0.2f);
+        InvokeRepeating(nameof(TriggerAlarmOff), 0.1f, 0.2f);
+        StartCoroutine(DelayAndInstantiate(3.1f, 40f, () =>
+        {
+            CancelInvoke(nameof(TriggerAlarmOn));
+            CancelInvoke(nameof(TriggerAlarmOff));
+        }));
+    }
+
+    private IEnumerator DelayAndInstantiate(float delay, float speed, System.Action postInstantiateAction)
+    {
+        yield return new WaitForSeconds(delay);
+        InstantiateVehicle(speed);
+        postInstantiateAction?.Invoke();
+    }
+
     private void InstantiateVehicle(float speed)
     {
-        var newTrain = Instantiate(vehicle, SpawnPos.position, Quaternion.identity);
+        var newTrain = Instantiate(vehicle, spawnPos.position, Quaternion.identity);
         var train = newTrain.GetComponent<MovingObjectScript>();
         if (direction < 0) newTrain.transform.Rotate(new Vector3(0, 180, 0));
         train.SetDirection(direction);
@@ -101,7 +104,7 @@ public class TrainSpawn : MonoBehaviour
         alarmController.TriggerAlarmOn();
     }
 
-    private void TurnOffAlarm()
+    private void TriggerAlarmOff()
     {
         alarmController.TriggerAlarmOff();
     }

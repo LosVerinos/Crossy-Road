@@ -1,6 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,21 +9,19 @@ public class ScoreScript : MonoBehaviour
 {
     private static ScoreScript _instance;
     public static ScoreScript Instance => _instance;
+
     private int score;
     public bool isCounting = false;
     private float currentDifficulty = 1.0f;
 
     [SerializeField] private Text scoreText;
-    
-    public Button Easy_button;
-    public Button Medium_button;
-    public Button Hard_button;
-
-    public Text timerText;
+    [SerializeField] private Button easyButton;
+    [SerializeField] private Button mediumButton;
+    [SerializeField] private Button hardButton;
+    [SerializeField] private Text timerText;
+    [SerializeField] private Text rankText;
 
     private Button selectedButton;
-
-    public Text Rank;
 
     private void Awake()
     {
@@ -35,6 +33,16 @@ public class ScoreScript : MonoBehaviour
 
         _instance = this;
         score = 0;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        CheckFiles();
+
+        easyButton.onClick.AddListener(() => ChangeDifficulty("easy", 1.0f));
+        mediumButton.onClick.AddListener(() => ChangeDifficulty("medium", 1.2f));
+        hardButton.onClick.AddListener(() => ChangeDifficulty("hard", 1.5f));
     }
 
     public void UpdateScore()
@@ -51,62 +59,37 @@ public class ScoreScript : MonoBehaviour
 
     public void WriteScore(string difficulty)
     {
-        var writer = new System.IO.StreamWriter(Application.persistentDataPath + $"/score_{difficulty}.txt", true);
-        writer.WriteLine(GlobalVariables.Player.playerName + ":" + score);
-        writer.Close();
-    }
-
-    void Start()
-    {
-        checkFiles();
-
-        if (_instance != null && _instance != this)
+        string path = Path.Combine(Application.persistentDataPath, $"score_{difficulty}.txt");
+        using (StreamWriter writer = new StreamWriter(path, true))
         {
-            Destroy(this.gameObject);
-            return;
+            writer.WriteLine($"{GlobalVariables.Player.playerName}:{score}");
         }
-
-        _instance = this;
-        score = 0;
-
-        
-        Easy_button.onClick.AddListener(easy_click);
-        Medium_button.onClick.AddListener(medium_click);
-        Hard_button.onClick.AddListener(hard_click);
-        
     }
 
     public List<string> GetScoreBoard(string difficulty)
     {
-        var scoreBoard = new List<string>();
-        string[] lines;
-        try
+        string path = Path.Combine(Application.persistentDataPath, $"score_{difficulty}.txt");
+        if (!File.Exists(path))
         {
-            
-            lines = System.IO.File.ReadAllLines(Application.persistentDataPath + $"/score_{difficulty}.txt");
-        }
-        catch (Exception)
-        {
-            System.IO.File.Create(Application.persistentDataPath + $"/score_{difficulty}.txt");
-            return GetScoreBoard(difficulty);
+            File.Create(path).Dispose();
+            return new List<string> { "1:0" };
         }
 
-        var scores = new List<Tuple<string, int>>();
-
-        foreach (var line in lines)
+        var lines = File.ReadAllLines(path);
+        var scores = lines.Select(line =>
         {
             var parts = line.Split(':');
-            scores.Add(new Tuple<string, int>(parts[0], int.Parse(parts[1])));
-        }
+            return new Tuple<string, int>(parts[0], int.Parse(parts[1]));
+        }).ToList();
 
         scores.Sort((x, y) => y.Item2.CompareTo(x.Item2));
-        for (var i = 0; i < 10 && i < scores.Count; i++) scoreBoard.Add(scores[i].Item1 + ":" + scores[i].Item2);
-        return scoreBoard;
+        return scores.Take(10).Select(score => $"{score.Item1}:{score.Item2}").ToList();
     }
 
     public void ResetScore()
     {
         score = 0;
+        scoreText.text = "Score: " + score;
     }
 
     public void SetDifficulty(float difficulty)
@@ -117,33 +100,18 @@ public class ScoreScript : MonoBehaviour
     public void ReloadScoreBoard(string difficulty)
     {
         var scoreBoard = GetScoreBoard(difficulty);
-
-        Rank.text = "";
-        var i = 1;
-        foreach (var scoreEntry in scoreBoard)
+        rankText.text = "";
+        for (int i = 0; i < scoreBoard.Count; i++)
         {
-            Rank.text = Rank.text + i.ToString() + " - " + scoreEntry + "\n";
-            i++;
+            rankText.text += $"{i + 1} - {scoreBoard[i]}\n";
         }
     }
 
-    public void easy_click()
+    private void ChangeDifficulty(string difficulty, float difficultyValue)
     {
-        SetButtonState(Easy_button);
-        ReloadScoreBoard("easy");
-
-    }
-    public void medium_click()
-    {
-        SetButtonState(Medium_button);
-        ReloadScoreBoard("medium");
-
-    }
-    public void hard_click()
-    {
-        SetButtonState(Hard_button);
-        ReloadScoreBoard("hard");
-
+        SetButtonState(difficulty == "easy" ? easyButton : difficulty == "medium" ? mediumButton : hardButton);
+        SetDifficulty(difficultyValue);
+        ReloadScoreBoard(difficulty);
     }
 
     private void SetButtonState(Button clickedButton)
@@ -151,14 +119,12 @@ public class ScoreScript : MonoBehaviour
         if (selectedButton != null)
         {
             selectedButton.interactable = true;
-
             var colors = selectedButton.colors;
             colors.normalColor = Color.white;
             selectedButton.colors = colors;
         }
 
         selectedButton = clickedButton;
-
         clickedButton.interactable = false;
 
         var clickedColors = clickedButton.colors;
@@ -166,19 +132,19 @@ public class ScoreScript : MonoBehaviour
         clickedButton.colors = clickedColors;
     }
 
-    private void checkFiles()
+    private void CheckFiles()
     {
         string[] difficulties = { "easy", "medium", "hard" };
-
         foreach (var difficulty in difficulties)
         {
-            var filePath = Application.persistentDataPath + $"/score_{difficulty}.txt";
-
-            if (!System.IO.File.Exists(filePath))
-                using (var writer = new System.IO.StreamWriter(filePath, true))
+            string path = Path.Combine(Application.persistentDataPath, $"score_{difficulty}.txt");
+            if (!File.Exists(path))
+            {
+                using (var writer = new StreamWriter(path, true))
                 {
                     writer.WriteLine("1:0");
                 }
             }
         }
     }
+}
