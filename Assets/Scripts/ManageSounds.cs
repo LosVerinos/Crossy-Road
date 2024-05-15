@@ -6,7 +6,8 @@ public class ManageSounds : MonoBehaviour
 {
     public AudioClip[] musicList;
     private AudioSource audioSource;
-
+    private string previousTheme;
+    private SoundsManager ambiance;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -24,7 +25,16 @@ public class ManageSounds : MonoBehaviour
         {
             Debug.LogWarning("Aucune liste de musique n'a été fournie.");
         }
-        SoundsManager ambiance = GetComponentInChildren<SoundsManager>();
+        ambiance = GetComponentInChildren<SoundsManager>();
         ambiance.PlaySound();
+        previousTheme = GlobalVariables.theme;
+    }
+
+    private void Update(){
+        if(previousTheme != GlobalVariables.theme){
+            ambiance.PlaySound();
+            previousTheme = GlobalVariables.theme;
+        }
+        
     }
 }

@@ -103,6 +103,7 @@ public class SkinButtonManager : MonoBehaviour
     {
         GlobalVariables.skin = skinData;
         GlobalVariables.theme = skinData.theme;
+        
 
         foreach (SkinData skin in skinDataList)
         {

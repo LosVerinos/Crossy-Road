@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoundsManager : MonoBehaviour
@@ -8,9 +9,13 @@ public class SoundsManager : MonoBehaviour
     private int themeNumber;
     [SerializeField] private AudioClip[] sounds;
 
-    void Start()
+    private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        DetermineThemeNumber();
+    }
+
+    private void Update(){
         DetermineThemeNumber();
     }
 
@@ -28,7 +33,7 @@ public class SoundsManager : MonoBehaviour
         }
     }
 
-    void DetermineThemeNumber(){
+    private void DetermineThemeNumber(){
         Debug.Log(GlobalVariables.theme);
         if(GlobalVariables.theme == "None"){
             themeNumber = 0;
