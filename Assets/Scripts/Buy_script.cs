@@ -9,16 +9,18 @@ public class Buy_script : MonoBehaviour
     public Text coinsText;
     public List<SkinData> skinDataList;
 
+    private bool availaible = true;
+
     public void buy_click()
     {
 
-        if (PlayerPrefs.GetInt("Coins") >= 1)
+        if (PlayerPrefs.GetInt("Coins") >= 100 && availaible)
         {
             PlayAnimation("Buy_button");
 
             int coins = PlayerPrefs.GetInt("Coins");
 
-            coins = coins - 1;
+            coins = coins - 100;
 
             PlayerPrefs.SetInt("Coins", coins);
 
@@ -72,7 +74,9 @@ public class Buy_script : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Tous les skins sont déjà déverrouillés!");
+            Debug.Log("Tous les skins sont déjà déverrouillés!");
+            availaible = false;
+
         }
     }
 }

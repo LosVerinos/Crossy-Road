@@ -7,15 +7,21 @@ public class SkinButtonManager : MonoBehaviour
     public GameObject buttonPrefab;
     public Transform panel;
     public List<SkinData> skinDataList;
-    
+
+    private List<Button> buttons = new List<Button>();
 
     void Start()
+    {
+        CreateButtons();
+        UpdateButtons();
+    }
+
+    void CreateButtons()
     {
         float buttonSpacing = 10f;
         float buttonSize = 180f;
         int maxButtonsPerColumn = 5;
 
-        int totalButtons = skinDataList.Count;
         int buttonsInColumn = 0;
         int column = 0;
         int row = 0;
@@ -34,20 +40,8 @@ public class SkinButtonManager : MonoBehaviour
             buttonTransform.localPosition = new Vector3(xPosition, yPosition, buttonTransform.localPosition.z);
             buttonTransform.sizeDelta = new Vector2(buttonSize, buttonSize);
 
-            if (!skinData.unlocked)
-            {
-                Button btnComponent = newButton.GetComponent<Button>();
-                if (btnComponent != null)
-                {
-                    btnComponent.interactable = false;
-                }
-
-                Image imgComponent_ = newButton.GetComponentInChildren<Image>();
-                if (imgComponent_ != null)
-                {
-                    imgComponent_.color = Color.gray;
-                }
-            }
+            Button btnComponent = newButton.GetComponent<Button>();
+            buttons.Add(btnComponent);
 
             Text txtComponent = newButton.GetComponentInChildren<Text>();
             if (txtComponent != null)
@@ -61,11 +55,7 @@ public class SkinButtonManager : MonoBehaviour
                 imgComponent.sprite = skinData.sprite;
             }
 
-            Button btnComponentListener = newButton.GetComponent<Button>();
-            if (btnComponentListener != null)
-            {
-                btnComponentListener.onClick.AddListener(() => SelectSkin(skinData));
-            }
+            btnComponent.onClick.AddListener(() => SelectSkin(skinData));
 
             buttonsInColumn++;
             if (buttonsInColumn >= maxButtonsPerColumn)
@@ -81,16 +71,44 @@ public class SkinButtonManager : MonoBehaviour
         }
     }
 
+    public void UpdateButtons()
+    {
+        for (int i = 0; i < skinDataList.Count; i++)
+        {
+            SkinData skinData = skinDataList[i];
+            Button btnComponent = buttons[i];
+
+            if (!skinData.unlocked)
+            {
+                btnComponent.interactable = false;
+                Image imgComponent = btnComponent.GetComponentInChildren<Image>();
+                if (imgComponent != null)
+                {
+                    imgComponent.color = Color.gray;
+                }
+            }
+            else
+            {
+                btnComponent.interactable = true;
+                Image imgComponent = btnComponent.GetComponentInChildren<Image>();
+                if (imgComponent != null)
+                {
+                    imgComponent.color = Color.white;
+                }
+            }
+        }
+    }
 
     void SelectSkin(SkinData skinData)
     {
         GlobalVariables.skin = skinData;
         GlobalVariables.theme = skinData.theme;
 
-        foreach(SkinData skin in skinDataList)
+        foreach (SkinData skin in skinDataList)
         {
             skin.selected = false;
         }
         skinData.selected = true;
+
     }
 }
