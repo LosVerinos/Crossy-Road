@@ -11,7 +11,6 @@ using Unity.MLAgents.Policies;
 public class PlayerScript : Agent
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
-    [SerializeField] private Text scoreText;
     [SerializeField] private AudioClip sound;
 
     private Animator _animator;
@@ -39,7 +38,6 @@ public class PlayerScript : Agent
 
     public override void OnEpisodeBegin()
     {
-        scoreText.text = "BestScore: " + bestScore + "\nScore: " + 0;
         _scoreBuffer = 0;
         bestScore = ScoreScript.Instance.GetScore() > bestScore ? ScoreScript.Instance.GetScore() : bestScore;
         ScoreScript.Instance.ResetScore();
@@ -226,16 +224,8 @@ public class PlayerScript : Agent
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
     
             MovePlayer(new Vector3(1, 0, zDiff));
-            _scoreBuffer++;
             soundIsPlayed = false;
-            if (_scoreBuffer > 0)
-            {
-                ScoreScript.Instance.UpdateScore();
-                scoreText.text = ScoreScript.Instance.GetScore().ToString();
-                timeWithoutScoreIncrease = 0f;
-                _scoreBuffer = 0;
-                
-            }
+            timeWithoutScoreIncrease = 0f;
     
             _backwardsCount = 0;
     
@@ -261,7 +251,6 @@ public class PlayerScript : Agent
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             MovePlayer(new Vector3(-1, 0, zDiff));
-            _scoreBuffer--;
             _backwardsCount++;
             lastInput = 'S';
         }
@@ -321,7 +310,6 @@ public class PlayerScript : Agent
             }
         }
     
-        scoreText.text = "Score: " + ScoreScript.Instance.GetScore();
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
@@ -394,12 +382,11 @@ public class PlayerScript : Agent
             {
                 float currentScore = bestScore / 100f;
                 ScoreScript.Instance.UpdateScore();
-                scoreText.text = "BestScore: " + bestScore + "\nScore:  "+ ScoreScript.Instance.GetScore();
                 _scoreBuffer = 0;
                 AddReward(+0.1f * currentScore);
                 if (ScoreScript.Instance.GetScore() == bestScore)
                 {
-                    Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
+                    // Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
                     bestScore++;
                     SetReward(+1f);
                     EndEpisode();
