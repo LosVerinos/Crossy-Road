@@ -32,6 +32,7 @@ public class ManageSounds : MonoBehaviour
 
     private void Update(){
         if(previousTheme != GlobalVariables.theme){
+            
             ambiance.PlaySound();
             previousTheme = GlobalVariables.theme;
         }

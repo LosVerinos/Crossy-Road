@@ -18,6 +18,7 @@ public class LogSpawnScript : MonoBehaviour
     private float timeWhithInitialSpeed = 4f;
     private int randomIndex;
     private GameObject selectedLog;
+    private float minimumSpace = 0.4f;
 
     private void Start()
     {
@@ -42,40 +43,51 @@ public class LogSpawnScript : MonoBehaviour
             if (direction < 0) newLog.transform.Rotate(new Vector3(0, 180, 0));
             log.SetDirection(direction);
 
-            minSeparationTime = (0.2f + logLenght) / speed;
+            minSeparationTime = (minimumSpace + logLenght) / speed;
             maxSeparationTime = minSeparationTime + 2f;
             log.SetSpeed(speed);
             logNumber++;
         }
     }
 
-    private void FirstLogs()
+private void FirstLogs()
+{
+    var spawnLimit = Mathf.Abs(SpawnPos.position.z + direction * (initialSpeed * timeWhithInitialSpeed));
+    var LogsZ = -spawnLimit;
+    while (LogsZ < Mathf.Abs(SpawnPos.position.z + direction * (initialSpeed * timeWhithInitialSpeed)))
     {
-        var spawnLimit = Mathf.Abs(SpawnPos.position.z + direction * (initialSpeed * timeWhithInitialSpeed));
-        var LogsZ = spawnLimit;
-        while (LogsZ > -Mathf.Abs(SpawnPos.position.z + direction * (initialSpeed * timeWhithInitialSpeed)))
-        {
-            var randomIndex = Random.Range(0, logs.Count);
-            var selectedLog = logs[randomIndex];
-            var selected = selectedLog.GetComponent<MovingObjectScript>();
-            logLenght = selected.lenghtEnd.position.z - selected.lenghtStart.position.z;
-            LogsZ -= lastLogLenght / 2 + 0.2f + logLenght;
-            if (LogsZ - logLenght / 2 < -spawnLimit) break;
+        randomIndex = Random.Range(0, logs.Count);
+        selectedLog = logs[randomIndex];
+        var selected = selectedLog.GetComponent<MovingObjectScript>();
+        logLenght = selected.lenghtEnd.position.z - selected.lenghtStart.position.z;
+        LogsZ += lastLogLenght / 2 + minimumSpace + logLenght;
+        if (LogsZ + logLenght / 2 > spawnLimit) break;
 
-            var newLog = Instantiate(selectedLog, new Vector3(SpawnPos.position.x, SpawnPos.position.y, LogsZ),
-                Quaternion.identity);
-            var log = newLog.GetComponent<MovingObjectScript>();
+        var newLog = Instantiate(selectedLog, new Vector3(SpawnPos.position.x, SpawnPos.position.y, LogsZ),
+            Quaternion.identity);
+        var log = newLog.GetComponent<MovingObjectScript>();
 
-            if (direction < 0) newLog.transform.Rotate(new Vector3(0, 180, 0));
-            log.SetDirection(direction);
-            log.SetSpeed(speed);
-            lastLogLenght = logLenght;
-        }
-
-        minSeparationTime = (0.2f + logLenght) / speed;
-        maxSeparationTime = minSeparationTime + 2f;
+        if (direction < 0) newLog.transform.Rotate(new Vector3(0, 180, 0));
+        log.SetDirection(direction);
+        log.SetSpeed(speed);
         lastLogLenght = logLenght;
     }
+    if(speed > 2f){
+        randomIndex = Random.Range(0, logs.Count);
+        selectedLog = logs[randomIndex];
+        var newLog = Instantiate(selectedLog, new Vector3(SpawnPos.position.x, SpawnPos.position.y, SpawnPos.position.z/2), Quaternion.identity);
+        var log = newLog.GetComponent<MovingObjectScript>();
+
+        if (direction < 0) newLog.transform.Rotate(new Vector3(0, 180, 0));
+        log.SetDirection(direction);
+
+        log.SetSpeed(speed);
+    }
+    minSeparationTime = (minimumSpace + logLenght) / speed;
+    maxSeparationTime = minSeparationTime + 2f;
+    lastLogLenght = logLenght;
+}
+
 
     private float DetermineTimeToWait()
     {

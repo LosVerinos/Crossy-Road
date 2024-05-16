@@ -85,7 +85,6 @@ public class PlayerScript : Agent
 
     private void Start()
     {
-        skinDataList[3].selected = true;
         if (skinDataList.Count == 0)
             Debug.Log("La liste skinDataList est vide.");
         else

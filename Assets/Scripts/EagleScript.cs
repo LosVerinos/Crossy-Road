@@ -18,6 +18,8 @@ public class EagleScript : MonoBehaviour
 
     public void CatchPlayer()
     {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.Play();
         _animator.SetTrigger(Catch);
     }
 
