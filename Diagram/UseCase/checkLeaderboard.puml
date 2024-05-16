@@ -2,8 +2,11 @@
 actor Player
 actor System
 
-Player -> (Open Leaderboard) : Open the leaderboard
-Player -> (Select Difficulty) : Choose a difficulty level
-System -> (Display Leaderboard) : Show leaderboard for selected difficulty
+Player -> (Open Leaderboard) : Click on the leaderboard button
+System -> (Display Leaderboard) : Show leaderboard for easy difficulty by default
+
+Player -> (Select Difficulty) : Click on a difficulty button
+System -> (Disable Difficulty Button) : Disable the selected difficulty button
+System -> (Display Leaderboard) : Reload leaderboard with the correct data
 
 @enduml

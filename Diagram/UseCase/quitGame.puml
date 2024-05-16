@@ -2,7 +2,10 @@
 actor Player
 actor System
 
-Player -> (Press Quit Button) : Quit the game
+
+Player -> (Open Settings) : Open the settings menu
+
+(Open Settings) -> (Press Quit Button) : Quit the game
 System -> (Close Game) : Close the game
 
 @enduml

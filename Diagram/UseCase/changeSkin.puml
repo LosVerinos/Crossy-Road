@@ -1,9 +1,16 @@
 @startuml
 actor Player
-actor System
 
 Player -> (Open Skin Menu) : Open skin selection menu
 Player -> (Select Skin) : Choose a skin
-System -> (Apply Skin) : Apply the selected skin
+
+Player -> (System) : Is the skin unlocked?
+(System) -> Player : Yes
+Player -> (System) : Apply the selected skin
+(System) -> (System) : Reload terrain with the skin and theme
+
+Player -> (System) : Is the skin unlocked?
+(System) -> Player : No
+Player -> (System) : Skin is not clickable
 
 @enduml

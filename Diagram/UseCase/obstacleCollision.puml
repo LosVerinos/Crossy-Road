@@ -2,7 +2,7 @@
 |Système|
 start
 :Détecter une collision;
-if (Collision fatale?) then (oui)
+if (Collision mortelle?) then (oui)
     :Terminer la partie;
     :Sauvegarder le score;
 else (non)

@@ -1,9 +1,10 @@
 @startuml
 actor Player
-actor System
 
-Player -> (Open Settings) : Open the settings menu
-Player -> (Select Difficulty) : Choose a difficulty level
-System -> (Apply Difficulty) : Apply the selected difficulty
+Player -> (Start game) : Start the game
+(Start game) -> (Select Difficulty) : on the pannel
+Player -> (Select Difficulty) : Select the level of difficulty
+(Select Difficulty) -> (System) : Send the selected difficulty
+(System) -> (Apply Difficulty) : Apply the selected difficulty
 
 @enduml

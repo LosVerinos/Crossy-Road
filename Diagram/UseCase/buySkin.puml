@@ -1,11 +1,11 @@
 @startuml
 actor Player
-actor System
 
-Player -> (Open Shop) : Open the skin shop
-Player -> (Select Skin to Buy) : Choose a skin to buy
-System -> (Check Coins) : Check if the player has enough coins
-System -> (Deduct Coins) : Deduct coins if sufficient
-System -> (Unlock Skin) : Unlock the skin
+(Player) -> (Open Shop) : Open the skin shop
+(Open Shop) -> (Buy Skin): Click
+(Player) -> (Buy Skin) : Buy a skin
+(Buy Skin) -> (Check Skin) : Check if the player has enough coins
+(Check Skin) -> (Unlock Skin) : Unlock the skin
+(Check Skin) -> (Insufficient Coins) : Insufficient coins
 
 @enduml
