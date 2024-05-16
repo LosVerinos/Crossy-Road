@@ -1,0 +1,7 @@
+@startuml manageSoundActivity
+start
+:Lancer le jeu;
+:Aller dans les réglages;
+:Ajuster le niveau de volume;
+stop
+@enduml

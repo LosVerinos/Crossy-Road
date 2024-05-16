@@ -1,8 +1,0 @@
-@startuml
-actor Player
-actor System
-
-Player -> (Open Settings) : Open the settings menu
-System -> (Display Settings) : Show available settings options
-
-@enduml

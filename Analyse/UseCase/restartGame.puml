@@ -1,0 +1,10 @@
+@startuml restartGameUC
+|Player|
+start
+:Press Restart Button;
+
+|System|
+:Reset game to initial state;
+:Start the game;
+stop
+@enduml

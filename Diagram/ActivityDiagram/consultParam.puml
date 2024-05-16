@@ -1,9 +1,0 @@
-@startuml
-start
-:Lancer le jeu;
-:Lancer une partie;
-:Aller dans le menu des réglages;
-:Modifier le volume à la valeur souhaitée;
-:Sauvegarder les changements;
-stop
-@enduml

@@ -1,0 +1,9 @@
+@startuml checkParamsUC
+|Player|
+start
+:Open the settings menu;
+
+|System|
+:Show available settings options;
+stop
+@enduml

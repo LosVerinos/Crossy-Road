@@ -1,7 +1,0 @@
-@startuml
-start
-:Démarer le jeu;
-:Click sur le boutton de difficulté choisi;
-:Modification de la vitesse de la caméra et des objets qui se déplacent;
-stop
-@enduml

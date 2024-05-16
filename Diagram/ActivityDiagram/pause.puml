@@ -1,8 +1,0 @@
-@startuml
-start
-:Appuyer sur le bouton "Pause";
-:Afficher le menu de pause;
-:Arrêter le temps de jeu;
-:Permettre de reprendre ou quitter la partie;
-stop
-@enduml

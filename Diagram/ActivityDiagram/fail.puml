@@ -1,8 +1,0 @@
-@startuml
-start
-:Le joueur rencontre un obstacle mortel;
-:Afficher l'animation de mort;
-:Afficher le score final;
-:Proposer de relancer ou de quitter;
-stop
-@enduml

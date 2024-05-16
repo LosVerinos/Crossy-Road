@@ -1,0 +1,9 @@
+@startuml startGameUC
+|Player|
+start
+:Click Game Icon;
+:Enter Username;
+:Select Difficulty;
+:Click Play;
+stop
+@enduml

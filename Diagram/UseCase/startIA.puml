@@ -1,9 +1,0 @@
-@startuml
-actor Player
-actor System
-
-Player -> (Click AI Button) : Start AI mode
-System -> (Initialize AI) : Initialize AI
-System -> (Start Game) : Start the game
-
-@enduml

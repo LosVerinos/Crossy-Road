@@ -1,8 +1,0 @@
-@startuml
-start
-:Lancer le jeu;
-:Aller dans les réglages;
-:Appuyer sur le bouton "Quitter";
-:Fermer le jeu;
-stop
-@enduml

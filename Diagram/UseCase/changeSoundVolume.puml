@@ -1,9 +1,0 @@
-@startuml
-actor Player
-
-Player -> (Open Settings) : Open the settings menu
-Player -> (Adjust Volume Slider) : Change the volume on the slider
-(Adjust Volume Slider) -> System : Automatically update volume level
-(System) -> (System) : Change the volume level
-
-@enduml

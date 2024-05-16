@@ -1,0 +1,13 @@
+@startuml checkLeaderBoardUC
+|Player|
+start
+:Click on the leaderboard button;
+
+|System|
+:Show leaderboard for easy difficulty by default;
+
+:Click on a difficulty button;
+:System: Disable the selected difficulty button;
+:System: Reload leaderboard with the correct data;
+stop
+@enduml

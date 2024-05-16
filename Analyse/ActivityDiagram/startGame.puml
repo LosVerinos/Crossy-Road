@@ -1,0 +1,24 @@
+@startuml startGameActivity
+start
+:Cliquer sur l'icône du bureau;
+:Ouvrir le jeu;
+:Afficher l'écran de démarrage;
+
+if (L'utilisateur entre son pseudo ?) then (Oui)
+    :Enregistrer le pseudo;
+else (Non)
+    :Continuer sans pseudo;
+endif
+
+:Afficher les options de difficulté;
+
+if (L'utilisateur choisit une difficulté ?) then (Oui)
+    :Définir la difficulté choisie;
+else (Non)
+    :Définir la difficulté sur easy;
+endif
+
+:Cliquer sur "Play";
+stop
+@enduml
+

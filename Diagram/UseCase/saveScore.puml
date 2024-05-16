@@ -1,8 +1,0 @@
-@startuml
-|Système|
-start
-:Fin de la partie;
-:Calculer le score final;
-:Enregistrer le score dans le fichier;
-stop
-@enduml

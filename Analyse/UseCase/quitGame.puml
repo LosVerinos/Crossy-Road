@@ -1,0 +1,16 @@
+@startuml quitGameUC
+|Player|
+start
+:Open the settings menu;
+
+|System|
+:Display the settings menu;
+
+|Player|
+:Press Quit Button;
+
+|System|
+:Quit the game;
+:Close the game;
+stop
+@enduml

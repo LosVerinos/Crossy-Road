@@ -1,0 +1,14 @@
+@startuml MoovingPlatformActivity
+start
+:Initialiser la position et la vitesse de la plateforme en fonction du terrain;
+repeat
+  :Déplacer la plateforme dans la direction définie;
+  :Vérifier les limites de la scène;
+  if (Limite atteinte?) then (oui)
+    :Réinitialiser la position de la plateforme;
+  else (non)
+    :Continuer le déplacement;
+  endif
+repeat while (La partie n'est pas terminée)
+stop
+@enduml

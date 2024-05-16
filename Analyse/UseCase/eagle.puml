@@ -1,0 +1,13 @@
+@startuml eagleUC
+|Système|
+start
+:Vérifier l'inactivité ou le recul du joueur;
+if (Inactivité ou recul prolongé?) then (oui)
+    :Apparition de l'aigle;
+    :S'emparer du joueur;
+    :Terminer la partie;
+else (non)
+    stop
+endif
+stop
+@enduml

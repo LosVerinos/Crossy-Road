@@ -1,0 +1,14 @@
+@startuml StartIAActivity
+start
+:Lancer le jeu;
+
+if (L'utilisateur choisit une difficulté ?) then (Oui)
+    :Définir la difficulté choisie;
+else (Non)
+    :Définir la difficulté sur facile (easy);
+endif
+
+:Appuyer sur le bouton robot qui représente l'IA;
+:Regarder l'IA jouer;
+stop
+@enduml

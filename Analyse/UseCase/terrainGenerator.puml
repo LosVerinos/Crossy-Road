@@ -1,0 +1,16 @@
+@startuml terrainGeneratorUC
+|Système|
+start
+:Début de la partie;
+:Sélectionner aléatoirement un type de terrain;
+:Placer les obstacles sur le terrain;
+
+repeat
+    :Générer une nouvelle ligne de terrain;
+    :Placer les objets sur le terrain;
+    if (Joueur a avancé?) then (oui)
+        :Supprimer la première ligne généré restante;
+    endif
+repeat while (Jeu en cours?)
+stop
+@enduml

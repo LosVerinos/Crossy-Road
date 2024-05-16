@@ -1,0 +1,17 @@
+@startuml changeSkinUC
+|Player|
+start
+:Open skin selection menu;
+
+:Choose a skin;
+
+|System|
+:Check if the skin is unlocked;
+if (Is the skin unlocked?) then (Yes)
+    :Apply the selected skin;
+    :Reload terrain with the skin and theme;
+else (No)
+    :Skin is not clickable;
+endif
+stop
+@enduml

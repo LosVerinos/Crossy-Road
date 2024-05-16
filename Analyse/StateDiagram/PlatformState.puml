@@ -1,0 +1,13 @@
+@startuml PlatformState
+[*] --> EnAttente
+EnAttente : La plateforme est prête à apparaître
+
+EnAttente --> Deplacement : La plateforme est générée et commence à se déplacer
+Deplacement --> HorsChamp : La plateforme sort de l'écran
+HorsChamp --> Destruction : La plateforme est détruite
+
+state Deplacement {
+    [*] --> EnMouvement
+    EnMouvement : La plateforme se déplace
+}
+@enduml
