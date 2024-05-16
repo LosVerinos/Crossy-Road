@@ -1,0 +1,8 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Press Pause Button) : Pause the game
+System -> (Pause Game) : Pause the game
+
+@enduml

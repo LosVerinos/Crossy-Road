@@ -1,0 +1,9 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Open Skin Menu) : Open skin selection menu
+Player -> (Select Skin) : Choose a skin
+System -> (Apply Skin) : Apply the selected skin
+
+@enduml

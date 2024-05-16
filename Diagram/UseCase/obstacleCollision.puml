@@ -1,0 +1,12 @@
+@startuml
+|Système|
+start
+:Détecter une collision;
+if (Collision fatale?) then (oui)
+    :Terminer la partie;
+    :Sauvegarder le score;
+else (non)
+    :Continuer la partie;
+endif
+stop
+@enduml

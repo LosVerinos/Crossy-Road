@@ -1,0 +1,8 @@
+@startuml
+start
+:Appuyer sur "Retourner au menu" dans le menu de pause;
+:Confirmer l'action;
+:Charger le menu principal;
+:Arrêter la partie en cours;
+stop
+@enduml

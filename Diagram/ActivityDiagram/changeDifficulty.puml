@@ -1,0 +1,8 @@
+@startuml
+start
+:Aller dans les réglages;
+:Sélectionner l'option de difficulté;
+:Choisir la difficulté souhaitée;
+:Sauvegarder le changement;
+stop
+@enduml

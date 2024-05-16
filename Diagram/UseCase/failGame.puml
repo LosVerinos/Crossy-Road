@@ -1,0 +1,8 @@
+@startuml
+actor Player
+actor System
+
+System -> (Player Loses) : Player loses the game
+System -> (Show Game Over Screen) : Display game over screen
+
+@enduml

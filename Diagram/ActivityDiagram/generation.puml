@@ -1,0 +1,12 @@
+@startuml
+start
+:Définir les points d'apparition des objets;
+repeat
+  :Attendre un intervalle de temps aléatoire;
+  :Sélectionner un type d'objet à apparaître;
+  :Instancier l'objet à la position d'apparition;
+  :Définir la direction et la vitesse de l'objet;
+  :Déplacer l'objet selon la logique de déplacement;
+repeat while (La partie n'est pas terminée)
+stop
+@enduml

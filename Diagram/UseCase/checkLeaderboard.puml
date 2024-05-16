@@ -1,0 +1,9 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Open Leaderboard) : Open the leaderboard
+Player -> (Select Difficulty) : Choose a difficulty level
+System -> (Display Leaderboard) : Show leaderboard for selected difficulty
+
+@enduml

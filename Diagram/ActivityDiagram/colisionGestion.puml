@@ -1,0 +1,20 @@
+@startuml
+start
+:Le joueur se déplace sur la grille;
+repeat
+  :Vérifier les collisions avec des obstacles (voitures, trains, rivières);
+  if (Collision détectée?) then (oui)
+    :Détecter le type d'obstacle;
+    if (Obstacle mortel?) then (oui)
+      :Mettre fin à la partie;
+      :Afficher l'animation de mort;
+      :Afficher l'écran de fin de partie;
+    else (non)
+      :Appliquer les effets de la collision (rebondir, ralentir, etc.);
+    endif
+  else (non)
+    :Continuer le déplacement;
+  endif
+repeat while (Le joueur n'est pas mort)
+stop
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+start
+:Cliquer sur l'icône du bureau;
+:Ouvrir le jeu;
+:Afficher l'écran de démarrage;
+:Attendre que l'utilisateur entre son pseudo;
+:Cliquer sur "Play";
+stop
+@enduml

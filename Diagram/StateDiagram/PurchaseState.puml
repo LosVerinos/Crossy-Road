@@ -1,0 +1,13 @@
+@startuml
+[*] --> Boutique
+Boutique : Le joueur accède à la boutique
+
+Boutique --> SelectionObjet : Le joueur sélectionne un objet à acheter
+SelectionObjet --> Confirmation : Le joueur confirme l'achat
+Confirmation --> Reussite : Achat réussi
+Confirmation --> Echec : Achat échoué (pas assez de pièces)
+Reussite --> Boutique : Retour à la boutique
+Echec --> Boutique : Retour à la boutique
+Boutique --> RetourMenuPrincipal : Retour au menu principal
+RetourMenuPrincipal --> [*] : Retour au menu principal
+@enduml

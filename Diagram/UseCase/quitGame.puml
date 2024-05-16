@@ -1,0 +1,8 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Press Quit Button) : Quit the game
+System -> (Close Game) : Close the game
+
+@enduml

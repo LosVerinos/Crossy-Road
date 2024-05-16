@@ -1,0 +1,9 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Click Game Icon) : Start the game
+(Player) -> (Enter Username)
+(Player) -> (Click Play)
+
+@enduml

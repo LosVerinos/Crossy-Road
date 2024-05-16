@@ -1,0 +1,8 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Press Menu Button) : Go to the main menu
+System -> (Show Main Menu) : Display the main menu
+
+@enduml

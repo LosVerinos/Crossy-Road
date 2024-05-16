@@ -1,0 +1,8 @@
+@startuml
+start
+:Aller dans le menu classement;
+:Afficher le classement des joueurs;
+:Sélectionner une difficulté;
+:Afficher les scores correspondants;
+stop
+@enduml

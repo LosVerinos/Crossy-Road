@@ -1,0 +1,16 @@
+@startuml
+|Joueur|
+start
+:Se déplacer vers la pièce d'or;
+
+|Système|
+:Vérifier la collision avec la pièce;
+if (Collision avec la pièce?) then (oui)
+    :Ajouter une pièce au compteur;
+    :Mettre à jour l'affichage des pièces;
+    :Supprimer la pièce de la scène;
+else (non)
+    stop
+endif
+stop
+@enduml

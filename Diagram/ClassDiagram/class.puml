@@ -1,0 +1,52 @@
+@startuml
+class Player {
+    -name: string
+    -score: int
+    -position: Vector3
+    +move(direction: string): void
+    +collectCoin(): void
+    +die(): void
+}
+
+class Terrain {
+    -type: string
+    -obstacles: List<Obstacle>
+    +generate(): void
+}
+
+class Obstacle {
+    -position: Vector3
+    +activate(): void
+    +deactivate(): void
+}
+
+class Vehicle extends Obstacle {
+    -speed: float
+    +move(): void
+}
+
+class Coin {
+    -value: int
+    +collect(): void
+}
+
+class Game {
+    -player: Player
+    -terrain: Terrain
+    -vehicles: List<Vehicle>
+    -coins: List<Coin>
+    +start(): void
+    +pause(): void
+    +end(): void
+}
+
+Player "1" -- "1" Terrain
+Player "1" -- "many" Coin
+Player "1" -- "many" Vehicle
+Terrain "1" -- "many" Obstacle
+Obstacle <|-- Vehicle
+Game "1" -- "1" Player
+Game "1" -- "1" Terrain
+Game "1" -- "many" Vehicle
+Game "1" -- "many" Coin
+@enduml

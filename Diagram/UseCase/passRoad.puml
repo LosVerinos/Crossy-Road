@@ -1,0 +1,17 @@
+@startuml
+|Joueur|
+start
+:Observer le trafic;
+:Attendre un moment sûr pour traverser;
+:Appuyer sur la direction avant (ou glisser);
+
+|Système|
+:Vérifier les collisions;
+if (Collision?) then (non)
+    :Avancer d'une case;
+else (oui)
+    :Détecter une collision;
+    :Terminer la partie;
+endif
+stop
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+[*] --> EnAttente
+EnAttente : L'obstacle est prêt à apparaître
+
+EnAttente --> Deplacement : L'obstacle est généré et commence à se déplacer
+Deplacement --> HorsChamp : L'obstacle sort de l'écran
+HorsChamp --> EnAttente : L'obstacle est prêt à être réutilisé
+
+state Deplacement {
+    [*] --> EnMouvement
+    EnMouvement : L'obstacle se déplace
+}
+@enduml

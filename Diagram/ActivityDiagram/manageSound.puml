@@ -1,0 +1,8 @@
+@startuml
+start
+:Aller dans les réglages;
+:Trouver l'option de volume;
+:Ajuster le niveau de volume;
+:Sauvegarder le changement;
+stop
+@enduml

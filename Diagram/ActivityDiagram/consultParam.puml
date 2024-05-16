@@ -1,0 +1,8 @@
+@startuml
+start
+:Aller dans le menu des réglages;
+:Afficher les options de réglages (volume, difficulté, etc.);
+:Modifier les réglages souhaités;
+:Sauvegarder les changements;
+stop
+@enduml

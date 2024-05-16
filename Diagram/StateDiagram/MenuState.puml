@@ -1,0 +1,14 @@
+@startuml
+[*] --> MenuPrincipal
+MenuPrincipal : Le joueur est sur l'écran de démarrage
+
+MenuPrincipal --> SelectionSkin : Le joueur sélectionne un skin
+MenuPrincipal --> SelectionDifficulte : Le joueur sélectionne une difficulté
+MenuPrincipal --> ConsulterClassement : Le joueur consulte le classement
+MenuPrincipal --> Reglages : Le joueur accède aux réglages
+
+SelectionSkin --> MenuPrincipal : Retour au menu principal
+SelectionDifficulte --> MenuPrincipal : Retour au menu principal
+ConsulterClassement --> MenuPrincipal : Retour au menu principal
+Reglages --> MenuPrincipal : Retour au menu principal
+@enduml

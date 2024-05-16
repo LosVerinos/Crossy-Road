@@ -1,0 +1,7 @@
+@startuml
+[*] --> Disponible
+Disponible : La pièce est disponible pour être ramassée
+
+Disponible --> Ramassee : La pièce est ramassée par le joueur
+Ramassee --> [*] : La pièce est comptabilisée et disparaît
+@enduml

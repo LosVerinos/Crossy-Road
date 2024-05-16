@@ -1,0 +1,7 @@
+@startuml
+start
+:Appuyer sur le bouton "Quitter";
+:Confirmer l'action de quitter;
+:Fermer le jeu;
+stop
+@enduml

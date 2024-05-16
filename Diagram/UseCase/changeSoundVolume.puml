@@ -1,0 +1,9 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Open Settings) : Open the settings menu
+Player -> (Adjust Volume Slider) : Adjust the volume slider
+System -> (Change Volume) : Change the volume level
+
+@enduml

@@ -1,0 +1,9 @@
+@startuml
+actor Player
+actor System
+
+Player -> (Press Restart Button) : Restart the game
+System -> (Reset Game) : Reset game to initial state
+System -> (Start Game) : Start the game
+
+@enduml

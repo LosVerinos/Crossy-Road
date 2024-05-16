@@ -1,0 +1,12 @@
+@startuml
+start
+:Vérifier si le joueur a suffisamment de pièces;
+if (suffisamment de pièces) then (yes)
+    :Déduire les pièces du joueur;
+    :Déverrouiller le skin;
+    :Confirmer l'achat;
+else (no)
+    :Afficher un message d'erreur;
+endif
+stop
+@enduml

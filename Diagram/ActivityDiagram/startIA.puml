@@ -1,0 +1,8 @@
+@startuml
+start
+:Aller dans les options;
+:Activer le mode IA;
+:Sélectionner le niveau de difficulté;
+:Cliquer sur "Lancer IA";
+stop
+@enduml

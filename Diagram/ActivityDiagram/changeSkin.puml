@@ -1,0 +1,9 @@
+@startuml
+start
+:Aller dans le menu des skins;
+:Afficher la liste des skins disponibles;
+:Sélectionner un skin;
+:Cliquer sur "Appliquer";
+:Mettre à jour l'apparence du joueur;
+stop
+@enduml
