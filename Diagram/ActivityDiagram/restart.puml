@@ -1,8 +1,17 @@
 @startuml
 start
-:Appuyer sur "Relancer" dans le menu de pause ou de fin de partie;
-:Réinitialiser le score et la position du joueur;
-:Charger la scène du jeu;
+:Lancer le jeu;
+:Démarrer une partie;
+
+if (Le joueur a perdu ?) then (Oui)
+    :Afficher le menu de fin de partie;
+    :Appuyer sur "Relancer" dans le menu;
+else (Non)
+    :Mettre le jeu en pause;
+    :Appuyer sur "Relancer" dans le menu de pause;
+endif
+
+:Recharger la scène du jeu;
 :Commencer la nouvelle partie;
 stop
 @enduml

@@ -10,7 +10,7 @@ repeat
       :Afficher l'animation de mort;
       :Afficher l'écran de fin de partie;
     else (non)
-      :Appliquer les effets de la collision (rebondir, ralentir, etc.);
+      :interdire le mouvement dans la direction de l'obstacle;
     endif
   else (non)
     :Continuer le déplacement;

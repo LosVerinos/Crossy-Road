@@ -1,12 +1,12 @@
 @startuml
 start
-:Vérifier si le joueur a suffisamment de pièces;
-if (suffisamment de pièces) then (yes)
+:Vérifier si le joueur a 100 pièces;
+if (playerPrefs.getInt("coins")<100) then (yes)
     :Déduire les pièces du joueur;
+    :Animation d'achat;
     :Déverrouiller le skin;
-    :Confirmer l'achat;
 else (no)
-    :Afficher un message d'erreur;
+    :Animation de refus;
 endif
 stop
 @enduml

@@ -1,9 +1,9 @@
 @startuml
 start
+:Lancer le jeu;
 :Aller dans le menu des skins;
 :Afficher la liste des skins disponibles;
-:Sélectionner un skin;
-:Cliquer sur "Appliquer";
+:Cliquer sur un skin;
 :Mettre à jour l'apparence du joueur;
 stop
 @enduml

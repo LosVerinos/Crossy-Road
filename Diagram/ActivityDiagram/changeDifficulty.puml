@@ -1,8 +1,7 @@
 @startuml
 start
-:Aller dans les réglages;
-:Sélectionner l'option de difficulté;
-:Choisir la difficulté souhaitée;
-:Sauvegarder le changement;
+:Démarer le jeu;
+:Click sur le boutton de difficulté choisi;
+:Modification de la vitesse de la caméra et des objets qui se déplacent;
 stop
 @enduml

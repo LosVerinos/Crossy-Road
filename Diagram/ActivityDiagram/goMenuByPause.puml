@@ -1,8 +1,10 @@
 @startuml
 start
+:Lancer le jeu;
+:Lancer une partie;
+:Appuyer sur le boutton "Pause";
 :Appuyer sur "Retourner au menu" dans le menu de pause;
 :Confirmer l'action;
-:Charger le menu principal;
-:Arrêter la partie en cours;
+:Rechargement de la scène;
 stop
 @enduml
