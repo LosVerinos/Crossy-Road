@@ -40,8 +40,8 @@ behaviors:
     even_checkpoints: false
     max_steps: 500000
     time_horizon: 64
-    summary_freq: 50000
-    threaded: false
+    summary_freq: 10000
+    threaded: true
     self_play: null
     behavioral_cloning: null
 env_settings:
@@ -58,17 +58,17 @@ env_settings:
 engine_settings:
   width: 390
   height: 844
-  quality_level: 5
-  time_scale: 20
-  target_frame_rate: -1
+  quality_level: 1
+  time_scale: 1
+  target_frame_rate: 60
   capture_frame_rate: 60
-  no_graphics: true
+  no_graphics: false
 environment_parameters: null
 checkpoint_settings:
-  run_id: Azyaziz
+  run_id: Azyaziz1
   initialize_from: null
   load_model: false
-  resume: true
+  resume: false
   force: false
   train_model: false
   inference: false

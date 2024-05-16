@@ -63,6 +63,7 @@ public class PlayerScript : Agent
 
 private void MovePlayerBasedOnAction(int action)
 {
+    float zDiff = 0;
     switch (action)
     {
         case 1:
@@ -72,10 +73,12 @@ private void MovePlayerBasedOnAction(int action)
             MovePlayer(Vector3.back);
             break;
         case 3:
-            MovePlayer(Vector3.left);
+            if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
+            MovePlayer(new Vector3(-1, 0, zDiff));
             break;
         case 4:
-            MovePlayer(Vector3.right);
+            if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
+            MovePlayer(new Vector3(1, 0, zDiff));
             break;
     }
 }
@@ -176,36 +179,36 @@ private void MovePlayerBasedOnAction(int action)
 
     public void KillPlayer()
     {
-        if (GlobalVariables.isPlayerKilled)
-        {
-            return;
-        }
-        GlobalVariables.isPlayerKilled = true;
-        GlobalVariables.run = false;
-        
-        string str_difficulty = "";
-        
-        switch (GlobalVariables.difficulty)
-        {
-            case 1.0f:
-                str_difficulty = "easy";
-                break;
-            case 1.2f:
-                str_difficulty = "medium";
-                break;
-            case 1.5f:
-                str_difficulty = "hard";
-                break;
-            default:
-                Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
-                break;
-        }
-        
-        ScoreScript.Instance.WriteScore(str_difficulty);
-        ScoreScript.Instance.ResetScore();
+        // if (GlobalVariables.isPlayerKilled)
+        // {
+        //     return;
+        // }
+        // GlobalVariables.isPlayerKilled = true;
+        // GlobalVariables.run = false;
+        //
+        // string str_difficulty = "";
+        //
+        // switch (GlobalVariables.difficulty)
+        // {
+        //     case 1.0f:
+        //         str_difficulty = "easy";
+        //         break;
+        //     case 1.2f:
+        //         str_difficulty = "medium";
+        //         break;
+        //     case 1.5f:
+        //         str_difficulty = "hard";
+        //         break;
+        //     default:
+        //         Debug.LogError("Invalid difficulty level: " + GlobalVariables.difficulty);
+        //         break;
+        // }
+        //
+        // ScoreScript.Instance.WriteScore(str_difficulty);
+        // ScoreScript.Instance.ResetScore();
         SetReward(-1f);
         EndEpisode();
-        Destroy(GlobalVariables.Player.GameObject());
+        // Destroy(GlobalVariables.Player.GameObject());
     }
 
     public void SetPlayerName()
@@ -216,6 +219,10 @@ private void MovePlayerBasedOnAction(int action)
     private void Update()
     {
         if (_isHopping || !GlobalVariables.run) return;
+        if (_isAi)
+        {
+            RequestDecision();
+        }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             switch (lastInput)
@@ -232,10 +239,10 @@ private void MovePlayerBasedOnAction(int action)
                 default:
                     break;
             }
-    
+        
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
-    
+        
             MovePlayer(new Vector3(1, 0, zDiff));
             soundIsPlayed = false;
             // timeWithoutScoreIncrease = 0f;
@@ -257,7 +264,7 @@ private void MovePlayerBasedOnAction(int action)
                 default:
                     break;
             }
-    
+        
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             MovePlayer(new Vector3(-1, 0, zDiff));
@@ -279,7 +286,7 @@ private void MovePlayerBasedOnAction(int action)
                 default:
                     break;
             }
-    
+        
             float xDiff = 0;
             if (transform.position.x % 1 != 0) xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             MovePlayer(new Vector3(xDiff, 0, 1));
@@ -301,26 +308,26 @@ private void MovePlayerBasedOnAction(int action)
                 default:
                     break;
             }
-    
+        
             float xDiff = 0;
             if (transform.position.x % 1 != 0) xDiff = Mathf.Round(transform.position.x) - transform.position.x;
             MovePlayer(new Vector3(xDiff, 0, -1));
             lastInput = 'D';
         }
-    
+        
         if (ScoreScript.Instance.GetScore() % 50 == 0 && ScoreScript.Instance.GetScore() != 0 && !soundIsPlayed)
         {
             soundIsPlayed = true;
-    
+        
             if (sound != null)
             {
                 _audioSource.clip = sound;
                 _audioSource.Play();
             }
         }
-    
-        
-    
+        //
+        //
+        //
         if (transform.position.z < -15f || transform.position.z > 15f) KillPlayer();
     }
 
@@ -344,6 +351,7 @@ private void MovePlayerBasedOnAction(int action)
 
     private void MovePlayer(Vector3 diff)
     {
+        if (_isHopping) return;
         var newPosition = transform.position + diff;
         // normalize the position
 
@@ -373,6 +381,12 @@ private void MovePlayerBasedOnAction(int action)
             }
         }
         
+        _isHopping = true;
+        _animator.SetTrigger(Hop);
+        var position = transform.position;
+        transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
+        TerrainGenerator.SpawnTerrain(false, position);
+        
         // check if the player is going on the water
         
         foreach (var terrain in TerrainGenerator._currentTerrains
@@ -392,11 +406,7 @@ private void MovePlayerBasedOnAction(int action)
         }
         
         
-        _animator.SetTrigger(Hop);
-        _isHopping = true;
-        var position = transform.position;
-        transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
-        TerrainGenerator.SpawnTerrain(false, position);
+        
         
         // get the prefab the player is on
         if (Mathf.Approximately(diff.x, 1))

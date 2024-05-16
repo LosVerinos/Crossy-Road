@@ -214,7 +214,7 @@ AnimationClip:
   - time: 0.083333336
     functionName: HopAnimationEnd
     data: 
-    objectReferenceParameter: {fileID: 0}
+    objectReferenceParameter: {fileID: 11500000, guid: 14b15dc70398f9446a53a1d6715a91b8, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
