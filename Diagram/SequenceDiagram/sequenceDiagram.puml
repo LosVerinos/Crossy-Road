@@ -1,0 +1,127 @@
+@startuml
+
+actor Player
+
+participant "GameManager" as GM
+participant "UIManager" as UIM
+participant "TerrainGenerator" as TG
+participant "ScoreManager" as SM
+participant "SkinManager" as SKM
+participant "AudioManager" as AM
+participant "AIController" as AI
+
+Player -> GM : Launch Game
+activate GM
+GM -> UIM : Show Start Screen
+
+Player -> UIM : Enter Username [optional]
+Player -> UIM : Select Difficulty [optional]
+alt Difficulty not selected
+    UIM -> GM : Set Difficulty(Easy)
+else Difficulty selected
+    UIM -> GM : Set Difficulty(Player Selection)
+end
+
+Player -> UIM : Click Play
+UIM -> GM : Start Game
+activate TG
+GM -> TG : Initialize Terrain
+TG -> TG : Generate Initial Terrain
+
+activate SM
+GM -> SM : Initialize Score
+activate SKM
+GM -> SKM : Load Skins
+activate AM
+GM -> AM : Play Background Music
+
+Player -> GM : Start New Game
+GM -> UIM : Show Game HUD
+UIM -> Player : Display HUD Elements
+
+loop Every Frame
+    alt Player Moves
+        Player -> GM : Move(Direction)
+        GM -> TG : Check Terrain(Position)
+        TG -> GM : Terrain Info
+        GM -> Player : Update Position
+        GM -> SM : Update Score
+    else AI Moves
+        AI -> GM : Move(Direction)
+        GM -> TG : Check Terrain(Position)
+        TG -> GM : Terrain Info
+        GM -> AI : Update Position
+        GM -> SM : Update Score
+    end
+
+    alt Player Collects Coin
+        Player -> GM : Collect Coin
+        GM -> SM : Increment Coin Count
+    end
+
+    alt Player Encounters Obstacle
+        Player -> GM : Hit Obstacle
+        GM -> Player : Kill Player
+        deactivate Player
+        GM -> UIM : Show Game Over Screen
+        UIM -> Player : Display Game Over Options
+    end
+end
+
+alt Player Chooses to Replay
+    Player -> UIM : Click Replay
+    UIM -> GM : Restart Game
+    GM -> TG : Reset Terrain
+    GM -> SM : Reset Score
+    GM -> Player : Respawn Player
+    activate Player
+else Player Chooses to Buy Skin
+    Player -> UIM : Click Buy Skin
+    UIM -> SKM : Show Available Skins
+    Player -> SKM : Select Skin
+    SKM -> Player : Unlock and Apply Skin
+    SKM -> GM : Update Player Skin
+end
+
+Player -> UIM : Click Play Again
+UIM -> GM : Start Game
+GM -> TG : Initialize Terrain
+TG -> TG : Generate Initial Terrain
+
+GM -> SM : Initialize Score
+GM -> AM : Play Background Music
+
+Player -> GM : Start New Game
+GM -> UIM : Show Game HUD
+UIM -> Player : Display HUD Elements
+
+loop Every Frame
+    alt Player Moves
+        Player -> GM : Move(Direction)
+        GM -> TG : Check Terrain(Position)
+        TG -> GM : Terrain Info
+        GM -> Player : Update Position
+        GM -> SM : Update Score
+    else AI Moves
+        AI -> GM : Move(Direction)
+        GM -> TG : Check Terrain(Position)
+        TG -> GM : Terrain Info
+        GM -> AI : Update Position
+        GM -> SM : Update Score
+    end
+
+    alt Player Collects Coin
+        Player -> GM : Collect Coin
+        GM -> SM : Increment Coin Count
+    end
+
+    alt Player Encounters Obstacle
+        Player -> GM : Hit Obstacle
+        GM -> Player : Kill Player
+        deactivate Player
+        GM -> UIM : Show Game Over Screen
+        UIM -> Player : Display Game Over Options
+    end
+end
+
+@enduml
