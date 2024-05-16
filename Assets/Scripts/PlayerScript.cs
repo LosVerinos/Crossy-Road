@@ -227,8 +227,6 @@ public class PlayerScript : Agent
             MovePlayer(new Vector3(1, 0, zDiff));
             soundIsPlayed = false;
             timeWithoutScoreIncrease = 0f;
-    
-    
             lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
@@ -336,6 +334,7 @@ public class PlayerScript : Agent
     private void MovePlayer(Vector3 diff)
     {
         var newPosition = transform.position + diff;
+        // normalize the position
 
         var results = new Collider[1];
         var size = Physics.OverlapBoxNonAlloc(newPosition, Vector3.one * 0.2f, results);
@@ -362,7 +361,7 @@ public class PlayerScript : Agent
         TerrainGenerator.SpawnTerrain(false, position);
         
         // get the prefab the player is on
-        if (diff == Vector3.right)
+        if (Mathf.Approximately(diff.x, 1))
         {
             _backwardsCount = 0;
             _scoreBuffer++;
@@ -401,7 +400,7 @@ public class PlayerScript : Agent
             }
             
         }
-        else if (diff == Vector3.left)
+        else if (Mathf.Approximately(diff.x, -1))
         {
             _scoreBuffer--;
             _backwardsCount++;
