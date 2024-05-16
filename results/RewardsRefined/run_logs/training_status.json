@@ -1,0 +1,65 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 406477,
+                "file_path": "results\\RewardsRefined\\My Behavior\\My Behavior-406477.onnx",
+                "reward": 1.5402727018703113,
+                "creation_time": 1715861219.7958627,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined\\My Behavior\\My Behavior-406477.pt"
+                ]
+            },
+            {
+                "steps": 408068,
+                "file_path": "results\\RewardsRefined\\My Behavior\\My Behavior-408068.onnx",
+                "reward": -0.37466617425282794,
+                "creation_time": 1715861261.2165737,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined\\My Behavior\\My Behavior-408068.pt"
+                ]
+            },
+            {
+                "steps": 410019,
+                "file_path": "results\\RewardsRefined\\My Behavior\\My Behavior-410019.onnx",
+                "reward": 0.5898437509313226,
+                "creation_time": 1715861572.811627,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined\\My Behavior\\My Behavior-410019.pt"
+                ]
+            },
+            {
+                "steps": 410717,
+                "file_path": "results\\RewardsRefined\\My Behavior\\My Behavior-410717.onnx",
+                "reward": 11.015000015497208,
+                "creation_time": 1715861838.598563,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined\\My Behavior\\My Behavior-410717.pt"
+                ]
+            },
+            {
+                "steps": 419128,
+                "file_path": "results\\RewardsRefined\\My Behavior\\My Behavior-419128.onnx",
+                "reward": 2.7989592217669195,
+                "creation_time": 1715862378.8335526,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined\\My Behavior\\My Behavior-419128.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 419128,
+            "file_path": "results\\RewardsRefined\\My Behavior.onnx",
+            "reward": 2.7989592217669195,
+            "creation_time": 1715862378.8335526,
+            "auxillary_file_paths": [
+                "results\\RewardsRefined\\My Behavior\\My Behavior-419128.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

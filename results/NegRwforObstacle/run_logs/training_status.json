@@ -1,0 +1,29 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 52479,
+                "file_path": "results\\NegRwforObstacle\\My Behavior\\My Behavior-52479.onnx",
+                "reward": -1.27700002801915,
+                "creation_time": 1715850850.6339612,
+                "auxillary_file_paths": [
+                    "results\\NegRwforObstacle\\My Behavior\\My Behavior-52479.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 52479,
+            "file_path": "results\\NegRwforObstacle\\My Behavior.onnx",
+            "reward": -1.27700002801915,
+            "creation_time": 1715850850.6339612,
+            "auxillary_file_paths": [
+                "results\\NegRwforObstacle\\My Behavior\\My Behavior-52479.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

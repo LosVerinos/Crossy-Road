@@ -1,0 +1,47 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 14814,
+                "file_path": "results\\RewardsRefined1\\My Behavior\\My Behavior-14814.onnx",
+                "reward": 0.09313333133856455,
+                "creation_time": 1715862842.095966,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined1\\My Behavior\\My Behavior-14814.pt"
+                ]
+            },
+            {
+                "steps": 18061,
+                "file_path": "results\\RewardsRefined1\\My Behavior\\My Behavior-18061.onnx",
+                "reward": 1.1612285784312657,
+                "creation_time": 1715863000.6010742,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined1\\My Behavior\\My Behavior-18061.pt"
+                ]
+            },
+            {
+                "steps": 23056,
+                "file_path": "results\\RewardsRefined1\\My Behavior\\My Behavior-23056.onnx",
+                "reward": 0.043978720903396606,
+                "creation_time": 1715863138.7833881,
+                "auxillary_file_paths": [
+                    "results\\RewardsRefined1\\My Behavior\\My Behavior-23056.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 23056,
+            "file_path": "results\\RewardsRefined1\\My Behavior.onnx",
+            "reward": 0.043978720903396606,
+            "creation_time": 1715863138.7833881,
+            "auxillary_file_paths": [
+                "results\\RewardsRefined1\\My Behavior\\My Behavior-23056.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

@@ -45,28 +45,40 @@ public class PlayerScript : Agent
     }
 
     public override void OnActionReceived(ActionBuffers actions)
+{
+    if (_isHopping) return;
+
+    // Add some exploration
+    var randomValue = Random.value;
+    if (randomValue < 0.1f)  // 10% of the time, take a random action
     {
-        if (_isHopping) return;
-        switch (actions.DiscreteActions[0])
-        {
-            // case 0:
-            //     MovePlayer(Vector3.zero);
-            //     SetReward(+0.01f);
-            //     break;
-            case 1:
-                MovePlayer(Vector3.forward);
-                break;
-            case 2:
-                MovePlayer(Vector3.back);
-                break;
-            case 3:
-                MovePlayer(Vector3.left);
-                break;
-            case 4:
-                MovePlayer(Vector3.right);
-                break;
-        }
+        var randomAction = Random.Range(1, 5);
+        MovePlayerBasedOnAction(randomAction);
     }
+    else  // 90% of the time, take the action that the agent thinks is best
+    {
+        MovePlayerBasedOnAction(actions.DiscreteActions[0]);
+    }
+}
+
+private void MovePlayerBasedOnAction(int action)
+{
+    switch (action)
+    {
+        case 1:
+            MovePlayer(Vector3.forward);
+            break;
+        case 2:
+            MovePlayer(Vector3.back);
+            break;
+        case 3:
+            MovePlayer(Vector3.left);
+            break;
+        case 4:
+            MovePlayer(Vector3.right);
+            break;
+    }
+}
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -191,7 +203,7 @@ public class PlayerScript : Agent
         
         ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
-        AddReward(-1f);
+        SetReward(-1f);
         EndEpisode();
         Destroy(GlobalVariables.Player.GameObject());
     }
@@ -226,7 +238,7 @@ public class PlayerScript : Agent
     
             MovePlayer(new Vector3(1, 0, zDiff));
             soundIsPlayed = false;
-            timeWithoutScoreIncrease = 0f;
+            // timeWithoutScoreIncrease = 0f;
             lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S))
@@ -318,10 +330,9 @@ public class PlayerScript : Agent
         {
             if (collision.collider.GetComponent<MovingObjectScript>().islog)
             {
-                if (isOnLog) AddReward(+0.05f);
                 isOnLog = true;
                 transform.parent = collision.collider.transform;
-                AddReward(+0.02f);
+                AddReward(+1f);
             }
         }
         else
@@ -340,20 +351,47 @@ public class PlayerScript : Agent
         var size = Physics.OverlapBoxNonAlloc(newPosition, Vector3.one * 0.2f, results);
         if (size > 0)
         {
-            if (results.Any(collider => collider.CompareTag("Obstacle")))
+            if (results.Any(collider1 => collider1.CompareTag("Obstacle")))
             {
-                AddReward(-0.04f);
+                AddReward(-1f);
+                EndEpisode();
                 return;
             }
-            if (results.Any(collider => collider.CompareTag("Coins")))
+            string[] tags = {"Truck", "Car", "Train", "FastCar", "MidCar", "BigCar", "LittleCar"};
+            if (results.Any(collider1 => tags.Contains(collider1.tag)))
             {
-                AddReward(+0.02f);
+                AddReward(-1f);
+                EndEpisode();
+            }
+            else if (results.Any(collider1 => collider1.CompareTag("LillyPad")))
+            {
+                AddReward(+1f);
+            }
+            else if (results.Any(collider1 => collider1.CompareTag("Log")))
+            {
+                AddReward(+1f);
             }
         }
         
-
+        // check if the player is going on the water
         
-
+        foreach (var terrain in TerrainGenerator._currentTerrains
+            .Where(terrain => Mathf.Approximately(terrain.transform.position.x, newPosition.x))
+            .Where(terrain => terrain.CompareTag("Water")))
+        {
+            // check if the player is on a log or a lilypad
+            if (isOnLog)
+            {
+                AddReward(+1f);
+            }
+            else
+            {
+                AddReward(-1f);
+                EndEpisode();
+            }
+        }
+        
+        
         _animator.SetTrigger(Hop);
         _isHopping = true;
         var position = transform.position;
@@ -363,40 +401,30 @@ public class PlayerScript : Agent
         // get the prefab the player is on
         if (Mathf.Approximately(diff.x, 1))
         {
+            timeWithoutScoreIncrease = 0f;
             _backwardsCount = 0;
             _scoreBuffer++;
+            AddReward(+0.2f);
             if (_scoreBuffer > 0)
             {
-                float currentScore = bestScore / 100f;
                 ScoreScript.Instance.UpdateScore();
                 _scoreBuffer = 0;
-                AddReward(+0.1f * currentScore);
+                AddReward(+0.3f + ScoreScript.Instance.GetScore() / 200f);
                 if (ScoreScript.Instance.GetScore() == bestScore)
                 {
                     // Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
                     bestScore++;
-                    SetReward(+1f);
+                    AddReward(+1f);
                     EndEpisode();
                 }
             }
             foreach (var terrain in TerrainGenerator._currentTerrains
-                         .Where(terrain => terrain.transform.position.x <= transform.position.x -1)
-                         .Where(terrain => terrain.CompareTag("LillyPad")
-                                           || terrain.CompareTag("Water")
-                                           || terrain.CompareTag("Log")
-                                           || terrain.CompareTag("Railway")
-                                           || terrain.CompareTag("Road")))
+                         .Where(terrain1 => Mathf.Approximately(terrain1.transform.position.x, newPosition.x -1))
+                         .Where(terrain => terrain.CompareTag("Water")
+                                            || terrain.CompareTag("Railway")
+                                            || terrain.CompareTag("Road")))
             {
-                if (Mathf.Approximately(terrain.transform.position.x, transform.position.x -1))
-                {
-                    SetReward(+0.4f);
-                }
-
-                if (!Mathf.Approximately(terrain.transform.position.x, transform.position.x)) continue;
-                if (terrain.CompareTag("LillyPad") || terrain.CompareTag("Log"))
-                {
-                    SetReward(+0.4f);
-                }
+                AddReward(+1f);
             }
             
         }
@@ -404,18 +432,19 @@ public class PlayerScript : Agent
         {
             _scoreBuffer--;
             _backwardsCount++;
-            AddReward(-0.01f);
-            if (_scoreBuffer < 0) AddReward(-0.02f);
+            AddReward(-0.1f);
+            if (_scoreBuffer < 0) AddReward(-0.33f);
         }
         else
         {
-            SetReward(+0.01f);
+            AddReward(0.02f);
         }
         
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
-            //TODO: display the game ended message @Reaub1
+            SetReward(-1f);
+            EndEpisode();
         }
         
         if (ScoreScript.Instance.isCounting){
@@ -423,6 +452,8 @@ public class PlayerScript : Agent
             if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
                 EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
                 eagleScript.CatchPlayer();
+                SetReward(-1f);
+                EndEpisode();
             }
         }
         

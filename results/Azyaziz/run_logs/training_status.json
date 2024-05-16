@@ -1,0 +1,65 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 39790,
+                "file_path": "results\\Azyaziz\\My Behavior\\My Behavior-39790.onnx",
+                "reward": -0.4208510935385811,
+                "creation_time": 1715865789.7917702,
+                "auxillary_file_paths": [
+                    "results\\Azyaziz\\My Behavior\\My Behavior-39790.pt"
+                ]
+            },
+            {
+                "steps": 78168,
+                "file_path": "results\\Azyaziz\\My Behavior\\My Behavior-78168.onnx",
+                "reward": 0.02971010590377061,
+                "creation_time": 1715866180.8093207,
+                "auxillary_file_paths": [
+                    "results\\Azyaziz\\My Behavior\\My Behavior-78168.pt"
+                ]
+            },
+            {
+                "steps": 96007,
+                "file_path": "results\\Azyaziz\\My Behavior\\My Behavior-96007.onnx",
+                "reward": 3.6028787690130146,
+                "creation_time": 1715866408.6041336,
+                "auxillary_file_paths": [
+                    "results\\Azyaziz\\My Behavior\\My Behavior-96007.pt"
+                ]
+            },
+            {
+                "steps": 499986,
+                "file_path": "results\\Azyaziz\\My Behavior\\My Behavior-499986.onnx",
+                "reward": 2.4122727486220272,
+                "creation_time": 1715869963.9882948,
+                "auxillary_file_paths": [
+                    "results\\Azyaziz\\My Behavior\\My Behavior-499986.pt"
+                ]
+            },
+            {
+                "steps": 500050,
+                "file_path": "results\\Azyaziz\\My Behavior\\My Behavior-500050.onnx",
+                "reward": 2.4122727486220272,
+                "creation_time": 1715869964.1308312,
+                "auxillary_file_paths": [
+                    "results\\Azyaziz\\My Behavior\\My Behavior-500050.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500050,
+            "file_path": "results\\Azyaziz\\My Behavior.onnx",
+            "reward": 2.4122727486220272,
+            "creation_time": 1715869964.1308312,
+            "auxillary_file_paths": [
+                "results\\Azyaziz\\My Behavior\\My Behavior-500050.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}

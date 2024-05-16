@@ -1,0 +1,47 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 35174,
+                "file_path": "results\\CopilotRewards1\\My Behavior\\My Behavior-35174.onnx",
+                "reward": -0.9885714217488255,
+                "creation_time": 1715846051.300188,
+                "auxillary_file_paths": [
+                    "results\\CopilotRewards1\\My Behavior\\My Behavior-35174.pt"
+                ]
+            },
+            {
+                "steps": 100337,
+                "file_path": "results\\CopilotRewards1\\My Behavior\\My Behavior-100337.onnx",
+                "reward": -0.6675454643131657,
+                "creation_time": 1715846773.2138557,
+                "auxillary_file_paths": [
+                    "results\\CopilotRewards1\\My Behavior\\My Behavior-100337.pt"
+                ]
+            },
+            {
+                "steps": 160227,
+                "file_path": "results\\CopilotRewards1\\My Behavior\\My Behavior-160227.onnx",
+                "reward": -0.8528928584086576,
+                "creation_time": 1715847397.1983483,
+                "auxillary_file_paths": [
+                    "results\\CopilotRewards1\\My Behavior\\My Behavior-160227.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 160227,
+            "file_path": "results\\CopilotRewards1\\My Behavior.onnx",
+            "reward": -0.8528928584086576,
+            "creation_time": 1715847397.1983483,
+            "auxillary_file_paths": [
+                "results\\CopilotRewards1\\My Behavior\\My Behavior-160227.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.2.2+cu121"
+    }
+}
