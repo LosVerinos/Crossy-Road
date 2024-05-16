@@ -2,8 +2,8 @@
 [*] --> Boutique
 Boutique : Le joueur accède à la boutique
 
-Boutique --> SelectionObjet : Le joueur sélectionne un objet à acheter
-SelectionObjet --> Confirmation : Le joueur confirme l'achat
+Boutique --> ClickBuyButton : Le joueur fait un achat
+ClickBuyButton --> Confirmation : Le joueur va voir si il peut acheter
 Confirmation --> Reussite : Achat réussi
 Confirmation --> Echec : Achat échoué (pas assez de pièces)
 Reussite --> Boutique : Retour à la boutique

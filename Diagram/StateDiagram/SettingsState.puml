@@ -5,9 +5,6 @@ Reglages : Le joueur accède aux réglages
 Reglages --> Volume : Le joueur ajuste le volume
 Volume --> Reglages : Retour aux réglages
 
-Reglages --> Resolution : Le joueur change la résolution
-Resolution --> Reglages : Retour aux réglages
-
 Reglages --> RetourMenuPrincipal : Retour au menu principal
 RetourMenuPrincipal --> [*] : Retour au menu principal
 @enduml

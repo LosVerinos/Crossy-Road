@@ -4,7 +4,7 @@ EnAttente : La plateforme est prête à apparaître
 
 EnAttente --> Deplacement : La plateforme est générée et commence à se déplacer
 Deplacement --> HorsChamp : La plateforme sort de l'écran
-HorsChamp --> EnAttente : La plateforme est prête à être réutilisée
+HorsChamp --> Destruction : La plateforme est détruite
 
 state Deplacement {
     [*] --> EnMouvement
