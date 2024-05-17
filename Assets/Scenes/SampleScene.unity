@@ -3486,7 +3486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d523cf72f329c544bebd14540688bcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetFrameRate: 60
 --- !u!4 &825332275
 Transform:
   m_ObjectHideFlags: 0
@@ -5286,7 +5285,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3668f6558179f4681a3a86d7c5d79ce6, type: 2}
   - {fileID: 11400000, guid: fe4146ef6b9cd4cd4afa898d929457a6, type: 2}
   - {fileID: 11400000, guid: b77f7ac76d7134c28ad5aa3fce302faa, type: 2}
-  _isAi: 0
+  _isAi: 1
 --- !u!114 &1215677309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5350,7 +5349,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 5022602860645237092, guid: 737a93e7f64a0e149b245074ff903d26, type: 3}
   m_InferenceDevice: 3
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: My Behavior
   TeamId: 0
   m_UseChildSensors: 0

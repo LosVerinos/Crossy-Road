@@ -135,7 +135,8 @@ private void MovePlayerBasedOnAction(int action)
         GlobalVariables.Player = GameObject.Find("PlayerObject").GetComponent<PlayerScript>();
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
-        GetComponent<BehaviorParameters>().BehaviorType = BehaviorType.HeuristicOnly;
+        GetComponent<BehaviorParameters>().BehaviorType = BehaviorType.Default;
+        if (_isAi) GlobalVariables.run = true;
     }
 
     public void reloadSkin()
@@ -223,7 +224,7 @@ private void MovePlayerBasedOnAction(int action)
         {
             RequestDecision();
         }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        else if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             switch (lastInput)
             {
@@ -386,26 +387,6 @@ private void MovePlayerBasedOnAction(int action)
         var position = transform.position;
         transform.position = Vector3.Lerp(transform.position, newPosition, 1f);
         TerrainGenerator.SpawnTerrain(false, position);
-        
-        // check if the player is going on the water
-        
-        foreach (var terrain in TerrainGenerator._currentTerrains
-            .Where(terrain => Mathf.Approximately(terrain.transform.position.x, newPosition.x))
-            .Where(terrain => terrain.CompareTag("Water")))
-        {
-            // check if the player is on a log or a lilypad
-            if (isOnLog)
-            {
-                AddReward(+1f);
-            }
-            else
-            {
-                AddReward(-1f);
-                EndEpisode();
-            }
-        }
-        
-        
         
         
         // get the prefab the player is on
