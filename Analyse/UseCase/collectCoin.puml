@@ -1,4 +1,4 @@
-@startuml ColectCoinsUC
+@startuml CollectCoinsUC
 |Joueur|
 start
 :Se déplacer vers la pièce d'or;

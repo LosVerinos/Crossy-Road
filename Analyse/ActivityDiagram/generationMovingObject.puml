@@ -1,12 +1,12 @@
-@startuml generationActivity
+@startuml generationMovingObjectActivity
 start
-:Définir les points d'apparition des objets;
 repeat
-  :Attendre un intervalle de temps aléatoire;
-  :Sélectionner un type d'objet à faire apparaître en fonction du terrain;
+  :Attendre l'intervalle de temps;
+  :Sélectionner l'objet à faire apparaître en fonction du terrain;
   :Instancier l'objet à la position d'apparition;
   :Définir la direction et la vitesse de l'objet;
   :Déplacer l'objet selon la logique de déplacement;
+  :Définir le nouvel intervalle de temps;
 repeat while (La partie n'est pas terminée)
 stop
 @enduml

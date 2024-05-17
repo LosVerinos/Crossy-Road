@@ -1,4 +1,4 @@
-@startuml movingObjectUC
+@startuml movingObjectVehicleUC
 |Système|
 start
 :Générer les véhicules;

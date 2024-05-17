@@ -1,52 +1,94 @@
 @startuml classDiagram
-class Player {
+class Player extends MLAgent.Agent{
     -name: string
+    -skin: SkinData
     -score: int
     -position: Vector3
-    +move(direction: string): void
-    +collectCoin(): void
-    +die(): void
+    -isAI: bool
+    +Move(direction: int): void
+    +CollectCoin(): void
+    +Destroy(): void
+    +SetAI(isAI: bool): void
+    +SetPlayerName(): void
+    +GetPlayerPosition(): void
+}
+
+class SkinData{
+    -Model: GameObject 
+    -theme: string 
+    -unlocked: bool 
+    -sprite: Sprite 
+    -selected: bool 
 }
 
 class Terrain {
     -type: string
     -obstacles: List<Obstacle>
-    +generate(): void
+    -possibleTerrains: List<GameObject>
+    -probabilityOfSpawning: float
+    -maxInSuccessive: int
+    +Generate(): void
 }
 
 class Obstacle {
     -position: Vector3
-    +activate(): void
-    +deactivate(): void
+    +Instantiate(): void
+    +Destroy(): void
 }
 
-class Vehicle extends Obstacle {
+class MovingObject extends Obstacle{
     -speed: float
-    +move(): void
+    -direction: int
+    -type: GameObject
+    -isLog: bool
+    +Move(): void
+    +SetSpeed(): void
+    +SetDirection(): void
+}
+
+class Vehicle extends MovingObject {
+    +KillPlayer(): void
+}
+
+enum CarType extends Vehicle {
+    FastCar
+    BigCar
+    MidCar
+    LittleCar
+    Truck
+}
+
+class Logs extends MovingObject {
+    -loglenght: float
+    +AttachPlayer(): void
 }
 
 class StationaryObject extends Obstacle {
-    +activate(): void
+    +Activate(): void
 }
 
 class Coin {
     -value: int
-    +collect(): void
+    -position: Vector3
+    +Collect(): void
 }
 
 class Game {
     -player: Player
     -terrain: Terrain
-    -vehicles: List<Vehicle>
+    -theme : Theme
     -coins: List<Coin>
-    +start(): void
-    +pause(): void
-    +end(): void
+    -difficulty
+    +Start(): void
+    +Pause(): void
+    +End(): void
+    +SetDifficulty(): void
 }
 
-Player "1" -- "many" Coin
-Terrain "1" -- "many" Obstacle
+Player "1" -- "0..*" Coin
+Player "0..1" -- "1" SkinData
+Terrain "1" -- "0..*" Obstacle
 Game "1" -- "1" Player
-Game "1" -- "1" Terrain
-Terrain "1" -- "many" Coin
+Game "1" -- "0..*" Terrain
+Terrain "1" -- "0..*" Coin
 @enduml

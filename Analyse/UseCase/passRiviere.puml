@@ -11,6 +11,7 @@ if (Sur une plateforme?) then (oui)
     :Avancer d'une case;
 else (non)
     :Tomber dans l'eau;
+    :Tuer le Player;
     :Terminer la partie;
 endif
 stop

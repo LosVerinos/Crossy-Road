@@ -1,0 +1,19 @@
+@startuml MovingObjectActivity
+start
+repeat
+  :L'objet se déplace dans la direction définie;
+  :Vérifier les collisions avec le player;
+  if (Collision détectée?) then (oui)
+    :Appliquer les effets de la collision;
+    :Continuer le déplacement;
+  else (non)
+    :Continuer le déplacement;
+  endif
+  if (A atteint le bord du terrain ?) then (oui)
+    :Destruction;
+  else (non)
+    :Continuer le déplacement;
+  endif
+repeat while (Pas de collision)
+stop
+@enduml

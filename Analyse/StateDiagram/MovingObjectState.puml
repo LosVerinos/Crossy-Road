@@ -1,0 +1,13 @@
+@startuml MovingObjectState
+[*] --> EnAttente
+EnAttente : L'objet est prêt à apparaître
+
+EnAttente --> Deplacement : L'objet est généré et commence à se déplacer
+Deplacement --> HorsChamp : L'objet sort de son champ de définiton
+HorsChamp --> Détruit : L'objet est détruit
+
+state Deplacement {
+    [*] --> EnMouvement
+    EnMouvement : L'objet se déplace
+}
+@enduml

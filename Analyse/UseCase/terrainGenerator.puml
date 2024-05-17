@@ -2,14 +2,14 @@
 |Système|
 start
 :Début de la partie;
-:Sélectionner aléatoirement un type de terrain;
-:Placer les obstacles sur le terrain;
 
 repeat
-    :Générer une nouvelle ligne de terrain;
-    :Placer les objets sur le terrain;
+    :Sélectionner aléatoirement un type de terrain du theme;
+    :Determiner combien de terrain seront générés;
+    :Générer la(les) nouvelle(s) ligne(s) de terrain;
+    :Placer les obstacles sur le(s) terrain(s);
     if (Joueur a avancé?) then (oui)
-        :Supprimer la première ligne généré restante;
+        :Supprimer la première ligne générée de la scène;
     endif
 repeat while (Jeu en cours?)
 stop

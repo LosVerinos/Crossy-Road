@@ -1,4 +1,4 @@
-@startuml MoovingPlatformActivity
+@startuml MovingPlatformActivity
 start
 :Initialiser la position et la vitesse de la plateforme en fonction du terrain;
 repeat
