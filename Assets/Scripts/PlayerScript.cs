@@ -414,7 +414,6 @@ public class PlayerScript : Agent
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
-            //TODO: display the game ended message @Reaub1
         }
         
         if (ScoreScript.Instance.isCounting){
