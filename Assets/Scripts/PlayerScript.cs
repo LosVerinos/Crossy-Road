@@ -191,7 +191,7 @@ public class PlayerScript : Agent
         ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
         AddReward(-1f);
-        EndEpisode();
+        // EndEpisode();
         Destroy(GlobalVariables.Player.GameObject());
     }
 
@@ -203,6 +203,10 @@ public class PlayerScript : Agent
     private void Update()
     {
         if (_isHopping || !GlobalVariables.run) return;
+        if (_isAi)
+        {
+            RequestDecision();
+        }
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
         {
             switch (lastInput)
@@ -375,7 +379,7 @@ public class PlayerScript : Agent
                     // Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
                     bestScore++;
                     SetReward(+1f);
-                    EndEpisode();
+                    // EndEpisode();
                 }
             }
             foreach (var terrain in TerrainGenerator._currentTerrains
@@ -414,7 +418,6 @@ public class PlayerScript : Agent
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
-            //TODO: display the game ended message @Reaub1
         }
         
         if (ScoreScript.Instance.isCounting){
