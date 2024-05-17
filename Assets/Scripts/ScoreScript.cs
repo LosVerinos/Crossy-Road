@@ -11,6 +11,7 @@ public class ScoreScript : MonoBehaviour
     private int score;
     public bool isCounting = false;
     private float currentDifficulty = 1.0f;
+    [SerializeField] public Text scoreText;
     public Button Easy_button;
     public Button Medium_button;
     public Button Hard_button;
@@ -31,6 +32,7 @@ public class ScoreScript : MonoBehaviour
     {
         score += Mathf.RoundToInt(currentDifficulty);
         isCounting = true;
+        scoreText.text = "Score: " + score;
     }
     public int GetScore()
     {

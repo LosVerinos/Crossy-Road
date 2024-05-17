@@ -35,7 +35,6 @@ public class SoundsManager : MonoBehaviour
     }
 
     private void DetermineThemeNumber(){
-        Debug.Log(GlobalVariables.theme);
         if(GlobalVariables.theme == "None"){
             themeNumber = 0;
         }
