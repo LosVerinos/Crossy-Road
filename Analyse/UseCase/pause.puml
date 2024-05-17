@@ -1,10 +1,10 @@
 @startuml pauseUC
-|Player|
+|Joueur|
 start
-:Press Pause Button;
+:Appuyer sur le bouton pause;
 
-|System|
-:Pause the game;
+|Système|
+:Mettre le jeu en pause;
 :Afficher le menu de pause;
 stop
 @enduml

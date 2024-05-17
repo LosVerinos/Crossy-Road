@@ -2,7 +2,8 @@
 |Système|
 start
 :Générer les troncs et nénuphars;
-:Définir la direction et la vitesse;
+:Définir la direction et la vitesse des troncs;
+:Définir la position des nénuphars;
 
 repeat
     :Déplacer les objets;

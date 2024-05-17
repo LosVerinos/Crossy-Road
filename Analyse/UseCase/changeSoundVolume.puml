@@ -7,6 +7,6 @@ start
 
 |System|
 :Automatically update volume level;
-:System: Change the volume level;
+:Change the volume level;
 stop
 @enduml

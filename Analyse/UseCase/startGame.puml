@@ -1,9 +1,9 @@
 @startuml startGameUC
-|Player|
+|Joueur|
 start
-:Click Game Icon;
-:Enter Username;
-:Select Difficulty;
-:Click Play;
+:Cliquer sur l'icône du jeu;
+:Entrer le nom d'utilisateur;
+:Sélectionner la difficulté;
+:Cliquer sur Jouer;
 stop
 @enduml

@@ -1,11 +1,11 @@
 @startuml startIAUC
-|Player|
+|Joueur|
 start
-:Select Difficulty;
-:Click AI Button;
+:Sélectionner la difficulté;
+:Cliquer sur le bouton IA;
 
-|System|
-:Initialize AI;
-:Start the game;
+|Système|
+:Initialiser l'IA;
+:Commencer le jeu;
 stop
 @enduml

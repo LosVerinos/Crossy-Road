@@ -1,4 +1,4 @@
-@startuml
+@startuml sequenceDiagram
 actor Player
 actor System
 
