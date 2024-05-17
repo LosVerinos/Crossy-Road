@@ -5,7 +5,7 @@ repeat
   :L'objet se déplace dans la direction définie;
   :Vérifier les collisions avec d'autres objets;
   if (Collision détectée?) then (oui)
-    :Appliquer les effets de la collision;
+    :Kill le player;
     :Arrêter le déplacement de l'objet;
   else (non)
     :Continuer le déplacement;

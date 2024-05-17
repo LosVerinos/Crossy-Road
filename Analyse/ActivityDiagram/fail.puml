@@ -1,7 +1,9 @@
 @startuml failAcivity
 start
 :Le joueur rencontre un obstacle mortel;
-:Afficher l'animation de mort;
+:Le chrono s'arrête;
+:Les données sont enregistrées;
+:Le panel de fin de partie s'affiche;
 :Afficher le score final;
 :Proposer de relancer ou de quitter;
 stop

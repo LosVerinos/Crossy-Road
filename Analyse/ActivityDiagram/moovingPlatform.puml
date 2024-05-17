@@ -5,7 +5,7 @@ repeat
   :Déplacer la plateforme dans la direction définie;
   :Vérifier les limites de la scène;
   if (Limite atteinte?) then (oui)
-    :Réinitialiser la position de la plateforme;
+    :Destruction de l'objet;
   else (non)
     :Continuer le déplacement;
   endif
