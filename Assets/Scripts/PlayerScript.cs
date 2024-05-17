@@ -207,7 +207,7 @@ public class PlayerScript : Agent
         {
             RequestDecision();
         }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             switch (lastInput)
             {
@@ -223,16 +223,16 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
-    
+
             MovePlayer(new Vector3(1, 0, zDiff));
             soundIsPlayed = false;
             timeWithoutScoreIncrease = 0f;
             lastInput = 'W';
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             switch (lastInput)
             {
@@ -248,13 +248,13 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             MovePlayer(new Vector3(-1, 0, zDiff));
             lastInput = 'S';
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             switch (lastInput)
             {
@@ -276,7 +276,7 @@ public class PlayerScript : Agent
             MovePlayer(new Vector3(xDiff, 0, 1));
             lastInput = 'A';
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             switch (lastInput)
             {
