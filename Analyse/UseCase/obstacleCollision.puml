@@ -1,0 +1,12 @@
+@startuml obstacleCollisionUC
+|Système|
+start
+:Détecter une collision;
+if (Collision mortelle?) then (oui)
+    :Terminer la partie;
+    :Sauvegarder le score;
+else (non)
+    :Continuer la partie;
+endif
+stop
+@enduml

@@ -1,0 +1,13 @@
+@startuml changeDifficultyUC
+|Player|
+start
+:Start the game;
+
+:Select the level of difficulty on the panel;
+
+|System|
+:Send the selected difficulty;
+:Apply the selected difficulty;
+
+stop
+@enduml

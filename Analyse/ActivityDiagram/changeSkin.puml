@@ -1,0 +1,9 @@
+@startuml changeSkinActivity
+start
+:Lancer le jeu;
+:Aller dans le menu des skins;
+:Afficher la liste des skins disponibles;
+:Cliquer sur un skin;
+:Mettre à jour l'apparence du joueur;
+stop
+@enduml

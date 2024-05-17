@@ -1,0 +1,10 @@
+@startuml restartGameUC
+|Joueur|
+start
+:Appuyer sur le bouton Redémarrer;
+
+|Système|
+:Réinitialiser le jeu à l'état initial;
+:Commencer le jeu;
+stop
+@enduml

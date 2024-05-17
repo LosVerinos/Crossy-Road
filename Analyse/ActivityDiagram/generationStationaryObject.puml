@@ -1,0 +1,12 @@
+@startuml generationStationaryObjectActivity
+start
+repeat
+  :Sélectionner l'objet à faire apparaître en fonction du terrain;
+  repeat
+  :Définir une position à laquelle faire apparaitre l'objet;
+  repeat while (Position occupée)
+  :Instancier l'objet à la position d'apparition;
+  :Définir la rotaiton de l'objet;
+repeat while (Le nombre d'objet à placer n'est pas atteint)
+stop
+@enduml

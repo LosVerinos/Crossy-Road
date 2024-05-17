@@ -1,0 +1,9 @@
+@startuml checkParamsUC
+|Joueur|
+start
+:Ouvrir le menu des paramètres;
+
+|Système|
+:Afficher les options de paramètres disponibles;
+stop
+@enduml

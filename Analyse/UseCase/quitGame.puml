@@ -1,0 +1,16 @@
+@startuml quitGameUC
+|Joueur|
+start
+:Ouvrir le menu des paramètres;
+
+|Système|
+:Afficher le menu des paramètres;
+
+|Joueur|
+:Appuyer sur le bouton Quitter;
+
+|Système|
+:Quitter le jeu;
+:Fermer le jeu;
+stop
+@enduml

@@ -1,0 +1,17 @@
+@startuml MenuPrincipal
+[*] --> MenuPrincipal
+MenuPrincipal : Le joueur est sur l'écran de démarrage
+
+MenuPrincipal --> SelectionSkin : Le joueur sélectionne un skin
+MenuPrincipal --> Shop : Le joueur sélectionne un skin
+MenuPrincipal --> ConsulterClassement : Le joueur consulte le classement
+MenuPrincipal --> Reglages : Le joueur accède aux réglages
+MenuPrincipal --> Jouer : Le joueur lance une partie
+
+SelectionSkin --> MenuPrincipal : Retour au menu principal
+ConsulterClassement --> MenuPrincipal : Retour au menu principal
+Reglages --> MenuPrincipal : Retour au menu principal
+Shop --> MenuPrincipal : Retour au menu principal
+Jouer --> MenuPrincipal : Le menu principal se désactive
+
+@enduml

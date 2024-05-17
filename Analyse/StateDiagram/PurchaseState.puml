@@ -1,0 +1,12 @@
+@startuml PurchaseState
+[*] --> Boutique
+Boutique : Le joueur accède à la boutique
+
+Boutique --> Achat : Le joueur fait un achat
+Achat --> Reussite : Achat réussi
+Achat --> Echec : Achat échoué (pas assez de pièces)
+Reussite --> Boutique : Retour à la boutique
+Echec --> Boutique : Retour à la boutique
+Boutique --> RetourMenuPrincipal : Retour au menu principal
+RetourMenuPrincipal --> [*] : Retour au menu principal
+@enduml

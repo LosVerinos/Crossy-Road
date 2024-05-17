@@ -1,0 +1,8 @@
+@startuml ConsultParamActivity
+start
+:Lancer le jeu;
+:Lancer une partie;
+:Aller dans le menu des réglages;
+:Modifier le volume à la valeur souhaitée;
+stop
+@enduml

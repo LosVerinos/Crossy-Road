@@ -1,0 +1,18 @@
+@startuml passRiviereUC
+|Joueur|
+start
+:Observer les troncs d'arbres et les nénuphars;
+:Attendre un moment sûr pour sauter;
+:Appuyer sur la direction avant (ou glisser);
+
+|Système|
+:Vérifier les collisions;
+if (Sur une plateforme?) then (oui)
+    :Avancer d'une case;
+else (non)
+    :Tomber dans l'eau;
+    :Tuer le Player;
+    :Terminer la partie;
+endif
+stop
+@enduml

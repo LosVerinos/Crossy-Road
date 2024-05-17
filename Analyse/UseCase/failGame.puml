@@ -1,0 +1,7 @@
+@startuml failGameUC
+|Système|
+start
+:Le joueur perd la partie;
+:Afficher l'écran de fin de partie;
+stop
+@enduml

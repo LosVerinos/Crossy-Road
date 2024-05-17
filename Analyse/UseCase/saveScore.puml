@@ -1,0 +1,14 @@
+@startuml saveScoreUC
+|Joueur|
+start
+:Entrer le pseudo;
+
+|Système|
+:Fin de la partie;
+:Calculer le score final;
+:Regarder le chrono;
+:Prendre la difficulté choisie;
+:Prendre le pseudo du joueur;
+:Enregistrer les informations dans le bon fichier;
+stop
+@enduml

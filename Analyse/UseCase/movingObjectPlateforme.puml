@@ -1,0 +1,13 @@
+@startuml movingObjectsPlateformeUC
+|Système|
+start
+:Générer les troncs et nénuphars;
+:Définir la direction et la vitesse des troncs;
+:Définir la position des nénuphars;
+
+repeat
+    :Déplacer les objets;
+    :Vérifier les collisions;
+repeat while (Jeu en cours?)
+stop
+@enduml

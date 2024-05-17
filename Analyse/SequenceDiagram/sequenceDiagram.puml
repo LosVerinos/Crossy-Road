@@ -1,0 +1,123 @@
+@startuml sequenceDiagram
+actor Player
+actor System
+
+Player -> System: Lancer le jeu
+System -> GlobalVariables: Initialiser les variables globales
+System -> SkinManager: Charger les skins et thèmes sélectionnés
+System -> TerrainGenerator: Générer le terrain et les éléments en fonction des thèmes et skins
+System -> UIManager: Charger les panels de démarrage
+System -> SkinManager: Charger les différents skins disponibles dans le vestiaire
+
+alt Cliquer sur le bouton "identity"
+    Player -> UIManager: Montrer le panel "identity"
+    alt Cliquer sur un skin
+        Player -> SkinManager: Charger les données du skin sélectionné
+    else Cliquer sur "goback"
+        Player -> TerrainGenerator: Recharger le terrain et le skin
+        Player -> UIManager: Retourner au menu start
+    end
+else Cliquer sur "leaderboard"
+    Player -> UIManager: Montrer le panel "leaderboard"
+    System -> ScoreManager: Charger les informations sur les scores
+    System -> UIManager: Afficher les informations des scores
+    alt Changer la difficulté du classement
+        Player -> ScoreManager: Recharger les informations sur les scores de la difficulté choisie
+        System -> UIManager: Afficher les informations des scores mis à jour
+    else Cliquer sur "goback"
+        Player -> UIManager: Retourner au menu start
+    end
+else Cliquer sur "shop"
+    Player -> UIManager: Montrer le panel "shop"
+    alt Cliquer sur "buy"
+        alt Avoir 100 coins ou plus
+            Player -> System: Lancer l'animation du buy
+            System -> SkinManager: Débloquer un nouveau skin
+            SkinManager -> SkinManager: Chercher dans la liste des skins non débloqués
+        else Moins de 100 coins
+            Player -> System: Lancer l'animation du fail
+        end
+    else Cliquer sur "goback"
+        Player -> UIManager: Retourner au menu start
+    end
+else Cliquer sur "start"
+    Player -> UIManager: Enlever le menu start
+    System -> UIManager: Descendre les coins
+    System -> TimerManager: Afficher et démarrer le timer
+    System -> UIManager: Afficher le score
+
+    loop Attendre input utilisateur
+        alt Input Q
+            Player -> PlayerCharacter: Déplacer à gauche
+        else Input D
+            Player -> PlayerCharacter: Déplacer à droite
+        else Input Z
+            Player -> PlayerCharacter: Déplacer en haut
+            alt Coup le plus haut
+                System -> ScoreManager: Incrémenter le score
+            end
+        else Input S
+            Player -> PlayerCharacter: Déplacer en bas
+        end
+
+        alt Collision
+            opt Objet mortel
+                System -> PlayerCharacter: Tuer le player
+                System -> UIManager: Lancer l'écran de failled
+            end
+            opt Plateforme
+                System -> PlayerCharacter: Prendre la vélocité de la plateforme
+            end
+            opt Coin
+                System -> PlayerCharacter: Incrémenter le compteur de coin
+                System -> CoinManager: Détruire le coin
+            end
+            opt Trois coups en arrière de suite
+                System -> Eagle: Lancer l'animation aigle
+                System -> PlayerCharacter: Tuer le player
+            end
+            opt Temps sans activité < max time
+                System -> Eagle: Lancer l'animation aigle
+                System -> PlayerCharacter: Tuer le player
+            end
+        end
+
+        alt Mort du joueur
+            System -> UIManager: Montrer le panel de fin
+            alt Cliquer sur "rejouer"
+                Player -> System: Recharger la scène et rejouer directement
+            else Cliquer sur "menu"
+                Player -> System: Recharger la scène et retourner au menu
+            else Cliquer sur "consulter le score"
+                Player -> UIManager: Montrer le panel "leaderboard"
+            end
+        end
+
+        alt Menu pause
+            opt Game lancé
+                Player -> UIManager: Cliquer sur "pause"
+                System -> TimeManager: Freezer le temps
+                System -> UIManager: Proposer deux boutons: recommencer et reprendre
+                alt Cliquer sur "recommencer"
+                    Player -> System: Recharger la scène
+                else Cliquer sur "reprendre"
+                    Player -> UIManager: Désactiver le panel de pause
+                    System -> TimeManager: Remettre le temps à 1
+                end
+            end
+        end
+
+        alt Menu option
+            opt Game lancé
+                Player -> UIManager: Cliquer sur "option"
+                System -> UIManager: Afficher le panel option
+                alt Changer le volume
+                    Player -> AudioManager: Modifier le volume du son
+                else Cliquer sur "quitter"
+                    Player -> System: Quitter le jeu
+                end
+            end
+        end
+    end
+end
+@enduml

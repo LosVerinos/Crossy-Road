@@ -1,0 +1,16 @@
+@startuml BuySkinUC
+|Player|
+start
+:Open the skin shop;
+:Click to buy a skin;
+
+|System|
+:Check if the player has enough coins;
+if (Enough coins?) then (yes)
+    :Unlock the skin;
+else (no)
+    :Insufficient coins;
+endif
+
+stop
+@enduml
