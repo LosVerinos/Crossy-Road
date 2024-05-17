@@ -17,6 +17,14 @@ public class SoundsManager : MonoBehaviour
 
     private void Update(){
         DetermineThemeNumber();
+        if (!GlobalVariables.run)
+        {
+            audioSource.Stop();
+        }
+        else if (audioSource.isPlaying == false)
+        {
+            PlaySound();
+        }
     }
 
     public void PlaySound()
