@@ -138,7 +138,6 @@ public class PlayerScript : Agent
                     {
                         var randomIndex = Random.Range(0, skinDataList.Count);
                         var randomSkin = skinDataList[randomIndex];
-
                         do
                         {
                             randomIndex = Random.Range(0, skinDataList.Count);
@@ -202,7 +201,15 @@ public class PlayerScript : Agent
 
     private void Update()
     {
+
         if (_isHopping || !GlobalVariables.run) return;
+        if (ScoreScript.Instance.isCounting){
+            timeWithoutScoreIncrease += Time.deltaTime; 
+            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
+                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+                eagleScript.CatchPlayer();
+            }
+        }
         if (_isAi)
         {
             RequestDecision();
@@ -229,7 +236,7 @@ public class PlayerScript : Agent
 
             MovePlayer(new Vector3(1, 0, zDiff));
             soundIsPlayed = false;
-            timeWithoutScoreIncrease = 0f;
+            
             lastInput = 'W';
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
@@ -313,6 +320,7 @@ public class PlayerScript : Agent
         
     
         if (transform.position.z < -15f || transform.position.z > 15f) KillPlayer();
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -372,6 +380,7 @@ public class PlayerScript : Agent
             {
                 float currentScore = bestScore / 100f;
                 ScoreScript.Instance.UpdateScore();
+                timeWithoutScoreIncrease = 0f;
                 _scoreBuffer = 0;
                 AddReward(+0.1f * currentScore);
                 if (ScoreScript.Instance.GetScore() == bestScore)
@@ -418,14 +427,6 @@ public class PlayerScript : Agent
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
-        }
-        
-        if (ScoreScript.Instance.isCounting){
-            timeWithoutScoreIncrease += Time.deltaTime; 
-            if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
-                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-                eagleScript.CatchPlayer();
-            }
         }
         
     }
