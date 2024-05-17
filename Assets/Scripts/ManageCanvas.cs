@@ -17,6 +17,7 @@ public class ManageCanvas : MonoBehaviour
     public GameObject startPanel;
     public GameObject scoreText;
     public Text timeText;
+    public Text pseudo;
 
     public Animator animator;
 
@@ -73,6 +74,7 @@ public class ManageCanvas : MonoBehaviour
                 //startPanel.SetActive(false);
                 GlobalVariables.run = true;
                 GlobalVariables.restart = false;
+                
 
             }
         }
@@ -130,6 +132,7 @@ public class ManageCanvas : MonoBehaviour
     public void Start_click()
     {
         GlobalVariables.run = true;
+        GlobalVariables.Player.playerName = pseudo.text;
     }
     
     public void OnEnterLeaderBoard()

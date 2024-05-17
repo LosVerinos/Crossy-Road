@@ -462,7 +462,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isCounting: 0
-  scoreText: {fileID: 1952646538}
   Easy_button: {fileID: 187931787}
   Medium_button: {fileID: 1371543679}
   Hard_button: {fileID: 305754314}
@@ -2264,7 +2263,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 1
-    m_MaxSize: 8
+    m_MaxSize: 5
     m_Alignment: 4
     m_AlignByGeometry: 1
     m_RichText: 1
@@ -2613,6 +2612,7 @@ MonoBehaviour:
   startPanel: {fileID: 0}
   scoreText: {fileID: 0}
   timeText: {fileID: 0}
+  pseudo: {fileID: 0}
   animator: {fileID: 0}
   coinsText: {fileID: 0}
 --- !u!1 &600112847
@@ -3726,6 +3726,7 @@ MonoBehaviour:
   startPanel: {fileID: 584060406}
   scoreText: {fileID: 1952646536}
   timeText: {fileID: 172531101}
+  pseudo: {fileID: 1159310375}
   animator: {fileID: 840886188}
   coinsText: {fileID: 1328561429}
 --- !u!95 &840886188
