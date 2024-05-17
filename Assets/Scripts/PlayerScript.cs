@@ -85,7 +85,6 @@ public class PlayerScript : Agent
 
     private void Start()
     {
-        skinDataList[3].selected = true;
         if (skinDataList.Count == 0)
             Debug.Log("La liste skinDataList est vide.");
         else
@@ -192,7 +191,7 @@ public class PlayerScript : Agent
         ScoreScript.Instance.WriteScore(str_difficulty);
         ScoreScript.Instance.ResetScore();
         AddReward(-1f);
-        EndEpisode();
+        // EndEpisode();
         Destroy(GlobalVariables.Player.GameObject());
     }
 
@@ -204,7 +203,11 @@ public class PlayerScript : Agent
     private void Update()
     {
         if (_isHopping || !GlobalVariables.run) return;
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        if (_isAi)
+        {
+            RequestDecision();
+        }
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             switch (lastInput)
             {
@@ -220,18 +223,16 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
-    
+
             MovePlayer(new Vector3(1, 0, zDiff));
             soundIsPlayed = false;
             timeWithoutScoreIncrease = 0f;
-    
-    
             lastInput = 'W';
         }
-        else if (Input.GetKeyDown(KeyCode.S))
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             switch (lastInput)
             {
@@ -247,13 +248,13 @@ public class PlayerScript : Agent
                 default:
                     break;
             }
-    
+
             float zDiff = 0;
             if (transform.position.z % 1 != 0) zDiff = Mathf.Round(transform.position.z) - transform.position.z;
             MovePlayer(new Vector3(-1, 0, zDiff));
             lastInput = 'S';
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             switch (lastInput)
             {
@@ -275,7 +276,7 @@ public class PlayerScript : Agent
             MovePlayer(new Vector3(xDiff, 0, 1));
             lastInput = 'A';
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             switch (lastInput)
             {
@@ -336,6 +337,7 @@ public class PlayerScript : Agent
     private void MovePlayer(Vector3 diff)
     {
         var newPosition = transform.position + diff;
+        // normalize the position
 
         var results = new Collider[1];
         var size = Physics.OverlapBoxNonAlloc(newPosition, Vector3.one * 0.2f, results);
@@ -362,7 +364,7 @@ public class PlayerScript : Agent
         TerrainGenerator.SpawnTerrain(false, position);
         
         // get the prefab the player is on
-        if (diff == Vector3.right)
+        if (Mathf.Approximately(diff.x, 1))
         {
             _backwardsCount = 0;
             _scoreBuffer++;
@@ -377,7 +379,7 @@ public class PlayerScript : Agent
                     // Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
                     bestScore++;
                     SetReward(+1f);
-                    EndEpisode();
+                    // EndEpisode();
                 }
             }
             foreach (var terrain in TerrainGenerator._currentTerrains
@@ -401,13 +403,12 @@ public class PlayerScript : Agent
             }
             
         }
-        else if (diff == Vector3.left)
+        else if (Mathf.Approximately(diff.x, -1))
         {
             _scoreBuffer--;
             _backwardsCount++;
             AddReward(-0.01f);
             if (_scoreBuffer < 0) AddReward(-0.02f);
-            if (_scoreBuffer == -3) KillPlayer();
         }
         else
         {
@@ -417,7 +418,6 @@ public class PlayerScript : Agent
         if (_backwardsCount >= 3){
             EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
             eagleScript.CatchPlayer();
-            //TODO: display the game ended message @Reaub1
         }
         
         if (ScoreScript.Instance.isCounting){

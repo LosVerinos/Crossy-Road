@@ -25,6 +25,10 @@ public class TrainSpawn : MonoBehaviour
             timeBeforeComing = Random.Range(minSeparationTime, maxSeparationTime);
             yield return new WaitForSeconds(timeBeforeComing - 3f);
 
+            if(transform.position.x - GlobalVariables.Player.GetPlayerPosition().x < 15 && transform.position.x - GlobalVariables.Player.GetPlayerPosition().x > -7){
+                AudioSource audioSource = GetComponent<AudioSource>();
+                audioSource.Play();
+            }
             if (gameObject.name.EndsWith("SW(Clone)"))
             {
                 if (alarmController != null)
