@@ -50,12 +50,13 @@ class Vehicle extends MovingObject {
     +KillPlayer(): void
 }
 
-enum CarType extends Vehicle {
+enum VehicleType extends Vehicle {
     FastCar
     BigCar
     MidCar
     LittleCar
     Truck
+    Train
 }
 
 class Logs extends MovingObject {
