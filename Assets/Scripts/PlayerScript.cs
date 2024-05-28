@@ -432,8 +432,8 @@ private void MovePlayerBasedOnAction(int action)
         }
         
         if (_backwardsCount >= 3){
-            EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-            eagleScript.CatchPlayer();
+            // EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+            // eagleScript.CatchPlayer();
             SetReward(-1f);
             EndEpisode();
         }
@@ -441,8 +441,8 @@ private void MovePlayerBasedOnAction(int action)
         if (ScoreScript.Instance.isCounting){
             timeWithoutScoreIncrease += Time.deltaTime; 
             if (timeWithoutScoreIncrease >= maxTimeWithoutScore){
-                EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
-                eagleScript.CatchPlayer();
+                // EagleScript eagleScript = Eagle.GetComponentInChildren<EagleScript>();
+                // eagleScript.CatchPlayer();
                 SetReward(-1f);
                 EndEpisode();
             }
