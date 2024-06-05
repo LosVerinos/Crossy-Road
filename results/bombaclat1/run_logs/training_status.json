@@ -1,0 +1,29 @@
+{
+    "My Behavior": {
+        "checkpoints": [
+            {
+                "steps": 82042,
+                "file_path": "results\\bombaclat1\\My Behavior\\My Behavior-82042.onnx",
+                "reward": null,
+                "creation_time": 1716903895.7516131,
+                "auxillary_file_paths": [
+                    "results\\bombaclat1\\My Behavior\\My Behavior-82042.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 82042,
+            "file_path": "results\\bombaclat1\\My Behavior.onnx",
+            "reward": null,
+            "creation_time": 1716903895.7516131,
+            "auxillary_file_paths": [
+                "results\\bombaclat1\\My Behavior\\My Behavior-82042.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.0.0",
+        "torch_version": "2.3.0+cpu"
+    }
+}

@@ -12,7 +12,7 @@ public class PlayerScript : Agent
 {
     [SerializeField] private TerrainGenerator TerrainGenerator;
     [SerializeField] private AudioClip sound;
-
+    private int score = 0;
     private Animator _animator;
     private AudioSource _audioSource;
     private static readonly int Hop = Animator.StringToHash("hop");
@@ -39,8 +39,8 @@ public class PlayerScript : Agent
     public override void OnEpisodeBegin()
     {
         _scoreBuffer = 0;
-        bestScore = ScoreScript.Instance.GetScore() > bestScore ? ScoreScript.Instance.GetScore() : bestScore;
-        ScoreScript.Instance.ResetScore();
+        bestScore = score > bestScore ? score : bestScore;
+        score = 0;
         transform.localPosition = new Vector3(0, 1.03f, 0);
     }
 
@@ -395,13 +395,14 @@ private void MovePlayerBasedOnAction(int action)
             timeWithoutScoreIncrease = 0f;
             _backwardsCount = 0;
             _scoreBuffer++;
-            AddReward(+0.2f);
+            AddReward(+0.3f);
             if (_scoreBuffer > 0)
             {
-                ScoreScript.Instance.UpdateScore();
+                // ScoreScript.Instance.UpdateScore();
+                score++;
                 _scoreBuffer = 0;
-                AddReward(+0.3f + ScoreScript.Instance.GetScore() / 200f);
-                if (ScoreScript.Instance.GetScore() == bestScore)
+                AddReward(+0.4f + score / 200f);
+                if (score == bestScore)
                 {
                     // Debug.Log("Score increased !: " + ScoreScript.Instance.GetScore());
                     bestScore++;
@@ -423,12 +424,12 @@ private void MovePlayerBasedOnAction(int action)
         {
             _scoreBuffer--;
             _backwardsCount++;
-            AddReward(-0.1f);
-            if (_scoreBuffer < 0) AddReward(-0.33f);
+            AddReward(-0.2f);
+            if (_scoreBuffer < 0) AddReward(-0.5f);
         }
         else
         {
-            AddReward(0.02f);
+            AddReward(0.2f);
         }
         
         if (_backwardsCount >= 3){
